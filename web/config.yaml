@@ -60,6 +60,9 @@ params:
     showRecent: true
     showRecentItems: 20
 
+  list:
+    showSummary: true
+
   article:
     showEdit: false
     showDate: true
@@ -68,6 +71,10 @@ params:
     showReadingTime: true
     showWordCount: true
     sharingLinks: false
+    showBreadcrumbs: true
+    showHero: true
+    showTableOfContents: true # ??
+    showTaxonomies: true
 
   taxonomy:
     showTermCount: true

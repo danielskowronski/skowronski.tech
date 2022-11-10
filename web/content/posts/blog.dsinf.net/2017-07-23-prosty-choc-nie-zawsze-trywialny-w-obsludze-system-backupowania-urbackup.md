@@ -1,0 +1,153 @@
+---
+title: Prosty choć nie zawsze trywialny w obsłudze system backupowania – urbackup
+author: Daniel Skowroński
+type: post
+date: 2017-07-23T07:02:48+00:00
+excerpt: 'Ludzie dzielą się na tych co robią backupy i na tych co je będą robili. A sposób ich wykonywania jest dość ważny. No i warto żeby móc odzyskać dane i mieć coś więcej niż backup z ostatnim błędem. Tym razem pochylę się nad rozwiązaniem urbackup - miłym i przyjemnym serwerem backupów, który jednak nie zawsze jest trywialny w obsłudze.'
+url: /2017/07/prosty-choc-nie-zawsze-trywialny-w-obsludze-system-backupowania-urbackup/
+featured_image: https://blog.dsinf.net/wp-content/uploads/2017/07/urb.png
+tags:
+  - backup
+  - linux
+  - windows
+
+---
+Ludzie dzielą się na tych co robią backupy i na tych co je będą robili. A sposób ich wykonywania jest dość ważny. No i warto żeby móc odzyskać dane i mieć coś więcej niż backup z ostatnim błędem. Tym razem pochylę się nad rozwiązaniem **urbackup** &#8211; miłym i przyjemnym serwerem backupów, który jednak nie zawsze jest trywialny w obsłudze.
+
+Przez długi czas mój webserverek i kilka maszyn w KSI robiło backup mniej więcej następująco:
+
+<pre class="lang:default EnlighterJSRAW" title="crontab -l">0    3    *    *   Mon  /root/bin/snapshot-vps</pre>
+
+<pre class="lang:default EnlighterJSRAW" title="/root/bin/backup">#!/bin/bash
+/root/bin/storsrv attach && tar cz /bin /lib /sbin /var /boot /etc /lib64 /opt /root /selinux /tmp /home /srv /usr | gpg --encrypt --output /data/snapsot_`date +"%s"`.tgz.gpg --recipient XXXX
+/root/bin/storsrv detach</pre>
+
+<pre class="lang:default EnlighterJSRAW" title="/root/bin/storsrv">#!/bin/bash
+
+if [[ "$1" == "attach" ]]; then
+	umount /data
+	sshfs -p XXXX stor_vps@XXXXX.dsinf.net: /data
+elif [[ "$1" == "detach" ]]; then
+	umount /data
+else
+	echo "STORSRV v0.1; sytax:\n"
+	echo "  $0 &lt;command&gt;"
+	echo "  &lt;commad&gt;={attach, detach}"
+fi
+</pre>
+
+Niezbyt finezyjnie, choć z użyciem GPG więc bezpiecznie. Cały sytem z użyciem prostszej wersji skryptu padł pewnego razu kiedy po modyfikacjach na jednym serwerze po braku możliwości podpięcia się po sshfs backup zaczynał się wykonywać na dysk (pół biedy) ale&#8230; rekursywnie. Pewne rozszerzenie dokładało wysyłkę maila ale jednak trzeba przyznać &#8211; mizerny sposób. Zwłaszcza jeśli spojrzeć na sposób w jaki sshfs traktuje zepsute endpointy&#8230;
+
+&nbsp;
+
+Ale można lepiej. Urbackup (https://www.urbackup.org/) jest właśnie tą lepszą opcją dla rozwiązań domowo-hobbystycznych. Cudów nie ma ale można w łatwy sposób zabezpieczyć swoje dane na domowym NASie lub na dedyku pod storage (tu polecam aukcje Hetnzera). Architektura jest następująca: _serwer centralny_ który ma paczki na większość dystrybucji Linuksa i Windowsa oraz _klienci_ &#8211; paczki na Windowsa, macOS, magiczną binarkę na Linuksa. Jest też obraz ISO do odzyskiwania offline.
+
+Serwer posiada webgui na defaultowym porcie 55414 (bezproblemowo stawia się za zwykłym proxy) z którego wyklikamy dodanie nowego klienta zdalnego (za NATem) lub zaakceptujemy lokalnego, przejrzymy logi i wykresy oraz zmodyfikujemy konfigurację. Jest jeszcze komenda <span class="lang:default EnlighterJSRAW crayon-inline ">urbackupsrv</span> która służy do cięższych zadań administracyjnych jak usuwanie starych plików kopii. Warto od razu zaznaczyć że jeśli jakiś backup oznaczymy jako &#8222;archived&#8221; to nigdy nie zostanie usunięty automatycznie. Ważny z punktu widzenia firewalla jest jeszcze jeden port &#8211; 55415 służący do komunikacji klienta z serwerem. Klienci zdalni wymagają hasła ale tu ujawnia się praktyczna funkcja urbackup &#8211; po wyklikaniu zdalnego klienta dostajemy command-line do wklejenia w terminal z gotowymi opcjami.
+
+Przechodząc do klienta &#8211; generalnie na windowsa i macOS są typowe binarki. Na Linuksa zalecane jest typowe w dzisiejszych czasach podejście <span class="lang:default EnlighterJSRAW crayon-inline">curl | sudo bash</span>. Choć tutaj z użyciem <span class="lang:default EnlighterJSRAW crayon-inline ">mktemp</span> . Klient składa się z usługi <span class="lang:default EnlighterJSRAW crayon-inline ">urbackupclientbackend</span> <span class="s1"> oraz programu kontrolującego &#8211; <span class="lang:default EnlighterJSRAW crayon-inline">urbackupclientctl</span> </span><span class="s1"> za pomocą którego można zarządzać folderami do backupowania, wystartować backup, zarządać przywrócenia plików i najważniejsze na początek &#8211; sprawdzić status. Na Windowsie oczywiście jest ponadto GUI które poza ikonką w trayu niewiele wnosi.</span>
+
+<pre class="lang:default highlight:0 EnlighterJSRAW" title="urbackupclientctl --help">USAGE:
+
+        urbackupclientctl [--help] [--version] &lt;command&gt; [&lt;args&gt;]
+
+Get specific command help with urbackupclientctl &lt;command&gt; --help
+
+        urbackupclientctl start
+                Start an incremental/full image/file backup
+
+        urbackupclientctl status
+                Get current backup status
+
+        urbackupclientctl browse
+                Browse backups and files/folders in backups
+
+        urbackupclientctl restore-start
+                Restore files/folders from backup
+
+        urbackupclientctl set-settings
+                Set backup settings
+
+        urbackupclientctl reset-keep
+                Reset keeping files during incremental backups
+
+        urbackupclientctl add-backupdir
+                Add new directory to backup set
+
+        urbackupclientctl list-backupdirs
+                List directories that are being backed up
+
+        urbackupclientctl remove-backupdir
+                Remove directory from backup set
+
+</pre>
+
+&nbsp;
+
+Jak wygląda konfiguracja serwera? Zaczynamy od instalacji paczki i zalogowania się do gui chociażby żeby zmienić hasło. I tu pierwsza pułapka. Jeśli w systemie jest tylko jeden użytkownik to formularz będzie zawierał tylko pole na hasło &#8211; username zostanie odesłany JSONem (sic!) i wstawiony w pole typu _hidden_. Powoduje to masakryczne problemy m.in. z LastPassem. Warto dodać drugiego użytkownika chociażby dla spokoju. Jeśli pracujemy w LANie to w defaultwej konfiguracji klienci sami się podłączą &#8211; linki do binariów są w webgui. Dodanie maszyny poza LANem jest proste i jak wspominałem komendy podane są na tacy. Teraz wystarczy dodać foldery do backupowania i gotowe. W opcjach można ustawić reguły harmonogramu globalne i per-maszyna, zainicjować można backup z serwera lub klienta.
+
+I teraz rzecz nad którą spędziłem sporo czasu &#8211; &#8222;image backup&#8221;. Otóż jest dostępny **tylko na Windowsie (NTFS)** (i w sumie tylko tam potrzebny realnie bo inaczej nie da się backupować otwartych plików systemowych) przez Volume Shadow Copy. Na pierwszy rzut oka wydawać się powinno że skoro producent podaje dostępne mechanizmy migawek na LVM, BtrFS i DattoBD to powinny one właśnie służyć do backupowania całych urządzeń blokowych. Otóż nie. Służą tylko jako engine do wydajniejszego migawkowania plików. Testowane z datto i lvm przy ręcznym konfigurowaniu klienta. Serwer zwraca błędy które po zgooglaniu wskazują kod źródłowy i jeden wątek na forum z którego niewiele wynika. I tak &#8211; jest to wspomniane na stronie z listą ficzerów w dziale &#8222;ograniczenia&#8221; <https://www.urbackup.org/features.html>, ale googlalność jest zerowa.
+
+W każdym razie pod Linuksem można bezpiecznie dodać cały root folder &#8222;/&#8221; do backupowania bowiem urbackup nie podąża za innymi filesystemami &#8211; w przeciwieństwie do takiego tara czy 7zipa które wówczas zaczęły by backupować pliki, dyski, procfs&#8230; Oczywiście skromniejsze zestawy folderów są również praktyczne. Drobna uwaga &#8211; próba czarowania z symlinkami i backupowania np. <span class="lang:default EnlighterJSRAW crayon-inline ">sda</span>  kończą się niepowodzeniem.
+
+&nbsp;
+
+Po dodaniu klienta zdalnego czasem trzeba chwilę odczekać (szczególnie trudny miałem przypadek kiedy dodawałem klienta który miał w LANie jeden serwer a chciałem dodać go tylko do serwera zdalnego). <span class="lang:default EnlighterJSRAW crayon-inline ">urbackupclientctl status</span>  pozawala monitorować stan na bieżąco. Co ciekawe wyrzuca output w JSONie:
+
+<pre class="lang:js EnlighterJSRAW">{
+"capability_bits": 4096,
+"finished_processes": [{
+"process_id": 15,
+"success": true
+}
+...
+,{
+"process_id": 34,
+"success": true
+}
+],
+"internet_connected": true,
+"internet_status": "connected",
+"last_backup_time": 1500456220,
+"running_processes": [{
+"action": "FULL",
+"done_bytes": 8277567051,
+"eta_ms": 977068,
+"percent_done": 53,
+"process_id": 35,
+"server_status_id": 113,
+"speed_bpms": 32.1905,
+"total_bytes": 15708923925
+}
+],
+"servers": [{
+"internet_connection": true,
+"name": "10.64.73.6"
+}
+],
+"time_since_last_lan_connection": 7116205514
+}
+</pre>
+
+&nbsp;
+
+Klient linuksowy ma kilka niestandardowych założeń. Po pierwsze lokalizacja plików &#8211; są one trochę po BSDowemu w <span class="lang:default EnlighterJSRAW crayon-inline ">/usr/local/{share,var,etc,sbin}/urbackup</span> . Główny konfig to <span class="lang:default EnlighterJSRAW crayon-inline ">/usr/local/var/urbackup/data/settings.cfg</span> , to co jest w etc określa sposób backupowania m.in. mariadb. Do manipulacji konfigiem najlepszy jest <span class="lang:default EnlighterJSRAW crayon-inline">urbackupclientctl set-settings</span> gdyż zapewnia integralność plików.
+
+Po stronie serwera warto zauważyć że w zakładce logs poza logami konkretnych sesji backupowania na dole można obejrzeć &#8222;live log&#8221; dla &#8222;all clients&#8221; który jest logiem w trybie debug całego serwera &#8211; otwiera się w nowej karcie i na bieżąco asynchronicznie ładuje kolejne linijki loga &#8211; nie trzeba zmieniać trybu logowania do /var/log i restartować usługi żeby podejrzeć co się dzieje.
+
+<p class="p2">
+  Dwa sprawdzone przeze mnie scenariusze użycia &#8211; lokalny storage server i &#8222;cloud storage&#8221; na dedyku działają i mają się dobrze. Pierwszy przypadek to postawiony w LANie <strong>OpenMediaVault</strong>, czyli dystrybucja Debiana z GUI do storage&#8217;u (warte polecenia ze względu na metodykę &#8222;wyklikaj i zostaw&#8221;) wraz z zainstalowanym rozszerzeniem do urbackup który zrzuca migawki po zbondowanym 2x gigabit ethernet na macierz raid5. Klienci to mix Windowsów Server i Linuksa. I działa.
+</p>
+
+<img decoding="async" loading="lazy" class="alignnone size-full wp-image-1019" src="http://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-38-07.png" alt="" width="1266" height="831" srcset="https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-38-07.png 1266w, https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-38-07-300x197.png 300w, https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-38-07-768x504.png 768w, https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-38-07-1024x672.png 1024w, https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-38-07-660x433.png 660w" sizes="(max-width: 1266px) 100vw, 1266px" /> 
+
+Drugi to zainstalowany z paczki na openSUSE na zdalnym serwerze dedykowanym z łączem gigabitowym backupujący inne serwery (w innych DC) oraz stację roboczą za domowym łączem UPC z uplinkiem 10mbps. Nawet działa. Maszyny spięte są za pomocą SDNa ZeroTier o którym pisałem wcześniej &#8211; <https://blog.dsinf.net/2017/02/zerotier-czyli-software-defined-network-czyli-alternatywa-dla-klasycznego-vpna/> &#8211; znowu spadku wydajności nie ma.
+
+<img decoding="async" loading="lazy" class="alignnone size-full wp-image-1025" src="http://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-49-07.png" alt="" width="1069" height="698" srcset="https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-49-07.png 1069w, https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-49-07-300x196.png 300w, https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-49-07-768x501.png 768w, https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-49-07-1024x669.png 1024w, https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-49-07-660x431.png 660w" sizes="(max-width: 1069px) 100vw, 1069px" /> 
+
+Co do interfejsu screenów jeszcze kilka:
+
+<img decoding="async" loading="lazy" class="alignnone size-full wp-image-1022" src="http://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-44-53.png" alt="" width="1289" height="267" srcset="https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-44-53.png 1289w, https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-44-53-300x62.png 300w, https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-44-53-768x159.png 768w, https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-44-53-1024x212.png 1024w, https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-44-53-660x137.png 660w" sizes="(max-width: 1289px) 100vw, 1289px" /> 
+
+<img decoding="async" loading="lazy" class="alignnone size-full wp-image-1021" src="http://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-45-28.png" alt="" width="968" height="753" srcset="https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-45-28.png 968w, https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-45-28-300x233.png 300w, https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-45-28-768x597.png 768w, https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-45-28-660x513.png 660w" sizes="(max-width: 968px) 100vw, 968px" /><img decoding="async" loading="lazy" class="alignnone size-full wp-image-1024" src="http://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-42-33.png" alt="" width="967" height="686" srcset="https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-42-33.png 967w, https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-42-33-300x213.png 300w, https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-42-33-768x545.png 768w, https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-42-33-660x468.png 660w" sizes="(max-width: 967px) 100vw, 967px" /> 
+
+Reasumując: urbackup pomimo pewnych nietrywialności dobrze nadaje się jako pierwszy krok po odejściu od backupowania 7zipem po sshfs.

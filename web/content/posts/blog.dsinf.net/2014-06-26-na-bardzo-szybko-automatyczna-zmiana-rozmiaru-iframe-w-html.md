@@ -1,0 +1,43 @@
+---
+title: 'Na bardzo szybko: automatyczna zmiana rozmiaru iframe w HTML'
+author: Daniel Skowroński
+type: post
+date: 2014-06-26T20:47:32+00:00
+excerpt: |
+  Problem irytujący, ale rozwiązanie szybkie (jak się przeczyta ten artykuł ^^).
+  
+  Skrypt, którego użyjemy to: davidjbradshaw.github.io/iframe-resizer. Są trzy elementy: plik JS dla strony trzymającej iframe, plik JS dla każdej strony, która się pojawi wewnątrz iframe i wywołanie JavaScript na stronie z iframe. Działa wszędzie poza Operą Mobile (ale kogo to dziwi...) i WinPhone_IE10 (na WinPhone_IE11 nie wybucha i blokuje się na maksymalnych rozmiarach).
+url: /2014/06/na-bardzo-szybko-automatyczna-zmiana-rozmiaru-iframe-w-html/
+tags:
+  - html
+
+---
+Problem irytujący, ale rozwiązanie szybkie (jak się przeczyta ten artykuł ^^).
+
+Skrypt, którego użyjemy to: <http://davidjbradshaw.github.io/iframe-resizer/>. Są trzy elementy: plik JS dla strony trzymającej iframe, plik JS dla każdej strony, która się pojawi wewnątrz iframe i wywołanie JavaScript na stronie z iframe. Działa wszędzie poza Operą Mobile (ale kogo to dziwi&#8230;) i WinPhone\_IE10 (na WinPhone\_IE11 nie wybucha i blokuje się na maksymalnych rozmiarach).
+
+&nbsp;  
+Strona &#8222;host&#8221;:
+
+<pre class="lang:default EnlighterJSRAW " >&lt;script src="http://code.jquery.com/jquery-2.1.1.min.js"&gt;&lt;/script&gt;
+&lt;iframe id="nazwa" width="500px" scrolling="no" src="plik.html"&gt;&lt;/iframe&gt;
+&lt;script src="https://raw2.github.com/davidjbradshaw/iframe-resizer/master/js/iframeResizer.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;$("#nazwa").iFrameResize({});&lt;/script&gt;
+</pre>
+
+L1: jQuery [opcjonalny &#8211; można ładować iFrameResize({}) przez natywny kod JS]  
+L2: docelowy iframe; zdefiniowanie na sztywno któregoś z wymiarów zablokuje jego zmiany  
+L3: skrypt iframeResizer.min.js  
+L4: podpięcie funkcji pod obiekt
+
+&nbsp;  
+Strona &#8222;gość&#8221;:
+
+<pre class="lang:default EnlighterJSRAW " >&lt;script src="https://raw.githubusercontent.com/davidjbradshaw/iframe-resizer/master/js/iframeResizer.contentWindow.min.js"&gt;&lt;/script&gt;
+treść lalala-trolololo; lorem ipsum</pre>
+
+L1: skrypt iframeResizer.contentWindow.min.js  
+L2+:treść
+
+&nbsp;  
+Oczywiście skrypty należy załadować na swój własny serwer żeby było porządniej. Porządna, ale przydługa jak na błyskawiczne rozwiązanie typu &#8222;wirtualny duct-tape&#8221; &#8211; <http://davidjbradshaw.github.io/iframe-resizer/>.

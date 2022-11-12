@@ -12,7 +12,7 @@ tags:
   - windows server
 
 ---
-Na problem natknąłem się przy okazji isntalacji SQL Servera 2012 &#8211; instalator w logach &#8211; <span class="lang:default EnlighterJSRAW crayon-inline ">%programfiles%\Microsoft SQL Server\130\Setup Bootstrap\Log\Summary_<host>_<data>_<godzina>.log&#8221;</span>  zgłaszał exit code 1 dla .NET 4 (jest wymaganą zależnością). Kilka prób instalacji osobno, bowiem w setup SQL Server wbudowany jest już instalator, (wersja offline, online, 23 bity, 64 bity itp.) zawiodło.
+Na problem natknąłem się przy okazji isntalacji SQL Servera 2012 - instalator w logach - <span class="lang:default EnlighterJSRAW crayon-inline ">%programfiles%\Microsoft SQL Server\130\Setup Bootstrap\Log\Summary_<host>_<data>_<godzina>.log"</span>  zgłaszał exit code 1 dla .NET 4 (jest wymaganą zależnością). Kilka prób instalacji osobno, bowiem w setup SQL Server wbudowany jest już instalator, (wersja offline, online, 23 bity, 64 bity itp.) zawiodło.
 
 Błąd dokładnie jest następujący:
 
@@ -27,6 +27,6 @@ Błąd dokładnie jest następujący:
   Error description:             Microsoft .NET Framework 4.0 installation has failed with exit code 1.
   Error help link:               http://go.microsoft.com/fwlink?LinkId=20476&ProdName=Microsoft+SQL+Server&EvtSrc=setup.rll&EvtID=50000&ProdVer=11.0.2100.60&EvtType=DotNetCore%40Install%400x1</pre>
 
-Rozwiąnie lekko na około, ale działające &#8211; instalacja .NET 4.5 która zawiera pliki dla 4.0 np. z [serwerów Microsoftu][1]. Wówczas instalator SQL Servera wykryje, że 4.0 jest już zainstalowane i wszystko będzie OK.
+Rozwiąnie lekko na około, ale działające - instalacja .NET 4.5 która zawiera pliki dla 4.0 np. z [serwerów Microsoftu][1]. Wówczas instalator SQL Servera wykryje, że 4.0 jest już zainstalowane i wszystko będzie OK.
 
  [1]: http://www.microsoft.com/pl-pl/download/details.aspx?id=30653

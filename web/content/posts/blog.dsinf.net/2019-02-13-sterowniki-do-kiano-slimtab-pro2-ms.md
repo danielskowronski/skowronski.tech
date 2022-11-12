@@ -14,13 +14,13 @@ tags:
 ---
  
 
-Artykuł z małą dozą treści pisanej, za to chyba największym załącznikiem na blogu do tej pory &#8211; paczką sterowników do tabletu Kiano Slimtab Pro2 MS. Tabletu, który niby jest klonem Chuwi Hi8, ale nie do końca (zwłaszcza kiedy weźmiemy pod uwagę wersję dual boot).
+Artykuł z małą dozą treści pisanej, za to chyba największym załącznikiem na blogu do tej pory - paczką sterowników do tabletu Kiano Slimtab Pro2 MS. Tabletu, który niby jest klonem Chuwi Hi8, ale nie do końca (zwłaszcza kiedy weźmiemy pod uwagę wersję dual boot).
 
 Historia początek bierze w probie przywrócenia Windowsa 10 do ustawień fabrycznych. Przywraca się niestety do przedfabrycznych czyli brakuje mu sterowników do rzeczy w tablecie krytycznych, a więc chociażby ekranu dotykowego czy WiFi.
 
 Trochę szperaniny w internecie i udało mi się skompletować sterowniki, które zbackupowałem programem [DoubleDriver][1]. 
 
-Zanim wrzucę sam listing zawartości warto wspomnieć że aby zrobić cokolwiek bez ekranu dotykowego niezbędna jest przelotka USB-C OTG bowiem USB-C ma dedykowane wyprowadzenia dla OTG i ręcznie kabla OTG z 2 kabli USB (kawałka z chłopcem USB-C i dziewczynką USB-A) nie zrobimy. Dodatkowy problem z okablowaniem to brak osobnego zasilania &#8211; niestety żaden znany mi standardowy hub USB 3.0 nie umie zasilać hosta. Zatem trzeba pilnować instalacji Windowsa i raczej zacząć od doładowania do 100% baterii.
+Zanim wrzucę sam listing zawartości warto wspomnieć że aby zrobić cokolwiek bez ekranu dotykowego niezbędna jest przelotka USB-C OTG bowiem USB-C ma dedykowane wyprowadzenia dla OTG i ręcznie kabla OTG z 2 kabli USB (kawałka z chłopcem USB-C i dziewczynką USB-A) nie zrobimy. Dodatkowy problem z okablowaniem to brak osobnego zasilania - niestety żaden znany mi standardowy hub USB 3.0 nie umie zasilać hosta. Zatem trzeba pilnować instalacji Windowsa i raczej zacząć od doładowania do 100% baterii.
 
 Sterowniki w formie ZIPa (którego DoubleDriver ładnie sam importuje) dostępne są w paczce [**kiano\_slimtab\_pro2\_ms\__doubledriver.zip**][2] **[135MB]**. A w niej:
 

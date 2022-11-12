@@ -10,7 +10,7 @@ tags:
 
 ---
 Tego łatwo się nie znajdzie, a potrafi krwi napsuć. W PHP var\_dump() wyrzuca zmienną wraz z jej typem, o jest szczególnie użyteczne przy rzucaniu całych tablic (np. $\_GET, czy $_SERVER). Ale jak ściągnąć wynik do zmiennej, żeby np. wrzucić go do pliku?  
-W tym celu powstała funkcja **var_export()**, która jednak jest pokrętna. Je sli użyjemy intuicyjnej składni zrobi to samo co var_dump &#8211; wypluje na ekran i już. Dopero drugi parametr typu boolean określa, czy wydrukować na ekran, czy też nie. Domyślnie robi to, co nie trzeba, więc trzeba dać true.
+W tym celu powstała funkcja **var_export()**, która jednak jest pokrętna. Je sli użyjemy intuicyjnej składni zrobi to samo co var_dump - wypluje na ekran i już. Dopero drugi parametr typu boolean określa, czy wydrukować na ekran, czy też nie. Domyślnie robi to, co nie trzeba, więc trzeba dać true.
 
 <pre class="lang:default EnlighterJSRAW " title="definicja var_export()" >mixed var_export ( mixed $expression [, bool $return = false ] )</pre>
 

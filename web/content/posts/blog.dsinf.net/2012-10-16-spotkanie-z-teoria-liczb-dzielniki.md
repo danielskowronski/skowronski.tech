@@ -14,7 +14,7 @@ tags:
   
   
 Artykuł ten zacznę od małego wprowadzenia, żeby uporządkować to, co wiemy.  
-Metoda rozkładu liczb na czynniki pierwsze to sito Eratostenesa (nie Erastotenesa &#8211; do tej pory zdaje się, że używałem błędnego imienia za co przepraszam). Skoro mowa o człowieku to warto wspomnieć, że poza oczywistem faktem, że był filozofem (jak każdy kto myślał w starożytnej Grecji) to jest także odpowiedzialny za obwód Ziemii, pewne odległości w astronomii. Obwód naszej planety obliczył dość ciekawie &#8211; przez różnicę długości cienii i założenie, że Słońce jako bardzo odległe to między mało odległymi miejscami rzuca nieomal równoległe promienie.  
+Metoda rozkładu liczb na czynniki pierwsze to sito Eratostenesa (nie Erastotenesa - do tej pory zdaje się, że używałem błędnego imienia za co przepraszam). Skoro mowa o człowieku to warto wspomnieć, że poza oczywistem faktem, że był filozofem (jak każdy kto myślał w starożytnej Grecji) to jest także odpowiedzialny za obwód Ziemii, pewne odległości w astronomii. Obwód naszej planety obliczył dość ciekawie - przez różnicę długości cienii i założenie, że Słońce jako bardzo odległe to między mało odległymi miejscami rzuca nieomal równoległe promienie.  
 Ale wróćmy do sita.  
 Najpierw jakoś tablicujemy wszystkie liczby w naszym zbiorze. Może ku temu posłużyć tablica zmiennych typu boolean domyślnie wyzerowana na True. Dla każdej liczby od 2 do pierwiastka z maksimum tj. granicy zadanego zbioru wykonujemy wykreślanie: wykreślamy wszystkie jej wielokrotności poza nią samą, nie przejmując się, że niektóre wykreślimy dwukrotnie. Wykreślaniem może być na przykład przypisanie False. Teraz wystarczy wypisać wszystkie niewykreślone.  
   
@@ -45,7 +45,7 @@ int main()
 }
 </pre>
 
-Jedyne, co rzuca się w oczy to tzw. **funkcja Skowrońskiego**. Jest to jak najbardziej nieoficjalne, niewiążace określenie &#8211; po prostu lokalny protest przeciwko ludziom, którzy z nieznanych przyczyn piszą zamiast już nawet tego obrzydliwego <kbd>getch();</kbd> takiego potworka:
+Jedyne, co rzuca się w oczy to tzw. **funkcja Skowrońskiego**. Jest to jak najbardziej nieoficjalne, niewiążace określenie - po prostu lokalny protest przeciwko ludziom, którzy z nieznanych przyczyn piszą zamiast już nawet tego obrzydliwego <kbd>getch();</kbd> takiego potworka:
 
 <pre class="EnlighterJSRAW cpp">system("PAUSE");
 return EXIT_SUCCESS; </pre>
@@ -53,11 +53,11 @@ return EXIT_SUCCESS; </pre>
 Po pierwsze kod na Linuksie się wywali (command not found), a druga linijka jest objawem posiadania sporej ilości czasu, bo EXIT_SUCCESS to tylko <kbd>#define</kbd> o wartości 0;
 
 Zajmijmy się teraz tym co możemy zrobić z tymi czynnikami, a więc ich sumą i iloczynem.  
-Za **sumę dzielników** odpowiada **funkcja $ \sigma $**. Jak wiadomo &#8222;każda nieznana litera alfabetu greckiego w matematyce otrzymuje kryptonim roboczy <u>sigma</u>&#8222;. &#8222;Z tym, że to akurat jest sigma&#8221;. Prosty przykład zanim przejdę do dłuższych wywodów: ?(8)=1+2+4+8;  
-Zdefiniujmy liczbę naturalną n (parametr dla $ \sigma $ (n)) jako $ n = p\_1^{\alpha\_1} \ast p\_2^{\alpha\_2} \ast &#8230; \ast p\_i^{\alpha\_i} $  
+Za **sumę dzielników** odpowiada **funkcja $ \sigma $**. Jak wiadomo "każda nieznana litera alfabetu greckiego w matematyce otrzymuje kryptonim roboczy <u>sigma</u>". "Z tym, że to akurat jest sigma". Prosty przykład zanim przejdę do dłuższych wywodów: ?(8)=1+2+4+8;  
+Zdefiniujmy liczbę naturalną n (parametr dla $ \sigma $ (n)) jako $ n = p\_1^{\alpha\_1} \ast p\_2^{\alpha\_2} \ast ... \ast p\_i^{\alpha\_i} $  
 , gdzie $ p\_i $ to czynnik pierwszy danej liczby (a $ \alpha\_i $ to liczba jego wystąpień w rozkładzie na czynniki pierwsze).  
-Każdy dzielnik można przedstawić jako $ d=p\_1^{\lambda\_1} \ast p\_2^{\lambda\_2} \ast &#8230; \ast p\_i^{\lambda\_i} $, $ 0 \le \lambda\_i \ge \alpha\_i $.  
-Różnym ilościom występowania czynników pierwszych w rozkładzie liczby naturalnej &#8211; $ \lambda\_1 $ do $ \lambda\_k $, więc $ \sigma(n) = \sum p\_1^{\lambda\_1} \ast p\_2^{\lambda\_2} \ast &#8230; \ast p\_k^{\lambda\_k} $, stąd wynika, że:  
+Każdy dzielnik można przedstawić jako $ d=p\_1^{\lambda\_1} \ast p\_2^{\lambda\_2} \ast ... \ast p\_i^{\lambda\_i} $, $ 0 \le \lambda\_i \ge \alpha\_i $.  
+Różnym ilościom występowania czynników pierwszych w rozkładzie liczby naturalnej - $ \lambda\_1 $ do $ \lambda\_k $, więc $ \sigma(n) = \sum p\_1^{\lambda\_1} \ast p\_2^{\lambda\_2} \ast ... \ast p\_k^{\lambda\_k} $, stąd wynika, że:  
 <font color="blue">$ \sigma(n) = \sum \frac{p_i^{\alpha_i+1}-1}{p_i-1} $</font>  
 Kod funkcji bazującej na tablicy liczb pierwszych:
 

@@ -10,9 +10,9 @@ tags:
   - research
 
 ---
-Jakiś czas temu kolega podrzucił mi zadanie ([link][1]) &#8211; **wiek segmentolka**. O tym zadaniu mogę powiedzieć chyba parazadanie z parakonkursu parainformatycznego napisane przez humanistę.
+Jakiś czas temu kolega podrzucił mi zadanie ([link][1]) - **wiek segmentolka**. O tym zadaniu mogę powiedzieć chyba parazadanie z parakonkursu parainformatycznego napisane przez humanistę.
 
-Od paru dni próbował się przez nie przebić. Moja pierwsza interpretacja zakładała: _każdego dnia z <u>każdego</u> segmentu wyrasta jedna noga lub dzieli się on na dwa segmenty (i ani z macierzystego, ani potomnego nie rośnie już noga)_. Dane przykładowe powiedziały mi mniej niż nic &#8211; ot, skrajne przypadki, nie generyczne.  
+Od paru dni próbował się przez nie przebić. Moja pierwsza interpretacja zakładała: _każdego dnia z <u>każdego</u> segmentu wyrasta jedna noga lub dzieli się on na dwa segmenty (i ani z macierzystego, ani potomnego nie rośnie już noga)_. Dane przykładowe powiedziały mi mniej niż nic - ot, skrajne przypadki, nie generyczne.  
 Szukając zestawów (w końcu to było na jakimś konkursie) natrafiłem na [ten wpis w bazie SPOJ][2]. 
 
 Cóż, z tej nieomal epopei narodowej  **miało** wynikać (a przynajmniej tak to interpretuje większość), że _każdego dnia wyrasta jedna noga <u>LUB</u> dzieli się jeden segment na dwa. <u>W ogóle jeden na całość</u>.  

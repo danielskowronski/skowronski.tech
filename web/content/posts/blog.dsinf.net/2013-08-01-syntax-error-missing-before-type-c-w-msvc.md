@@ -22,7 +22,7 @@ To, co wydaje się normalne zostało wciągnięte w wersję C z 1999. Zatem trze
 
 <pre class="EnlighterJSRAWcpp">int zmienna; zmienna = 0;</pre>
 
-Ponadto w C-1990 zmienne należy deklarować na początku bloku, w tym niedozwolone jest deklarowanie zmiennej w pętli for w dyrektywie początkowej &#8211; trzeba wyciągnąć deklarację poza blok:
+Ponadto w C-1990 zmienne należy deklarować na początku bloku, w tym niedozwolone jest deklarowanie zmiennej w pętli for w dyrektywie początkowej - trzeba wyciągnąć deklarację poza blok:
 
 <pre class="EnlighterJSRAW cpp">int i;
 for (i=0; i&lt;100; i++){

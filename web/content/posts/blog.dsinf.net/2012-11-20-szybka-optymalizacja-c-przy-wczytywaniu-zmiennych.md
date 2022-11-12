@@ -26,7 +26,7 @@ else if (lang=="pl")
 
 Jak widać można zformatować nie tylko kolejność stringów, ale także format liczb. Dokładnie rozpisane jest to na [tej stronie][1]. 
 
-Ale wróćmy do meritum, czyli wydajności. Poniższy kod został użyty do testowania na maszynie x86_64, na standardowe wejście przekazałem plik składający się ze 100&#8217;000 linijek z wartością 100000:
+Ale wróćmy do meritum, czyli wydajności. Poniższy kod został użyty do testowania na maszynie x86_64, na standardowe wejście przekazałem plik składający się ze 100'000 linijek z wartością 100000:
 
 <pre class="EnlighterJSRAW cpp">#include &lt; iostream >
 #include &lt; cstdlib >
@@ -43,12 +43,12 @@ void strumieniowo(){
 }
 void skanf(){
 	int zmienna;
-	for (int i=0; i&lt; 50000; i++) scanf("%d", &#038;zmienna);
+	for (int i=0; i&lt; 50000; i++) scanf("%d", &zmienna);
 }
 
 long long int czas(){
 	struct timeb tmb;
-	ftime(&#038;tmb);
+	ftime(&tmb);
 	return tmb.time*1000+tmb.millitm;
 }
 

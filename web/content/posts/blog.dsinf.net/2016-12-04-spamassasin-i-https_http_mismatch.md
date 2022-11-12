@@ -22,7 +22,7 @@ Ostatnio przeglądając folder w skrzynce Outlookowej z której moja organizacja
  RCVD_IN_MSPIKE_H3=-0.01,	RCVD_IN_MSPIKE_WL=-0.01,
  SPF_PASS=-0.001] autolearn=disabled</pre>
 
-Czyli winny był filtr oparty o naiwnym klasyfikatorze Bayesa 99% plus HTTPS\_HTTP\_MISMATCH. Przejrzałem całą wiadomość &#8211; ani śladu linka który by robił &#8222;downgrade protokołu&#8221; czyli miał w tekście https a kierował do strony ze zwykłym http lub też był linkiem https, który po redirectach prowadzi do http. Potwierdziłem też że ten score jest łapany naprawdę za to głupim skryptem w PHP na systemie z caddym:
+Czyli winny był filtr oparty o naiwnym klasyfikatorze Bayesa 99% plus HTTPS\_HTTP\_MISMATCH. Przejrzałem całą wiadomość - ani śladu linka który by robił "downgrade protokołu" czyli miał w tekście https a kierował do strony ze zwykłym http lub też był linkiem https, który po redirectach prowadzi do http. Potwierdziłem też że ten score jest łapany naprawdę za to głupim skryptem w PHP na systemie z caddym:
 
 <pre class="lang:php EnlighterJSRAW ">&lt;?php
 header("Location: $_GET[target]");
@@ -30,10 +30,10 @@ die();</pre>
 
 Posłałem maila z linkiem i moim standardowym podpisem żeby filtr antyspamowy nie zgłupiał 😉 i mail został ten sam score za https.
 
-Tu drobna uwaga: warto testować &#8222;na produkcji&#8221; (nie trzeba się babrać w odtwarzanie konfigu), ale żeby nie śmiecić warto dodać sobie testową regułkę w outlooku, która zatrzyma procesowanie dalszych reguł tak żeby użytkownicy nie dostawali śmiecia. Kiedyś podczas testów wrzuciłem nieopatrznie malware do transferu dla kumpla na produkcyjnego site&#8217;a pod URLem na który nikt nie mógł ze świata wejść (i logi to potwierdzają), ale że kilka razy weszliśmy na ten link z kompów z Windowsem to nasze antywirusy uznały produkcyjną domenę za zawirusowaną &#8211; także dla innych użytkowników (sic!). Na szczęście dosyć szybko wypadliśmy z listy witryn blokowanych, ale jak się okazuje przypadkiem można sobie kłopotów narobić.
+Tu drobna uwaga: warto testować "na produkcji" (nie trzeba się babrać w odtwarzanie konfigu), ale żeby nie śmiecić warto dodać sobie testową regułkę w outlooku, która zatrzyma procesowanie dalszych reguł tak żeby użytkownicy nie dostawali śmiecia. Kiedyś podczas testów wrzuciłem nieopatrznie malware do transferu dla kumpla na produkcyjnego site'a pod URLem na który nikt nie mógł ze świata wejść (i logi to potwierdzają), ale że kilka razy weszliśmy na ten link z kompów z Windowsem to nasze antywirusy uznały produkcyjną domenę za zawirusowaną - także dla innych użytkowników (sic!). Na szczęście dosyć szybko wypadliśmy z listy witryn blokowanych, ale jak się okazuje przypadkiem można sobie kłopotów narobić.
 
-Wracając do problemu. Odkryłem za to że wszystkie linki w tym wątku prowadziły do podobnego redirectera co mój &#8211; od ProofPointa (https://urldefense.proofpoint.com/v2/url?u=&#8230;). Okazało się że istniał jeden jedyny link do strony nie-httpsowej który także leciał przez httpsowego proofpointa. Dodałem więc na szybko domenę bez httpsa do caddyego i użyłem tego samego skryptu do wygenerowania linku, który &#8222;upgradeuje&#8221; protokół, czyli pokazuje http (tam link był URLem) a kieruje (przynajmniej na chwilę) do https. Bingo &#8211; znowu ten sam score!
+Wracając do problemu. Odkryłem za to że wszystkie linki w tym wątku prowadziły do podobnego redirectera co mój - od ProofPointa (https://urldefense.proofpoint.com/v2/url?u=...). Okazało się że istniał jeden jedyny link do strony nie-httpsowej który także leciał przez httpsowego proofpointa. Dodałem więc na szybko domenę bez httpsa do caddyego i użyłem tego samego skryptu do wygenerowania linku, który "upgradeuje" protokół, czyli pokazuje http (tam link był URLem) a kieruje (przynajmniej na chwilę) do https. Bingo - znowu ten sam score!
 
 &nbsp;
 
-Okazuje się zatem że **HTTPS\_HTTP\_MISMATCH **jest tępy i nie odróżnia kierunku http<->https &#8211; niby zmiana protokołu względem wyświetlanego a faktycznego może być wykorzystana w niecnych celach, ale akurat &#8222;upgrade&#8221; jest wręcz pożądany i nieszkodliwy. Przykładowo niezmieniana stopka w korpo-mailu prowadząca do strony której admini w końcu zainwestowali w cert SSL i robią auto-redirect z :80 na :443
+Okazuje się zatem że **HTTPS\_HTTP\_MISMATCH **jest tępy i nie odróżnia kierunku http<->https - niby zmiana protokołu względem wyświetlanego a faktycznego może być wykorzystana w niecnych celach, ale akurat "upgrade" jest wręcz pożądany i nieszkodliwy. Przykładowo niezmieniana stopka w korpo-mailu prowadząca do strony której admini w końcu zainwestowali w cert SSL i robią auto-redirect z :80 na :443

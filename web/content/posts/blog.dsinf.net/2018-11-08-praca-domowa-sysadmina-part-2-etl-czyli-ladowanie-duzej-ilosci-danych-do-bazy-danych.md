@@ -1,9 +1,8 @@
 ---
-title: '„Praca domowa” SysAdmina – part 2: ETL, czyli ładowanie dużej ilości danych do bazy danych'
+title: '"Praca domowa" SysAdmina – part 2: ETL, czyli ładowanie dużej ilości danych do bazy danych'
 author: Daniel Skowroński
 type: post
 date: 2018-11-08T18:43:38+00:00
-excerpt: "Ten wpis jest kontynuacją wpisu „Praca domowa” SysAdmina – part 1: disk baselines - z ciekawszym zadaniem polegającym na zoptymalizowaniu ładowania sporych plików csv do wybranej bazy danych jak najszybciej. Punkt wyjściowy - `copy extract from STDIN WITH delimiter E'\t' NULL AS '';` "
 url: /2018/11/praca-domowa-sysadmina-part-2-etl-czyli-ladowanie-duzej-ilosci-danych-do-bazy-danych/
 featured_image: https://blog.dsinf.net/wp-content/uploads/2018/11/sah2.png
 tags:
@@ -17,7 +16,7 @@ tags:
   - sysadmin
 
 ---
-Ten wpis jest kontynuacją wpisu [„Praca domowa” SysAdmina – part 1: disk baseline][1]s &#8211; z ciekawszym zadaniem polegającym na zoptymalizowaniu ładowania sporych plików csv do wybranej bazy danych jak najszybciej. Punkt wyjściowy &#8211; \`copy extract from STDIN WITH delimiter E&#8217;\t&#8217; NULL AS &#8221;;\`
+Ten wpis jest kontynuacją wpisu ["Praca domowa" SysAdmina – part 1: disk baseline][1]s - z ciekawszym zadaniem polegającym na zoptymalizowaniu ładowania sporych plików csv do wybranej bazy danych jak najszybciej. Punkt wyjściowy - \`copy extract from STDIN WITH delimiter E'\t' NULL AS ";\`
 
 **tl;dr**? Podsumowanie jest [na końcu artykułu][2] 😉
 
@@ -108,7 +107,7 @@ root@sah:/home/csv#</pre>
 
 ### Simple test based on hint
 
-This is first version of test “framework”.
+This is first version of test “framework".
 
 <pre class="lang:default EnlighterJSRAW ">root@sah:/home/csv# /usr/bin/time -f '%e' cat part-00000 | pse "copy extract from STDIN WITH delimiter E'\t' NULL AS '';"
 98.47
@@ -125,7 +124,7 @@ root@sah:/home/csv#</pre>
 
 ### Initial optimizations
 
-This section is the only one to present exact console logs from performance test. Framework does not change after “Moving file read to psql binary”. Next sections that operate on single data part will only have averaged speed of import presented.
+This section is the only one to present exact console logs from performance test. Framework does not change after “Moving file read to psql binary". Next sections that operate on single data part will only have averaged speed of import presented.
 
 #### Tuning SQL part
 
@@ -198,10 +197,10 @@ This about 164k rows/sec.
 
 First software decision for storage system is filesystem. Here’s the list of choices for typical Linux setup based on \[ArchWiki\](https://wiki.archlinux.org/index.php/file_systems) with comments on PostgreSQL performance. I’ve excluded ones used by Windows and Apple, also those made for embedded environments.
 
-1. btrfs &#8211; it tends to be unstable in some aspects (also for benchmarking using typical tools), also COW principle is in conflict with OLTP in most DB engines  
+1. btrfs - it tends to be unstable in some aspects (also for benchmarking using typical tools), also COW principle is in conflict with OLTP in most DB engines  
 2. ext3 is very conservative choice, it should be good for DB but in general is quite old  
 3. same with ext4 but it should have journalling disabled in order not to mess up with PostgreSQL’s WAL mechanism  
-4. JFS is IBM&#8217;s Journaled File System looks promising but I wasn’t able to find any data on performance with DBs  
+4. JFS is IBM's Journaled File System looks promising but I wasn’t able to find any data on performance with DBs  
 5. NILFS2 is not suitable for DB since it’s optimized for continuous write typical for log storage  
 6. ReiserFS in version3 is a bit old and not so competitive with ext4; version 4 is still unstable and not merged with kernel-stable  
 7. XFS should be good and have comparable performance to ext4  
@@ -330,8 +329,8 @@ Retested performance: ~155k rows/sec
 
 ### \`SET UNLOGGED\` for import time
 
-From PosgreSQL documentation “Data written to unlogged tables is not written to the write-ahead log, which makes them considerably faster than ordinary tables. However, they are not crash-safe: an unlogged table is automatically truncated after a crash or unclean shutdown.”  
-It’s worth checking if (using \`set [un]logged\` introduced in 9.6) it’ll speed up import (if data is imported in considerably controllable batches (for example as in this exercise &#8211; split files) we can manually recover truncated data.
+From PosgreSQL documentation “Data written to unlogged tables is not written to the write-ahead log, which makes them considerably faster than ordinary tables. However, they are not crash-safe: an unlogged table is automatically truncated after a crash or unclean shutdown."  
+It’s worth checking if (using \`set [un]logged\` introduced in 9.6) it’ll speed up import (if data is imported in considerably controllable batches (for example as in this exercise - split files) we can manually recover truncated data.
 
 Setup (it took some time because first batch of data was left imported, delete is a lot faster):
 
@@ -359,24 +358,24 @@ Because none of those alone changed performance significantly all those are appl
       * every delay in data save is beneficial to short term performance
   * \`effective\_io\_concurrency\` 
       * from 1 to 1000 (min → max)
-      * in theory that should be set to number of \*&#8221;separate drives comprising a RAID 0 stripe or RAID 1 mirror being used for the database”\*. Since it’s virtualized environment I’m letting to max out data bus.
+      * in theory that should be set to number of \*"separate drives comprising a RAID 0 stripe or RAID 1 mirror being used for the database"\*. Since it’s virtualized environment I’m letting to max out data bus.
   * \`effective\_cache\_size\` 
       * from 4GB to 8GB (going above 1/2 RAM (here it’s 8GB) decrease performance)
-      * Value is _“how much memory is available for disk caching by the operating system and within the database itself, after taking into account what&#8217;s used by the OS itself and other applications”_
+      * Value is _“how much memory is available for disk caching by the operating system and within the database itself, after taking into account what's used by the OS itself and other applications"_
   * \`work_mem\` 
       * actually left at default 4MB
-      * since this setup is intended for data imports setting to very high value (2GB normally it would would probably kill RAM on huge table queries &#8211; _“several running sessions could be doing such operations concurrently”_)
-      * _“amount of memory to be used by internal sort operations and hash tables before writing to temporary disk files”_
+      * since this setup is intended for data imports setting to very high value (2GB normally it would would probably kill RAM on huge table queries - _“several running sessions could be doing such operations concurrently"_)
+      * _“amount of memory to be used by internal sort operations and hash tables before writing to temporary disk files"_
       * setting this to higher values lowers performance, eg. 2GB → 120k rows/sec, 256MB → 128k rows/sec
   * \`maintenance\_work\_mem\` 
       * from 64MB to 4GB
-      * _”maximum amount of memory to be used by maintenance operations, such as VACUUM, CREATE INDEX, and ALTER TABLE ADD FOREIGN KEY”_
+      * _"maximum amount of memory to be used by maintenance operations, such as VACUUM, CREATE INDEX, and ALTER TABLE ADD FOREIGN KEY"_
       * VACUUM is run by PostgreSQL when needed, rest is not used in this scenario
   * \`work\_mem\` + \`maintenance\_work\_mem\` was set to not exceed half of RAM, however I couldn’t tweak \`work\_mem\` to fix performance
   * \`autovacuum\` 
       * on to off
       * I noticed some CPU usage by autovacuum thread which is not needed during import of unindexed data without constraints, foreign keys etc.
-      * while speeding up \`import\`s this slows down \`delete\`s &#8211; even 10 times
+      * while speeding up \`import\`s this slows down \`delete\`s - even 10 times
 
 Final result of config file tweaks is: 174k rows/sec
 
@@ -388,7 +387,7 @@ It’s worth checking how selecting different disk schedulers will affect readin
 
   * Deadline being best one for user-interactive systems since it’s trying to limit latency which is visible to human
   * CFQ (Completely Fair Queuing) which is default for hard drives in modern Linux systems tries to give fairness of data bandwidth by splitting processes into 3 classes and then prioritizing IO based on those classes
-  * NOOP &#8211; just handles task in order they came in which can improve speed of single tasks (but freeze other threads)
+  * NOOP - just handles task in order they came in which can improve speed of single tasks (but freeze other threads)
 
 ### NOOP
 
@@ -405,9 +404,9 @@ root@sah:/#</pre>
 
 However that didn’t change performance at all (around 172k rows/sec). NOOP doesn’t have any options to tune further.
 
-#### FS tuning &#8211; \`nobarrier\`
+#### FS tuning - \`nobarrier\`
 
-From OpenSuse wiki \*“Most file systems (such as XFS, Ext3, or Ext4) send write barriers to disk after fsync or during transaction commits. Write barriers enforce proper ordering of writes, making volatile disk write caches safe to use (at some performance penalty). If your disks are battery-backed in one way or another, disabling barriers can safely improve performance.”\*  
+From OpenSuse wiki \*“Most file systems (such as XFS, Ext3, or Ext4) send write barriers to disk after fsync or during transaction commits. Write barriers enforce proper ordering of writes, making volatile disk write caches safe to use (at some performance penalty). If your disks are battery-backed in one way or another, disabling barriers can safely improve performance."\*  
 So obviously it’s worth trying as modern server environment is not likely to suffer from power loss.
 
 Setup
@@ -417,7 +416,7 @@ root@sah:/home/csv# mount | grep /home
 /dev/sdb1 on /home type ext4 (rw,noatime,nodiratime,nobarrier,data=ordered)
 root@sah:/home/csv#</pre>
 
-Performance degraded from ~170 krps to around 160 krps. Also per RedHat documentation _“The benefits of write barriers typically outweigh the performance benefits of disabling them. Additionally, the \`nobarrier\` option should never be used on storage configured on virtual machines.”_
+Performance degraded from ~170 krps to around 160 krps. Also per RedHat documentation _“The benefits of write barriers typically outweigh the performance benefits of disabling them. Additionally, the \`nobarrier\` option should never be used on storage configured on virtual machines."_
 
 It was reverted afterwards.
 
@@ -509,7 +508,7 @@ Plots have also average import speed of single part marked as purple line. Spike
 
 ### Bigger chunks
 
-Another thing worth checking is how chunk size affects performance of \copy. Sizes will be: 1x, 2x and 4x bigger chunks &#8211; 4x original size means if 8 threads are run at once maximum performance should be achieved. Bigger parallel processing will hit CPU cores limitation. Also various atonce parameter values are tested to check how it affects memory limitation (as reminder system has 16GB physical and average of 14G free memory).
+Another thing worth checking is how chunk size affects performance of \copy. Sizes will be: 1x, 2x and 4x bigger chunks - 4x original size means if 8 threads are run at once maximum performance should be achieved. Bigger parallel processing will hit CPU cores limitation. Also various atonce parameter values are tested to check how it affects memory limitation (as reminder system has 16GB physical and average of 14G free memory).
 
 [<img decoding="async" loading="lazy" class="alignnone wp-image-1268" src="http://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingChunks-1024x460.png" alt="" width="800" height="360" srcset="https://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingChunks-1024x460.png 1024w, https://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingChunks-300x135.png 300w, https://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingChunks-768x345.png 768w, https://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingChunks.png 1124w" sizes="(max-width: 800px) 100vw, 800px" />][5]
 
@@ -557,7 +556,7 @@ root@sah:/home/csv#</pre>
 
 pg\_bulkload is is a high speed data loading tool for PostgreSQL, opensource project from https://github.com/ossc-db/pg\_bulkload
 
-It was suggested in quite a few posts about data import so I needed to check if it’s worth anything. I’ll run it on merged 36GB chunk of data and then try on 2x 18GB run in parallel “handler” on my own.
+It was suggested in quite a few posts about data import so I needed to check if it’s worth anything. I’ll run it on merged 36GB chunk of data and then try on 2x 18GB run in parallel “handler" on my own.
 
 Setup including many dependencies (including 32bit ones)
 
@@ -656,7 +655,7 @@ However it _**failed**_ to perform 2 imports at same time.
 
 ### Abandoned experiment in Python
 
-Experimental Python approach &#8211; except it needs strict typing during import. There’s some chance that python is better in file reading and splitting strings. Similar approaches are available also in Ruby but is seems better for applications that get data from some systems and directly load them into DB &#8211; which is not point of this task.
+Experimental Python approach - except it needs strict typing during import. There’s some chance that python is better in file reading and splitting strings. Similar approaches are available also in Ruby but is seems better for applications that get data from some systems and directly load them into DB - which is not point of this task.
 
 <pre class="lang:python EnlighterJSRAW ">import psycopg2
 conn = psycopg2.connect("postgresql:///sah")
@@ -671,11 +670,11 @@ Overall about **345%** better import time was achieved counting hint from task d
 
 Before moving to solutions including multithreading most improvements were achieved by removing bash pipe mechanism (\`\copy\` can read files on it’s own), tuning various memory limits in postgres configuration file (they are extremely low by default) and enabling \`UNLOGGED\` mode.
 
-Attempted disk tuning failed to improve performance &#8211; most probably due to virtualized environment and using only well tested and trusted filesystems.
+Attempted disk tuning failed to improve performance - most probably due to virtualized environment and using only well tested and trusted filesystems.
 
 Huge improvement was achieved by running imports in parallel with bigger data chunks (probably \`\copy\` uses some preprocessing on entire file before it actually imports data). With more time probably the best chunk size to memory ratio would be established but input data is very likely to vary so that would probably be pointless.
 
-pg_bulkload was small disappointment &#8211; mentioned in several places in internet, created by some Japanese company with nice benchmarks shown by developers proved to lack proper documentation and couldn’t be run in parallel except for built-in mode which didn’t beat simplest built-int feature of postgres itself run several times at once.
+pg_bulkload was small disappointment - mentioned in several places in internet, created by some Japanese company with nice benchmarks shown by developers proved to lack proper documentation and couldn’t be run in parallel except for built-in mode which didn’t beat simplest built-int feature of postgres itself run several times at once.
 
 #### Plots
 
@@ -708,7 +707,7 @@ However it _**failed**_ to perform 2 imports at same time.
 
 ### Abandoned experiment in Python
 
-Experimental Python approach &#8211; except it needs strict typing during import. There’s some chance that python is better in file reading and splitting strings. Similar approaches are available also in Ruby but is seems better for applications that get data from some systems and directly load them into DB &#8211; which is not point of this task.<pre wp-pre-tag-25=""></pre> 
+Experimental Python approach - except it needs strict typing during import. There’s some chance that python is better in file reading and splitting strings. Similar approaches are available also in Ruby but is seems better for applications that get data from some systems and directly load them into DB - which is not point of this task.<pre wp-pre-tag-25=""></pre> 
 
 ### Summary {#summary}
 
@@ -716,11 +715,11 @@ Overall about **345%** better import time was achieved counting hint from task d
 
 Before moving to solutions including multithreading most improvements were achieved by removing bash pipe mechanism (\`\copy\` can read files on it’s own), tuning various memory limits in postgres configuration file (they are extremely low by default) and enabling \`UNLOGGED\` mode.
 
-Attempted disk tuning failed to improve performance &#8211; most probably due to virtualized environment and using only well tested and trusted filesystems.
+Attempted disk tuning failed to improve performance - most probably due to virtualized environment and using only well tested and trusted filesystems.
 
 Huge improvement was achieved by running imports in parallel with bigger data chunks (probably \`\copy\` uses some preprocessing on entire file before it actually imports data). With more time probably the best chunk size to memory ratio would be established but input data is very likely to vary so that would probably be pointless.
 
-pg_bulkload was small disappointment &#8211; mentioned in several places in internet, created by some Japanese company with nice benchmarks shown by developers proved to lack proper documentation and couldn’t be run in parallel except for built-in mode which didn’t beat simplest built-int feature of postgres itself run several times at once.
+pg_bulkload was small disappointment - mentioned in several places in internet, created by some Japanese company with nice benchmarks shown by developers proved to lack proper documentation and couldn’t be run in parallel except for built-in mode which didn’t beat simplest built-int feature of postgres itself run several times at once.
 
 #### Plots
 
@@ -745,7 +744,7 @@ However it _**failed**_ to perform 2 imports at same time.
 
 ### Abandoned experiment in Python
 
-Experimental Python approach &#8211; except it needs strict typing during import. There’s some chance that python is better in file reading and splitting strings. Similar approaches are available also in Ruby but is seems better for applications that get data from some systems and directly load them into DB &#8211; which is not point of this task.<pre wp-pre-tag-25=""></pre> 
+Experimental Python approach - except it needs strict typing during import. There’s some chance that python is better in file reading and splitting strings. Similar approaches are available also in Ruby but is seems better for applications that get data from some systems and directly load them into DB - which is not point of this task.<pre wp-pre-tag-25=""></pre> 
 
 ### Summary {#summary}
 
@@ -753,11 +752,11 @@ Overall about **345%** better import time was achieved counting hint from task d
 
 Before moving to solutions including multithreading most improvements were achieved by removing bash pipe mechanism (\`\copy\` can read files on it’s own), tuning various memory limits in postgres configuration file (they are extremely low by default) and enabling \`UNLOGGED\` mode.
 
-Attempted disk tuning failed to improve performance &#8211; most probably due to virtualized environment and using only well tested and trusted filesystems.
+Attempted disk tuning failed to improve performance - most probably due to virtualized environment and using only well tested and trusted filesystems.
 
 Huge improvement was achieved by running imports in parallel with bigger data chunks (probably \`\copy\` uses some preprocessing on entire file before it actually imports data). With more time probably the best chunk size to memory ratio would be established but input data is very likely to vary so that would probably be pointless.
 
-pg_bulkload was small disappointment &#8211; mentioned in several places in internet, created by some Japanese company with nice benchmarks shown by developers proved to lack proper documentation and couldn’t be run in parallel except for built-in mode which didn’t beat simplest built-int feature of postgres itself run several times at once.
+pg_bulkload was small disappointment - mentioned in several places in internet, created by some Japanese company with nice benchmarks shown by developers proved to lack proper documentation and couldn’t be run in parallel except for built-in mode which didn’t beat simplest built-int feature of postgres itself run several times at once.
 
 #### Plots
 
@@ -790,7 +789,7 @@ However it _**failed**_ to perform 2 imports at same time.
 
 ### Abandoned experiment in Python
 
-Experimental Python approach &#8211; except it needs strict typing during import. There’s some chance that python is better in file reading and splitting strings. Similar approaches are available also in Ruby but is seems better for applications that get data from some systems and directly load them into DB &#8211; which is not point of this task.<pre wp-pre-tag-25=""></pre> 
+Experimental Python approach - except it needs strict typing during import. There’s some chance that python is better in file reading and splitting strings. Similar approaches are available also in Ruby but is seems better for applications that get data from some systems and directly load them into DB - which is not point of this task.<pre wp-pre-tag-25=""></pre> 
 
 ### Summary {#summary}
 
@@ -798,11 +797,11 @@ Overall about **345%** better import time was achieved counting hint from task d
 
 Before moving to solutions including multithreading most improvements were achieved by removing bash pipe mechanism (\`\copy\` can read files on it’s own), tuning various memory limits in postgres configuration file (they are extremely low by default) and enabling \`UNLOGGED\` mode.
 
-Attempted disk tuning failed to improve performance &#8211; most probably due to virtualized environment and using only well tested and trusted filesystems.
+Attempted disk tuning failed to improve performance - most probably due to virtualized environment and using only well tested and trusted filesystems.
 
 Huge improvement was achieved by running imports in parallel with bigger data chunks (probably \`\copy\` uses some preprocessing on entire file before it actually imports data). With more time probably the best chunk size to memory ratio would be established but input data is very likely to vary so that would probably be pointless.
 
-pg_bulkload was small disappointment &#8211; mentioned in several places in internet, created by some Japanese company with nice benchmarks shown by developers proved to lack proper documentation and couldn’t be run in parallel except for built-in mode which didn’t beat simplest built-int feature of postgres itself run several times at once.
+pg_bulkload was small disappointment - mentioned in several places in internet, created by some Japanese company with nice benchmarks shown by developers proved to lack proper documentation and couldn’t be run in parallel except for built-in mode which didn’t beat simplest built-int feature of postgres itself run several times at once.
 
 #### Plots
 
@@ -821,13 +820,13 @@ pg_bulkload was small disappointment &#8211; mentioned in several places in inte
 
  
 
-DELIMITER=\t&#8217; -i data2 import_alldata.ctl & wait $(jobs -p) end=\`date +%s\` time=$((end-start)) echo time=$time<pre wp-pre-tag-24=""></pre> 
+DELIMITER=\t' -i data2 import_alldata.ctl & wait $(jobs -p) end=\`date +%s\` time=$((end-start)) echo time=$time<pre wp-pre-tag-24=""></pre> 
 
 However it _**failed**_ to perform 2 imports at same time.
 
 ### Abandoned experiment in Python
 
-Experimental Python approach &#8211; except it needs strict typing during import. There’s some chance that python is better in file reading and splitting strings. Similar approaches are available also in Ruby but is seems better for applications that get data from some systems and directly load them into DB &#8211; which is not point of this task.<pre wp-pre-tag-25=""></pre> 
+Experimental Python approach - except it needs strict typing during import. There’s some chance that python is better in file reading and splitting strings. Similar approaches are available also in Ruby but is seems better for applications that get data from some systems and directly load them into DB - which is not point of this task.<pre wp-pre-tag-25=""></pre> 
 
 ### Summary {#summary}
 
@@ -835,11 +834,11 @@ Overall about **345%** better import time was achieved counting hint from task d
 
 Before moving to solutions including multithreading most improvements were achieved by removing bash pipe mechanism (\`\copy\` can read files on it’s own), tuning various memory limits in postgres configuration file (they are extremely low by default) and enabling \`UNLOGGED\` mode.
 
-Attempted disk tuning failed to improve performance &#8211; most probably due to virtualized environment and using only well tested and trusted filesystems.
+Attempted disk tuning failed to improve performance - most probably due to virtualized environment and using only well tested and trusted filesystems.
 
 Huge improvement was achieved by running imports in parallel with bigger data chunks (probably \`\copy\` uses some preprocessing on entire file before it actually imports data). With more time probably the best chunk size to memory ratio would be established but input data is very likely to vary so that would probably be pointless.
 
-pg_bulkload was small disappointment &#8211; mentioned in several places in internet, created by some Japanese company with nice benchmarks shown by developers proved to lack proper documentation and couldn’t be run in parallel except for built-in mode which didn’t beat simplest built-int feature of postgres itself run several times at once.
+pg_bulkload was small disappointment - mentioned in several places in internet, created by some Japanese company with nice benchmarks shown by developers proved to lack proper documentation and couldn’t be run in parallel except for built-in mode which didn’t beat simplest built-int feature of postgres itself run several times at once.
 
 #### Plots
 
@@ -858,7 +857,7 @@ pg_bulkload was small disappointment &#8211; mentioned in several places in inte
 
  
 
-DELIMITER=\t&#8217; import_alldata.ctl NOTICE: BULK LOAD START NOTICE: BULK LOAD END 0 Rows skipped. 261099271 Rows successfully loaded. 0 Rows not loaded due to parse errors. 0 Rows not loaded due to duplicate errors. 0 Rows replaced with new rows. 1780.06 root@sah:/home/csv#
+DELIMITER=\t' import_alldata.ctl NOTICE: BULK LOAD START NOTICE: BULK LOAD END 0 Rows skipped. 261099271 Rows successfully loaded. 0 Rows not loaded due to parse errors. 0 Rows not loaded due to duplicate errors. 0 Rows replaced with new rows. 1780.06 root@sah:/home/csv#
 
 Performance was ~147krps
 
@@ -874,7 +873,7 @@ However it _**failed**_ to perform 2 imports at same time.
 
 ### Abandoned experiment in Python
 
-Experimental Python approach &#8211; except it needs strict typing during import. There’s some chance that python is better in file reading and splitting strings. Similar approaches are available also in Ruby but is seems better for applications that get data from some systems and directly load them into DB &#8211; which is not point of this task.<pre wp-pre-tag-25=""></pre> 
+Experimental Python approach - except it needs strict typing during import. There’s some chance that python is better in file reading and splitting strings. Similar approaches are available also in Ruby but is seems better for applications that get data from some systems and directly load them into DB - which is not point of this task.<pre wp-pre-tag-25=""></pre> 
 
 ### Summary {#summary}
 
@@ -882,11 +881,11 @@ Overall about **345%** better import time was achieved counting hint from task d
 
 Before moving to solutions including multithreading most improvements were achieved by removing bash pipe mechanism (\`\copy\` can read files on it’s own), tuning various memory limits in postgres configuration file (they are extremely low by default) and enabling \`UNLOGGED\` mode.
 
-Attempted disk tuning failed to improve performance &#8211; most probably due to virtualized environment and using only well tested and trusted filesystems.
+Attempted disk tuning failed to improve performance - most probably due to virtualized environment and using only well tested and trusted filesystems.
 
 Huge improvement was achieved by running imports in parallel with bigger data chunks (probably \`\copy\` uses some preprocessing on entire file before it actually imports data). With more time probably the best chunk size to memory ratio would be established but input data is very likely to vary so that would probably be pointless.
 
-pg_bulkload was small disappointment &#8211; mentioned in several places in internet, created by some Japanese company with nice benchmarks shown by developers proved to lack proper documentation and couldn’t be run in parallel except for built-in mode which didn’t beat simplest built-int feature of postgres itself run several times at once.
+pg_bulkload was small disappointment - mentioned in several places in internet, created by some Japanese company with nice benchmarks shown by developers proved to lack proper documentation and couldn’t be run in parallel except for built-in mode which didn’t beat simplest built-int feature of postgres itself run several times at once.
 
 #### Plots
 

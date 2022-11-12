@@ -13,7 +13,7 @@ tags:
   - linux
 
 ---
-Mając nieco doświadczenia przy grzebaniu w BIOSie i/lub UEFI od AMI z poziomu systemu operacyjnego, [a konkretniej Windowsa][1], i mając problem masowej rekonfiguracji ustawień BIOSu w [klastrze-prowizorce][2] postanowiłem poszukać odpowiedników narzędzi AMI &#8211; w szczególności AMISCE dla Linuksa. Nie ma ich w miejscach z wersjami pod Windowsa. Poszukiwany plik binarny nazywa się **SCELNX_64**. Trochę szukania i znalazłem wspaniałe źródło &#8211; strony producentów serwerów takich jak Lenovo ThinkServer oprócz driverów zawierają także narzędzia do flashowania BIOSu a te wymagają narzędzi do jego rekonfiguracji. I to są nawet bardzo aktualne wersje (sprzed kilku dni)! Żeby było zabawniej udostępniane z całą dokumentacją skopiowaną od AMI.
+Mając nieco doświadczenia przy grzebaniu w BIOSie i/lub UEFI od AMI z poziomu systemu operacyjnego, [a konkretniej Windowsa][1], i mając problem masowej rekonfiguracji ustawień BIOSu w [klastrze-prowizorce][2] postanowiłem poszukać odpowiedników narzędzi AMI - w szczególności AMISCE dla Linuksa. Nie ma ich w miejscach z wersjami pod Windowsa. Poszukiwany plik binarny nazywa się **SCELNX_64**. Trochę szukania i znalazłem wspaniałe źródło - strony producentów serwerów takich jak Lenovo ThinkServer oprócz driverów zawierają także narzędzia do flashowania BIOSu a te wymagają narzędzi do jego rekonfiguracji. I to są nawet bardzo aktualne wersje (sprzed kilku dni)! Żeby było zabawniej udostępniane z całą dokumentacją skopiowaną od AMI.
 
 Linki:
 
@@ -22,7 +22,7 @@ Linki:
   * [64-bit na stronie Lenovo][3]
   * [64-bit mirror][5]
 
-Jako ciekawostkę mogę podać fakt, że po przejechaniu pliku komendą strings odnajdziemy sprytny sposób budowania modułu jądra do rozmawiania bezpośrednio z hardwarem &#8211; zahardkodowany kod źródłowy :O
+Jako ciekawostkę mogę podać fakt, że po przejechaniu pliku komendą strings odnajdziemy sprytny sposób budowania modułu jądra do rozmawiania bezpośrednio z hardwarem - zahardkodowany kod źródłowy :O
 
  [1]: http://blog.dsinf.net/2015/08/biosuefi-ami-aptio-np-na-tabletach-z-win8-przywracanie-do-ustawien-fabrycznych/
  [2]: http://blog.dsinf.net/2015/11/klaster-prowizorka-w-kole-studentow-informatyki-uj-czesc-1/

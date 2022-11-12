@@ -19,7 +19,7 @@ Jeśli pominąć wymaganie trybu plaintext przy autoryzacji temat można zamkną
 
 Wymaganie które postawiłem gotowemu setupowi to MTA który umie przesyłać maile od lokalnych użytkowników unixowych zalogowanych zdalnie po SMTP za pomocą _auth plain_ w trybie plaintext, a relay jest zablokowany (żeby serwer nie stał się ofiarą spamerów).
 
-System na którym instalowałem swój serwer to ubuntu, ale konfigi dołączane wydają się być czyste wprost od twórców. Potrzebne są 2 pakiety &#8211; **postfix** (jego zapewne już mamy) i **sals2-bin**. Pierwszy to właściwe MTA z kilkoma protokołami dostępowymi, a drugi to zestaw narzędzi SASL porzebnych postfixowi do auroryzacji użykowników.
+System na którym instalowałem swój serwer to ubuntu, ale konfigi dołączane wydają się być czyste wprost od twórców. Potrzebne są 2 pakiety - **postfix** (jego zapewne już mamy) i **sals2-bin**. Pierwszy to właściwe MTA z kilkoma protokołami dostępowymi, a drugi to zestaw narzędzi SASL porzebnych postfixowi do auroryzacji użykowników.
 
 Po instalacji trzeba wprowadzić kilka zmian w domyślnych plikach konfiguracyjnych:
 
@@ -32,7 +32,7 @@ Po instalacji trzeba wprowadzić kilka zmian w domyślnych plikach konfiguracyjn
         `smtpd_tls_auth_only = no`
       * oraz otwierać się na świat:  
         `inet_interfaces = all`
-      * tu uwaga &#8211; **nie chcemy** zmieniać _mynetworks_ na coś w rodzaju 0.0.0.0/0 &#8211; inaczej dopuścimy do relayowania maili przez każdego
+      * tu uwaga - **nie chcemy** zmieniać _mynetworks_ na coś w rodzaju 0.0.0.0/0 - inaczej dopuścimy do relayowania maili przez każdego
   * nowy plik **/etc/postfix/sasl/smtpd.conf**  
     `pwcheck_method: saslauthd`  
     `mech_list: PLAIN LOGIN`
@@ -55,7 +55,7 @@ Kolejny etap to dodanie lokalnego użytkownika i przetestowanie czy wszystko dzi
 
 <pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">perl -MMIME::Base64 -e 'print encode_base64("\0$USERNAME\0$PASSWORD");'</pre>
 
-Ciąg autoryzacyjny jak widać wyżej to base64 z ciągu null, użykownik, null i hasło. Jeśli użytkownik ma w nazwie małpę to należy ją wyeacapować. Poniżej przykładowa sesja odpalana &#8222;z palca&#8221;:
+Ciąg autoryzacyjny jak widać wyżej to base64 z ciągu null, użykownik, null i hasło. Jeśli użytkownik ma w nazwie małpę to należy ją wyeacapować. Poniżej przykładowa sesja odpalana "z palca":
 
 <pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">zsh % perl -MMIME::Base64 -e 'print encode_base64("\0uzytkownik\@host\0haslo12345");'
 AHV6eXRrb3duaWtAaG9zdABoYXNsbzEyMzQ1

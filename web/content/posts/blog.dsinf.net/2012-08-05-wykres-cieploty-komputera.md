@@ -10,7 +10,7 @@ tags:
   - perl
 
 ---
-Skrypt dość prosty &#8211; odczytuje aktualną temperaturę komputera, zapisuje do rotacyjnego loga i tworzy estetyczny wykres przy pomocy biblioteki GD. Oczywiście działa tylko pod Linuksem 😉 Językiem tworzenia został wybrany Perl &#8211; głównie ze względu na początki mojej przygody z tym językiem, ale także ze względu na łatwość parsowania plików. Jest to następca skryptu PHP o tej samej nazwie &#8211; ciepło, który jednak nie tworzył żadnego loga, a jedynie odczytywał wynik 
+Skrypt dość prosty - odczytuje aktualną temperaturę komputera, zapisuje do rotacyjnego loga i tworzy estetyczny wykres przy pomocy biblioteki GD. Oczywiście działa tylko pod Linuksem 😉 Językiem tworzenia został wybrany Perl - głównie ze względu na początki mojej przygody z tym językiem, ale także ze względu na łatwość parsowania plików. Jest to następca skryptu PHP o tej samej nazwie - ciepło, który jednak nie tworzył żadnego loga, a jedynie odczytywał wynik 
 
 <pre class="EnlighterJSRAW bash">acpi -V</pre>
 

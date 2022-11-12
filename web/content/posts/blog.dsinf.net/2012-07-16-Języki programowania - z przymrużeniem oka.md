@@ -16,4 +16,4 @@ Obrazek odgrzebany po pół roku (wyzej) i stary dowcip:
 3)-Puk,puk  
 -assembler
 
-&#8222;If you understand this jokes you probably don&#8217;t have friends&#8221; 😉
+"If you understand this jokes you probably don't have friends" 😉

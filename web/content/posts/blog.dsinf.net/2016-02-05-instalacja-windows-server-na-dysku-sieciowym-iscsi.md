@@ -14,19 +14,19 @@ tags:
 Bezdyskowe stacje robocze mają wiele zalet w środowiskach, gdzie mamy wiele stacji roboczych, które mają posiadać jeden zestaw plików udostępniając jedynie zapamiętywanie profilu nieuprawnionego użytkownika. Procedura nie jest skomplikowano, lecz nie poświęcono jej wiele artykułów stąd opisuję najprostszą wersję, by mieć od czego zacząć i potem dokładać kolejne składniki.
 
 **Wymagania wstępne:**  
-1) serwer iSCSI (np. starwind) &#8211; będzie potrzebny na produkcji &#8211; udostępnia dysk  
-2) serwer PXE (np. tinypxe) &#8211; będzie potrzebny na produkcji &#8211; za każdym rozruchem montuje dysk  
-3) serwer udziałów samby (np. zwykły windows) &#8211; służy do udostępniania zawartość ISO instalacyjnego &#8211; powinien stać w tej samej sieci  
-4) serwer HTTP (np. apache) &#8211; może to być też produkcyjny serwer WWW bo w gruncie rzeczy służy tylko do ładowania WinPE podczas instalacji
+1) serwer iSCSI (np. starwind) - będzie potrzebny na produkcji - udostępnia dysk  
+2) serwer PXE (np. tinypxe) - będzie potrzebny na produkcji - za każdym rozruchem montuje dysk  
+3) serwer udziałów samby (np. zwykły windows) - służy do udostępniania zawartość ISO instalacyjnego - powinien stać w tej samej sieci  
+4) serwer HTTP (np. apache) - może to być też produkcyjny serwer WWW bo w gruncie rzeczy służy tylko do ładowania WinPE podczas instalacji
 
 **Procedura instalacji systemu:**  
 1) W starwindo tworzymy cel i konkretny dysk iSCSI, zapisując sobie jego IQN  
 2) Odpalamy TinyPXE,  
-&#8211; definiujemy konfig sieci Option 54 &#8211; ustawiamy adres IP serwera rozruchu (nasz), definiujemy pulę adresów dostępnych, Option 1,3,6, i 28 przepisujemy z konfigu naszej sieci macierzystej,  
-&#8211; bootfile ustawiamy na ipxe.kpxe,  
-&#8211; Option 17 to rootpath dysku iSCSI &#8211; jest formatu: <span class="lang:default EnlighterJSRAW  crayon-inline " >iscsi:ADRES_IP:PROTO:PORT:LUN_NUM:IQN </span> np. <span class="lang:default EnlighterJSRAW  crayon-inline " >iscsi:192.168.1.160:tcp:3260:0:iqn.ovh.ksi:eregion-winsrv</span> ,  
-&#8211; Extra Option: <span class="lang:default EnlighterJSRAW  crayon-inline " >175.6.1.1.1.8.1.1</span> ([wyjaśnienie][1])  
-3) Na udział windowsowy (samby) wypakowywujemy całe ISO instalacyjne (np. za pomocą 7zip&#8217;a)  
+- definiujemy konfig sieci Option 54 - ustawiamy adres IP serwera rozruchu (nasz), definiujemy pulę adresów dostępnych, Option 1,3,6, i 28 przepisujemy z konfigu naszej sieci macierzystej,  
+- bootfile ustawiamy na ipxe.kpxe,  
+- Option 17 to rootpath dysku iSCSI - jest formatu: <span class="lang:default EnlighterJSRAW  crayon-inline " >iscsi:ADRES_IP:PROTO:PORT:LUN_NUM:IQN </span> np. <span class="lang:default EnlighterJSRAW  crayon-inline " >iscsi:192.168.1.160:tcp:3260:0:iqn.ovh.ksi:eregion-winsrv</span> ,  
+- Extra Option: <span class="lang:default EnlighterJSRAW  crayon-inline " >175.6.1.1.1.8.1.1</span> ([wyjaśnienie][1])  
+3) Na udział windowsowy (samby) wypakowywujemy całe ISO instalacyjne (np. za pomocą 7zip'a)  
 4) Na serwer HTTP wgrywamy [paczkę z wimbootem WinPE][2] (polecam krótkie URLe bo będziemy to wpisywać z palca) i plikiem boot.ipxe postaci:
 
 <pre class="lang:default EnlighterJSRAW " >sanhook -d 0x80 ADRES_ISCSI
@@ -48,8 +48,8 @@ boot</pre>
 Po instalacji nie musimy chainloadować się do WinPE, TinyPXE samo bootuje dysk SAN i tym samym Windowsa. Voilà.
 
 **Wariant drugi<sup>aktualizacja</sup>**  
-Niektóre karty sieciowe nie wspierają bootowania po iSCSI (np. Intel I217-V w odróżnieniu od wersji &#8222;serwerowej&#8221; z końcówką -LM) i wtedy trzeba zaaktywować programowy inicjalizator iSCSI + zmienić kolejność ładowania usług związanych ze sterownikami sieci. Najprościej jest to uczynić isntalując na jednej maszynie system na dysku twardym, uruchomić tam <span class="lang:default EnlighterJSRAW  crayon-inline " >iscsicpl</span>, zaakcpetować autostart tej usługi i zmienić w rejestrze klucz typu REG_DWORD <span class="lang:default EnlighterJSRAW  crayon-inline " >HKLM\SYSTEM\*ControlSet*\Services\<nazwa_usługi>\Start</span> na 0 (\*ControlSet\* => CurrentControlSet, ControlSet001, ControlSet002, &#8230;). Nazwą usługi dla wspomnianej karty intela będzie to coś w stylu <span class="lang:default EnlighterJSRAW  crayon-inline " >e1dexpress</span>.  
-Teraz można skopiować zawartość dysku (w stylu unixowego dd &#8211; całość bajt po bajcie) na macierz iSCSI (może być konieczne zainicjalizowanie dysku przez <span class="lang:default EnlighterJSRAW  crayon-inline " >diskmgmt.msc</span>) &#8211; Macrium Reflect okazał się całkiem sprawny pod Windowsem.
+Niektóre karty sieciowe nie wspierają bootowania po iSCSI (np. Intel I217-V w odróżnieniu od wersji "serwerowej" z końcówką -LM) i wtedy trzeba zaaktywować programowy inicjalizator iSCSI + zmienić kolejność ładowania usług związanych ze sterownikami sieci. Najprościej jest to uczynić isntalując na jednej maszynie system na dysku twardym, uruchomić tam <span class="lang:default EnlighterJSRAW  crayon-inline " >iscsicpl</span>, zaakcpetować autostart tej usługi i zmienić w rejestrze klucz typu REG_DWORD <span class="lang:default EnlighterJSRAW  crayon-inline " >HKLM\SYSTEM\*ControlSet*\Services\<nazwa_usługi>\Start</span> na 0 (\*ControlSet\* => CurrentControlSet, ControlSet001, ControlSet002, ...). Nazwą usługi dla wspomnianej karty intela będzie to coś w stylu <span class="lang:default EnlighterJSRAW  crayon-inline " >e1dexpress</span>.  
+Teraz można skopiować zawartość dysku (w stylu unixowego dd - całość bajt po bajcie) na macierz iSCSI (może być konieczne zainicjalizowanie dysku przez <span class="lang:default EnlighterJSRAW  crayon-inline " >diskmgmt.msc</span>) - Macrium Reflect okazał się całkiem sprawny pod Windowsem.
 
 **Powolne działanie:**  
 Jeśli komputer bardzo wolno się podnosi i ma UEFI to trzeba zastosować [hotfix od MS][3].

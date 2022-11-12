@@ -8,14 +8,14 @@ tags:
   - html
 
 ---
-Długo można szukać w sieci odpowiedzi na pytanie &#8222;jak wycentrować tekst w pionie?&#8221;.  
-A rezultat? Mijaki na statyczny tekst, super skrypty korzystające z jQuery do zmiany marginesów, nieładne cosie oparte na _table-cell_ (http://stackoverflow.com/questions/4180594/vertical-centering-of-a-horizontal-scrolling-div), _top: 50%;_ (http://www.werockyourweb.com/css-vertically-horizontally-center)&#8230;  
+Długo można szukać w sieci odpowiedzi na pytanie "jak wycentrować tekst w pionie?".  
+A rezultat? Mijaki na statyczny tekst, super skrypty korzystające z jQuery do zmiany marginesów, nieładne cosie oparte na _table-cell_ (http://stackoverflow.com/questions/4180594/vertical-centering-of-a-horizontal-scrolling-div), _top: 50%;_ (http://www.werockyourweb.com/css-vertically-horizontally-center)...  
 <!--break-->
 
   
-podczas gdy istnieje rozwiązanie, może mniej eleganckie ale zato skuteczne i działające **nawet w IE** &#8211; <u>tabelka</u>.
+podczas gdy istnieje rozwiązanie, może mniej eleganckie ale zato skuteczne i działające **nawet w IE** - <u>tabelka</u>.
 
-Brzmi jak wstęp do starożytnej szkoły HTMLa (no dobra &#8211; średniowiecznej, bo w starożytności uczono frame&#8217;ów), czyż nie?
+Brzmi jak wstęp do starożytnej szkoły HTMLa (no dobra - średniowiecznej, bo w starożytności uczono frame'ów), czyż nie?
 
 Jak wygląda kod wycentrowania napisu na całą stronę (np. komunikat błędu, strona zastępcza itp.)? A tak:
 

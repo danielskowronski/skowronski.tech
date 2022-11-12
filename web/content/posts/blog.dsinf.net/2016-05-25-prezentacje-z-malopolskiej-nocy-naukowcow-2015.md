@@ -11,7 +11,7 @@ tags:
   - windowsphone
 
 ---
-Lepiej późno niż wcale &#8211; niemal po roku wrzucam slajdy i materiały z MNN 2015 także na bloga. Wygłosiłem wówczas dwie prezentacje: [**IT Pro: Microsoft Server Infrastructure** &#8211; spójne zarządzanie całą infrastrukturą IT.][1] i [**Programowanie Windows Phone** &#8211; pierwsza prosta aplikacja][2] &#8211; tu także kod źródłowy.
+Lepiej późno niż wcale - niemal po roku wrzucam slajdy i materiały z MNN 2015 także na bloga. Wygłosiłem wówczas dwie prezentacje: [**IT Pro: Microsoft Server Infrastructure** - spójne zarządzanie całą infrastrukturą IT.][1] i [**Programowanie Windows Phone** - pierwsza prosta aplikacja][2] - tu także kod źródłowy.
 
  [1]: https://blog.dsinf.net/wp-content/uploads/2015/mnn/2015/it-pro
  [2]: https://blog.dsinf.net/wp-content/uploads/2015/mnn/2015/winphone

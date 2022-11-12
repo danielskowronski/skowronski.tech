@@ -10,6 +10,6 @@ tags:
   - userscripts
 
 ---
-Czas najwyższy nadszedł na wydanie Librus Cleaner&#8217;a 2014 v1.5, czyli userskryptu poprawiającego e-Dziennik Librus.  
+Czas najwyższy nadszedł na wydanie Librus Cleaner'a 2014 v1.5, czyli userskryptu poprawiającego e-Dziennik Librus.  
 Więcej na <http://about.dsinf.net/produkty/librus-cleaner>.  
 GIT: <https://repo.mydevil.net/git/pub/ds/librus_cleaner/>.

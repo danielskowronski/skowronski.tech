@@ -22,9 +22,9 @@ c. B024(15)
 
 Cóż, nie ma co się załamywać, tylko trzeba pisać program i mieć go potem cały czas przy sobie. Kod, który jakiś czas temu powstał  
 jest dość prosty i ograniczony do cyfr jako 0..Z i maksymalnym zakresie _long_a (czyli 10 cyfr), jednak dla bezpieczeństwa  
-dałem long longa &#8211; nigdy nie wiadomo na czym przyjdzie kompilować kod.
+dałem long longa - nigdy nie wiadomo na czym przyjdzie kompilować kod.
 
-_Talk is cheap, I&#8217;ll show you the code_
+_Talk is cheap, I'll show you the code_
 
 Dwa kawałki są najbardziej istotne:  
 1.konwersja na dziesiętny: 

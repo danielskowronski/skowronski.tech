@@ -8,13 +8,13 @@ tags:
   - ipv6
 
 ---
-Nie wszyscy ISP dają użytkownikom adres IPv6. Jest wiele opcji aby się podłączyć przez tunel ipv6-over-v4. Opiszę wymagający najmniej zabawy &#8211; Freenet6.  
+Nie wszyscy ISP dają użytkownikom adres IPv6. Jest wiele opcji aby się podłączyć przez tunel ipv6-over-v4. Opiszę wymagający najmniej zabawy - Freenet6.  
 <!--break-->
 
   
-Dostawcą tej usługi jest gogo6 (http://gogo6.com). Jeśli nie mamy NATu, albo chcemy konfigurować router to rozwiązanie Hurricane Electrics (http://tunnelbroker.net/, http://he.net) jest jak najbardziej adekwatne. Na innej ich stronie &#8211; http://ipv6.he.net/ możemy uzyskać certyfikat znajomości IPv6, ale co ważniejsze przejść krótki kurs.
+Dostawcą tej usługi jest gogo6 (http://gogo6.com). Jeśli nie mamy NATu, albo chcemy konfigurować router to rozwiązanie Hurricane Electrics (http://tunnelbroker.net/, http://he.net) jest jak najbardziej adekwatne. Na innej ich stronie - http://ipv6.he.net/ możemy uzyskać certyfikat znajomości IPv6, ale co ważniejsze przejść krótki kurs.
 
-Gogo6 dostarcza gogoCLIENT &#8211; jedną aplikację tunelującą nasz ruch automatycznie. Dostępna pod Windows jako binarka x86/x64 i na Linuksa jako kod źródłowy. Swoją drogą dostępna w repozytorium użytkowników Archa (AUR) i zapewne innych dystrybucji też. Pakiet nazywa się **gogoc**. Można podpiąć się jako anonymous i dostać dynamiczny IP lub zarejestrowawszy się wcześniej na http://www.gogo6.com/freenet6/account skorzystać ze statycznego adres. Niestety broker nie raczy nam podać jakie dokładnie dostajemy, ale wystarczy ifconfig. Dane logowania i serwer definiujemy w 
+Gogo6 dostarcza gogoCLIENT - jedną aplikację tunelującą nasz ruch automatycznie. Dostępna pod Windows jako binarka x86/x64 i na Linuksa jako kod źródłowy. Swoją drogą dostępna w repozytorium użytkowników Archa (AUR) i zapewne innych dystrybucji też. Pakiet nazywa się **gogoc**. Można podpiąć się jako anonymous i dostać dynamiczny IP lub zarejestrowawszy się wcześniej na http://www.gogo6.com/freenet6/account skorzystać ze statycznego adres. Niestety broker nie raczy nam podać jakie dokładnie dostajemy, ale wystarczy ifconfig. Dane logowania i serwer definiujemy w 
 
 <pre class="EnlighterJSRAW bash">/etc/gogoc/gogoc.conf</pre>
 

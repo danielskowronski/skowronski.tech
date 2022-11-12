@@ -16,7 +16,7 @@ tags:
   - vpn
 
 ---
-Chcąc połączyć ze sobą dwa data-center lub dwa serwery hostujące kontenery potrzebujemy łączności site-to-site. Można to osiągnąć zwykłym VPNem w rodzaju OpenVPN i ręcznym ustawianiem routingu, jednak nie jest to zbyt wydajne, ani eleganckie. Zaprezentuję jak zestawić takie połączenie dzięki strongSwan sterującym zaimplementowanym w jądrze stosem IPsec &#8211; XFRM. Dodatkowo pokażę jak się do takiej sieci podłączyć z zewnątrz i podam kilka wskazówek dotyczących zestawienia tego u Hetznera &#8211; łącząc dedykowany serwer używający vSwitch&#8217;a z serwerem w Hetzner Cloud. Na koniec kilka słów o podłączaniu się do takiego VPNa z zewnątrz.
+Chcąc połączyć ze sobą dwa data-center lub dwa serwery hostujące kontenery potrzebujemy łączności site-to-site. Można to osiągnąć zwykłym VPNem w rodzaju OpenVPN i ręcznym ustawianiem routingu, jednak nie jest to zbyt wydajne, ani eleganckie. Zaprezentuję jak zestawić takie połączenie dzięki strongSwan sterującym zaimplementowanym w jądrze stosem IPsec - XFRM. Dodatkowo pokażę jak się do takiej sieci podłączyć z zewnątrz i podam kilka wskazówek dotyczących zestawienia tego u Hetznera - łącząc dedykowany serwer używający vSwitch'a z serwerem w Hetzner Cloud. Na koniec kilka słów o podłączaniu się do takiego VPNa z zewnątrz.
 
 ## Topologia i wymagania wstępne {#topologia-i-wymagania-wstepne}
 
@@ -24,13 +24,13 @@ Zacznijmy od wyjaśnienia, czym zajmują się poszczególne komponenty:
 
   * strongSwan to narzędzie do zestawiania tuneli VPN wykorzystujące protokół IPsec; zarządzane przez plik [ipsec.conf][1] oraz usługę `ipsec.service`
   * XFRM to implementacja IPsec w linuksowym jądrze; wykorzystuje routing za pomocą VRF, czyli bez zarządzanych za pomocą ifconfig interfejsów tun/tap znanych głównie z OpenVPN; zarządzane przez komendę [ip xfrm][2]
-  * VRF (Virtual Routing and Forwarding) &#8211; technologia zaimplementowana w kernelu pozwalająca na istnienie dodatkowych tablic routingu, przypomina VLANy dla protokołu IP; zarządzana przez użytkownika za pomocą komendy [ip vrf][3]
+  * VRF (Virtual Routing and Forwarding) - technologia zaimplementowana w kernelu pozwalająca na istnienie dodatkowych tablic routingu, przypomina VLANy dla protokołu IP; zarządzana przez użytkownika za pomocą komendy [ip vrf][3]
   * IKE (Internet Key Exchange) to protokół do wymiany kluczy kryptograficznych, jeden z wielu dostępnych dla strongSwan i dość szeroko przyjęty przez nielinuksowych klientów
 
 Co będzie nam potrzebne:
 
-  * dwie prywatne podsieci dla serwerów wewnątrz dwóch lokalizacji &#8211; na przykład `10.1.0.0/16` i `10.2.0.0./16`
-  * interfejsy sieciowe głównych serwerów, za pomocą których chcemy łączyć się między nimi &#8211; mogą to być tranzytowe linki do internetu, albo dedykowane &#8211; często dostawcy usług jak Hetzner dostarczając prywatne łącza o wyższej dostępności i niższym koszcie (często darmowe) &#8211; tu będą na serwerze A interfejs `eth0` na VLANie 4444 oraz na serwerze B osobny interfejs `eth1`; połączenie to jest routowalne &#8211; w tym wypadku w sieci `172.16.0.0/24` (konfiguracja routingu po stronie Hetzner Cloud &#8211; <https://docs.hetzner.com/cloud/networks/connect-dedi-vswitch>; serwer A jest fizyczny i używa vSwitch, serwer B jest wirtualny)
+  * dwie prywatne podsieci dla serwerów wewnątrz dwóch lokalizacji - na przykład `10.1.0.0/16` i `10.2.0.0./16`
+  * interfejsy sieciowe głównych serwerów, za pomocą których chcemy łączyć się między nimi - mogą to być tranzytowe linki do internetu, albo dedykowane - często dostawcy usług jak Hetzner dostarczając prywatne łącza o wyższej dostępności i niższym koszcie (często darmowe) - tu będą na serwerze A interfejs `eth0` na VLANie 4444 oraz na serwerze B osobny interfejs `eth1`; połączenie to jest routowalne - w tym wypadku w sieci `172.16.0.0/24` (konfiguracja routingu po stronie Hetzner Cloud - <https://docs.hetzner.com/cloud/networks/connect-dedi-vswitch>; serwer A jest fizyczny i używa vSwitch, serwer B jest wirtualny)
   * PSK (_pre shared key_) / hasło (np. długi alfanumeryczny ciągi) dla połączenia site-to-site
   * opcjonalnie dla klientów zewnętrznych: PKI, którego proste tworzenie opiszę pod koniec artykułu
 
@@ -83,9 +83,9 @@ Sekcja `ethernets` w powyższym prawdopodobnie będzie już skonfigurowana przez
 
 To, co okazało się dla mnie istotne podczas używania połączenia to odpowiednie MTU. Linuks powinien sam dobrać odpowiednie, ale w moim wypadku ustawił wartość maksymalnego rozmiaru jednostki transportu na taką samą jak fizyczny interfejs, czyli 1500 bajtów. Ze względu na specyfikę Hetznerowego vSwitcha, wartość ta powinna być mniejsza, na przykład 1450 bajtów. Problem odkryłem, kiedy łączność z serwera dedykowanego do maszyny wirtualnej nawiązywana przez VLAN vSwitcha niby działała, ale połączenia SSH zawieszały się całkowicie na komunikacie `expecting SSH2_MSG_KEX_ECDH_REPLY` (widocznym przy trybie debugowania `ssh -vvvv`).
 
-## Konfiguracja strongSwan &#8211; site-to-site {#konfiguracja-strongswan-site-to-site}
+## Konfiguracja strongSwan - site-to-site {#konfiguracja-strongswan-site-to-site}
 
-Składnia pliku `/etc/ipsec.conf` jest dość prosta &#8211; sekcja `setup` określa globalne ustawienia, takie jak poziom szczegółowości logów, a sekcje `conn ...` określają konkretne połączenia. W sekcjach połączeń strona lewa to strona &#8222;nasza&#8221;, a prawa to zdalna. Parametr `left` określa IP, na którym zostanie zestawione połączenie IPsec, a `leftsubnet` to podsieć, którą będziemy routować (podobnie dla `right`). Przykładowe pliki konfiguracyjne poniżej.
+Składnia pliku `/etc/ipsec.conf` jest dość prosta - sekcja `setup` określa globalne ustawienia, takie jak poziom szczegółowości logów, a sekcje `conn ...` określają konkretne połączenia. W sekcjach połączeń strona lewa to strona "nasza", a prawa to zdalna. Parametr `left` określa IP, na którym zostanie zestawione połączenie IPsec, a `leftsubnet` to podsieć, którą będziemy routować (podobnie dla `right`). Przykładowe pliki konfiguracyjne poniżej.
 
 Na serwerze A:
 
@@ -140,25 +140,25 @@ Dodatkowo należy skonfigurować PSK w pliku `/etc/ipsec.secrets` (w obie strony
 
 Konfiguracja zawiera aż trzy pułapki. 
 
-## Pułapka pierwsza &#8211; NAT {#pulapka-pierwsza-nat}
+## Pułapka pierwsza - NAT {#pulapka-pierwsza-nat}
 
-Pierwsza dotyczy środowiska Hetzner Cloud, a więc maszyny wirtualnej &#8211; choć oczywiście problem występuje także w innych konfiguracjach. Czasami strongSwan nie jest w stanie wykryć, że znajduje się za NATem. W takiej sytuacji należy dodać `forceencaps=yes` do sekcji połączenia &#8211; ale tylko na tym serwerze, gdzie mamy do czynienia z NATem.
+Pierwsza dotyczy środowiska Hetzner Cloud, a więc maszyny wirtualnej - choć oczywiście problem występuje także w innych konfiguracjach. Czasami strongSwan nie jest w stanie wykryć, że znajduje się za NATem. W takiej sytuacji należy dodać `forceencaps=yes` do sekcji połączenia - ale tylko na tym serwerze, gdzie mamy do czynienia z NATem.
 
-## Pułapka druga &#8211; renegocjacja klucza {#pulapka-druga-renegocjacja-klucza}
+## Pułapka druga - renegocjacja klucza {#pulapka-druga-renegocjacja-klucza}
 
 Jeśli połączenie ma być stabilne, a za dodatkową warstwę bezpieczeństwa odpowiada prywatny link, najlepiej będzie zrezygnować z okresowego renegocjowania kluczy szyfrujących połączenie. W przeciwnym wypadku pojawiać się będzie dziwny packet loss. Aby to ustawić, należy dodać `reauth=no` i usunąć sekcję `ikelifetime=1h`. 
 
-Namierzenie tego problemu zajęło mi dość dużo czasu, a było o tyle irytujące, że Prometheus, którego używam do monitorowania serwerów, bardzo szybko zauważał brak połączenia i wywoływał alerty w PagerDuty. Doprowadziło to do odświeżenia przeze mnie starego projektu _Sauron_, czyli narzędzia do monitorowania packet lossu do zadanych adresów IP i przepisania go tak, żeby mógł wysyłać wyniki do bazy danych InfluxDB. Projekt jest dostępny na GitHubie &#8211; <https://github.com/danielskowronski/sauron4/> 
+Namierzenie tego problemu zajęło mi dość dużo czasu, a było o tyle irytujące, że Prometheus, którego używam do monitorowania serwerów, bardzo szybko zauważał brak połączenia i wywoływał alerty w PagerDuty. Doprowadziło to do odświeżenia przeze mnie starego projektu _Sauron_, czyli narzędzia do monitorowania packet lossu do zadanych adresów IP i przepisania go tak, żeby mógł wysyłać wyniki do bazy danych InfluxDB. Projekt jest dostępny na GitHubie - <https://github.com/danielskowronski/sauron4/> 
 
 Moje pierwsze podejrzenie dotyczyło stabilności łącza prywatnego, jednak okazało się błędne. W celu badania jakichś zależności postawiłem taki oto dashboard w Grafanie:<figure class="is-layout-flex wp-block-gallery-51 wp-block-gallery has-nested-images columns-default is-cropped"> <figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="1728" height="848" data-id="2376"  src="https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana.png" alt="" class="wp-image-2376" srcset="https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana.png 1728w, https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana-300x147.png 300w, https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana-1024x503.png 1024w, https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana-768x377.png 768w, https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana-1536x754.png 1536w" sizes="(max-width: 1728px) 100vw, 1728px" />][5]</figure> <figure class="wp-block-image size-large">[<img decoding="async" loading="lazy" width="1728" height="848" data-id="2379"  src="https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana.png" alt="" class="wp-image-2379" srcset="https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana.png 1728w, https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana-300x147.png 300w, https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana-1024x503.png 1024w, https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana-768x377.png 768w, https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana-1536x754.png 1536w" sizes="(max-width: 1728px) 100vw, 1728px" />][6]</figure> <figcaption class="blocks-gallery-caption">Jak widać &#8211; nic konkretnego nie widać poza pozorami regularności</figcaption></figure> 
+[<img decoding="async" loading="lazy" width="1728" height="848" data-id="2376"  src="https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana.png" alt="" class="wp-image-2376" srcset="https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana.png 1728w, https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana-300x147.png 300w, https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana-1024x503.png 1024w, https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana-768x377.png 768w, https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana-1536x754.png 1536w" sizes="(max-width: 1728px) 100vw, 1728px" />][5]</figure> <figure class="wp-block-image size-large">[<img decoding="async" loading="lazy" width="1728" height="848" data-id="2379"  src="https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana.png" alt="" class="wp-image-2379" srcset="https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana.png 1728w, https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana-300x147.png 300w, https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana-1024x503.png 1024w, https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana-768x377.png 768w, https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana-1536x754.png 1536w" sizes="(max-width: 1728px) 100vw, 1728px" />][6]</figure> <figcaption class="blocks-gallery-caption">Jak widać - nic konkretnego nie widać poza pozorami regularności</figcaption></figure> 
 
-Dopiero analiza logów z `journalctl` skorelowanych z kilkoma punktami gdzie pokazał się packet loss jedynie na sieci routowanej przez VPN pokazał, w czym tkwi problem &#8211; `172.16.0.2 is initiating an IKE_SA` występował zawsze przed utratą połączenia. 
+Dopiero analiza logów z `journalctl` skorelowanych z kilkoma punktami gdzie pokazał się packet loss jedynie na sieci routowanej przez VPN pokazał, w czym tkwi problem - `172.16.0.2 is initiating an IKE_SA` występował zawsze przed utratą połączenia. 
 
-## Pułapka trzecia &#8211; maskarada {#pulapka-trzecia-maskarada}
+## Pułapka trzecia - maskarada {#pulapka-trzecia-maskarada}
 
-Żeby kontenery na naszych serwerach mogły łączyć się z internetem (będąc w podsieciach sieci 10.0.0.0/8) potrzeba nam klasycznej maskarady w iptables. Jeślibyśmy poprzestali na skonfigurowaniu LXD tak, żeby zarządzane interfejsy (tu `lxdbr0`) miały automatycznie zarządzany NAT to łączność z internetem zadziała, jednak między podsieciami (10.1.0.0/16 i 10.2.0.0/16) połączenie się nie uda &#8211; reguły `PREROUTING` będą źle kierować ruchem. 
+Żeby kontenery na naszych serwerach mogły łączyć się z internetem (będąc w podsieciach sieci 10.0.0.0/8) potrzeba nam klasycznej maskarady w iptables. Jeślibyśmy poprzestali na skonfigurowaniu LXD tak, żeby zarządzane interfejsy (tu `lxdbr0`) miały automatycznie zarządzany NAT to łączność z internetem zadziała, jednak między podsieciami (10.1.0.0/16 i 10.2.0.0/16) połączenie się nie uda - reguły `PREROUTING` będą źle kierować ruchem. 
 
 Aby tego uniknąć, należy zmienić ustawienie interfejsu sieciowego lxc za pomocą `lxc network edit lxdbr0` tak, by `config.ipv4.nat` miał wartość `false` oraz ręcznie ustawić maskaradę. Można to osiągnąć za pomocą takiego ustawienia iptables: 
 
@@ -175,7 +175,7 @@ Aby wykonywał się przy każdym zrestartowaniu połączenia VPN, można dodać 
 
 ## Startowanie i testowanie połączenia {#startowanie-i-testowanie-polaczenia}
 
-Mając wszystkie pliki na miejscu można startować &#8211; serwis zazwyczaj nazywa się ipsec, choć może to być jedynie alias. W Ubuntu 21.10 usługa to `strongswan-starter.service`. Stan połączeń możemy sprawdzić za pomocą `ipsec status`:
+Mając wszystkie pliki na miejscu można startować - serwis zazwyczaj nazywa się ipsec, choć może to być jedynie alias. W Ubuntu 21.10 usługa to `strongswan-starter.service`. Stan połączeń możemy sprawdzić za pomocą `ipsec status`:
 
 <pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">Routed Connections:
 ulthar-to-rlyeh{1}:  ROUTED, TUNNEL, reqid 1
@@ -188,17 +188,17 @@ ulthar-to-rlyeh[684]: ESTABLISHED 35 minutes ago, 172.16.0.2[172.16.0.2]...172.1
 ulthar-to-rlyeh{696}:  INSTALLED, TUNNEL, reqid 1, ESP in UDP SPIs: xxxxxxxx_i xxxxxxxx_o
 ulthar-to-rlyeh{696}:   10.1.0.0/16 === 10.2.0.0/16</pre>
 
-Sama komenda `ipsec` pozwala na restartowanie połączeń, jednak jeśli używamy `systemctl` do startowania połączeń może pojawić się konflikt &#8211; osobiście używam `ipsec` tylko do diagnostyki, nie kontroli.
+Sama komenda `ipsec` pozwala na restartowanie połączeń, jednak jeśli używamy `systemctl` do startowania połączeń może pojawić się konflikt - osobiście używam `ipsec` tylko do diagnostyki, nie kontroli.
 
 ## Połączenie client-to-site {#polaczenie-client-to-site}
 
-Do kompletu warto dodać też możliwość podłączenia się klienta do naszej sieci 10.0.0.0/8 &#8211; na przykład ze stacji roboczej. Użyjemy tego samego strongSwana, jednak z nieco innymi ustawieniami szyfrowania tak, by używać natywnych klientów dostępnych w systemach operacyjnych i nieco mocniej zabezpieczyć połączenie. Konkretniej będzie to szyfrowanie asymetryczne z wykorzystaniem prywatnego PKI oraz protokołu MS-CHAPv2
+Do kompletu warto dodać też możliwość podłączenia się klienta do naszej sieci 10.0.0.0/8 - na przykład ze stacji roboczej. Użyjemy tego samego strongSwana, jednak z nieco innymi ustawieniami szyfrowania tak, by używać natywnych klientów dostępnych w systemach operacyjnych i nieco mocniej zabezpieczyć połączenie. Konkretniej będzie to szyfrowanie asymetryczne z wykorzystaniem prywatnego PKI oraz protokołu MS-CHAPv2
 
 Do zarządzania PKI używam narzędzia [smallstep][7]. Można oczywiście używać ręcznie `openssl`, ale szansa przegapienia ważnych flag w certyfikacie CA, czy za długo czasu życia certyfikatu serwera przy obecnie ciągle ulepszanych standardach jest tak duża, że warto nieco pójść na łatwiznę. Przy okazji smallstep potrafi więcej niż tylko ułatwiać generowanie certyfikatów ręcznie. 
 
-Na początek potrzebny będzie nam Root CA &#8211; możemy to załatwić jedną komendą `step ca init` opisaną na <https://smallstep.com/docs/step-cli/reference/ca/init>. Rzecz jasna klucz prywatny musimy bezpiecznie przechowywać. Karta inteligentna wydaje się dobrym rozwiązaniem. Sam certyfikat Root CA trzeba zapisać i zdeployować na wszystkie maszyny, które mają mu ufać oraz ustawić całkowite zaufanie &#8211; na Linuksach za pomocą `/usr/sbin/update-ca-certificates`, na macOS za pomocą `Keychain Access.app`. 
+Na początek potrzebny będzie nam Root CA - możemy to załatwić jedną komendą `step ca init` opisaną na <https://smallstep.com/docs/step-cli/reference/ca/init>. Rzecz jasna klucz prywatny musimy bezpiecznie przechowywać. Karta inteligentna wydaje się dobrym rozwiązaniem. Sam certyfikat Root CA trzeba zapisać i zdeployować na wszystkie maszyny, które mają mu ufać oraz ustawić całkowite zaufanie - na Linuksach za pomocą `/usr/sbin/update-ca-certificates`, na macOS za pomocą `Keychain Access.app`. 
 
-Następnie potrzebujemy certyfikatu dla serwera. Jeśli będziemy używać macOS lub iOS do łączenia się nie możemy używać ECDSA do tego certyfikatu (sam Root CA może być ECDSA) tylko standardowego RSA. Problem polega na tym, że niby macOS obsługuje kryptografię krzywej eliptycznej w IKEv2 (<https://support.apple.com/pl-pl/guide/deployment/depae3d361d0/web>), to nie można tego ustawić z normalnego interfejsu &#8211; jedynie przez narzędzia do generowania profili konfiguracyjnych (<https://wiki.strongswan.org/projects/strongswan/wiki/AppleIKEv2Profile> i <https://github.com/skowronski-cloud/skowronski-cloud-wiki/blob/master/rlyeh/03_vpn.md#note-on-key-type-selection>). Taki certyfikat ważny przez 5 lat możemy wygenerować w ten sposób:
+Następnie potrzebujemy certyfikatu dla serwera. Jeśli będziemy używać macOS lub iOS do łączenia się nie możemy używać ECDSA do tego certyfikatu (sam Root CA może być ECDSA) tylko standardowego RSA. Problem polega na tym, że niby macOS obsługuje kryptografię krzywej eliptycznej w IKEv2 (<https://support.apple.com/pl-pl/guide/deployment/depae3d361d0/web>), to nie można tego ustawić z normalnego interfejsu - jedynie przez narzędzia do generowania profili konfiguracyjnych (<https://wiki.strongswan.org/projects/strongswan/wiki/AppleIKEv2Profile> i <https://github.com/skowronski-cloud/skowronski-cloud-wiki/blob/master/rlyeh/03_vpn.md#note-on-key-type-selection>). Taki certyfikat ważny przez 5 lat możemy wygenerować w ten sposób:
 
 <pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">step certificate create ipsec.example.com ipsec.crt ipsec.key \
      --kty RSA --size 4096 --ca root_ca.crt --ca-key root_ca_key \
@@ -246,7 +246,7 @@ conn ikev2-vpn-client_b
 
 Poprawność instalacji kluczy możemy zweryfikować przy użyciu `ipsec listcerts` i `ipsec listcacerts`.
 
-Sekcja `conn ikev2-vpn` pozwala stworzyć szablon dla konkretnych połączeń doprecyzowanych w tym przykładzie jako `ikev2-vpn-client_a` i `ikev2-vpn-client_b`. `client_a` i `client_b` to loginy użytkowników, a `rightsourceip` to adresy IP, jakie otrzymają po zalogowaniu się. Parametr `leftid` jest bardzo ważny &#8211; musi to być parametr, który klienci podadzą w ustawieniach połączenia.
+Sekcja `conn ikev2-vpn` pozwala stworzyć szablon dla konkretnych połączeń doprecyzowanych w tym przykładzie jako `ikev2-vpn-client_a` i `ikev2-vpn-client_b`. `client_a` i `client_b` to loginy użytkowników, a `rightsourceip` to adresy IP, jakie otrzymają po zalogowaniu się. Parametr `leftid` jest bardzo ważny - musi to być parametr, który klienci podadzą w ustawieniach połączenia.
 
 W pliku `/etc/ipsec.secrets` musimy wskazać na certyfikat serwera oraz zdefiniować hasła każdego z klientów (dopasowywane według pola `eap_identity`):
 

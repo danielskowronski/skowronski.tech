@@ -14,33 +14,33 @@ tags:
   - security
 
 ---
-Jak większość osób mających małą sieć hostującą laba z eksperymentami i kilka prywatnych rozwiązań, które nie powinny być otwarte dla całego świata z szerokiego wachlarza powodów (od bezpieczeństwa infrastruktury po ratelimiting kluczy API zewnętrznych aplikacji) jednym z wyzwań, przed jakimi stoję, jest zabezpieczenie czegoś, co można by nazwać intranetem. Niekoniecznie VPNem, bo nie zewsząd da się do takowego podłączyć, a zwykle i tak chodzi o zestaw webaplikacji &#8211; nierzadko napisanych na kolanie bez cienia autoryzacji.
+Jak większość osób mających małą sieć hostującą laba z eksperymentami i kilka prywatnych rozwiązań, które nie powinny być otwarte dla całego świata z szerokiego wachlarza powodów (od bezpieczeństwa infrastruktury po ratelimiting kluczy API zewnętrznych aplikacji) jednym z wyzwań, przed jakimi stoję, jest zabezpieczenie czegoś, co można by nazwać intranetem. Niekoniecznie VPNem, bo nie zewsząd da się do takowego podłączyć, a zwykle i tak chodzi o zestaw webaplikacji - nierzadko napisanych na kolanie bez cienia autoryzacji.
 
-#### Pierwsze podejście z Caddy&#8217;m i ucieczka od niego
+#### Pierwsze podejście z Caddy'm i ucieczka od niego
 
-Moje pierwsze podejście do tego tematu zaczęło się ze zgłębianiem dostępnych plug-inów do web serwera Caddy &#8211; wówczas w wersji pierwszej. Natknąłem się na sprytny plugin _http.login_, który za pomocą innego pluginu &#8211; _jwt_ umożliwiał integrację z dostawcami tożsamości takimi jak Google, czy GitHub. Wystarczyło utworzyć w panelu własną aplikację OAuth, przekopiować tokeny do konfiguracji plug-inu i wylistować użytkowników mogących się zalogować do zasobów intranetu. Jak to rozwiązanie wygląda w praktyce, można zobaczyć na innym blogu &#8211; <https://etherarp.net/github-login-on-caddy/index.html>
+Moje pierwsze podejście do tego tematu zaczęło się ze zgłębianiem dostępnych plug-inów do web serwera Caddy - wówczas w wersji pierwszej. Natknąłem się na sprytny plugin _http.login_, który za pomocą innego pluginu - _jwt_ umożliwiał integrację z dostawcami tożsamości takimi jak Google, czy GitHub. Wystarczyło utworzyć w panelu własną aplikację OAuth, przekopiować tokeny do konfiguracji plug-inu i wylistować użytkowników mogących się zalogować do zasobów intranetu. Jak to rozwiązanie wygląda w praktyce, można zobaczyć na innym blogu - <https://etherarp.net/github-login-on-caddy/index.html>
 
-_Umożliwiał_, bowiem twórcy Caddy&#8217;ego postanowili wydać wersję drugą, całkowicie niszcząc system plug-inów. Stara dokumentacja nie jest dostępna &#8211; [na Web Archive można zobaczyć][1] jak prosto wyglądała konfiguracja &#8211; całkowicie zgodna z duchem tego ekosystemu. Wiele miesięcy od otworzenia [issue dotyczącego przyszłości plug-inów autoryzacyjnych][2] twórcy dalej nie mają planów na oddanie użytkownikom dość istotnej funkcjonalności.
+_Umożliwiał_, bowiem twórcy Caddy'ego postanowili wydać wersję drugą, całkowicie niszcząc system plug-inów. Stara dokumentacja nie jest dostępna - [na Web Archive można zobaczyć][1] jak prosto wyglądała konfiguracja - całkowicie zgodna z duchem tego ekosystemu. Wiele miesięcy od otworzenia [issue dotyczącego przyszłości plug-inów autoryzacyjnych][2] twórcy dalej nie mają planów na oddanie użytkownikom dość istotnej funkcjonalności.
 
-Dodatkowo od jakiegoś czasu dostawałem maile od Githuba, zatytułowanych _[<mark>GitHubAPI</mark>] <mark>Deprecation notice for authentication via URL query parameters</mark>_, a prowadzących do <https://developer.github.com/changes/2020-02-10-deprecating-auth-through-query-param/>. Przy okazji planowanej jeszcze wówczas migracji do nowej wersji Caddy&#8217;ego (nie spodziewając się takich problemów z kompatybilnością) miałem zamiar poprawić ów plugin, żeby GitHub nie narzekał, a sam kod nie przestał działać.
+Dodatkowo od jakiegoś czasu dostawałem maile od Githuba, zatytułowanych _[<mark>GitHubAPI</mark>] <mark>Deprecation notice for authentication via URL query parameters</mark>_, a prowadzących do <https://developer.github.com/changes/2020-02-10-deprecating-auth-through-query-param/>. Przy okazji planowanej jeszcze wówczas migracji do nowej wersji Caddy'ego (nie spodziewając się takich problemów z kompatybilnością) miałem zamiar poprawić ów plugin, żeby GitHub nie narzekał, a sam kod nie przestał działać.
 
-Dlatego też postanowiłem poszukać alternatyw, nawet jeśli miały uwzględniać używanie Nginxa, którego porzuciłem w mojej domowej sieci z wielu względów &#8211; między innymi przewagi Caddy&#8217;ego na polu współpracy z Let&#8217;s Encryptem i pogmatwanych konfigów w małych i niezbyt wymagających projektach.
+Dlatego też postanowiłem poszukać alternatyw, nawet jeśli miały uwzględniać używanie Nginxa, którego porzuciłem w mojej domowej sieci z wielu względów - między innymi przewagi Caddy'ego na polu współpracy z Let's Encryptem i pogmatwanych konfigów w małych i niezbyt wymagających projektach.
 
-#### Drugie podejście &#8211; Authelia + nginx
+#### Drugie podejście - Authelia + nginx
 
-Szukając alternatyw uznałem, że priorytetem będzie dwuskładnikowe uwierzytelnianie, najlepiej w formie powiadomień push &#8211; tak żeby działało to wygodnie na telefonie &#8211; cały czas, nie tylko w momencie posiadania pod ręką Yubikeya NFC. Authelia poza klasycznymi TOTP supportuje też Duo, które jest darmowe dla 10 użytkowników w organizacji.
+Szukając alternatyw uznałem, że priorytetem będzie dwuskładnikowe uwierzytelnianie, najlepiej w formie powiadomień push - tak żeby działało to wygodnie na telefonie - cały czas, nie tylko w momencie posiadania pod ręką Yubikeya NFC. Authelia poza klasycznymi TOTP supportuje też Duo, które jest darmowe dla 10 użytkowników w organizacji.
 
-Jednym z pierwszych wyników, a na pewno najbardziej obiecującym rozwiązaniem okazała się Authelia &#8211; middleware autoryzacji dla nginxa, traefika i haproxy. 
+Jednym z pierwszych wyników, a na pewno najbardziej obiecującym rozwiązaniem okazała się Authelia - middleware autoryzacji dla nginxa, traefika i haproxy. 
 
-Twórcy dostarczają gotowe setupy dla dockera i integrację z ingress proxy kubernetesa, lecz mój lab oparty na trwałych kontenerach LXC wymagał setupu jak dla baremerala &#8211; co okazało się nieco trudniejsze w mmomencie kiedy chciałem za pierwszym razem wyprodukować coś, co przejmie ruch z istniejącego rozwiązania, ale czego się nie robi siedząc do 3 rano 😉
+Twórcy dostarczają gotowe setupy dla dockera i integrację z ingress proxy kubernetesa, lecz mój lab oparty na trwałych kontenerach LXC wymagał setupu jak dla baremerala - co okazało się nieco trudniejsze w mmomencie kiedy chciałem za pierwszym razem wyprodukować coś, co przejmie ruch z istniejącego rozwiązania, ale czego się nie robi siedząc do 3 rano 😉
 
 #### Instalacja i wymagania wstępne
 
 Na serwer obsługujący ruch HTTP wybrałem znanego sobie nginxa. W tym setupie terminuje także TLSa z certyfikatem z [prywatnego CA obsługiwanego przez smallstepa][3], o którym powinienem kiedyś więcej napisać.
 
-Do kompletu potrzeba będzie także Redisa do przechowywania tokenów sesyjnych &#8211; przydaje się to bardziej przy skalowani Authelii, ale pomaga także rozdzielić storage od samego proxy.
+Do kompletu potrzeba będzie także Redisa do przechowywania tokenów sesyjnych - przydaje się to bardziej przy skalowani Authelii, ale pomaga także rozdzielić storage od samego proxy.
 
-Sama instalacja jest dość prosta &#8211; nie ma jeszcze co prawda paczek, ale poniższy playbook ansibla rozwiązuje sprawę. Zmienna `authelia_ver` ma wartość taga z githuba (na przykład v4.21.0) &#8211; <https://github.com/authelia/authelia/releases> 
+Sama instalacja jest dość prosta - nie ma jeszcze co prawda paczek, ale poniższy playbook ansibla rozwiązuje sprawę. Zmienna `authelia_ver` ma wartość taga z githuba (na przykład v4.21.0) - <https://github.com/authelia/authelia/releases> 
 
 <pre class="EnlighterJSRAW" data-enlighter-language="yaml" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">- name: install software
   apt:
@@ -135,7 +135,7 @@ Czas skonfigurować nginxa tak, żeby coś prostego nam proxował, a Authelia br
     proxy_connect_timeout 240;
 }</pre>
 
-  * `/etc/nginx/auth.conf` konfigurujący użycie middleware&#8217;u autoryzacji i odpowiedni redirect do strony logowania (którego konfig opisany jest nieco dalej &#8211; tutaj jest to domena `auth.example.com`): 
+  * `/etc/nginx/auth.conf` konfigurujący użycie middleware'u autoryzacji i odpowiedni redirect do strony logowania (którego konfig opisany jest nieco dalej - tutaj jest to domena `auth.example.com`): 
 
 <pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">auth_request /authelia;
 auth_request_set $target_url $scheme://$http_host$request_uri;
@@ -145,7 +145,7 @@ proxy_set_header Remote-User $user;
 proxy_set_header Remote-Groups $groups;
 error_page 401 =302 https://auth.example.com/?rd=$target_url;</pre>
 
-  * `/etc/nginx/ssl.conf` opisujący gdzie szukać certyfikatów SSL &#8211; bardziej przydatne kiedy używamy certyfikatu wildcard; oczywiście potrzeba także `/etc/nginx/intranet.*` 
+  * `/etc/nginx/ssl.conf` opisujący gdzie szukać certyfikatów SSL - bardziej przydatne kiedy używamy certyfikatu wildcard; oczywiście potrzeba także `/etc/nginx/intranet.*` 
 
 <pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">listen              443 ssl;
 ssl_certificate     /etc/nginx/intranet.crt;
@@ -153,7 +153,7 @@ ssl_certificate_key /etc/nginx/intranet.key;
 ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
 ssl_ciphers         HIGH:!aNULL:!MD5;</pre>
 
-  * `/etc/nginx/sites-enabled/proxy.conf` zawierający konfigurację przezroczystego proxy &#8211; to jest coś, co w Caddym można by zapisać jako, `proxy / { transparent }`, jednak nginx jest bardziej jak Debian w tej kwestii 😉
+  * `/etc/nginx/sites-enabled/proxy.conf` zawierający konfigurację przezroczystego proxy - to jest coś, co w Caddym można by zapisać jako, `proxy / { transparent }`, jednak nginx jest bardziej jak Debian w tej kwestii 😉
 
 <pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">client_body_buffer_size 128k;
 
@@ -232,9 +232,9 @@ server {
 
 #### Konfigurowanie authelii
 
-Sama authelia wymaga już tylko jednego pliku konfiguracyjnego oraz bazy użytkowników &#8211; może być to plik YAML (który wykorzystamy w tym prostym przykładzie), LDAP lub klasyczna baza danych &#8211; SQLite, MySQL tudzież PostgreSQL.
+Sama authelia wymaga już tylko jednego pliku konfiguracyjnego oraz bazy użytkowników - może być to plik YAML (który wykorzystamy w tym prostym przykładzie), LDAP lub klasyczna baza danych - SQLite, MySQL tudzież PostgreSQL.
 
-Tu powinna pojawić się także konfiguracja serwera SMTP, ale twórcy Authelii przewidzieli naprawdę małe setupy i jest możliwość zapisywania wiadomości zawierających np. linki do aktywacji MFA czy resetowania hasła w pliku tekstowym na serwerze &#8211; idealne dla jednego użytkownika lub celów testowych.
+Tu powinna pojawić się także konfiguracja serwera SMTP, ale twórcy Authelii przewidzieli naprawdę małe setupy i jest możliwość zapisywania wiadomości zawierających np. linki do aktywacji MFA czy resetowania hasła w pliku tekstowym na serwerze - idealne dla jednego użytkownika lub celów testowych.
 
 Ścieżka do pliku podana jest w commandline, w tym przykładzie zdefiniowana jest w konfiguracji usługi w systemd (`/srv/authelia/configuration.yml`).
 
@@ -306,11 +306,11 @@ notifier:
   filesystem:
     filename: /tmp/notification.txt</pre>
 
-Zmienne związane z Duo opiszę w następnej części. Poza tym podmienić należy oczywiście losowy sekret JWT, domenę, hasło do Redisa i zdefiniować odpowiednie reguły chronienia domen. Przykładowe zapewniają dostęp bez logowania do domeny głównej i chroniony MFA dla wszelkich subdomen. Więcej opcji opisanych jest w bardzo dobrej dokumentacji &#8211; <https://www.authelia.com/docs/configuration/access-control.html>
+Zmienne związane z Duo opiszę w następnej części. Poza tym podmienić należy oczywiście losowy sekret JWT, domenę, hasło do Redisa i zdefiniować odpowiednie reguły chronienia domen. Przykładowe zapewniają dostęp bez logowania do domeny głównej i chroniony MFA dla wszelkich subdomen. Więcej opcji opisanych jest w bardzo dobrej dokumentacji - <https://www.authelia.com/docs/configuration/access-control.html>
 
-Ostatnim klockiem w układance jest plik `/srv/authelia/users_database.yml`. O tym jak wygenerować hash hasła wspomina dokumentacja &#8211; <https://www.authelia.com/docs/configuration/authentication/file.html#passwords>
+Ostatnim klockiem w układance jest plik `/srv/authelia/users_database.yml`. O tym jak wygenerować hash hasła wspomina dokumentacja - <https://www.authelia.com/docs/configuration/authentication/file.html#passwords>
 
-Coś, co jest warte uwagi przy deploymencie na lekkich kontenerach (mój ma 128 MB RAMu i 1 vCPU) to fakt, że domyślnie używany algorytm hashujący argon2id jest wybitnie ciężki &#8211; użyłem zamiast niego sha512.
+Coś, co jest warte uwagi przy deploymencie na lekkich kontenerach (mój ma 128 MB RAMu i 1 vCPU) to fakt, że domyślnie używany algorytm hashujący argon2id jest wybitnie ciężki - użyłem zamiast niego sha512.
 
 <pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">users:
   daniel:
@@ -322,7 +322,7 @@ Coś, co jest warte uwagi przy deploymencie na lekkich kontenerach (mój ma 128 
 
 #### Konfigurowanie Duo
 
-Na koniec konfiguracji potrzebujemy ustawionego Duo. Wystarczy konto _Duo Free_, które na stronie opisane jest jako trial, ale nim nie jest &#8211; jest darmowe (<https://duo.com/pricing/duo-free>). W procesie rejestracji potrzebujemy aplikacji Duo na telefonie, bowiem _Admin Login_ chroniony jest przez Duo 😉
+Na koniec konfiguracji potrzebujemy ustawionego Duo. Wystarczy konto _Duo Free_, które na stronie opisane jest jako trial, ale nim nie jest - jest darmowe (<https://duo.com/pricing/duo-free>). W procesie rejestracji potrzebujemy aplikacji Duo na telefonie, bowiem _Admin Login_ chroniony jest przez Duo 😉
 
 Po zalogowaniu się w domenie admin.duosecurity.com należy wybrać _Protect new application_ i odnaleźć pozycję _Partner Auth API_. Powstanie nowa aplikacja, którą możemy przemianować scrollując jej stronę niżej do _Settings._ To, co na pewno trzeba zrobić to zapisać w konfiguracji Authelii wartości _integration key, secret key_ oraz _domain_. <figure class="wp-block-image size-large">
 
@@ -344,7 +344,7 @@ Kolejny krok to dodanie urządzenia autoryzującego, w naszym wypadku telefonu z
 
 [<img decoding="async" loading="lazy" width="1024" height="655" src="https://blog.dsinf.net/wp-content/uploads/2020/08/10aa-1024x655.png" alt="" class="wp-image-1880" srcset="https://blog.dsinf.net/wp-content/uploads/2020/08/10aa-1024x655.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/08/10aa-300x192.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/08/10aa-768x492.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/08/10aa-1536x983.png 1536w, https://blog.dsinf.net/wp-content/uploads/2020/08/10aa.png 1928w" sizes="(max-width: 1024px) 100vw, 1024px" />][9]</figure> 
 
-Następnie wybieramy typ urządzenia. _Phone_ jest przydatne przy enrollmencie po numerze telefonu &#8211; kod przychodzi SMSem, _Tablet_ to wybór dla urządzeń bez numeru telefonu &#8211; wiadomość przyjdzie mailem.<figure class="wp-block-image size-large">
+Następnie wybieramy typ urządzenia. _Phone_ jest przydatne przy enrollmencie po numerze telefonu - kod przychodzi SMSem, _Tablet_ to wybór dla urządzeń bez numeru telefonu - wiadomość przyjdzie mailem.<figure class="wp-block-image size-large">
 
 [<img decoding="async" loading="lazy" width="1024" height="673" src="https://blog.dsinf.net/wp-content/uploads/2020/08/11-1024x673.png" alt="" class="wp-image-1866" srcset="https://blog.dsinf.net/wp-content/uploads/2020/08/11-1024x673.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/08/11-300x197.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/08/11-768x505.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/08/11-1536x1010.png 1536w, https://blog.dsinf.net/wp-content/uploads/2020/08/11.png 1928w" sizes="(max-width: 1024px) 100vw, 1024px" />][10]</figure> 
 
@@ -352,21 +352,21 @@ Teraz należy aktywować urządzenie poprzez wysłanie maila z linkiem i kodem.<
 
 [<img decoding="async" loading="lazy" width="1024" height="673" src="https://blog.dsinf.net/wp-content/uploads/2020/08/12aaa-1024x673.png" alt="" class="wp-image-1889" srcset="https://blog.dsinf.net/wp-content/uploads/2020/08/12aaa-1024x673.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/08/12aaa-300x197.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/08/12aaa-768x505.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/08/12aaa-1536x1010.png 1536w, https://blog.dsinf.net/wp-content/uploads/2020/08/12aaa.png 1928w" sizes="(max-width: 1024px) 100vw, 1024px" />][11]</figure> <figure class="wp-block-image size-large">[<img decoding="async" loading="lazy" width="1024" height="673" src="https://blog.dsinf.net/wp-content/uploads/2020/08/13-1024x673.png" alt="" class="wp-image-1868" srcset="https://blog.dsinf.net/wp-content/uploads/2020/08/13-1024x673.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/08/13-300x197.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/08/13-768x505.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/08/13-1536x1010.png 1536w, https://blog.dsinf.net/wp-content/uploads/2020/08/13.png 1928w" sizes="(max-width: 1024px) 100vw, 1024px" />][12]</figure> 
 
-Mail przychodzi od Duo &#8211; co jest wygodniejsze niż opisana za chwilę opcja z TOTP od Authelii. Instrukcje dla użytkownika są dość proste.<figure class="wp-block-image size-large">
+Mail przychodzi od Duo - co jest wygodniejsze niż opisana za chwilę opcja z TOTP od Authelii. Instrukcje dla użytkownika są dość proste.<figure class="wp-block-image size-large">
 
 [<img decoding="async" loading="lazy" width="862" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2020/08/14-862x1024.png" alt="" class="wp-image-1869" srcset="https://blog.dsinf.net/wp-content/uploads/2020/08/14-862x1024.png 862w, https://blog.dsinf.net/wp-content/uploads/2020/08/14-253x300.png 253w, https://blog.dsinf.net/wp-content/uploads/2020/08/14-768x912.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/08/14-1293x1536.png 1293w, https://blog.dsinf.net/wp-content/uploads/2020/08/14.png 1685w" sizes="(max-width: 862px) 100vw, 862px" />][13]</figure> 
 
 #### Enrollowanie użytkownika do klasycznego TOTP
 
-Zawsze można używać klasycznego TOTP jako backupu &#8211; za pomocą dowolnej aplikacji typu Authy czy Google Authenticator. Tutaj procedura jest nieco bardziej zawiła i wymaga użycia wspomnianego pliku z powiadomieniami lub setupu SMTP. Pierwszym krokiem jest wybranie po zalogowaniu do Authelii _Methods -> One-Time Password -> Not registered yet._ Następnie należy przegrepować plik z powiadomieniami, wybrać z niego link do rejestracji, otworzyć go i zeskanować dowolną aplikacją do TOTP kod QR.<figure class="wp-block-image size-large is-resized">
+Zawsze można używać klasycznego TOTP jako backupu - za pomocą dowolnej aplikacji typu Authy czy Google Authenticator. Tutaj procedura jest nieco bardziej zawiła i wymaga użycia wspomnianego pliku z powiadomieniami lub setupu SMTP. Pierwszym krokiem jest wybranie po zalogowaniu do Authelii _Methods -> One-Time Password -> Not registered yet._ Następnie należy przegrepować plik z powiadomieniami, wybrać z niego link do rejestracji, otworzyć go i zeskanować dowolną aplikacją do TOTP kod QR.<figure class="wp-block-image size-large is-resized">
 
 [<img decoding="async" loading="lazy" src="https://blog.dsinf.net/wp-content/uploads/2020/08/6.png" alt="" class="wp-image-1861" width="411" height="601" srcset="https://blog.dsinf.net/wp-content/uploads/2020/08/6.png 662w, https://blog.dsinf.net/wp-content/uploads/2020/08/6-205x300.png 205w" sizes="(max-width: 411px) 100vw, 411px" />][14]</figure> <figure class="wp-block-image size-large">[<img decoding="async" loading="lazy" width="1024" height="558" src="https://blog.dsinf.net/wp-content/uploads/2020/08/7-1024x558.png" alt="" class="wp-image-1862" srcset="https://blog.dsinf.net/wp-content/uploads/2020/08/7-1024x558.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/08/7-300x163.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/08/7-768x418.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/08/7-1536x837.png 1536w, https://blog.dsinf.net/wp-content/uploads/2020/08/7-2048x1115.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" />][15]</figure> <figure class="wp-block-image size-large is-resized"><img decoding="async" loading="lazy" src="https://blog.dsinf.net/wp-content/uploads/2020/08/8.png" alt="" class="wp-image-1863" width="392" height="574" srcset="https://blog.dsinf.net/wp-content/uploads/2020/08/8.png 662w, https://blog.dsinf.net/wp-content/uploads/2020/08/8-205x300.png 205w" sizes="(max-width: 392px) 100vw, 392px" /></figure> 
 
 #### Podsumowanie
 
-Niewielkim nakładem konfiguracji można dodać Authelię do istniejącego intranetu &#8211; wystarczy nginx wystawiony na świat by obsługiwał HTTP/HTTPS, middleware Authelii decyduje czy dana domena ma być dostępna dla wszystkich, czy nie, a jeśli potrzeba uwierzytelnia użytkowników &#8211; łącząc się z bazą danych, LDAPem lub prostym plikiem YAML, a całości dopełnia darmowe konto Duo i powiadomienia push. Ponadto w razie potrzeby całość łatwo się skaluje.
+Niewielkim nakładem konfiguracji można dodać Authelię do istniejącego intranetu - wystarczy nginx wystawiony na świat by obsługiwał HTTP/HTTPS, middleware Authelii decyduje czy dana domena ma być dostępna dla wszystkich, czy nie, a jeśli potrzeba uwierzytelnia użytkowników - łącząc się z bazą danych, LDAPem lub prostym plikiem YAML, a całości dopełnia darmowe konto Duo i powiadomienia push. Ponadto w razie potrzeby całość łatwo się skaluje.
 
-A decyzje twórców Caddiego łatwo się szkaluje &#8211; okazało się to kolejne oprogramowanie opensource (swoją drogą z dostępną wersją z supportem, ale z irytującą praktyką doklejania headerów http dla wersji free, czyli oficjalnych buildów i zakazem jej używania do celów komercyjnych &#8211; póki samodzielnie się go nie zbuduje), które kusząc bardzo atrakcyjnymi ułatwiaczami w rodzaju implementacji inicjatywy _HTTPS Everywhere_, supportowi HTTP/2 od wczesnych dni, czy banalnym plikiem konfiguracyjnym jednocześnie robione jest na szybko i bez przemyślenia &#8211; co wyszło zwłaszcza przy aktualizacji do v2, która zniszczyła system plug-inów, nie zapewniając kompatybilności wstecznej ani nawet przeniesienia API dla wielu middlewerów tak, że nie da się ich nawet portować na nową wersję. Ba, usunięto też możliwość pobrania wersji binarki z wybranymi plug-inami &#8211; ponieważ Caddy napisany jest w Go, jest skompilowany statycznie i plug-iny są częścią pliku wykonywalnego. Do tej pory można było pobrać plik z URLa w formie `?plugins=jwt,auth,...`, teraz trzeba kompilować całość samodzielnie lub wybrać wersję bez supportu dla innych plug-inów.
+A decyzje twórców Caddiego łatwo się szkaluje - okazało się to kolejne oprogramowanie opensource (swoją drogą z dostępną wersją z supportem, ale z irytującą praktyką doklejania headerów http dla wersji free, czyli oficjalnych buildów i zakazem jej używania do celów komercyjnych - póki samodzielnie się go nie zbuduje), które kusząc bardzo atrakcyjnymi ułatwiaczami w rodzaju implementacji inicjatywy _HTTPS Everywhere_, supportowi HTTP/2 od wczesnych dni, czy banalnym plikiem konfiguracyjnym jednocześnie robione jest na szybko i bez przemyślenia - co wyszło zwłaszcza przy aktualizacji do v2, która zniszczyła system plug-inów, nie zapewniając kompatybilności wstecznej ani nawet przeniesienia API dla wielu middlewerów tak, że nie da się ich nawet portować na nową wersję. Ba, usunięto też możliwość pobrania wersji binarki z wybranymi plug-inami - ponieważ Caddy napisany jest w Go, jest skompilowany statycznie i plug-iny są częścią pliku wykonywalnego. Do tej pory można było pobrać plik z URLa w formie `?plugins=jwt,auth,...`, teraz trzeba kompilować całość samodzielnie lub wybrać wersję bez supportu dla innych plug-inów.
 
  [1]: https://web.archive.org/web/20190701123752/https://caddyserver.com/docs/http.login
  [2]: https://github.com/caddyserver/caddy/issues/2894

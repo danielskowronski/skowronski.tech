@@ -7,21 +7,21 @@ excerpt: 'Exchange Online, jak to Exchange w ogólności może być irytujący. 
 url: /2020/12/office-365-exchange-online-i-wysylanie-maili-z-tego-samego-username-w-obydwu-domenach/
 
 ---
-Exchange Online, jak to Exchange w ogólności może być irytujący. Tego, że tak oczywista sprawa, jak posiadanie dwóch domen i chęć wysłania maili używając tego samego użytkownika, ale różnych domen może być utrudnione &#8211; to się nie spodziewałem. Przykład konkretny i wcale nie tajny &#8211; dwa maile daniel@dsinf.net i daniel@skowron.ski hostowane na Office 365.
+Exchange Online, jak to Exchange w ogólności może być irytujący. Tego, że tak oczywista sprawa, jak posiadanie dwóch domen i chęć wysłania maili używając tego samego użytkownika, ale różnych domen może być utrudnione - to się nie spodziewałem. Przykład konkretny i wcale nie tajny - dwa maile daniel@dsinf.net i daniel@skowron.ski hostowane na Office 365.
 
-Office 365 dość dobrze obsługuje kilka domen podpiętych do jednej organizacji &#8211; domyślnie ustawia każdemu użytkownikowi alias w każdej dostępnej domenie (na przykład jan.kowalski@example.org i jan.kowalski@example.com) i pozwala administratorom na ręczne ustawienie dowolnego aliasu w obrębie wszystkich domen (na przykład dodatkowo jan@example.org, ale już kowalski@example.com). 
+Office 365 dość dobrze obsługuje kilka domen podpiętych do jednej organizacji - domyślnie ustawia każdemu użytkownikowi alias w każdej dostępnej domenie (na przykład jan.kowalski@example.org i jan.kowalski@example.com) i pozwala administratorom na ręczne ustawienie dowolnego aliasu w obrębie wszystkich domen (na przykład dodatkowo jan@example.org, ale już kowalski@example.com). 
 
-## Rozwiązanie pierwsze &#8211; `EmailAddressPolicyEnabled` {.has-medium-font-size}
+## Rozwiązanie pierwsze - `EmailAddressPolicyEnabled` {.has-medium-font-size}
 
-Teoretycznie, jeśli użytkownik Exchange&#8217;a posiada kilka aliasów, na które poczta przychodząca trafia do jego skrzynki, to powinien też móc wysyłać z nich maile. Nic bardziej mylnego. Stoi za tym domyślna polityka EmailAddressPolicy. 
+Teoretycznie, jeśli użytkownik Exchange'a posiada kilka aliasów, na które poczta przychodząca trafia do jego skrzynki, to powinien też móc wysyłać z nich maile. Nic bardziej mylnego. Stoi za tym domyślna polityka EmailAddressPolicy. 
 
 W webowym centrum administracyjnym powinna być gdzieś tutaj, ale nie zawsze będzie widoczna.<figure class="wp-block-image size-large">
 
 [<img decoding="async" loading="lazy" width="1024" height="649" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_042-1024x649.png" alt="" class="wp-image-2023" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_042-1024x649.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_042-300x190.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_042-768x487.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_042-1536x974.png 1536w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_042-2048x1299.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" />][1]</figure> 
 
-Odkąd Microsoft stworzył PowerShella, część zadań administracyjnych da się wykonać tylko z PowerShella &#8211; także w hostowanym przez Microsoft Exchange Online. Wyłączenie domyślnej polityki może brzmieć groźnie, ale jeśli tyczy się to administratorów Office 365 (najczęściej nas samych) to raczej wiedzą co robią 😉
+Odkąd Microsoft stworzył PowerShella, część zadań administracyjnych da się wykonać tylko z PowerShella - także w hostowanym przez Microsoft Exchange Online. Wyłączenie domyślnej polityki może brzmieć groźnie, ale jeśli tyczy się to administratorów Office 365 (najczęściej nas samych) to raczej wiedzą co robią 😉
 
-Problem polega na tym, że Knowledge Base Microsoftu zaleca w opisanej powyżej sytuacji użycie cmldetu `Set-Mailbox` z przełącznikiem `-EmailAddressPolicyEnabled:$false` (<https://docs.microsoft.com/en-us/powershell/module/exchange/set-mailbox?view=exchange-ps>). Poza koniecznością odpalenia tego na Windowsie &#8211; żaden problem &#8211; prawda?<figure class="wp-block-image size-large">
+Problem polega na tym, że Knowledge Base Microsoftu zaleca w opisanej powyżej sytuacji użycie cmldetu `Set-Mailbox` z przełącznikiem `-EmailAddressPolicyEnabled:$false` (<https://docs.microsoft.com/en-us/powershell/module/exchange/set-mailbox?view=exchange-ps>). Poza koniecznością odpalenia tego na Windowsie - żaden problem - prawda?<figure class="wp-block-image size-large">
 
 [<img decoding="async" loading="lazy" width="1024" height="714" src="https://blog.dsinf.net/wp-content/uploads/2020/12/screen3-1024x714.png" alt="" class="wp-image-2021" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/screen3-1024x714.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/12/screen3-300x209.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/12/screen3-768x536.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/screen3-1536x1071.png 1536w, https://blog.dsinf.net/wp-content/uploads/2020/12/screen3.png 1708w" sizes="(max-width: 1024px) 100vw, 1024px" />][2]</figure> 
 
@@ -37,7 +37,7 @@ Odpowiedź na powyższy błąd znajdziemy w pierwszym akapicie dokumentacji tego
 
 ## Istota problemu {.has-medium-font-size}
 
-Krótkie uzupełnienie co takiego robi domyślna polityka adresów e-mail: kiedy wysyłamy maila, sprawdza, czy mamy uprawnienia do wysyłania z adresu podanego w polu _From_. Jeśli nie mamy &#8211; podmieni adres _From_ na nasz bazowy adres. Niestety polityka ta sprawdza tylko _identity_, czyli odpowiednik _userPrincipalName_, nie zaś aliasy. Także posiadając alias &#8211; nie mamy uprawnień do wysyłania z niego maili. 
+Krótkie uzupełnienie co takiego robi domyślna polityka adresów e-mail: kiedy wysyłamy maila, sprawdza, czy mamy uprawnienia do wysyłania z adresu podanego w polu _From_. Jeśli nie mamy - podmieni adres _From_ na nasz bazowy adres. Niestety polityka ta sprawdza tylko _identity_, czyli odpowiednik _userPrincipalName_, nie zaś aliasy. Także posiadając alias - nie mamy uprawnień do wysyłania z niego maili. 
 
 <blockquote class="wp-block-quote">
   <p>
@@ -47,7 +47,7 @@ Krótkie uzupełnienie co takiego robi domyślna polityka adresów e-mail: kiedy
   <cite>https://docs.microsoft.com/en-us/previous-versions/exchange-server/exchange-150/jj156614(v=exchg.150)?redirectedfrom=MSDN</cite>
 </blockquote>
 
-## Rozwiązanie drugie &#8211; _Shared Mailbox_ {.has-medium-font-size}
+## Rozwiązanie drugie - _Shared Mailbox_ {.has-medium-font-size}
 
 Inne źródła od razu wskazywały konieczność założenia skrzynki współdzielonej (_Shared Mailbox_) o takim adresie, jak alias, z którego chcemy wysyłać maile. Następnie należałoby ustawić sobie uprawnienia do tej skrzynki współdzielonej i przekierowanie maili na nią wpadających na podstawowe konto. 
 
@@ -65,21 +65,21 @@ Zatem do dzieła:<figure class="is-layout-flex wp-block-gallery-29 wp-block-gall
   </li>
 </ul></figure> 
 
-## Problem drugi &#8211; automatyczne aliasy {.has-medium-font-size}
+## Problem drugi - automatyczne aliasy {.has-medium-font-size}
 
 To jednak moment, kiedy w naszym przypadku dostaniemy taki oto przemiły błąd:
 
 <blockquote class="wp-block-quote">
   <p>
-    The proxy address &#8222;SMTP:daniel@skowron.ski&#8221; is already being used by the proxy addresses or LegacyExchangeDN. Please choose another proxy address.
+    The proxy address "SMTP:daniel@skowron.ski" is already being used by the proxy addresses or LegacyExchangeDN. Please choose another proxy address.
   </p>
 </blockquote>
 
 Czy to oznacza, że trzeba jedynie usunąć sobie _proxy address_, czyli alias z konta Exchange i po kłopocie? Otóż nie. 
 
-Problem polega na tym, że kiedy posiadamy kilka domen to Exchange z automatu doda nam alias w każdej domenie &#8211; nawet dla skrzynek współdzielonych. Czyli ta świeżo tworzona skrzynka poza adresem daniel@dsinf.net dostanie alias&#8230; daniel@skowron.ski
+Problem polega na tym, że kiedy posiadamy kilka domen to Exchange z automatu doda nam alias w każdej domenie - nawet dla skrzynek współdzielonych. Czyli ta świeżo tworzona skrzynka poza adresem daniel@dsinf.net dostanie alias... daniel@skowron.ski
 
-Obejście na szczęście jest dość proste &#8211; należy stworzyć _Shared Mailbox_ z adresem o innej nazwie (tutaj: _not_daniel_), a następnie podmienić jej alias w domenie dsinf.net na właściwy daniel@dsinf.net, drugi zaś (not_daniel@skowron.ski) można usunąć.<figure class="is-layout-flex wp-block-gallery-31 wp-block-gallery columns-3 is-cropped">
+Obejście na szczęście jest dość proste - należy stworzyć _Shared Mailbox_ z adresem o innej nazwie (tutaj: _not_daniel_), a następnie podmienić jej alias w domenie dsinf.net na właściwy daniel@dsinf.net, drugi zaś (not_daniel@skowron.ski) można usunąć.<figure class="is-layout-flex wp-block-gallery-31 wp-block-gallery columns-3 is-cropped">
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
@@ -108,13 +108,13 @@ Skoro mamy gotową skrzynkę współdzieloną użytkownik musi ją jeszcze podpi
 
 ## Testowanie {.has-medium-font-size}
 
-Aby potwierdzić, że wszystko działa, jak należy, sprawdzimy, czy możemy wysłać maile z nowego aliasu poprawnie oraz, czy możemy je odebrać. Najłatwiej wykorzystać darmowe usługi online do testowania maili &#8211; ja użyłem <a href="http://10minutemail.com" data-type="URL" data-id="10minutemail.com">10minutemail.com</a> do testu poczty wychodzącej oraz [ismyemailworking.com][3] do testu maili przychodzących.<figure class="wp-block-image size-large">
+Aby potwierdzić, że wszystko działa, jak należy, sprawdzimy, czy możemy wysłać maile z nowego aliasu poprawnie oraz, czy możemy je odebrać. Najłatwiej wykorzystać darmowe usługi online do testowania maili - ja użyłem <a href="http://10minutemail.com" data-type="URL" data-id="10minutemail.com">10minutemail.com</a> do testu poczty wychodzącej oraz [ismyemailworking.com][3] do testu maili przychodzących.<figure class="wp-block-image size-large">
 
 [<img decoding="async" loading="lazy" width="1024" height="467" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_053-1024x467.png" alt="" class="wp-image-2040" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_053-1024x467.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_053-300x137.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_053-768x350.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_053-1536x700.png 1536w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_053-2048x933.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" />][4]<figcaption>Mail wpada do spamu, ale przychodzi poprawnie</figcaption></figure> <figure class="is-layout-flex wp-block-gallery-35 wp-block-gallery columns-2 is-cropped">
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055.png"><img decoding="async" loading="lazy" width="1005" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055-1005x1024.png" alt="" data-id="2041" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055.png" data-link="https://blog.dsinf.net/?attachment_id=2041" class="wp-image-2041" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055-1005x1024.png 1005w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055-294x300.png 294w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055-768x783.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055.png 1209w" sizes="(max-width: 1005px) 100vw, 1005px" /></a><figcaption class="blocks-gallery-item__caption">Żeby wysłać maila z aliasu &#8211; trzeba dodać sobie w widoku pole From</figcaption></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055.png"><img decoding="async" loading="lazy" width="1005" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055-1005x1024.png" alt="" data-id="2041" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055.png" data-link="https://blog.dsinf.net/?attachment_id=2041" class="wp-image-2041" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055-1005x1024.png 1005w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055-294x300.png 294w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055-768x783.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055.png 1209w" sizes="(max-width: 1005px) 100vw, 1005px" /></a><figcaption class="blocks-gallery-item__caption">Żeby wysłać maila z aliasu - trzeba dodać sobie w widoku pole From</figcaption></figure>
   </li>
   <li class="blocks-gallery-item">
     <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_056.png"><img decoding="async" loading="lazy" width="1024" height="836" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_056-1024x836.png" alt="" data-id="2042" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_056.png" data-link="https://blog.dsinf.net/?attachment_id=2042" class="wp-image-2042" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_056-1024x836.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_056-300x245.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_056-768x627.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_056.png 1391w" sizes="(max-width: 1024px) 100vw, 1024px" /></a><figcaption class="blocks-gallery-item__caption">Mail wychodzi z poprawnego adresu email</figcaption></figure>
@@ -123,9 +123,9 @@ Aby potwierdzić, że wszystko działa, jak należy, sprawdzimy, czy możemy wys
 
 ## Podsumowanie {.has-medium-font-size}
 
-Exchange jest nietrywialny, a w wersji Online &#8211; tym bardziej. Na szczęście da się obejść pewne problemy i cieszyć się wysyłaniem maili z aliasów w innych domenach.
+Exchange jest nietrywialny, a w wersji Online - tym bardziej. Na szczęście da się obejść pewne problemy i cieszyć się wysyłaniem maili z aliasów w innych domenach.
 
-Na zakończenie &#8211; taki oto maili wpada na główną skrzynkę odbiorczą, informując, iż skrzynka współdzielona właśnie zaczęła forwardowanie wszystkich maili &#8211; na tę główną 😉<figure class="wp-block-image size-large">
+Na zakończenie - taki oto maili wpada na główną skrzynkę odbiorczą, informując, iż skrzynka współdzielona właśnie zaczęła forwardowanie wszystkich maili - na tę główną 😉<figure class="wp-block-image size-large">
 
 [<img decoding="async" loading="lazy" width="747" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_054-747x1024.png" alt="" class="wp-image-2044" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_054-747x1024.png 747w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_054-219x300.png 219w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_054-768x1053.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_054-1120x1536.png 1120w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_054.png 1267w" sizes="(max-width: 747px) 100vw, 747px" />][5]</figure>
 

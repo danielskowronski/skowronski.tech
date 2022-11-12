@@ -22,30 +22,30 @@ tags:
   - ssh
 
 ---
-This story begins with simple need &#8211; ability to programmatically obtain all devices connected to my Wi-Fi router &#8211; TP-Link Archer C6. None of the existing libraries support this version of Web UI. The issue with the simplest solution (just flashing OpenWRT) &#8211; I rely on proprietary OneMesh technology, which enables better home mesh-networking. So, some hacking needed to be done.
+This story begins with simple need - ability to programmatically obtain all devices connected to my Wi-Fi router - TP-Link Archer C6. None of the existing libraries support this version of Web UI. The issue with the simplest solution (just flashing OpenWRT) - I rely on proprietary OneMesh technology, which enables better home mesh-networking. So, some hacking needed to be done.
 
 ## First SSH attempt
 
-If you try to SSH to Archer C6 using standard port 22 you&#8217;ll be surprised to see port open and even accepting admin&#8217;s password (the same as for Web UI). But the only thing you can do is set up of port forwarding. All other channels are disabled.
+If you try to SSH to Archer C6 using standard port 22 you'll be surprised to see port open and even accepting admin's password (the same as for Web UI). But the only thing you can do is set up of port forwarding. All other channels are disabled.
 
 Example response from ssh:
 
 <pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">PTY allocation request failed on channel 0
 shell request failed on channel 0</pre>
 
-Turns out this is for mobile apps, like Tether to control router. Not very helpful since we don&#8217;t know network topology and services behind it. More on that at official TP-Link website: <https://www.tp-link.com/us/support/faq/2462/> 
+Turns out this is for mobile apps, like Tether to control router. Not very helpful since we don't know network topology and services behind it. More on that at official TP-Link website: <https://www.tp-link.com/us/support/faq/2462/> 
 
-## New target &#8211; modify config backup and restore it
+## New target - modify config backup and restore it
 
 Apparently, a configuration backup file you can download (and then restore) from Web UI contains flags for dropbear (small SSH server) that can enable typical usage of SSH.
 
-Obviously, the fun begins when the backup is encrypted &#8211; `file` command says it&#8217;s type is `data`. Some places on the Internet suggest that reverse engineering binaries in a firmware file (freely available on TP-Link&#8217;s website) may reveal a hard-coded encryption key.
+Obviously, the fun begins when the backup is encrypted - `file` command says it's type is `data`. Some places on the Internet suggest that reverse engineering binaries in a firmware file (freely available on TP-Link's website) may reveal a hard-coded encryption key.
 
 Great resources on that include: <https://forum.openwrt.org/t/build-for-tp-link-archer-c1200-ac1200/2547/40> and <https://github.com/knownunown/tpl-c900-openwrt-install>
 
 ## Getting hands on firmware
 
-First, we need to download firmware &#8211; it&#8217;s on <https://www.tp-link.com/pl/support/download/archer-c6/#Firmware>, the latest one for C6 v2 which I own is `Archer C6(EU)_V2_200902`. For some reason build number is not in the same format in Web UI as on the download page, but you can easily work it out. One crucial note &#8211; you must select the proper region, as US version differs from EU one.
+First, we need to download firmware - it's on <https://www.tp-link.com/pl/support/download/archer-c6/#Firmware>, the latest one for C6 v2 which I own is `Archer C6(EU)_V2_200902`. For some reason build number is not in the same format in Web UI as on the download page, but you can easily work it out. One crucial note - you must select the proper region, as US version differs from EU one.
 
 In ZIP archive we have manuals and `bin` file with firmware, which we can easily extract using `binwalk`:
 
@@ -61,9 +61,9 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 
 daniel@yggdrasil Archer C6(EU)_V2_200902 % </pre>
 
-The squashfs file is automatically extracted and there we have an unencrypted filesystem of what&#8217;s going to land on router&#8217;s flash memory. 1:1.
+The squashfs file is automatically extracted and there we have an unencrypted filesystem of what's going to land on router's flash memory. 1:1.
 
-Other researchers had success with locating `crypto.lua` (which is a central cryptographic library for UI and management tools of the router) and extracting encryption key and IV for AES256 in ECB mode &#8211; simply by listing strings. I didn&#8217;t have such luck.
+Other researchers had success with locating `crypto.lua` (which is a central cryptographic library for UI and management tools of the router) and extracting encryption key and IV for AES256 in ECB mode - simply by listing strings. I didn't have such luck.
 
 <pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">daniel@yggdrasil _ArcherC6v2_eu-up-ver1-3-6-P1[20200902-rel65591].bin.extracted % sha256sum squashfs-root/usr/lib/lua/luci/model/crypto.lua 
 669fe09728b472feb3175edf9f6fd0cc9c61f91521c1b2480a55f3cae2fa5cbf  squashfs-root/usr/lib/lua/luci/model/crypto.lua
@@ -121,15 +121,15 @@ enc_file
 dec_file
 daniel@yggdrasil _ArcherC6v2_eu-up-ver1-3-6-P1[20200902-rel65591].bin.extracted % </pre>
 
-Two things stand out. First &#8211; mentioned mode of AES256 differs (here it&#8217;s CBC; nice comparison here &#8211; <https://datalocker.com/what-is-the-difference-between-ecb-mode-versus-cbc-mode-aes-encryption/>).
+Two things stand out. First - mentioned mode of AES256 differs (here it's CBC; nice comparison here - <https://datalocker.com/what-is-the-difference-between-ecb-mode-versus-cbc-mode-aes-encryption/>).
 
-Secondly we see mention of `-kfile /etc/secretkey` which suggests that instead of a hard-coded key in the library we have some key file located on flash memory. That key file is nowhere to be found in firmware files, it&#8217;s also not referenced by plaintext name in any other place that could create it dynamically, for example from MAC address. As I verified after successfully obtaining the shell &#8211; it&#8217;s not present on the device itself, so this must be some unused functionality. The only thing that turned out on Google is that cryptic presentation: <https://hitcon.org/2020/slides/LEAYA%20Last%20Exploitation%20%E7%B5%A2%20An%20Embedded%20System%20Detection%20and%20Response.pdf>
+Secondly we see mention of `-kfile /etc/secretkey` which suggests that instead of a hard-coded key in the library we have some key file located on flash memory. That key file is nowhere to be found in firmware files, it's also not referenced by plaintext name in any other place that could create it dynamically, for example from MAC address. As I verified after successfully obtaining the shell - it's not present on the device itself, so this must be some unused functionality. The only thing that turned out on Google is that cryptic presentation: <https://hitcon.org/2020/slides/LEAYA%20Last%20Exploitation%20%E7%B5%A2%20An%20Embedded%20System%20Detection%20and%20Response.pdf>
 
 ## Other files and discovery of `mybackup`
 
 After some time spent on investigating `/etc/secretkey` I proceeded to study other files on squashfs.
 
-My gold mine appeared to be a directory `/usr/bin/tr069/` and especially two Lua scripts related to backup/restore &#8211; which are not compiled to bytecode!
+My gold mine appeared to be a directory `/usr/bin/tr069/` and especially two Lua scripts related to backup/restore - which are not compiled to bytecode!
 
 <pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">check_device_sn: Lua script text executable, ASCII text
 check_params:    Lua script text executable, ASCII text
@@ -146,7 +146,7 @@ myremote:        Lua script text executable, ASCII text
 myrestore:       Lua script text executable, UTF-8 Unicode text
 myupgrade:       Lua script text executable, ASCII text</pre>
 
-Here&#8217;s the most interesting part of `mybackup`:
+Here's the most interesting part of `mybackup`:
 
 <pre class="EnlighterJSRAW" data-enlighter-language="lua" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">#!/usr/bin/lua
 
@@ -197,7 +197,7 @@ We can quite safely assume `enc_file` from package `luci.model.crypto` takes par
 
 ## First attempt to decrypt config file
 
-Having encryption key I tried to adapt the command I found on OpenWRT forum, but it didn&#8217;t work. Apparently, there are some unknown variations to that AES encryption, or it&#8217;s neither CBC nor ECB.
+Having encryption key I tried to adapt the command I found on OpenWRT forum, but it didn't work. Apparently, there are some unknown variations to that AES encryption, or it's neither CBC nor ECB.
 
 <pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">daniel@yggdrasil Downloads % openssl enc -aes-256-cbc -d -in config.bin -out config.tar -k '0123456789abcdef    '
 bad magic number
@@ -209,17 +209,17 @@ It was time to investigate that `crypto.lua` library I mentioned on the beginnin
 
 I certainly lack skills to replicate reverse engineering described on <https://pentestmag.com/unscrambling-lua/>
 
-I could only confirm that in my case it&#8217;s also `Lua5.1` bytecode for `mips:isa32r2` (32-bit) architecture. As author of linked research I also tried `luadec` and additionally `unluac` (<https://sourceforge.net/projects/unluac/>) but both complained on wrong symbols, presumably due to incorrect architecture. My lack of insight into Lua also didn&#8217;t help. I also tried onlinedisassembler.com, but this one showed the entire file as `.data` section &#8211; it was unable to find an entry point for execution. 
+I could only confirm that in my case it's also `Lua5.1` bytecode for `mips:isa32r2` (32-bit) architecture. As author of linked research I also tried `luadec` and additionally `unluac` (<https://sourceforge.net/projects/unluac/>) but both complained on wrong symbols, presumably due to incorrect architecture. My lack of insight into Lua also didn't help. I also tried onlinedisassembler.com, but this one showed the entire file as `.data` section - it was unable to find an entry point for execution. 
 
-Stopping point for me was working on instruction level, especially since I don&#8217;t know MIPS architecture well.
+Stopping point for me was working on instruction level, especially since I don't know MIPS architecture well.
 
 ## Another approach
 
-After some break from research had a simple idea &#8211; since bytecode in Lua binaries on router firmware is scrambled using some extensions to Lua compiler/runtime it&#8217;s enough just to execute that `crypto.lua` library using embedded Lua runtime and code excerpts from `mybackup` and `myrestore`. There was no obvious reason why that would be blocked in any additional way &#8211; there were no weird includes in that library that could show for example serial number dependent bavahiour. So, I just needed a MIPS emulator.
+After some break from research had a simple idea - since bytecode in Lua binaries on router firmware is scrambled using some extensions to Lua compiler/runtime it's enough just to execute that `crypto.lua` library using embedded Lua runtime and code excerpts from `mybackup` and `myrestore`. There was no obvious reason why that would be blocked in any additional way - there were no weird includes in that library that could show for example serial number dependent bavahiour. So, I just needed a MIPS emulator.
 
 ## QEMU to the rescue
 
-That section will describe how to quickly set up MIPS VM with Debian. It&#8217;s heavily based on <https://www.novetta.com/2018/02/emulating-embedded-linux-systems-with-qemu/>
+That section will describe how to quickly set up MIPS VM with Debian. It's heavily based on <https://www.novetta.com/2018/02/emulating-embedded-linux-systems-with-qemu/>
 
 Preferably in `screen` we need to run:
 
@@ -233,7 +233,7 @@ The above setup boots VM with root password `root` and forwards `localhost:2222`
 
 Now we need to transfer squashfs there. To avoid installing squashfs tools on VM however we can unpack it using `unsquashfs` and repack it with `tar czf squashfs-root.tar.gz`. Then we need to transfer the file over SCP. Additionally, an encrypted backup file should be on VM as well.
 
-And now let&#8217;s chroot to C6&#8217;s firmware
+And now let's chroot to C6's firmware
 
 <pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">root@sandbox2:~# ssh -p 2222 127.0.0.1
 root@127.0.0.1's password: 
@@ -259,7 +259,7 @@ Enter 'help' for a list of built-in commands.
 
 ## Decryption and extraction
 
-Assuming that our working directory with backup file is `/root` in chroot (`~/squashfs-root/root/` on host Linux) we can try the simplest approach &#8211; running interactive interpreter of provided Lua with `crypto.lua` loaded:
+Assuming that our working directory with backup file is `/root` in chroot (`~/squashfs-root/root/` on host Linux) we can try the simplest approach - running interactive interpreter of provided Lua with `crypto.lua` loaded:
 
 <pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">/ # lua -i /usr/lib/lua/luci/model/crypto.lua 
 Lua 5.1.4  Copyright (C) 1994-2008 Lua.org, PUC-Rio (double int32)
@@ -270,7 +270,7 @@ htonl tp_magic_num:acac!
 htonl org_file_len:3e00!
 > </pre>
 
-Seems to do something! Let&#8217;s see what was written into `/root/backup.decrypted`:
+Seems to do something! Let's see what was written into `/root/backup.decrypted`:
 
 <pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">root@debian-mips:~/squashfs-root/root# ls
 ArcherC6v220200902136n.bin  backup.decrypted
@@ -278,7 +278,7 @@ root@debian-mips:~/squashfs-root/root# file backup.decrypted
 backup.decrypted: POSIX tar archive (GNU)
 root@debian-mips:~/squashfs-root/root# </pre>
 
-It worked! Let&#8217;s dive further:
+It worked! Let's dive further:
 
 <pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">root@debian-mips:~/squashfs-root/root# tar xvf backup.decrypted
 ./
@@ -320,24 +320,24 @@ root@debian-mips:~/squashfs-root/root# </pre>
 
 Compressing and encrypting back should be easy, right? Well, to compress it back correctly I needed to spend some time to confirm the actual layout of nested files, whether `.` directory should be in tarball and few other quirks of `tar` and `gzip` tools.
 
-Next section will only describe happy path and why some parameters were used &#8211; the discovery process took me a few hours in which I heavily used `man` and `hexdump` paired with `diff` to compare files. Any broken nesting of containers caused the following error in Web UI when I tried to upload the prepared file:<figure class="wp-block-image size-large">
+Next section will only describe happy path and why some parameters were used - the discovery process took me a few hours in which I heavily used `man` and `hexdump` paired with `diff` to compare files. Any broken nesting of containers caused the following error in Web UI when I tried to upload the prepared file:<figure class="wp-block-image size-large">
 
 [<img decoding="async" loading="lazy" width="1024" height="768" src="https://blog.dsinf.net/wp-content/uploads/2021/02/backup_struct_error_in_gui-1024x768.png" alt="" class="wp-image-2159" srcset="https://blog.dsinf.net/wp-content/uploads/2021/02/backup_struct_error_in_gui-1024x768.png 1024w, https://blog.dsinf.net/wp-content/uploads/2021/02/backup_struct_error_in_gui-300x225.png 300w, https://blog.dsinf.net/wp-content/uploads/2021/02/backup_struct_error_in_gui-768x576.png 768w, https://blog.dsinf.net/wp-content/uploads/2021/02/backup_struct_error_in_gui-1536x1152.png 1536w, https://blog.dsinf.net/wp-content/uploads/2021/02/backup_struct_error_in_gui-2048x1536.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" />][1]</figure> 
 
-Backup structure, when visualized, is kind of weird, but it&#8217;s created on router with different tools so it may make sense.<figure class="wp-block-image size-large">
+Backup structure, when visualized, is kind of weird, but it's created on router with different tools so it may make sense.<figure class="wp-block-image size-large">
 
 [<img decoding="async" loading="lazy" width="1024" height="955" src="https://blog.dsinf.net/wp-content/uploads/2021/02/ArcherC6BAckupStructure-1024x955.png" alt="" class="wp-image-2158" srcset="https://blog.dsinf.net/wp-content/uploads/2021/02/ArcherC6BAckupStructure-1024x955.png 1024w, https://blog.dsinf.net/wp-content/uploads/2021/02/ArcherC6BAckupStructure-300x280.png 300w, https://blog.dsinf.net/wp-content/uploads/2021/02/ArcherC6BAckupStructure-768x716.png 768w, https://blog.dsinf.net/wp-content/uploads/2021/02/ArcherC6BAckupStructure-1536x1433.png 1536w, https://blog.dsinf.net/wp-content/uploads/2021/02/ArcherC6BAckupStructure.png 1753w" sizes="(max-width: 1024px) 100vw, 1024px" />][2]</figure> 
 
 Few parameters to `gzip` and `tar` require explanation:
 
-  * `tar -C` allows keeping desired paths in tarball &#8211; with, or without separate directory node &#8211; both of those being part of backup have different approaches here
-  * `tar -b1` sets nonstandard block size (same concept as sector size on disk); such low value reduces zero-padding of file, which could cause nvram partition overflow if set to default 20 &#8211; in my case it was 21 kB vs 16 kB
+  * `tar -C` allows keeping desired paths in tarball - with, or without separate directory node - both of those being part of backup have different approaches here
+  * `tar -b1` sets nonstandard block size (same concept as sector size on disk); such low value reduces zero-padding of file, which could cause nvram partition overflow if set to default 20 - in my case it was 21 kB vs 16 kB
   * `gzip -n` removes original filename from archive metadata
   * `gzip -9` sets max compression (as it is on original routine)
 
 ## Happy path of compression and encryption
 
-First &#8211; compression that can be done outside chrooted environment:
+First - compression that can be done outside chrooted environment:
 
 <pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">root@debian-mips:~/squashfs-root/root# tar -b1 -cvf ori-backup-user-config -C . tmp/user-config.xml
 user-config.xml
@@ -351,7 +351,7 @@ root@debian-mips:~/squashfs-root/root# tar -b1 -cvf backup.decrypted -C oris .
 ./ori-backup-certificate.bin
 root@debian-mips:~/squashfs-root/root# </pre>
 
-Second &#8211; encryption using Lua library:
+Second - encryption using Lua library:
 
 <pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">/ # lua -i /usr/lib/lua/luci/model/crypto.lua 
 Lua 5.1.4  Copyright (C) 1994-2008 Lua.org, PUC-Rio (double int32)
@@ -359,7 +359,7 @@ Lua 5.1.4  Copyright (C) 1994-2008 Lua.org, PUC-Rio (double int32)
 > cry.enc_file("/root/backup.decrypted", "/root/new_config.bin", "0123456789abcdef    ")
 > </pre>
 
-This is a place where I could `strace` Lua interpreter and see what commands are actually called, but I was very impatient and this would require adding some additional stuff to VM which anyway didn&#8217;t have internet connection to connect to repositories. I will definitely revisit that later.
+This is a place where I could `strace` Lua interpreter and see what commands are actually called, but I was very impatient and this would require adding some additional stuff to VM which anyway didn't have internet connection to connect to repositories. I will definitely revisit that later.
 
 ## Testing time
 
@@ -371,13 +371,13 @@ It works and admin user (while having non-zero UID) anyway has root user privile
 
 ## Afterword
 
-If TP-Link really wants to block users from modifying backup files &#8211; they didn&#8217;t learn their lesson about hard-coding encryption keys anywhere in firmware. Scrambling bytecode of Lua by replacing instructions is nice, but useless if keys are downloadable from the Internet.
+If TP-Link really wants to block users from modifying backup files - they didn't learn their lesson about hard-coding encryption keys anywhere in firmware. Scrambling bytecode of Lua by replacing instructions is nice, but useless if keys are downloadable from the Internet.
 
-For security researchers who deal with obfuscated binaries quite often there&#8217;s QEMU way which allows just to execute decryption/encryption process to obtain interesting data.
+For security researchers who deal with obfuscated binaries quite often there's QEMU way which allows just to execute decryption/encryption process to obtain interesting data.
 
-Unfortunately, I won&#8217;t be able to share my backup files as they contain quite few sensitive information (including PPTP credentials to my ISP) and stripping every secret is time-consuming. However, you can grab the original factory config from `firmware.bin` &#8211; there&#8217;s one entry `XML document` that contains it.
+Unfortunately, I won't be able to share my backup files as they contain quite few sensitive information (including PPTP credentials to my ISP) and stripping every secret is time-consuming. However, you can grab the original factory config from `firmware.bin` - there's one entry `XML document` that contains it.
 
-## Addition &#8211; oneliner for massing strings extraction
+## Addition - oneliner for massing strings extraction
 
 One thing that helped me a lot when searching for various strings (especially needed when symbol names are not obfuscated in binaries) is that one-liner which creates a single text file with all strings in all files in a given directory (I executed it on rootfs of firmware squashfs):
 

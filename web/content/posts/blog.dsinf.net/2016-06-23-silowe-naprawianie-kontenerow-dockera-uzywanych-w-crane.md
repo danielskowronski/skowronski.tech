@@ -9,7 +9,7 @@ tags:
   - docker
 
 ---
-Czasem zdarza się że przy przełączaniu się miedzy projektami które używają tych samych obrazów dockera którymi zarządzamy przy pomocy crane kontenery wariują. Siłowe rozwiązanie problemu które mi wiele razy pomogło sprowadza się do ubicia wszystkich kontenerów a potem ich usunięcia (kontenerów, nie obrazów) &#8211; jest to jednak opcja dobra tylko na deweloperskich stacjiach roboczych!
+Czasem zdarza się że przy przełączaniu się miedzy projektami które używają tych samych obrazów dockera którymi zarządzamy przy pomocy crane kontenery wariują. Siłowe rozwiązanie problemu które mi wiele razy pomogło sprowadza się do ubicia wszystkich kontenerów a potem ich usunięcia (kontenerów, nie obrazów) - jest to jednak opcja dobra tylko na deweloperskich stacjiach roboczych!
 
 <pre class="lang:sh EnlighterJSRAW " >docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)</pre>

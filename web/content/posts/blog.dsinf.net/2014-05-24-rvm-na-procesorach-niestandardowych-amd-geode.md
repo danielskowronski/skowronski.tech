@@ -11,7 +11,7 @@ tags:
   - ror
 
 ---
-Jeden z moich systemów pracuje na zgrabnym nettopie wyposażonym w AMD Geode LX &#8211; Fujitsu Siemens Futro A250. Procesor ten przysparza w dzisiejszych czasach kilku problemów, gdyż nie jest zgodny z najnowszymi zestawami instrukcji. Większość systemów zakłada x86 => i686. A Geode jest zgodny z i586, a jakby tego było mało wielu developerów założyło, że niektóre instrukcje są obowiązkowe dla i586. Przez to Geode potrafi zostać zdegradowany do i486. Dlatego też prawie żadna nowoczesna dystrybucja sama z siebie nie zadziała. Ja wykorzystałem bazującą na Debianie 7 &#8211; Voyage Linux.
+Jeden z moich systemów pracuje na zgrabnym nettopie wyposażonym w AMD Geode LX - Fujitsu Siemens Futro A250. Procesor ten przysparza w dzisiejszych czasach kilku problemów, gdyż nie jest zgodny z najnowszymi zestawami instrukcji. Większość systemów zakłada x86 => i686. A Geode jest zgodny z i586, a jakby tego było mało wielu developerów założyło, że niektóre instrukcje są obowiązkowe dla i586. Przez to Geode potrafi zostać zdegradowany do i486. Dlatego też prawie żadna nowoczesna dystrybucja sama z siebie nie zadziała. Ja wykorzystałem bazującą na Debianie 7 - Voyage Linux.
 
 W większości przypadków problem z kompilacją będzie polegał na braku zestawu instrukcji SSE2. W przypadku RoR 2.1.2 stawianego za pomocą RVM nie pomogą żadne zmiany we flagach GCC, nawet <span class="lang:default EnlighterJSRAW  crayon-inline ">-march=geode</span> , czy <span class="lang:default EnlighterJSRAW  crayon-inline ">-march=i386</span> . Błędy są przeróżne, na przykład:
 

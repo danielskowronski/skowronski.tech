@@ -10,5 +10,5 @@ tags:
   - www
 
 ---
-Plugin <u>Update Manager</u> na Drupalu odpowiada za automatyczne szukanie aktualizacji modułów. Może się zdarzyć, że przy pokaźnej kolekcji niekoniecznie aktywowanych paczek strony administracyjne będą "zamulać" &#8211; wówczas naturalnym jest zgaszenie pluginu. Jednak jak się okazuje, to właśnie ten moduł rdzenia odpowiada za przycisk _Install new module_&#8230;  
+Plugin <u>Update Manager</u> na Drupalu odpowiada za automatyczne szukanie aktualizacji modułów. Może się zdarzyć, że przy pokaźnej kolekcji niekoniecznie aktywowanych paczek strony administracyjne będą "zamulać" - wówczas naturalnym jest zgaszenie pluginu. Jednak jak się okazuje, to właśnie ten moduł rdzenia odpowiada za przycisk _Install new module_...  
 Jak zawsze w Drupalu wszystko jest jasno opisane 🙁

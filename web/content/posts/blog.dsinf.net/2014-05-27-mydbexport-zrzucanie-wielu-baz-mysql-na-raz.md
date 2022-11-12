@@ -11,7 +11,7 @@ tags:
   - perl
 
 ---
-Przy stronach WWW ważne jest zarówno wykonywanie kopii plików jak i baz danych. Te pierwsze często są zabezpieczane przez dostawców hostingu. Warto by mieć lepsze rozwiązanie niż korzystanie do tego z phpMyAdmina, a najlepiej w pełni automatyczne &#8211; takie, które można wstawić w crona. I z tej potrzeby narodził się myDbExport.
+Przy stronach WWW ważne jest zarówno wykonywanie kopii plików jak i baz danych. Te pierwsze często są zabezpieczane przez dostawców hostingu. Warto by mieć lepsze rozwiązanie niż korzystanie do tego z phpMyAdmina, a najlepiej w pełni automatyczne - takie, które można wstawić w crona. I z tej potrzeby narodził się myDbExport.
 
 Można go znaleźć na [about.dsinf.net/products/mde][1] i [SourceForge.][2] 
 

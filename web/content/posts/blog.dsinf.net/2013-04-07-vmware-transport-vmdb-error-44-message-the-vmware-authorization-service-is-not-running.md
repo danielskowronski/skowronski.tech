@@ -13,5 +13,5 @@ Problem na Windowsie. Oczywiście wspomniana usługa chodzi bez żadnych problem
 <!--break-->
 
   
-Aby uruchomić maszynę wirtualną należy&#8230; uruchomić program jako Administrator.  
+Aby uruchomić maszynę wirtualną należy... uruchomić program jako Administrator.  
 Co Windows, to Windows.

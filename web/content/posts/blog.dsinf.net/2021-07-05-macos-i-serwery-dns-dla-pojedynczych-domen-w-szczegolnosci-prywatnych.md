@@ -14,7 +14,7 @@ tags:
   - macos
 
 ---
-Problem dość częsty w intranetach dostępnych jedynie po VPN &#8211; jak wstrzyknąć resolver DNS działający na pojedynczym połączeniu sieciowym, tak aby klient rozwiązywał nazwy domenowe z niepublicznymi/prywatnymi TLD (czyli poza root DNSami). 
+Problem dość częsty w intranetach dostępnych jedynie po VPN - jak wstrzyknąć resolver DNS działający na pojedynczym połączeniu sieciowym, tak aby klient rozwiązywał nazwy domenowe z niepublicznymi/prywatnymi TLD (czyli poza root DNSami). 
 
 Na macOS jest to dość nietrywialne, jeśli używamy systemowego klienta VPN, niekoniecznie bowiem system będzie przestrzegał podanych po IPsec-u DNSów. Można jednak ustawić specyficzne serwery dla konkretnych domen w sposób następujący: w folderze `/private/etc/resolver/` należy stworzyć plik (nazwa z grubsza dowolna) dla każdej domeny, która ma być rozwiązywana inaczej niż używając systemowych resolverów, takiej treści:
 

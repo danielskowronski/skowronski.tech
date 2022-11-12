@@ -11,7 +11,7 @@ tags:
   - matematyka
 
 ---
-Proste zadanie z zeszłorocznej OI &#8211; rozkład Fibonacciego. Naszym zadaniem jest przedstawić minimalną liczbę dodawań lub odejmowań gdzie składnikami są tylko wyrazy ciągu Fibonacciego dla wskazanej liczby. Jest to przykład, że niektóre zadania można, a nawet trzeba rozwiązywać metodą siłową. Ale problem nie tkwi w algorytmie&#8230;
+Proste zadanie z zeszłorocznej OI - rozkład Fibonacciego. Naszym zadaniem jest przedstawić minimalną liczbę dodawań lub odejmowań gdzie składnikami są tylko wyrazy ciągu Fibonacciego dla wskazanej liczby. Jest to przykład, że niektóre zadania można, a nawet trzeba rozwiązywać metodą siłową. Ale problem nie tkwi w algorytmie...
 
 Przykładowe dane:
 
@@ -20,8 +20,8 @@ Przykładowe dane:
 17=13+5-1
 1070=987+89-5-1</pre>
 
-Liczby wejściowe to maksymalnie 1e17, więc najmniejszy większy lub równy wyraz ciągu Fibonacciego ma numer 88 i wynosi 1100087778366101931. Tą wielkosć można łatwo uzyskać z [Wikiźródeł][1] &#8211; tam jest prawie wszytsko.  
-Ale jak uzyskać takie dane podczas warunków olimpijskich? Bardzo prosto &#8211; przez Pythona. OI odbywa się na maszynach z Ubuntu, a więc interpreter Pythona tam jest. A jak Pythona nie ma to zawsze zostaje C++ i liczenie na typie 
+Liczby wejściowe to maksymalnie 1e17, więc najmniejszy większy lub równy wyraz ciągu Fibonacciego ma numer 88 i wynosi 1100087778366101931. Tą wielkosć można łatwo uzyskać z [Wikiźródeł][1] - tam jest prawie wszytsko.  
+Ale jak uzyskać takie dane podczas warunków olimpijskich? Bardzo prosto - przez Pythona. OI odbywa się na maszynach z Ubuntu, a więc interpreter Pythona tam jest. A jak Pythona nie ma to zawsze zostaje C++ i liczenie na typie 
 
 <pre class="EnlighterJSRAW cpp">unsigned long long</pre>
 
@@ -69,7 +69,7 @@ Tutaj brak komentowania linii się na mnie zemścił, bo nie mam 100% pewności,
 Sama funkcja po prostu dzieli w kółko przedział na mniejsze, podobnie jak robi to quicksort, z kilkoma różnicami:
 
   1. nie jest to metoda rekursywna
-  2. nie swap&#8217;uję wartości, a jedynie czekam, aż będą dwie &#8211; wówczas wybieram &#8222;bliższą&#8221; liczbie zadanej
+  2. nie swap'uję wartości, a jedynie czekam, aż będą dwie - wówczas wybieram "bliższą" liczbie zadanej
 
 Ostatnim krokiem jest główna pętla programu, razem z we/wy i wczytaniem do pamięci tablicy ciągu:
 

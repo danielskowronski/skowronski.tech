@@ -10,18 +10,18 @@ tags:
   - windows server
 
 ---
-**Windows Server 2012 nie gryzie&#8230;  
-&#8230;tylko zionie ogniem w każdego.** Mam nadzieję, że zebrane tutaj materiały będą swoistą tarczą przeciwogniową;)  
+**Windows Server 2012 nie gryzie...  
+...tylko zionie ogniem w każdego.** Mam nadzieję, że zebrane tutaj materiały będą swoistą tarczą przeciwogniową;)  
 <!--break-->
 
 ## Zanim zaczniemy
 
-Pierwsze w co należy się wyposażyć to płyta lub jej obraz. Będzie nam potrzebny po instalacji &#8211; od razu do zainstalowania .net Framework 3.5, którego Microsoft jakoś mocno deprecjonuje, oraz później do recovery systemowego. Serio, płyta będzie potrzebna zawsze jak coś się zpsuje i do odtworzenia backupu.
+Pierwsze w co należy się wyposażyć to płyta lub jej obraz. Będzie nam potrzebny po instalacji - od razu do zainstalowania .net Framework 3.5, którego Microsoft jakoś mocno deprecjonuje, oraz później do recovery systemowego. Serio, płyta będzie potrzebna zawsze jak coś się zpsuje i do odtworzenia backupu.
 
 ## Instalacja
 
-Nie różni się niczym, tylko nazwą logiem bootowania od instalki Servera 2008 R2. To na co warto zwrócić uwagę, to dostępne systemy plików &#8211; długo niejasne stanowisko MS w sprawie ReFS&#8217;u jest następujące: na razie tylko na dane, system z niego nie pójdzie, więc nie ma co szukać go w opcjach formatowania. Sama instalacja jest nawet szybka &#8211; na trzyletnim laptopie (Core2Duo, 4GB RAM) z dość powolnym napędem optycznym zajmuje maks. 20 minut.  
-Ciekawostka: nie mamy już komunikatu-zabójcy: &#8222;hasło jest za długie, za krótkie lub zbyt proste&#8221;
+Nie różni się niczym, tylko nazwą logiem bootowania od instalki Servera 2008 R2. To na co warto zwrócić uwagę, to dostępne systemy plików - długo niejasne stanowisko MS w sprawie ReFS'u jest następujące: na razie tylko na dane, system z niego nie pójdzie, więc nie ma co szukać go w opcjach formatowania. Sama instalacja jest nawet szybka - na trzyletnim laptopie (Core2Duo, 4GB RAM) z dość powolnym napędem optycznym zajmuje maks. 20 minut.  
+Ciekawostka: nie mamy już komunikatu-zabójcy: "hasło jest za długie, za krótkie lub zbyt proste"
 
 ## Po instalacji
 
@@ -31,10 +31,10 @@ Po zainstalowaniu tego jakże fajnego, ale irytującego po instalacji systemu na
 Lista mojej minimalnej konfiguracji jest następująca: 
 
   * .net 3.5
-  * Ink and Handwritng support &#8211; wymagany przez środowisko pulpitu
-  * Media Foundation &#8211; również wymagane
-  * Remote Assistance &#8211; zdalny pulpit
-  * User Interface and Infrastructure &#8211; uwaga! podrzędne desktop experience jest elementem krytyczym obsługi pulpitu, lecz nie jest domyślnie wybieranie przy zaznaczeniu tylko górnej gałęzi
+  * Ink and Handwritng support - wymagany przez środowisko pulpitu
+  * Media Foundation - również wymagane
+  * Remote Assistance - zdalny pulpit
+  * User Interface and Infrastructure - uwaga! podrzędne desktop experience jest elementem krytyczym obsługi pulpitu, lecz nie jest domyślnie wybieranie przy zaznaczeniu tylko górnej gałęzi
   * Windows Search Service
   * Windows Server Backup. Ta funkcja poza znanym i wydajnym kopiowaniem dysków z siódemki/2009 oferuje dodatkowo półroczny trial na wersję beta Online Backup Service w usłudze Azure. 300GB za darmo robi wrażenie.
   * Wireless LAN Service – pełna obsługa WiFi
@@ -70,7 +70,7 @@ Nie da się? Tego można się spodziewać. Trzeba dokonać kilku modyfikacji w p
 ...</pre>
 
 Generalnie trick polega na zamienieniu wszystkich nazw NTamd64.coś na NTamd64. Wprawdzie inne strony zalecają wpis w rodzaju NTamd64.6.2.2 lub tylko NTamd64.6.2 ale nie zamierzamy publikować nigdzie tych sterowników więc nic nie wybuchnie.  
-Na czym polega ta zmiana? NTamd64 definiuje każdy system NT dla 64 bitowców w standardzie AMD – Intele też się łapią, po prostu 64 bitowy standard Intela to nie używane w desktopach Itanium. Oznaczenia Itanium to intel64 lub ia64. Na pewno nie mamy Itanium bo byśmy o tym wiedzieli i system musiałby być specjalnie oznaczony – „for Itanium”. Amd64 to Microsoftowy ekwiwalent dla popularnego, choć lekko niepoprawnego x64 – właściwe oznaczenie to x86_64 (wskazuje przezroczystą kompatybilność z kodem 32 bitowym).  
+Na czym polega ta zmiana? NTamd64 definiuje każdy system NT dla 64 bitowców w standardzie AMD – Intele też się łapią, po prostu 64 bitowy standard Intela to nie używane w desktopach Itanium. Oznaczenia Itanium to intel64 lub ia64. Na pewno nie mamy Itanium bo byśmy o tym wiedzieli i system musiałby być specjalnie oznaczony – "for Itanium". Amd64 to Microsoftowy ekwiwalent dla popularnego, choć lekko niepoprawnego x64 – właściwe oznaczenie to x86_64 (wskazuje przezroczystą kompatybilność z kodem 32 bitowym).  
 Kolejne cyferki to numery wersji Windows. I tak kolejno XP ma 5.1, Vista 6.0, Siódemka 6.1, a ósemka 6.2. Ostatni numer jest dość rzadko wykorzystywany – 1 definiuje desktop, a 2 Server w ramach par (Win7 i 2008 R2, czy Win8 i 2012). Wystarczy wykasować informacje definiujące wersje i gotowe. Dla pewności warto podmienić wszystkie wpisy, ale trzeba zacząć od wpisu dla Win7 (ew. 8) jako najbliższej wersji. 
 
 Wciąż się nie da? U mnie problem polegał na tym, że urządzenie miało inny SUBSYSTEM niż którykolwiek z wpisów w pliku inf.  

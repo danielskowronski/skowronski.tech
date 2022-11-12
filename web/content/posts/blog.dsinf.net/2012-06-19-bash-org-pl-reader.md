@@ -6,7 +6,7 @@ date: 2012-06-19T17:40:34+00:00
 url: /2012/06/bash-org-pl-reader/
 
 ---
-Pierwszy z cyklu odgrzebany program &#8211; czytnik losowych cytatów z bash.org.pl. Zrodził się z potrzeby &#8211; przy przeglądaniu losowych tekstów na samej stronie polskiego bash&#8217;a to co mnie denerwowało to przede wszystkim reklamy oraz zmieniający pozycję w trakcie ładowania witryny przycisk _losowy_. Rozwiązanie? Prosta aplikacja w niechlujnym C#. Jak pomyślał, tak zrobił.  
+Pierwszy z cyklu odgrzebany program - czytnik losowych cytatów z bash.org.pl. Zrodził się z potrzeby - przy przeglądaniu losowych tekstów na samej stronie polskiego bash'a to co mnie denerwowało to przede wszystkim reklamy oraz zmieniający pozycję w trakcie ładowania witryny przycisk _losowy_. Rozwiązanie? Prosta aplikacja w niechlujnym C#. Jak pomyślał, tak zrobił.  
 Jedyne, co warte uwagi w samym algorytmie to metoda ściągająca zawartość strony i wyświetlająca ją tak jak przeglądarka: znaczniki `<br />`, `&lt` i inne na graficzne odpowiedniki.
 
 Główny kod to kilka metod:
@@ -108,7 +108,7 @@ namespace Bash.org.pl_Reader
                 zawartosc = zawartosc.Replace("&permil;", "‰");
                 zawartosc = zawartosc.Replace("&reg;", "®");
                 zawartosc = zawartosc.Replace("&copy;", "©");
-                zawartosc = zawartosc.Replace("&#39;", "'");
+                zawartosc = zawartosc.Replace("'", "'");
             } 
             return zawartosc;
         }
@@ -145,6 +145,6 @@ namespace Bash.org.pl_Reader
 }
 </pre>
 
-[Link][1] do kompletnego projektu wraz z designerem (licencja -&#8222;róbta co chceta&#8221;).
+[Link][1] do kompletnego projektu wraz z designerem (licencja -"róbta co chceta").
 
  [1]: /uploaded/programowanie/bashorg_reader.7z

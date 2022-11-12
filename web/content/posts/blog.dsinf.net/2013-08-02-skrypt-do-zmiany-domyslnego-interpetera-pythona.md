@@ -10,7 +10,7 @@ tags:
   - python
 
 ---
-Python w 2008 roku doczekał się kamienia milowego &#8211; wersji 3.0 (Py3K), która jest kompletnie wstecznie-niezgodna z 2.x. Obecnie w użyciu stabilnym jest 3.3. Warty przeczytania dokument znajduje się na oficjlalnej Wiki &#8211; http://wiki.python.org/moin/Python2orPython3. Najprościej wskazać różnicę w echo &#8211; w 2.7 była to niemal dyrektywa, teraz echo stał się funkcją<!--break--> &#8211; stąd:
+Python w 2008 roku doczekał się kamienia milowego - wersji 3.0 (Py3K), która jest kompletnie wstecznie-niezgodna z 2.x. Obecnie w użyciu stabilnym jest 3.3. Warty przeczytania dokument znajduje się na oficjlalnej Wiki - http://wiki.python.org/moin/Python2orPython3. Najprościej wskazać różnicę w echo - w 2.7 była to niemal dyrektywa, teraz echo stał się funkcją<!--break--> - stąd:
 
 <pre class="EnlighterJSRAW python">echo "witaj świecie w Pythonie 2.7 - działam bez nawiasów";
 echo("witaj świecie w Pythonie 3.0 - potrzebuję nawiasów");

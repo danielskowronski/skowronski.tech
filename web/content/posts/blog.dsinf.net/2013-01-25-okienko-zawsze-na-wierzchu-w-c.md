@@ -9,14 +9,14 @@ tags:
   - 'win c#'
 
 ---
-Microsoft zawsze raczył nas dziwnymi rozwiązaniami prostych spraw. Problem częsty przy małych aplikacjach w C#, które mają być zawsze na wierzchu &#8211; stoperach, minutnikach, czy monitorach wydajności &#8211; jak uczynić okno pozostającym zawsze na wierzchu. <!--break-->Na MSDNie zaproponowano rozwiązanie, które znaleźć możemy jako 
+Microsoft zawsze raczył nas dziwnymi rozwiązaniami prostych spraw. Problem częsty przy małych aplikacjach w C#, które mają być zawsze na wierzchu - stoperach, minutnikach, czy monitorach wydajności - jak uczynić okno pozostającym zawsze na wierzchu. <!--break-->Na MSDNie zaproponowano rozwiązanie, które znaleźć możemy jako 
 
 _Property_ kontrolki _WindowsForm_:
 
 <pre class="EnlighterJSRAW csharp">this.TopForm = true;
 </pre>
 
-Jednak jak można doczytać od Windowsa 2000 ta zmiana dotyczy zakresu danej aplikacji &#8211; znaczy to, że jeśli pracujemy z wielookienkowym narzędziem to możemy podpiąć jakiś toolbar, żeby nie zniknął. Ale utrata przez proces focusa na okno przerzuci je w tło.  
+Jednak jak można doczytać od Windowsa 2000 ta zmiana dotyczy zakresu danej aplikacji - znaczy to, że jeśli pracujemy z wielookienkowym narzędziem to możemy podpiąć jakiś toolbar, żeby nie zniknął. Ale utrata przez proces focusa na okno przerzuci je w tło.  
 Rozwiązanie skuteczne wymaga załadowania biblioteki <k>user32.dll<k> odpowiedzialnej za obsługę UI i przejęcie funkcji zmieniającej pozycję okna. Brzmi skomplikowanie. Ale implementacja jest prosta, bezbolesna i nie wymaga SafeMode:  
 W nagłówku dopisujemy
 

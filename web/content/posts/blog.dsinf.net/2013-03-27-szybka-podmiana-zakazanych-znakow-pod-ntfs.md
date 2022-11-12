@@ -9,14 +9,14 @@ tags:
   - ntfs
 
 ---
-Zdarza się, że przyjdzie nam do głowy nazwać pliki wykorzystując dwukropki, np. ładnie formatując dane. Pod systemem plików ext nic się nie dzieje, ale gdy zrobimy to na współdzielonej z Windowsem partycji NTFS to po starcie Windy przywita nas **chkdsk** robiąc na dysku sieczkarnię&#8230;  
+Zdarza się, że przyjdzie nam do głowy nazwać pliki wykorzystując dwukropki, np. ładnie formatując dane. Pod systemem plików ext nic się nie dzieje, ale gdy zrobimy to na współdzielonej z Windowsem partycji NTFS to po starcie Windy przywita nas **chkdsk** robiąc na dysku sieczkarnię...  
 <!--break-->
 
   
   
-Naszym zadaniem jest szybka zamiana dwukropków i innych znaków zakazanych we wszystkich plikach &#8211; najlepiej rekursywnie. A jeszcze lepiej mieć wybór 😉 Więc po kolei:
+Naszym zadaniem jest szybka zamiana dwukropków i innych znaków zakazanych we wszystkich plikach - najlepiej rekursywnie. A jeszcze lepiej mieć wybór 😉 Więc po kolei:
 
-Najpierw zajmiemy się obsłużeniem znaku na jaki podmieniamy. Ponieważ nie chce się nikomu co chwila dopisywać parametru &#8222;_&#8221;, więc wypada obsłużyć nulla &#8211; &#8222;-z&#8221; sprawdza, czy zmienna jest pusta i zwraca true jeśli nic nie podstawiono. Zmienna $k jest tu pomocnicza.
+Najpierw zajmiemy się obsłużeniem znaku na jaki podmieniamy. Ponieważ nie chce się nikomu co chwila dopisywać parametru "_", więc wypada obsłużyć nulla - "-z" sprawdza, czy zmienna jest pusta i zwraca true jeśli nic nie podstawiono. Zmienna $k jest tu pomocnicza.
 
 <pre class="EnlighterJSRAW bash">if [ -z $1 ]
 then
@@ -30,7 +30,7 @@ else
 fi
 </pre>
 
-Obsługa rekurencji katalogowej jest o tyle ciekawa, że to co jest w zmiennej zostanie potem wykonane &#8211; **&#8222;eval #{nazwa_zmiennej}&#8221;**.
+Obsługa rekurencji katalogowej jest o tyle ciekawa, że to co jest w zmiennej zostanie potem wykonane - **"eval #{nazwa_zmiennej}"**.
 
 <pre class="EnlighterJSRAW bash">if [ -z $2 ] || [ "$2" != "-" ]
 then
@@ -40,23 +40,23 @@ else [ "$2" == "-" ]
 fi
 </pre>
 
-Czas na gwóźdź do trumny programisty &#8211; REGEXPY, czyli po ludzku mówiąc wyrażenia regularne. Większość programistów ten temat omija szerokim łukiem dlatego powstały strony w rodzaju http://www.regular-expressions.info/reference.html, gdzie znajdziemy listę znaków nas interesujących. Składnia sed&#8217;a jest w rodzaju &#8222;s/co/na_co/coś&#8221;. To &#8222;coś&#8221; to zwykle g &#8211; jeśli chcemy podmienić wszystkie wystąpienia. Chyba.  
+Czas na gwóźdź do trumny programisty - REGEXPY, czyli po ludzku mówiąc wyrażenia regularne. Większość programistów ten temat omija szerokim łukiem dlatego powstały strony w rodzaju http://www.regular-expressions.info/reference.html, gdzie znajdziemy listę znaków nas interesujących. Składnia sed'a jest w rodzaju "s/co/na_co/coś". To "coś" to zwykle g - jeśli chcemy podmienić wszystkie wystąpienia. Chyba.  
 Poniższe piękne wyrażonko zamienia na $k każdy znak należący do grupy (grupy do wyboru zapisujemy w [ ]): gwiazdka (poprzedzona backslashem, bo inaczej sed pomyśli, ze chcemy uzyskać wieloznacznik), nawiasy trójkątne, dwukropek, ciapki: pojedynczy i podwójny, cofnięty ukośnik, pałę pionową i znak zapytania.
 
 <pre class="EnlighterJSRAW bash">s="s/[\*&lt;>:'\"\\\|\?]/$k/g"
 </pre>
 
-Warto zwrócić uwagę na obsługę faktu, że pliki ze spacjami psują wszystko &#8211; pętla for uzna spację za rozdzielacz i potworzy kilka nowych plików, które nie istnieją. Aby temu zaradzić wystarczy przedefiniować rozdzielacz:
+Warto zwrócić uwagę na obsługę faktu, że pliki ze spacjami psują wszystko - pętla for uzna spację za rozdzielacz i potworzy kilka nowych plików, które nie istnieją. Aby temu zaradzić wystarczy przedefiniować rozdzielacz:
 
 <pre class="EnlighterJSRAW bash">IFS=$'\n'
 </pre>
 
 
 
-Główna pętelka skryptu zawiera dwa warunki, któe formalnie optymalizują kod &#8211; bo po cozmieniać nazwę pliku na taką samą, zwłaszcza, że wygeneruje się tylko błąd?  
+Główna pętelka skryptu zawiera dwa warunki, któe formalnie optymalizują kod - bo po cozmieniać nazwę pliku na taką samą, zwłaszcza, że wygeneruje się tylko błąd?  
 Warunek w 7 linii <pre class="brush" bash">[ -f $nf ]</pre> 
 
-sprawdza, czy docelowy plik już istnieje. Może się bowiem zdarzyć istnienie plików o nazwach &#8222;coś<>coś&#8221; i &#8222;coś\*>coś&#8221;. Wówcza po pierwszej podmiance mamy &#8222;coś__coś&#8221; i &#8222;coś\*>&#8221;. Żeby uniknąć nadpisać, czy konfliktów tworzony jest dopisek, żeby pliki miały w miarę oryginalne nazwy i się nie gryzły. Zmienna $d o wartości \`date +%s%N\` to bardzo unikalny dopisek: %s zwraca liczbę sekund od początku epoki (1 stycznia 1970) &#8211; bez spacji, ale mało unikalne. Dopisanie %N, czyli nanosekundy wg. zegara procesora tworzy bardzo unikalną nazwę pliku.
+sprawdza, czy docelowy plik już istnieje. Może się bowiem zdarzyć istnienie plików o nazwach "coś<>coś" i "coś\*>coś". Wówcza po pierwszej podmiance mamy "coś__coś" i "coś\*>". Żeby uniknąć nadpisać, czy konfliktów tworzony jest dopisek, żeby pliki miały w miarę oryginalne nazwy i się nie gryzły. Zmienna $d o wartości \`date +%s%N\` to bardzo unikalny dopisek: %s zwraca liczbę sekund od początku epoki (1 stycznia 1970) - bez spacji, ale mało unikalne. Dopisanie %N, czyli nanosekundy wg. zegara procesora tworzy bardzo unikalną nazwę pliku.
 
 <pre class="EnlighterJSRAW bash">for f in `eval ${r}`
 do

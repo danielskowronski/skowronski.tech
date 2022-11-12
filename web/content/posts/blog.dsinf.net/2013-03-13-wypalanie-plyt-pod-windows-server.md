@@ -12,7 +12,7 @@ Na Windows Server czasem wypala się płyty. Ale jest to prawie niemożliwe.
 <!--break-->
 
   
-Microsoft ma dziwne zasady co do uprawnień &#8211; konto Administrator może więcej niż członkowie grupy administratorzy. Dlatego każdy inny użytkownik widzi napęd optyczny jako read-only: jaki by to model sprzętu nie był &#8211; system _odmawia_ wypalania płyt. Czy użyjemy systemowych narzędzi (od 2012 są zintegrowane), czy _third party_ (CD BurnerXP, UltraISO&#8230;) &#8211; nie da się.  
+Microsoft ma dziwne zasady co do uprawnień - konto Administrator może więcej niż członkowie grupy administratorzy. Dlatego każdy inny użytkownik widzi napęd optyczny jako read-only: jaki by to model sprzętu nie był - system _odmawia_ wypalania płyt. Czy użyjemy systemowych narzędzi (od 2012 są zintegrowane), czy _third party_ (CD BurnerXP, UltraISO...) - nie da się.  
 Zabezpieczenie przed wykradaniem danych? Złośliwość? A może zabezpieczenie przed błędami wynikającymi z nieobsłużenia wypalania płyty na raz przez dwóch userów? To bez znaczenia, nic się na to nie poradzi.  
 Reasumując: jeśli ktoś chce wypalić płytę a nie jest Administratorem z wielkiej litery to pozostaje mu łaska sysadmina i RunAs.
 
@@ -20,7 +20,7 @@ Reasumując: jeśli ktoś chce wypalić płytę a nie jest Administratorem z wie
 </pre>
 
 A sam sysadmin? Cóż, musi zdecydować, czy woli wypalanie płyt, czy sklep z aplikacjami dla 2012 i RunAs.  
-No i najważniejsze &#8211; musi być dodatek Desktop Experience &#8211; wersja Core marnuje nam napędy.
+No i najważniejsze - musi być dodatek Desktop Experience - wersja Core marnuje nam napędy.
 
 <div id="zrodlo">
   źródło: http://blogs.technet.com/b/askcore/archive/2010/02/19/windows-server-2008-r2-no-recording-tab-for-cd-dvd-burner.aspx

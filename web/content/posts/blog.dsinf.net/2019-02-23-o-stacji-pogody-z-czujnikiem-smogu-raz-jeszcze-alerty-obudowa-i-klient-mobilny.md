@@ -8,13 +8,13 @@ url: /2019/02/o-stacji-pogody-z-czujnikiem-smogu-raz-jeszcze-alerty-obudowa-i-kl
 featured_image: https://blog.dsinf.net/wp-content/uploads/2019/02/nam3.jpg
 
 ---
-Jakiś czas temu [zbudowałem stację pogody z czujnikiem smogu][1] w oparciu o projekt Nettigo Air Monitor. Od tego czasu przybył do niej system alertowania za pomocą grafany i obudowa której co prawda daleko do stacji meteorologicznej ale rozwiązała najpoważniejszy problem &#8211; padające bezpośrednio słońce generujące w środku zimy odczyty około 40°C (umiejscowienie poza balkonem odpadało).
+Jakiś czas temu [zbudowałem stację pogody z czujnikiem smogu][1] w oparciu o projekt Nettigo Air Monitor. Od tego czasu przybył do niej system alertowania za pomocą grafany i obudowa której co prawda daleko do stacji meteorologicznej ale rozwiązała najpoważniejszy problem - padające bezpośrednio słońce generujące w środku zimy odczyty około 40°C (umiejscowienie poza balkonem odpadało).
 
 ## Obudowa stacji meteo<figure class="wp-block-image">
 
 <img decoding="async" loading="lazy" width="1024" height="682" src="https://blog.dsinf.net/wp-content/uploads/2019/02/nam2-1024x682.jpg" alt="" class="wp-image-1366" srcset="https://blog.dsinf.net/wp-content/uploads/2019/02/nam2-1024x682.jpg 1024w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam2-300x200.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam2-768x512.jpg 768w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam2.jpg 1280w" sizes="(max-width: 1024px) 100vw, 1024px" /> <figcaption>Tak wygląda właściwa stacja meteorologiczna; [© Marek Argent [CC BY-SA 4.0]][2]</figcaption></figure> 
 
-Jako że skrzynki z ażurowymi ściankami budować mi się nie chciało poszedłem w rozwiązanie prostsze ale dość skutecznie pozbywające się problemu słońca &#8211; pudełko po butach i folia aluminiowa. Pudełko nie zamknięte całkowicie zapewnia dostęp ciepła. Pomiary od kilku dni prowadzone także zwykłą sklepową stacją meteo i porównywane z prognozami wykazują brak odchyleń. 
+Jako że skrzynki z ażurowymi ściankami budować mi się nie chciało poszedłem w rozwiązanie prostsze ale dość skutecznie pozbywające się problemu słońca - pudełko po butach i folia aluminiowa. Pudełko nie zamknięte całkowicie zapewnia dostęp ciepła. Pomiary od kilku dni prowadzone także zwykłą sklepową stacją meteo i porównywane z prognozami wykazują brak odchyleń. 
 
 Płaski kabel USB dostarczony przez Nettigo okazał się bardzo przydatny do montażu za oknem i generalnie polecam płaskie przedłużacze USB jeśli odległość czujnika od źródła prądu ma być większa.
 
@@ -29,18 +29,18 @@ Płaski kabel USB dostarczony przez Nettigo okazał się bardzo przydatny do mon
 
 ## Alerty pogodowe
 
-Alarmów pogodowych można wymyślić co najmniej kilka, ja zacząłem od dwóch &#8211; wysokiego poziomu cząstek zawieszonych czyli smogu (>75µg/m³) i faktu że czujnik przestał transmitować dane &#8211; wbrew pozorom dość łatwo odłączyć zasilanie i zapomnieć podłączyć je ponownie. No i crashe też się mogą zdarzyć. Ten drugi pomiar powiązałem z wysyłaną do InfluxDB siłą sygnału WiFi.
+Alarmów pogodowych można wymyślić co najmniej kilka, ja zacząłem od dwóch - wysokiego poziomu cząstek zawieszonych czyli smogu (>75µg/m³) i faktu że czujnik przestał transmitować dane - wbrew pozorom dość łatwo odłączyć zasilanie i zapomnieć podłączyć je ponownie. No i crashe też się mogą zdarzyć. Ten drugi pomiar powiązałem z wysyłaną do InfluxDB siłą sygnału WiFi.
 
-Do alertowania użyłem modułu Grafany do obsługi mojego ulubionego systemu page&#8217;owania &#8211; Telegrama. Jako że na stronie Grafany brak dokumentacji jak całość ustawić wrzucę tutaj skrócone instrukcje.
+Do alertowania użyłem modułu Grafany do obsługi mojego ulubionego systemu page'owania - Telegrama. Jako że na stronie Grafany brak dokumentacji jak całość ustawić wrzucę tutaj skrócone instrukcje.
 
   * Z menu bocznego grafany należy wybrać dzwoneczek (_alerting_), następnie _notifications channels_
-  * Kliknąć _New channel_ i wybrać _Type_ &#8211; _Telegram_
-  * Teraz trzeba stworzyć bota (pomijam tworzenie konta w Telegramie) &#8211; <https://core.telegram.org/bots#6-botfather> 
-  * Zasadniczo wysyłamy do bota _BotFather_ komendę `/newbot`, odpowiadamy na pytanie o nazwę i w odpowiedzi dostajemy token do HTTP API &#8211; i ten token podajemy w polu _BOT API Token_ w Grafanie
-  * Druga zmienna potrzebna do ustawienia powiadomień to _Chat&nbsp;ID_ czyli adres docelowy powiadomień &#8211; zwykle będzie to nasz własny ID lub ID grupy zainteresowanej alertami, np. administratorów
-  * Najprostszy sposób na uzyskanie ID chatu to użycie _IDBot_ &#8211; wystarczy zacząć z nim konwersację lub dodać do grupy i wydać komendę `/getid` lub `/getgroupid`
+  * Kliknąć _New channel_ i wybrać _Type_ - _Telegram_
+  * Teraz trzeba stworzyć bota (pomijam tworzenie konta w Telegramie) - <https://core.telegram.org/bots#6-botfather> 
+  * Zasadniczo wysyłamy do bota _BotFather_ komendę `/newbot`, odpowiadamy na pytanie o nazwę i w odpowiedzi dostajemy token do HTTP API - i ten token podajemy w polu _BOT API Token_ w Grafanie
+  * Druga zmienna potrzebna do ustawienia powiadomień to _Chat&nbsp;ID_ czyli adres docelowy powiadomień - zwykle będzie to nasz własny ID lub ID grupy zainteresowanej alertami, np. administratorów
+  * Najprostszy sposób na uzyskanie ID chatu to użycie _IDBot_ - wystarczy zacząć z nim konwersację lub dodać do grupy i wydać komendę `/getid` lub `/getgroupid`
   * Pozostaje tylko _Send&nbsp;test&nbsp;&nbsp;_i _Save_
-  * Same alerty dodajemy na konkretnym wykresie &#8211; _Edit_ i zakładka _Alert_
+  * Same alerty dodajemy na konkretnym wykresie - _Edit_ i zakładka _Alert_
 
 Mój dashboard grafany aktualizuję na bieżąco jak pojawią się tylko drobne pomysły ale umieszczę poniżej wersję którą można uznać za podstawę do użycia u siebie.<figure class="wp-block-image">
 
@@ -56,7 +56,7 @@ Mój dashboard grafany aktualizuję na bieżąco jak pojawią się tylko drobne 
 
 Na koniec jeszcze kilka słów o kliencie mobilnym. Otóż Grafana na telefonie działa wybitnie beznadziejnie i co prawda można by tworzyć osobny dashboard z ograniczoną liczbą wykresów ale czasem lekki klient też jest przydatny.
 
-Jedyne co nam potrzebne poza plikiem HTML to plik JSON wysyłany przez czujnik na wskazany serwer &#8211; dokładnie to co zbiera [collect.php z poprzedniego wpisu][1]. Tutaj umieszczony w tym samym folderze serwera www pod nazwą smog.json (dla ułatwienia i obejścia problemów z CORS jeśli stosujemy różne domeny można na serwerze stworzyć symlink).<figure class="wp-block-image is-resized">
+Jedyne co nam potrzebne poza plikiem HTML to plik JSON wysyłany przez czujnik na wskazany serwer - dokładnie to co zbiera [collect.php z poprzedniego wpisu][1]. Tutaj umieszczony w tym samym folderze serwera www pod nazwą smog.json (dla ułatwienia i obejścia problemów z CORS jeśli stosujemy różne domeny można na serwerze stworzyć symlink).<figure class="wp-block-image is-resized">
 
 [<img decoding="async" loading="lazy" src="https://blog.dsinf.net/wp-content/uploads/2019/02/nam5-576x1024.jpg" alt="" class="wp-image-1372" width="288" height="512" srcset="https://blog.dsinf.net/wp-content/uploads/2019/02/nam5-576x1024.jpg 576w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam5-169x300.jpg 169w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam5.jpg 750w" sizes="(max-width: 288px) 100vw, 288px" />][5]</figure> 
 

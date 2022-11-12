@@ -9,9 +9,9 @@ tags:
   - szybkie aplikacje
 
 ---
-Przetwarzając manualnie stertę katalogów doszedłem do potrzeby zwizualizowania postępu mojej pracy &#8211; głównie by się nie poddawać, ale przemyślenia nad tym problemem dawały mi chwile wytchnienia. I tak zrodził się **DS progress**, czyli jak go opisałem, **ulatwiacz kontroli postępu pracy**.  
+Przetwarzając manualnie stertę katalogów doszedłem do potrzeby zwizualizowania postępu mojej pracy - głównie by się nie poddawać, ale przemyślenia nad tym problemem dawały mi chwile wytchnienia. I tak zrodził się **DS progress**, czyli jak go opisałem, **ulatwiacz kontroli postępu pracy**.  
 [<img decoding="async" loading="lazy" src="http://blog.dsinf.net/wp-content/uploads/2012/08/dsprogressv0-02_screen.png" alt="DS Progress v0.2 main window" width="423" height="301" class="alignnone size-full wp-image-187" srcset="https://blog.dsinf.net/wp-content/uploads/2012/08/dsprogressv0-02_screen.png 423w, https://blog.dsinf.net/wp-content/uploads/2012/08/dsprogressv0-02_screen-300x213.png 300w" sizes="(max-width: 423px) 100vw, 423px" />][1]  
-Aplikacyjka trywailan i naturalnie napisana w C# w jakieś 20 minut razem z (mam nadzieję) ladnym designem i dpracowaniem fukcjonalności. Generalnie sprowadza się ona do progress bara i przycisków plus/minus. Istnieje jednak możliwość definiowania postępu &#8222;z palucha&#8221; oraz zmiany celu (domyślnie 100) i naturalnie zresetowania licznika. Tym co zajęło mi w kodzie najwięcej bo aż 3 linijki było ustrzymywanie label&#8217;ki z informacją tekstową o progresie w centrum paska postępu.  
+Aplikacyjka trywailan i naturalnie napisana w C# w jakieś 20 minut razem z (mam nadzieję) ladnym designem i dpracowaniem fukcjonalności. Generalnie sprowadza się ona do progress bara i przycisków plus/minus. Istnieje jednak możliwość definiowania postępu "z palucha" oraz zmiany celu (domyślnie 100) i naturalnie zresetowania licznika. Tym co zajęło mi w kodzie najwięcej bo aż 3 linijki było ustrzymywanie label'ki z informacją tekstową o progresie w centrum paska postępu.  
 Nie wiem, czy kod jest godny męczyć SyntaxHighlightera, ale skoro ładnie to wygląda to wstawię:
 
 <pre class="EnlighterJSRAW csharp">using System;
@@ -118,7 +118,7 @@ namespace ds_progress
     }
 }</pre>
 
-Klasycznie w przypadku tak małego programiku licencja &#8222;róbta co chceta&#8221;, [DS Progress VS 2012 Solution][2]. Ale uwaga: _solution_ powstał pod VisualStudio 2012 (RC), więc być może nie zadziała z wersją 2010.
+Klasycznie w przypadku tak małego programiku licencja "róbta co chceta", [DS Progress VS 2012 Solution][2]. Ale uwaga: _solution_ powstał pod VisualStudio 2012 (RC), więc być może nie zadziała z wersją 2010.
 
  [1]: http://blog.dsinf.net/wp-content/uploads/2012/08/dsprogressv0-02_screen.png
  [2]: http://blog.dsinf.net/wp-content/uploads/2012/08/ds_progress.zip

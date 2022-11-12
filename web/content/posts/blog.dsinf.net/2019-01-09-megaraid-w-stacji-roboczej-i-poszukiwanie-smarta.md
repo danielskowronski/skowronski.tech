@@ -12,9 +12,9 @@ tags:
   - storage
 
 ---
-Kolejny artykuł o zabawie z moją stacją roboczą (Dell T5500) &#8211; tym razem w roli głównej kontroler RAID firmy LSI &#8211; MegaRAID SAS6IR (Windowsy driver widzi to jako _Karta&nbsp;LSI,&nbsp;seria&nbsp;SAS&nbsp;3000,&nbsp;8&nbsp;portów&nbsp;z&nbsp;1068E_). A konkretniej podejrzenie awarii jednego z dysków w macierzy.
+Kolejny artykuł o zabawie z moją stacją roboczą (Dell T5500) - tym razem w roli głównej kontroler RAID firmy LSI - MegaRAID SAS6IR (Windowsy driver widzi to jako _Karta&nbsp;LSI,&nbsp;seria&nbsp;SAS&nbsp;3000,&nbsp;8&nbsp;portów&nbsp;z&nbsp;1068E_). A konkretniej podejrzenie awarii jednego z dysków w macierzy.
 
-Ale po kolei. Mój setup wykorzystujący sprzętowy RAID to proste mirrorowanie dwóch dysków SAS od Seagate&#8217;a (były w zestawie z komputerem i o dziwo jeszcze żyją) o przyjemnej prędkości obrotowej 15.7k RPM. Dla windowsa jest prezentowany wirtualny dysk i tyle. Nie pamiętam dokładnie setupu ale widziałem maszynę Della na której WinServer widział składniki macierzy i dyski logiczne &#8211; tu nie ma to miejsca. Podczas któregoś polowania na sterowniki doinstalowałem sobie _MegaRAID Storage Manager_a czyli konsolę administracyjną karty PCI która zarządza dyskami &#8211; dość wygodna żeby nie rebootować maszyny do BIOSu kontrolera. 
+Ale po kolei. Mój setup wykorzystujący sprzętowy RAID to proste mirrorowanie dwóch dysków SAS od Seagate'a (były w zestawie z komputerem i o dziwo jeszcze żyją) o przyjemnej prędkości obrotowej 15.7k RPM. Dla windowsa jest prezentowany wirtualny dysk i tyle. Nie pamiętam dokładnie setupu ale widziałem maszynę Della na której WinServer widział składniki macierzy i dyski logiczne - tu nie ma to miejsca. Podczas któregoś polowania na sterowniki doinstalowałem sobie _MegaRAID Storage Manager_a czyli konsolę administracyjną karty PCI która zarządza dyskami - dość wygodna żeby nie rebootować maszyny do BIOSu kontrolera. 
 
 <ul class="is-layout-flex wp-block-gallery-1 wp-block-gallery columns-2 is-cropped">
   <li class="blocks-gallery-item">
@@ -25,13 +25,13 @@ Ale po kolei. Mój setup wykorzystujący sprzętowy RAID to proste mirrorowanie 
   </li>
 </ul>
 
-Aż pewnego pięknego dnia zaczął wyskakiwać komunikat o wypadnięciu dysku z macierzy. W logach pojawiał się z datą &#8222;2000-01-01 12:00:00&#8221;. Co ciekawe eventy o pomyślnym logowaniu do konsoli mają poprawną datę. W każdym razie okazało się że leci rebuild. Po czym drugi raz. I trzeci.<figure class="wp-block-image">
+Aż pewnego pięknego dnia zaczął wyskakiwać komunikat o wypadnięciu dysku z macierzy. W logach pojawiał się z datą "2000-01-01 12:00:00". Co ciekawe eventy o pomyślnym logowaniu do konsoli mają poprawną datę. W każdym razie okazało się że leci rebuild. Po czym drugi raz. I trzeci.<figure class="wp-block-image">
 
 <img decoding="async" loading="lazy" width="950" height="858" src="https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid1.png" alt="" class="wp-image-1314" srcset="https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid1.png 950w, https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid1-300x271.png 300w, https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid1-768x694.png 768w" sizes="(max-width: 950px) 100vw, 950px" /> </figure> 
 
-Wtedy postanowiłem zbadać stan SMARTa dysków (niektórzy mogą się domyślić że nie ma to sensu, ale o tym potem). Czas pobrać pakiet _smarrtmontools_. Bash na Windowsa był pierwszym strzałem. Pudło bo to kontener który nie ma bindowań do devfs (w sumie nie ma za bardzo jak mieć). Kolejna próba to build smartctl na Windowsa. Nawet [wiki projektu][1] potwierdza że się powinno dać &#8211; przez CSMI. Znowu pudło bo support megaraida wyparował z wersji windowsowej. Próby enumerowania ukrytych urządzeń przez cygwina też upadły (_smartctl &#8211;scan_). 
+Wtedy postanowiłem zbadać stan SMARTa dysków (niektórzy mogą się domyślić że nie ma to sensu, ale o tym potem). Czas pobrać pakiet _smarrtmontools_. Bash na Windowsa był pierwszym strzałem. Pudło bo to kontener który nie ma bindowań do devfs (w sumie nie ma za bardzo jak mieć). Kolejna próba to build smartctl na Windowsa. Nawet [wiki projektu][1] potwierdza że się powinno dać - przez CSMI. Znowu pudło bo support megaraida wyparował z wersji windowsowej. Próby enumerowania ukrytych urządzeń przez cygwina też upadły (_smartctl -scan_). 
 
-Czas zatem na najlepszego przyjaciela użytkownika Gentoo i nie tylko &#8211; _SystemRescueCD_. I tu kolejna porażka &#8211; driver megaraida w smartctl wymaga podania ID kontrolera (ale nie SCSI tylko samego megaraida). [Wiki Thomas-Krenn][2]a daje sporo informacji ale nie mogę się natknąć na szukane ID (bruteforcowy for-loop sugeruje że może jednak go tam nie ma&#8230;) Jedyne co mam to zlistowane LUNy fizycznych urządzeń od _lsscsi_:
+Czas zatem na najlepszego przyjaciela użytkownika Gentoo i nie tylko - _SystemRescueCD_. I tu kolejna porażka - driver megaraida w smartctl wymaga podania ID kontrolera (ale nie SCSI tylko samego megaraida). [Wiki Thomas-Krenn][2]a daje sporo informacji ale nie mogę się natknąć na szukane ID (bruteforcowy for-loop sugeruje że może jednak go tam nie ma...) Jedyne co mam to zlistowane LUNy fizycznych urządzeń od _lsscsi_:
 
 <pre class="lang:default EnlighterJSRAW  ">[1:0:0:0]    disk    ATA      INTEL SSDSA2BW16 0365  /dev/sda 
 [3:0:0:0]    disk    ATA      WDC WD1002FBYS-0 NA01  /dev/sdb 
@@ -80,9 +80,9 @@ root@sysresccd % </pre>
 
 
 
-Czas na narzędzie do zarządzania &#8211; _lsiutil_. Ciężkie do znalezienia ale są [dobrzy ludzie którzy mirrorują][5] na blogach. Okazuje się że to narzędzie to koszmarek podobny do fdiska z milionem menu, ale chociaż działa.
+Czas na narzędzie do zarządzania - _lsiutil_. Ciężkie do znalezienia ale są [dobrzy ludzie którzy mirrorują][5] na blogach. Okazuje się że to narzędzie to koszmarek podobny do fdiska z milionem menu, ale chociaż działa.
 
-Szczęśliwy człowiek wraca do smartctla a tam&#8230; przypomina sobie że dyski SAS nie mają SMARTa z dysków [S]ATA. <facepalm />
+Szczęśliwy człowiek wraca do smartctla a tam... przypomina sobie że dyski SAS nie mają SMARTa z dysków [S]ATA. <facepalm />
 
 <pre class="lang:default EnlighterJSRAW ">LSI Logic MPT Configuration Utility, Version 1.57, April 28, 2008
 
@@ -134,9 +134,9 @@ Main menu, select an option:  [1-99 or e/p/w or 0 to quit] l
 
 
 
-Kilka eksperymentów z diagnostyką dostępną w lsiutilu wykazuje że dysk (bo failował tylko jeden) w zasadzie żyje i nie udało mi się złapać badsectorów. Cóż, przy kolejnej awarii posiedzę w menu diagnostyki dłużej albo przepnę do maszyny z kontrolerem SAS który pracuje w trybie JBOD i wykonam destrukcyjny test powierzchni &#8211; z wynikami które rozumiem 🙂
+Kilka eksperymentów z diagnostyką dostępną w lsiutilu wykazuje że dysk (bo failował tylko jeden) w zasadzie żyje i nie udało mi się złapać badsectorów. Cóż, przy kolejnej awarii posiedzę w menu diagnostyki dłużej albo przepnę do maszyny z kontrolerem SAS który pracuje w trybie JBOD i wykonam destrukcyjny test powierzchni - z wynikami które rozumiem 🙂
 
-Na sam koniec jeszcze [mój mirror lsiutil&#8217;a][6] na wszelki wypadek.
+Na sam koniec jeszcze [mój mirror lsiutil'a][6] na wszelki wypadek.
 
  [1]: https://www.smartmontools.org/wiki/Supported_RAID-Controllers
  [2]: https://www.thomas-krenn.com/en/wiki/Smartmontools_with_MegaRAID_Controller

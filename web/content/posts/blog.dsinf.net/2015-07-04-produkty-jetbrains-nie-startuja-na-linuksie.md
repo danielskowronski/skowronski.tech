@@ -13,7 +13,7 @@ tags:
   - opensuse
 
 ---
-Produkty JetBrains (PHPstorm, WebStorms, InielliJ Idea, CLIon, PyCharm, RubyMine&#8230;) wymagają Javy od Oracle i nie współpracują z OpenJDK &#8211; dlatego najpierw trzeba ją pobrać z oracle.com. Jeśli dalej nie startuje i wyjście konsoli przypomina:
+Produkty JetBrains (PHPstorm, WebStorms, InielliJ Idea, CLIon, PyCharm, RubyMine...) wymagają Javy od Oracle i nie współpracują z OpenJDK - dlatego najpierw trzeba ją pobrać z oracle.com. Jeśli dalej nie startuje i wyjście konsoli przypomina:
 
 <pre class="lang:default EnlighterJSRAW  ">java version "1.5.0"
 gij (GNU libgcj) version 4.8.3 20141208 [gcc-4_8-branch revision 218481]
@@ -35,7 +35,7 @@ Dodatkowo na openSuse 13.2 JKD/JRE od Oracle z paczki RPM nie instaluje się od
 
 <pre class="lang:default EnlighterJSRAW ">/usr/sbin/alternatives is needed by jdk1.8.0</pre>
 
-Trzeba nam dwóch paczek &#8211; [alternatives][1] i [update-alternatives][2].
+Trzeba nam dwóch paczek - [alternatives][1] i [update-alternatives][2].
 
  [1]: http://software.opensuse.org/package/alternatives
  [2]: http://software.opensuse.org/package/update-alternatives

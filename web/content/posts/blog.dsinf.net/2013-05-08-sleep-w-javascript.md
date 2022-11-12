@@ -8,10 +8,10 @@ tags:
   - js
 
 ---
-Ustawianie opóźnień w skryptach Javy nie jest takie oczywiste&#8230;  
+Ustawianie opóźnień w skryptach Javy nie jest takie oczywiste...  
 <!--break-->
 
-Z języków programowania chciałoby się użyć funckji sleep(int miliseconds); która zatrzyma CPU na jakiś czas &#8211; wiadomo, że jest to nieeleganckie, ale skuteczne. Jednak w przypadku stron WWW przykładowa implementacja
+Z języków programowania chciałoby się użyć funckji sleep(int miliseconds); która zatrzyma CPU na jakiś czas - wiadomo, że jest to nieeleganckie, ale skuteczne. Jednak w przypadku stron WWW przykładowa implementacja
 
 <pre class="EnlighterJSRAWjscript">function sleep(milliseconds) {
   var start = new Date().getTime();
@@ -21,7 +21,7 @@ Z języków programowania chciałoby się użyć funckji sleep(int miliseconds);
 }
 </pre>
 
-naprawdę zawiesza procesor &#8211; nie jest to znane z C# System.Threading.Thread.Sleep(100) &#8211; więc wskazujące, że zawieszamy wątek, ale zawieszamy cały interpreter JS co równoznaczen jest z tym, że aktualizacje DOM czy po prostu tego co widzi użytkownik są niewidoczne. Ponadto monolity takie jak Mozilla Firefox zawisną w całej okazałości, czym może zainteresować się Windows &#8211; w skrajnej konfiguracji sam ubije nieodpowiadający proces. Przykład:
+naprawdę zawiesza procesor - nie jest to znane z C# System.Threading.Thread.Sleep(100) - więc wskazujące, że zawieszamy wątek, ale zawieszamy cały interpreter JS co równoznaczen jest z tym, że aktualizacje DOM czy po prostu tego co widzi użytkownik są niewidoczne. Ponadto monolity takie jak Mozilla Firefox zawisną w całej okazałości, czym może zainteresować się Windows - w skrajnej konfiguracji sam ubije nieodpowiadający proces. Przykład:
 
 <pre class="EnlighterJSRAWjscript">document.write("1 <br />"); sleep(1000);
 document.write("2 <br />"); sleep(1000);
@@ -36,7 +36,7 @@ Przejdźmy do jedynego słusznego rozwiązania , tj. **setTimeout**
 <pre class="EnlighterJSRAWjscript">setTimeout(function() { coś(); }, 1000); 
 </pre>
 
-Wszystko pięknie, ale sposób w jaki to zostanie zinterpretowane jest zaskakujący jak na trochę prymitywny względem wysokopoziomowców JavaScript. Otóż setTimeout znaczy to co znaczyć powinno tj. &#8222;zarejestruj event/przerwwanie, że za tyle milisekund wywołasz coś();, ale bez czekania tych milisekund wykonaj kolejną linię kodu&#8221;, a nie &#8222;odczekaj i wykona coś(); dopiero wtedy następną linię&#8221;. Oznacza to, że kod
+Wszystko pięknie, ale sposób w jaki to zostanie zinterpretowane jest zaskakujący jak na trochę prymitywny względem wysokopoziomowców JavaScript. Otóż setTimeout znaczy to co znaczyć powinno tj. "zarejestruj event/przerwwanie, że za tyle milisekund wywołasz coś();, ale bez czekania tych milisekund wykonaj kolejną linię kodu", a nie "odczekaj i wykona coś(); dopiero wtedy następną linię". Oznacza to, że kod
 
 <pre class="EnlighterJSRAWjscript" >setTimeout(function() {document.write('1 <br />'); }, 1000);
 setTimeout(function() {document.write('2 <br />'); }, 1000);
@@ -46,7 +46,7 @@ setTimeout(function() {document.write('4 <br />'); }, 1000);
 
 odczeka sekundę i wypluje wszystko na raz!
 
-**Właściwe rozwiązanie to kolejne setTimeout&#8217;y <u>większe od poprzednich</u>**:
+**Właściwe rozwiązanie to kolejne setTimeout'y <u>większe od poprzednich</u>**:
 
 <pre class="EnlighterJSRAWjscript">setTimeout(function() {document.write('1 <br />'); }, 1000);
 setTimeout(function() {document.write('2 <br />'); }, 2000);

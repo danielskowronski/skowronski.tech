@@ -14,7 +14,7 @@ tags:
 
 ---
 Tak, są ludzie tak leniwi, że pracują na koncie roota.  
-Ale są też tak wredni deweloperzy, że zmuszają użytkownikó do rekompilacji całego ogromnego pakietu jakim jest m.in. VLC ze specjalną flagą by dało się wystartować jako root&#8230;
+Ale są też tak wredni deweloperzy, że zmuszają użytkownikó do rekompilacji całego ogromnego pakietu jakim jest m.in. VLC ze specjalną flagą by dało się wystartować jako root...
 
 Aby rozwiązać kretyński problem z tym komunikatem:
 
@@ -28,4 +28,4 @@ należy wykonać:
 <pre class="lang:default EnlighterJSRAW " title="VLC jako root - fix" >sed -i 's/geteuid//g' /usr/bin/vlc</pre>
 
 Rozwiązanie obrzydliwe, ale działa. A nie warto rezygnować z fajnego VLC na rzecz innych odtwarzaczy pozbawionych takich zabezpieczeń.  
-Tak, tak, tak&#8230; startowanie jako root nie jest do końca mądre, ale czasem wygodne. Ale serio, nie róbcie tego w śroodowisku produkcyjnym.
+Tak, tak, tak... startowanie jako root nie jest do końca mądre, ale czasem wygodne. Ale serio, nie róbcie tego w śroodowisku produkcyjnym.

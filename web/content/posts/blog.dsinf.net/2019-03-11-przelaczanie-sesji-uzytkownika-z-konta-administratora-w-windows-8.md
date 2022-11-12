@@ -32,6 +32,6 @@ i w nowo odpalonym Menedżerze Zadań przechodzimy do karty _Użytkownicy_, praw
 
 Bez uruchomienia z flagą -s Windows zażądałby od nas hasła docelowego użytkownika.
 
-Powrót wymaga klasycznego windowsowego &#8222;przełącz konto&#8221; z menu start lub&#8230; odpalenia kolejnego taskmgr jako system (z PsExec), ale tak czy inaczej będziemy musieli podać nasze hasło.
+Powrót wymaga klasycznego windowsowego "przełącz konto" z menu start lub... odpalenia kolejnego taskmgr jako system (z PsExec), ale tak czy inaczej będziemy musieli podać nasze hasło.
 
  [1]: https://docs.microsoft.com/en-us/sysinternals/downloads/psexec

@@ -7,13 +7,13 @@ url: /2020/03/darmowe-powiadomienia-na-ios-na-podstawie-api-http-na-przykladzie-
 featured_image: https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.13.jpg
 
 ---
-Zacznijmy od zdefiniowania problemu &#8211; w Krakowie posiadacze Karty Krakowskiej mogą korzystać z biletu na dwóch nośnikach &#8211; klasycznej karty zbliżeniowej (takiej jak KKM, albo plastikowa KK), albo w aplikacji mobilnej. I można by oczekiwać że aplikacja raczy przypomnieć że bilet się kończy. Ale najwyraźniej nie w Krakowie.
+Zacznijmy od zdefiniowania problemu - w Krakowie posiadacze Karty Krakowskiej mogą korzystać z biletu na dwóch nośnikach - klasycznej karty zbliżeniowej (takiej jak KKM, albo plastikowa KK), albo w aplikacji mobilnej. I można by oczekiwać że aplikacja raczy przypomnieć że bilet się kończy. Ale najwyraźniej nie w Krakowie.
 
-Zatem trzeba coś samemu wytworzyć. Zacząłem od próby napisania aplikacji na iPhona, ale nieco poległem &#8211; trochę to jak strzelanie z armaty na komara &#8211; wszak pobranie informacji o ważności biletu to najwyżej 2 strzały HTTP, obliczenie różnicy czasu i wysłanie powiadomienia. Alternatywa wydawałoby się pozostała jedna &#8211; skrypt na serwerze który wysyła powiadomienia przez Telegrama, albo inny komunikator obsługujący boty i posiadający przyjemne API &#8211; coś w rodzaju [skryptu, który napisałem do crawlowania portalu JustJoinIT][1].
+Zatem trzeba coś samemu wytworzyć. Zacząłem od próby napisania aplikacji na iPhona, ale nieco poległem - trochę to jak strzelanie z armaty na komara - wszak pobranie informacji o ważności biletu to najwyżej 2 strzały HTTP, obliczenie różnicy czasu i wysłanie powiadomienia. Alternatywa wydawałoby się pozostała jedna - skrypt na serwerze który wysyła powiadomienia przez Telegrama, albo inny komunikator obsługujący boty i posiadający przyjemne API - coś w rodzaju [skryptu, który napisałem do crawlowania portalu JustJoinIT][1].
 
-Szukając zupełnie innej rzeczy na iPhona &#8211; sposobu na dodanie skrótu łączenia się z VPN (przez natywnego klienta IPsec, nie z aplikacji typu NordVPN) przypomniałem sobie że przecież iOS od wersji 13 posiada aplikację _Shortcuts_ w której można automatyzować czynności między innymi na podstawie wyniku pobierania treści z internetu czy skryptów SSH.
+Szukając zupełnie innej rzeczy na iPhona - sposobu na dodanie skrótu łączenia się z VPN (przez natywnego klienta IPsec, nie z aplikacji typu NordVPN) przypomniałem sobie że przecież iOS od wersji 13 posiada aplikację _Shortcuts_ w której można automatyzować czynności między innymi na podstawie wyniku pobierania treści z internetu czy skryptów SSH.
 
-Wystarczyło teraz wystawić tylko proste API, które zwróci liczbę dni do końca ważności biletu i stworzyć automatyzację wyświetlającą ładne natywne powiadomienie. Zalążek projektu [krakow-tickets-api wrzuciłem na githuba][2] i zahostowałem w pokątnym miejscu na serwerze zabezpieczając się przez nieprzewidywalną ścieżkę. Docelowo API powinno obsługiwać hasło dostępu do samego siebie i parametry w postaci loginu i hasła do strony posiadającej właściwe dane &#8211; takie informacje także można przekazać przez _Shortcuts_.
+Wystarczyło teraz wystawić tylko proste API, które zwróci liczbę dni do końca ważności biletu i stworzyć automatyzację wyświetlającą ładne natywne powiadomienie. Zalążek projektu [krakow-tickets-api wrzuciłem na githuba][2] i zahostowałem w pokątnym miejscu na serwerze zabezpieczając się przez nieprzewidywalną ścieżkę. Docelowo API powinno obsługiwać hasło dostępu do samego siebie i parametry w postaci loginu i hasła do strony posiadającej właściwe dane - takie informacje także można przekazać przez _Shortcuts_.
 
 Czas na programowanie graficzne. Aplikacja jest odinstalowywalna więc pewnie większość użytkowników się jej pozbyła po aktualizacji. Dostępna jest oczywiście [w AppStore][3].<figure class="is-layout-flex wp-block-gallery-13 wp-block-gallery columns-2 is-cropped">
 
@@ -26,7 +26,7 @@ Czas na programowanie graficzne. Aplikacja jest odinstalowywalna więc pewnie wi
   </li>
 </ul></figure> 
 
-Kroki przedstawione powyżej raczej nie wymagają komentarza. Testować można klikając przycisk w prawym dolnym rogu. Teraz jeszcze tylko harmonogram &#8211; wschód słońca wydał mi się dobrym wyborem i można cieszyć się powiadomieniami.<figure class="is-layout-flex wp-block-gallery-15 wp-block-gallery columns-2 is-cropped">
+Kroki przedstawione powyżej raczej nie wymagają komentarza. Testować można klikając przycisk w prawym dolnym rogu. Teraz jeszcze tylko harmonogram - wschód słońca wydał mi się dobrym wyborem i można cieszyć się powiadomieniami.<figure class="is-layout-flex wp-block-gallery-15 wp-block-gallery columns-2 is-cropped">
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">

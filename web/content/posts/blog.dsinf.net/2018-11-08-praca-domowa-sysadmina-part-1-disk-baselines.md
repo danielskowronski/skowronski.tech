@@ -1,9 +1,8 @@
 ---
-title: '„Praca domowa” SysAdmina – part 1: disk baselines'
+title: '"Praca domowa" SysAdmina – part 1: disk baselines'
 author: Daniel Skowroński
 type: post
 date: 2018-11-08T18:06:43+00:00
-excerpt: 'Jakiś czas temu zostałem zaproszony na proces rekrutacyjny na stanowisko SysAdmina przez pewną firmę i dostałem "pracę domową" składającą się z dwóch zadań mających sprawdzić moje praktyczne umiejętności i podejście do problemu. Firma okazała się turboniepoważna i mimo pozytywnego feedbacku od autora zadań kilka dni później, zasłaniając się "wewnętrznymi problemami" poprosiła mnie o chwilę cierpliwości. Kilkadziesiąt chwil później kontakt się urwał i po 3 tygodniach uznałem że czas o nich zapomnieć. Ale zadania zostały i warte są opublikowania. Nic nie wspomniano o zakazie publikacji rozwiązań, a teraz nie zamierzam o to pytać. Tak czy inaczej - jeśli dostaniecie od jakiejś firmy identyczne lub podobne zadania - uważajcie na nich.'
 url: /2018/11/praca-domowa-sysadmina-part-1-disk-baselines/
 featured_image: https://blog.dsinf.net/wp-content/uploads/2018/11/sah1.png
 tags:
@@ -18,13 +17,13 @@ tags:
 ---
 ## Historia pewnej rekrutacji
 
-Jakiś czas temu zostałem zaproszony na proces rekrutacyjny na stanowisko SysAdmina przez pewną firmę i dostałem &#8222;pracę domową&#8221; składającą się z dwóch zadań mających sprawdzić moje praktyczne umiejętności i podejście do problemu. Firma okazała się turboniepoważna i mimo pozytywnego feedbacku od autora zadań kilka dni później, zasłaniając się &#8222;wewnętrznymi problemami&#8221; poprosiła mnie o chwilę cierpliwości. Kilkadziesiąt chwil później kontakt się urwał i po 3 tygodniach uznałem że czas o nich zapomnieć. Ale zadania zostały i warte są opublikowania. Nic nie wspomniano o zakazie publikacji rozwiązań, a teraz nie zamierzam o to pytać. Tak czy inaczej &#8211; jeśli dostaniecie od jakiejś firmy identyczne lub podobne zadania &#8211; uważajcie na nich.
+Jakiś czas temu zostałem zaproszony na proces rekrutacyjny na stanowisko SysAdmina przez pewną firmę i dostałem "pracę domową" składającą się z dwóch zadań mających sprawdzić moje praktyczne umiejętności i podejście do problemu. Firma okazała się turboniepoważna i mimo pozytywnego feedbacku od autora zadań kilka dni później, zasłaniając się "wewnętrznymi problemami" poprosiła mnie o chwilę cierpliwości. Kilkadziesiąt chwil później kontakt się urwał i po 3 tygodniach uznałem że czas o nich zapomnieć. Ale zadania zostały i warte są opublikowania. Nic nie wspomniano o zakazie publikacji rozwiązań, a teraz nie zamierzam o to pytać. Tak czy inaczej - jeśli dostaniecie od jakiejś firmy identyczne lub podobne zadania - uważajcie na nich.
 
 ## Wstęp do zadań
 
 Zadania były dwa i podzielę je na dwa posty. Z drobnego lenistwa rozwiązania zostawię w oryginalnej formie i języku w którym je przesłałem (czyli angielskim).
 
-Na sam początek kilka słów o środowisku testowym, systemie prezentacji wyników i założeniach. Dla niecierpliwych &#8211; [ładne wykresy są na końcu][1] 😉
+Na sam początek kilka słów o środowisku testowym, systemie prezentacji wyników i założeniach. Dla niecierpliwych - [ładne wykresy są na końcu][1] 😉
 
 ### System
 
@@ -33,14 +32,14 @@ Na sam początek kilka słów o środowisku testowym, systemie prezentacji wynik
   * VMware virtual machine hosted on Windows PC
   * 16GB RAM
   * 1x 8 core CPU ([Intel Xeon E5540][2])
-  * System disk &#8211; virtual SCSI 20GB ext4
+  * System disk - virtual SCSI 20GB ext4
   * hosted on LSI SAS card, RAID1, NTFS formatted 15k RPM hard drive
 
 #### Software
 
-  * OS &#8211; Ubuntu Server 18.04 LTS
+  * OS - Ubuntu Server 18.04 LTS
   * installed using standard wizard
-  * Database &#8211; PostgreSQL 10
+  * Database - PostgreSQL 10
 
 #### Storage
 
@@ -71,7 +70,7 @@ Including JS code of each graph page in this document would be pointless but sca
 
 ## 
 
-## Zadanie 1 &#8211; disk baselines
+## Zadanie 1 - disk baselines
 
 Pierwsze polegało na przeprowadzeniu testów obciążeniowych dysku i zebranie metryk wydajności w formie umożliwiającej łatwe zobrazowanie w formie wykresów.
 
@@ -81,7 +80,7 @@ Pierwsze polegało na przeprowadzeniu testów obciążeniowych dysku i zebranie 
 
 <pre class="lang:default EnlighterJSRAW">apt install bonnie++ sysstat</pre>
 
-### First iteration &#8211; iostat-csv + R/GSheet
+### First iteration - iostat-csv + R/GSheet
 
 #### Data collection
 
@@ -90,7 +89,7 @@ Simple wrapper from internet
 <pre class="lang:default EnlighterJSRAW ">root@sah:/home/sah# cd /var/sah/bin; git clone https://github.com/ymdysk/iostat-csv.git
 root@sah:/home/sah#</pre>
 
-Simple test &#8211; \`bonnie++\` simple test (2x RAM size) on data disk, simple wrapper over \`iostat -x\` that ouputs csv run in parallel.
+Simple test - \`bonnie++\` simple test (2x RAM size) on data disk, simple wrapper over \`iostat -x\` that ouputs csv run in parallel.
 
 <pre class="lang:default EnlighterJSRAW " title="# terminal 1">root@sah:/home/sah# time bonnie++ -d /home/sah/tests/ -r 16192 -u daniel
 Using uid:1000, gid:1000.
@@ -172,9 +171,9 @@ xyplot(as.formula(f), data=d, type='l', auto.key=list(space='right'))</pre>
 
 R is not suitable for interactive analysis or any easy analysis at all with huge datasets that need every point to be shown.
 
-Second iteration in GSheet, kind of disappointing &#8211; https://docs.google.com/spreadsheets/d/13QFwxlwpk5QKAj-fj3VX\_o49nSNUIYdHEL54ijR\_DiQ/edit?usp=sharing
+Second iteration in GSheet, kind of disappointing - https://docs.google.com/spreadsheets/d/13QFwxlwpk5QKAj-fj3VX\_o49nSNUIYdHEL54ijR\_DiQ/edit?usp=sharing
 
-### Second iteration &#8211; custom watcher script and plotly.js
+### Second iteration - custom watcher script and plotly.js
 
 #### Custom script \`statsWatcher.sh\`
 
@@ -272,7 +271,7 @@ Here’s setup of it under VMware:
 
 ##### Test suite
 
-It’ll run baselines collector for 15 seconds without load, then perform 3 tests of bonnie++ (-x3 on 15G output data sizew) and again collect 15 minutes of idle stats. 3 files are created &#8211; bonnie.csv with raw results, bonnie.html with html formatted data and baseline.csv with IO and CPU stats.
+It’ll run baselines collector for 15 seconds without load, then perform 3 tests of bonnie++ (-x3 on 15G output data sizew) and again collect 15 minutes of idle stats. 3 files are created - bonnie.csv with raw results, bonnie.html with html formatted data and baseline.csv with IO and CPU stats.
 
 <pre class="lang:default EnlighterJSRAW ">logname=filesystem_ext4journal; 
 ./statsWatcher.sh /dev/sdc $logname.baseline.csv & sleep 15; bonnie++ -u root -d /test/ -s15G -r7.5G -x3 -q &gt; $logname.bonnie.csv; sleep 15; kill -9 `jobs -p`; bon_csv2html $logname.bonnie.csv &gt; $logname.bonnie.html</pre>
@@ -491,14 +490,14 @@ root@sah:~/task1#</pre>
 
 5 tests were performed for baselining purposes:
 
-**data download & unpacking it &#8211; etl_dataload**
+**data download & unpacking it - etl_dataload**
 
 <pre class="lang:default EnlighterJSRAW">root@sah:/home/csv# ./statsWatcher.sh /dev/sdb etl_dataload.csv & sleep 15; for i in `seq -f "%05g" 0 29`; do wget https://XXXXXXXX.s3.amazonaws.com/hive_csv_altus_gz/part-$i.gz; done; sleep 30; for i in `seq -f "%05g" 0 29`; do gzip -d part-$i.gz; done; sleep 15; kill -9 `jobs -p`; ntfy -b telegram send "done"
 [1] 97612
 [1]+ Killed ./statsWatcher.sh /dev/sdb etl_dataload.csv
 root@sah:/home/csv#</pre>
 
-**1.2GB chunks with 1 threads &#8211; etl\_1\_1**
+**1.2GB chunks with 1 threads - etl\_1\_1**
 
 <pre class="lang:default EnlighterJSRAW ">root@sah:/home/csv# timepse "truncate table extract"
 TRUNCATE TABLE
@@ -520,7 +519,7 @@ root@sah:/home/csv# logname=etl_1_4; ./statsWatcher.sh /dev/sdb $logname.baselin
 [2]+ Killed ./statsWatcher.sh /dev/sdb $logname.baseline.csv
 root@sah:/home/csv#</pre>
 
-**2.4GB chunks with 8 threads &#8211; etl\_2\_8**
+**2.4GB chunks with 8 threads - etl\_2\_8**
 
 <pre class="lang:default EnlighterJSRAW ">root@sah:/home/csv# ls -alh part-*
 -rw-r--r-- 1 root root 2.4G Oct 2 18:28 part-0_2
@@ -546,7 +545,7 @@ root@sah:/home/csv# logname=etl_2_8; ./statsWatcher.sh /dev/sdb $logname.baselin
 [1]+ Killed ./statsWatcher.sh /dev/sdb $logname.baseline.csv
 root@sah:/home/csv#</pre>
 
-**pg\_bulkload parallel &#8211; etl\_pgbulkload**
+**pg\_bulkload parallel - etl\_pgbulkload**
 
 <pre class="lang:default EnlighterJSRAW ">root@sah:/home/csv# timepse "truncate table extract"
 TRUNCATE TABLE

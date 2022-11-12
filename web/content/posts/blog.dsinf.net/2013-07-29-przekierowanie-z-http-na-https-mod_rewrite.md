@@ -9,18 +9,18 @@ tags:
   - webserver
 
 ---
-Często chcielibyśmy, żeby użytkownik nie miał szans wysłać danych w plain-text. Można to zrobić dzięki mod_rewrite &#8211; pluginowi Apache&#8217;a domyślnie zitegrowanego z większością instalacji.
+Często chcielibyśmy, żeby użytkownik nie miał szans wysłać danych w plain-text. Można to zrobić dzięki mod_rewrite - pluginowi Apache'a domyślnie zitegrowanego z większością instalacji.
 
 <!--break-->
 
   
-Zmiany możemy wprowadzić w głównym konfigu &#8211; /etc/apache2/http.conf &#8211; wówczas docelowe linie wprowadzamy w znaczniku 
+Zmiany możemy wprowadzić w głównym konfigu - /etc/apache2/http.conf - wówczas docelowe linie wprowadzamy w znaczniku 
 
 <pre class="EnlighterJSRAW bash">&lt;Directory /nasz/katalog/z/witryną>
 jakieś  dyrektywy
 &lt;/Directory></pre>
 
-Alternatywnie konfig można wprowadzić do pliku **.htaccess** umieszczonego w interesującym nas katalogu &#8211; jedyna opcja przy hostingu.
+Alternatywnie konfig można wprowadzić do pliku **.htaccess** umieszczonego w interesującym nas katalogu - jedyna opcja przy hostingu.
 
 Typowo przekierowanie powinno wyglądać tak:
 
@@ -29,6 +29,6 @@ RewriteCond %{HTTPS} off
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 </pre>
 
-Jednak część serwerów (np. autorski perser htaccessów dla nginxa w MyDevilu) nie rozumieją drugiej linijki prowadząc do pętli przekierowań &#8211; _ERR\_TOO\_MANY_REDIRECTS_. Rozwiązaniem jest zmiana logiki &#8211; nie protokół, a port:
+Jednak część serwerów (np. autorski perser htaccessów dla nginxa w MyDevilu) nie rozumieją drugiej linijki prowadząc do pętli przekierowań - _ERR\_TOO\_MANY_REDIRECTS_. Rozwiązaniem jest zmiana logiki - nie protokół, a port:
 
 <pre class="EnlighterJSRAW bash">RewriteCond %{SERVER_PORT} ^80$</pre>

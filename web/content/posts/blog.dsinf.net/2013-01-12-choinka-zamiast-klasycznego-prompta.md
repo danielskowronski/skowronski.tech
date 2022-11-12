@@ -1,5 +1,5 @@
 ---
-title: „Choinka” zamiast klasycznego prompta
+title: '"Choinka" zamiast klasycznego prompta'
 author: Daniel Skowroński
 type: post
 date: 2013-01-12T00:09:40+00:00
@@ -13,16 +13,16 @@ W Linuksie defaultowy prompt, czyli znak zachęty, oscyluje wokół czegoś na k
 
 <pre class="EnlighterJSRAW bash">user @host working_dir #</pre>
 
-gdzie oczywiście # wskazuje na konto root&#8217;a, zamiast niego zwykły użytkownik ma $. Ale czemu prompt ma nie przekazywać innych użytecznych informacji, a przede wszystki przekazywać ich ładnie? 
+gdzie oczywiście # wskazuje na konto root'a, zamiast niego zwykły użytkownik ma $. Ale czemu prompt ma nie przekazywać innych użytecznych informacji, a przede wszystki przekazywać ich ładnie? 
 
 Mój prompt na tą godzinę (zmiany są niemal natychmiastowe, ale o tym pod koniec) wygląda tak:  
 <img decoding="async" src="http://blog.dsinf.net/wp-content/uploads/2013/01/choinka.png" />  
   
 Nie to jest ładne, co jest ładne, ale co się komu podoba. Przeanalizujmy jednak taką konfigurację by nauczyć się tworzyć własne. Ale najpierw powiem co jest po kolei bo ciężko się chyba od razu połapać. Kolejno: numer tego polecenia w historii, użytkownik, host, data, stan baterii, temperatura CPU i bieżący katalog. Konfiga pobrać można na dole.
 
-## Koncepcja omawianego prompt&#8217;a
+## Koncepcja omawianego prompt'a
 
-Kiedy łączę się przez SSH z komórki to ekran jest za mały by pomieścić dłuższe ścieżki, a zdarza sie, że niemający ograniczeń w jej długości extFS, potrafi zapchać linijkę i trochę na zwykły ekranie; dołóżmy jeszcze inne elementy podstawowe &#8211; wówczas w ogóle nie widać naszego polecenia &#8211; gdzie jest pocżtek, a gdzie koniec. Dlaetgo rozdzieliłem informacje do jednej linii, a tam, gdzie wprowadzamy polecenia są tylko 3 znaki(dla ozdoby 🙂 ).
+Kiedy łączę się przez SSH z komórki to ekran jest za mały by pomieścić dłuższe ścieżki, a zdarza sie, że niemający ograniczeń w jej długości extFS, potrafi zapchać linijkę i trochę na zwykły ekranie; dołóżmy jeszcze inne elementy podstawowe - wówczas w ogóle nie widać naszego polecenia - gdzie jest pocżtek, a gdzie koniec. Dlaetgo rozdzieliłem informacje do jednej linii, a tam, gdzie wprowadzamy polecenia są tylko 3 znaki(dla ozdoby 🙂 ).
 
 ## Wstęp do modyfikacji
 
@@ -30,7 +30,7 @@ Pierwsza sprawa to lokalizacja konfigu. Otóż wystarczy wydać komendę w w rod
 
 <pre class="EnlighterJSRAW bash">PS1="nowy ale nic nie robiący prompt #"</pre>
 
-by od razu zmienić wygląd. Ale istnieje przecież plik, który startuje bash&#8217;a &#8211; <u>.bashrc</u> w katalogu użytkownika lub globalny &#8211; <u>/etc/bash.bashrc</u>. Warto zauważyć, że w tym pliku najprawdopodobniej będą co najmniej trzy różne podstawienia do PS1, więc możemy wpisać się w uproszczeniu na końcu pliku.
+by od razu zmienić wygląd. Ale istnieje przecież plik, który startuje bash'a - <u>.bashrc</u> w katalogu użytkownika lub globalny - <u>/etc/bash.bashrc</u>. Warto zauważyć, że w tym pliku najprawdopodobniej będą co najmniej trzy różne podstawienia do PS1, więc możemy wpisać się w uproszczeniu na końcu pliku.
 
 ## Kolorki
 
@@ -70,7 +70,7 @@ Zanim przystąpimy do pisania funkcji wykorzystywanych w prompcie należy zwróc
 ps1
 PROMPT_COMMAND="LEC=\$?; ps1"</pre>
 
-Funkcja ps1 zawiera wszystkie deklaracje prompta, od których oczekujemy, że przeładują się przy każdym kliknięciu Return na klawiaturze. W skrypcie startowym trzeba najpierw pierwszy raz wywołać ładowanie &#8211; piąta linijka. Magiczne PROMPT_COMMAND zawiera spis poleceń do wykonania po zakończeniu działania poprzedniej komendy, a więc wynich wyświetli się pomięcy jednym a drugim pustym wierszem w shellu (czyli takim bez polecenia, tylko czysta linia). Oczywiście funkcja ps1 może nazywać się np. foo i nie będzie problemu.  
+Funkcja ps1 zawiera wszystkie deklaracje prompta, od których oczekujemy, że przeładują się przy każdym kliknięciu Return na klawiaturze. W skrypcie startowym trzeba najpierw pierwszy raz wywołać ładowanie - piąta linijka. Magiczne PROMPT_COMMAND zawiera spis poleceń do wykonania po zakończeniu działania poprzedniej komendy, a więc wynich wyświetli się pomięcy jednym a drugim pustym wierszem w shellu (czyli takim bez polecenia, tylko czysta linia). Oczywiście funkcja ps1 może nazywać się np. foo i nie będzie problemu.  
 Zostało coś jeszcze, czyć nie? _LEC=\$?;_ ładuje do zmiennej exitcode ostatniego polecenia, ponieważ w trakcie wywołania funkcji może się on nadpisywać przez deklaracje lub inne instrukcje robocze. Wykorzystamy to nieco później.
 
 Funkcja wyświetlająca wraz z ładnym formatowaniem stan baterii pochodzi ze strony http://www.basicallytech.com/blog/index.php?/archives/110-Colour-coded-battery-charge-level-and-status-in-your-bash-prompt.html. Wygląda następująco:
@@ -125,7 +125,7 @@ Funkcja wyświetla wynik od razu na ekran więc jej wstawienie do zmiennej będz
 
 <pre class="EnlighterJSRAW bash">zmienna="napis"`funkcja`"napis"$zmienna;</pre>
 
-Oczywiście funkcja wstawiona jest w back-ciapkach (zwanych chyba nieco poprawniej grawisami lub back-tick&#8217;ami). 
+Oczywiście funkcja wstawiona jest w back-ciapkach (zwanych chyba nieco poprawniej grawisami lub back-tick'ami). 
 
 Funkcja wyświetlająca temperaturę (napisana już przeze mnie):
 
@@ -152,7 +152,7 @@ Funkcja wyświetlająca temperaturę (napisana już przeze mnie):
 }
 </pre>
 
-Krytyczne jest wprowadzenie zmiennej TH_ZONE &#8211; wystarczy odpalić komendę sensors (oczywiście jeśli jej nie ma to trzeba zainstalować) i wybrać nazwę strefy, która nas interesuje. W laptopach pod Linukem bywa słabo z wykrywaniem sterowników, a w netbookach potrafią być w ogóle tylko dwa &#8211; CPU + dysk. Funkcja dodatkowo koloruje napis w zależnosci od przedziału &#8211; warto poświęcić chwile na dostosowanie zakresów, gdyż jedne komputery nie wytrzymują i się wyłączają 85, a inne (głównie netbooki) trzymają teoretycznie do 115 (co ciekawe jeden taki sprzęt zagrzałem do 105 &#8211; przeżył i obyło się bez swądu palonej elektroniki).  
+Krytyczne jest wprowadzenie zmiennej TH_ZONE - wystarczy odpalić komendę sensors (oczywiście jeśli jej nie ma to trzeba zainstalować) i wybrać nazwę strefy, która nas interesuje. W laptopach pod Linukem bywa słabo z wykrywaniem sterowników, a w netbookach potrafią być w ogóle tylko dwa - CPU + dysk. Funkcja dodatkowo koloruje napis w zależnosci od przedziału - warto poświęcić chwile na dostosowanie zakresów, gdyż jedne komputery nie wytrzymują i się wyłączają 85, a inne (głównie netbooki) trzymają teoretycznie do 115 (co ciekawe jeden taki sprzęt zagrzałem do 105 - przeżył i obyło się bez swądu palonej elektroniki).  
 Porada: pierwsza granica to zazwyczaj temperatura zmierzona po zimnym rozruchu po odstaniu godziny.
 
 ## Zmienne środowiskowe i zlepianie wszystkiego do kupy
@@ -161,7 +161,7 @@ Teraz ciało funkcji ps1. Zacznujmy od czyszczenia na wszelki wypadek zmiennej (
 
 <pre class="EnlighterJSRAW bash">PS1="" #reset</pre>
 
-Pierwszym elementem, który się pojawia (dla tty: _albo i nie_) to zielony tick po pomyślnym wywołaniu komendy poprzedniej wstawiony w border&#8217;a lub cała linijka z czerwonym cross&#8217;em i podanym exitcodem. Użyteczne, bo programy nie zawsze podają dokładny kod błędu.
+Pierwszym elementem, który się pojawia (dla tty: _albo i nie_) to zielony tick po pomyślnym wywołaniu komendy poprzedniej wstawiony w border'a lub cała linijka z czerwonym cross'em i podanym exitcodem. Użyteczne, bo programy nie zawsze podają dokładny kod błędu.
 
 <pre class="EnlighterJSRAW bash">if [[ $LEC == 0 ]]; then
     PS1=$PS1"\[\033[01;32m\]\342\234\223\e[0m─"
@@ -170,7 +170,7 @@ else
 fi
 </pre>
 
-Mało czytelnie? $LEC to wcześniej opisany kod wyjścia (normalnie **$?**) ostatniej komendy (realnie, a nie tej ze skryptu), natomiast \342\234\223 oraz \342\234\227 to ptaszek i iks w UTF&#8217;ie (┌─ odpowiada za &#8222;zakręt&#8221; ramki zcalającej obie linie prompta).
+Mało czytelnie? $LEC to wcześniej opisany kod wyjścia (normalnie **$?**) ostatniej komendy (realnie, a nie tej ze skryptu), natomiast \342\234\223 oraz \342\234\227 to ptaszek i iks w UTF'ie (┌─ odpowiada za "zakręt" ramki zcalającej obie linie prompta).
 
 Warto wiedzieć na kogo się zalogowaliśmy lub jakie konto ktoś zostawił:
 
@@ -186,14 +186,14 @@ fi
 PS1=$PS1"[!\!]─[${root}\u\[\e[0;37m\]]─"
 </pre>
 
-Ostatnia linia dopisuje kolorki z if&#8217;a powyżej, nawiasy i właściwą nazwę użytkownika &#8211; parametr **\u**.
+Ostatnia linia dopisuje kolorki z if'a powyżej, nawiasy i właściwą nazwę użytkownika - parametr **\u**.
 
-Kolejne informacje &#8211; host **\h** i data (**\d**) wraz z czasem (**\t**):
+Kolejne informacje - host **\h** i data (**\d**) wraz z czasem (**\t**):
 
 <pre class="EnlighterJSRAW bash">PS1=$PS1"[\[\e[0;96m\]\h\[\e[0;37m\]]─[\e[0m\e[0;33m\d \t\e[0m]─"
 </pre>
 
-Doklejmy teraz informacje z funkcji. Dodatkowo stan baterii wyświetlany jest tylko, gdy nie ładujemy (ale zmiana jest bardzo prosta &#8211; to pierwszy if):
+Doklejmy teraz informacje z funkcji. Dodatkowo stan baterii wyświetlany jest tylko, gdy nie ładujemy (ale zmiana jest bardzo prosta - to pierwszy if):
 
 <pre class="EnlighterJSRAW bash">#bateria
 if grep --quiet off-line /proc/acpi/ac_adapter/AC/state; then
@@ -212,7 +212,7 @@ PS2="╾──| "
 
 ## Dalsze możliwości
 
-Wymienione kolory to jedynie podstawowe kombinacje &#8211; na buforrze ramki, ale i na emulatorach można pokusić się o kolory w liczbie 256 (https://wiki.archlinux.org/index.php/Color\_Bash\_Prompt#Load.2FMem\_Status\_for_256colors), lub dodać którąś ze zmiennych:
+Wymienione kolory to jedynie podstawowe kombinacje - na buforrze ramki, ale i na emulatorach można pokusić się o kolory w liczbie 256 (https://wiki.archlinux.org/index.php/Color\_Bash\_Prompt#Load.2FMem\_Status\_for_256colors), lub dodać którąś ze zmiennych:
 
 <pre>\D{format} format daty zdeklarowany notacji strftime(3) umieszczonyw w klamrach
 \d		data
@@ -234,10 +234,10 @@ Więcej na https://wiki.archlinux.org/index.php/Color\_Bash\_Prompt#Prompt_escap
 
 ## Dalszy rozwój
 
-Prompt będzie zapewne ewoluował gdy zajdzie taka potrzeba &#8211; liczba zalogowanych użytkowników, wolne miejsce na dysku, liczba nowych maili, status usług, czy bezpieczeństwa (np. wykrzyknik dla alertów, daszek dla przeciążeia itp.), prędkość wiatraczka lub losowa linia z pliku z cytatami Torvaldsa&#8230; Cokolwiek co, okaże się użytczne i odczytywalne przez basha jako string może być łatwo dodane w nawiasy kwadratowe i cieszyć oko z dobrego wykorzystania potencjału shella.
+Prompt będzie zapewne ewoluował gdy zajdzie taka potrzeba - liczba zalogowanych użytkowników, wolne miejsce na dysku, liczba nowych maili, status usług, czy bezpieczeństwa (np. wykrzyknik dla alertów, daszek dla przeciążeia itp.), prędkość wiatraczka lub losowa linia z pliku z cytatami Torvaldsa... Cokolwiek co, okaże się użytczne i odczytywalne przez basha jako string może być łatwo dodane w nawiasy kwadratowe i cieszyć oko z dobrego wykorzystania potencjału shella.
 
 Dobre źródła informacji:
 
-  * Wiki Archa &#8211; https://wiki.archlinux.org/index.php/Color\_Bash\_Prompt
-  * Bash HowTo &#8211; http://www.tldp.org/HOWTO/Bash-Prompt-HOWTO/
-  * Testowarka kolorowania i zmiennych basha w przeglądarce &#8211; http://www.kirsle.net/wizards/ps1.html
+  * Wiki Archa - https://wiki.archlinux.org/index.php/Color\_Bash\_Prompt
+  * Bash HowTo - http://www.tldp.org/HOWTO/Bash-Prompt-HOWTO/
+  * Testowarka kolorowania i zmiennych basha w przeglądarce - http://www.kirsle.net/wizards/ps1.html

@@ -11,14 +11,14 @@ tags:
   - sysadmin
 
 ---
-Podczas tworzenia strony z metrykami w Grafanie którą chciałem wyświetlać w kilku miejscach w mojej sieci (m.in. na &#8222;stronie admina&#8221; która oprócz linków do wewnętrznych systemów ma też kilka wykresów) dotarłem do problemu niezbyt popularnego ale mimo wszystko występującego. Grafana sama z siebie posiada tryb [auth.anonymous][1], który tworzy możliwość podglądu danych bez zalogowania, ale wystawienie takowego na świat ma 2 problemy &#8211; ujawniamy dane i umożliwiamy zajechanie serwera przez złych ludzi w Internecie &#8211; od prymitywnego ładowania maksymalnie długich zakresów na dashboardach po wykonywanie własnych kwerend na naszych datasource&#8217;ach &#8211; a więc nawet Postgresie.
+Podczas tworzenia strony z metrykami w Grafanie którą chciałem wyświetlać w kilku miejscach w mojej sieci (m.in. na "stronie admina" która oprócz linków do wewnętrznych systemów ma też kilka wykresów) dotarłem do problemu niezbyt popularnego ale mimo wszystko występującego. Grafana sama z siebie posiada tryb [auth.anonymous][1], który tworzy możliwość podglądu danych bez zalogowania, ale wystawienie takowego na świat ma 2 problemy - ujawniamy dane i umożliwiamy zajechanie serwera przez złych ludzi w Internecie - od prymitywnego ładowania maksymalnie długich zakresów na dashboardach po wykonywanie własnych kwerend na naszych datasource'ach - a więc nawet Postgresie.
 
 Żeby tego uniknąć chciałoby się do _auth.anonymous_ dodać jakiś filtr adresów IP. Ale Grafana nie ma takiej możliwości. Skorzystamy zatem z zaawansowanych funkcji reverse proxy w Caddym. Cały setup wykorzystuje poza tym ZeroTiera (którego [jakiś czas temu opisywałem][2]) do dostarczenia prywatnej sieci dostępowej. Całość wygląda tak:
 
   * Grafana stoi na lokalnym porcie, niedostępnym z internetu
-  * Caddy robi standardowe reverse proxy (transparent) na domenę dostępną z internetu &#8211; powiedzmy _grafana.example.org_
-  * Poza tym mamy drugą instancję domeny z reverse proxy która dodaje nagłówki do obsługi proxy level auth na innej domenie &#8211; np. _grafana.intranet.example.com_; ta domena powinna być rozwiązywalna do adresu prywatnego!
-  * Grafana ma użytkownika z rolą _viewer_ który jest &#8222;autoryzowany&#8221; i &#8222;logowany&#8221; przez reverse proxy dla prywatnej sieci, w przykładzie poniżej jest to _readonly_
+  * Caddy robi standardowe reverse proxy (transparent) na domenę dostępną z internetu - powiedzmy _grafana.example.org_
+  * Poza tym mamy drugą instancję domeny z reverse proxy która dodaje nagłówki do obsługi proxy level auth na innej domenie - np. _grafana.intranet.example.com_; ta domena powinna być rozwiązywalna do adresu prywatnego!
+  * Grafana ma użytkownika z rolą _viewer_ który jest "autoryzowany" i "logowany" przez reverse proxy dla prywatnej sieci, w przykładzie poniżej jest to _readonly_
 
 **Caddyfile** potrzebuje zatem takiej sekcji:
 
@@ -33,7 +33,7 @@ Podczas tworzenia strony z metrykami w Grafanie którą chciałem wyświetlać w
   }
 }</pre>
 
-  * Niestety certyfikatu z Let&#8217;s Encrypt nie uzyskamy &#8211; domena musi być routowalna z całego internetu
+  * Niestety certyfikatu z Let's Encrypt nie uzyskamy - domena musi być routowalna z całego internetu
   * Port _3333_ to port na którym słucha serwer Grafany
   * _192.168.88.1/24_ to nasz prywatny subnet
   * _X-GrafanaUser_ to header autoryzacyjny, który musi matchować z grafana.ini; w najprostszej wersji może tam być zahardkodowany nasz użytkownik z rolą _viewer_

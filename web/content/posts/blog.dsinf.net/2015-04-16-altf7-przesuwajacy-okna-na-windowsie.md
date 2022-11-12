@@ -12,9 +12,9 @@ tags:
 ---
 A czemu nie? Podirytowany kiedy kolejny raz okno pozostało na drugim monitorze, który wyłączyłem napisałem na szybko program na to.
 
-Działanie proste &#8211; naciskasz Alt+F7 i okno na wierzchu (np. to, na które przełączyłeś się alt+tab&#8217;em) i wędruje ono za kursorem aż nie klikniesz myszką. W chwili obecje działa, ale jak tylko znajdę czas dopiszę lepszą obsługę klawiatury &#8211; sterowanie strzałkami i wychodzenie z trybu przesuwania nie tylko myszką. No i pojawi się jakikolwiek instalator 😉
+Działanie proste - naciskasz Alt+F7 i okno na wierzchu (np. to, na które przełączyłeś się alt+tab'em) i wędruje ono za kursorem aż nie klikniesz myszką. W chwili obecje działa, ale jak tylko znajdę czas dopiszę lepszą obsługę klawiatury - sterowanie strzałkami i wychodzenie z trybu przesuwania nie tylko myszką. No i pojawi się jakikolwiek instalator 😉
 
-Technologia &#8211; C# wykorzystujący funkcje Win32 (bo się nie da zrobić na Formsach globalnych hooków i przesuwania nie swoich okienek). Co ciekawe &#8211; wygodniej się pisze tam takie niskopoziomowe rzeczy niż w C++.
+Technologia - C# wykorzystujący funkcje Win32 (bo się nie da zrobić na Formsach globalnych hooków i przesuwania nie swoich okienek). Co ciekawe - wygodniej się pisze tam takie niskopoziomowe rzeczy niż w C++.
 
 [Program na githubie][1].
 

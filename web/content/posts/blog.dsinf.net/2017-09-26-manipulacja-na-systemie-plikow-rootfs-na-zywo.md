@@ -9,11 +9,11 @@ tags:
   - linux
 
 ---
-Kiedy trzeba pomanipulować rootfs-em (na przykład trochę go pomniejszyć) to oczywiście najbezpieczniej i najprościej jest zabootować się do livecd i wykonać to wszystko poza systemem. Jednak nie zawsze jest to możliwe &#8211; głównym takim środowiskiem są VPSy wszelkiej maści nie pozwalające zabootować się do środowiska rescue. Jednak nic straconego &#8211; da się!
+Kiedy trzeba pomanipulować rootfs-em (na przykład trochę go pomniejszyć) to oczywiście najbezpieczniej i najprościej jest zabootować się do livecd i wykonać to wszystko poza systemem. Jednak nie zawsze jest to możliwe - głównym takim środowiskiem są VPSy wszelkiej maści nie pozwalające zabootować się do środowiska rescue. Jednak nic straconego - da się!
 
-Warto jednak zacząć od prostszych metod czyli poszperania w panelu klienta dostawcy usług &#8211; w przypadku wirualizacji na poziomie jądra linuksa często dostępny będzie &#8222;tryb rescue&#8221; wystawiający ssh ale z minimalnym systemem który nie zamontował naszego rootfs. W przypadku dedyków jest duża szansa że możemy wręcz zadysponować rozruch maszyny z takiego nośnika. Zanim przejdziemy do psucia systemu który działa trzeba też spojrzeć czy nie da się customizować templatki systemu przy zamawianiu usługi &#8211; zwykle problem złego layoutu ukazuje się od razu (np. potrzeba dodania DRBD kiedy cały dysk jest popartycjonowany).
+Warto jednak zacząć od prostszych metod czyli poszperania w panelu klienta dostawcy usług - w przypadku wirualizacji na poziomie jądra linuksa często dostępny będzie "tryb rescue" wystawiający ssh ale z minimalnym systemem który nie zamontował naszego rootfs. W przypadku dedyków jest duża szansa że możemy wręcz zadysponować rozruch maszyny z takiego nośnika. Zanim przejdziemy do psucia systemu który działa trzeba też spojrzeć czy nie da się customizować templatki systemu przy zamawianiu usługi - zwykle problem złego layoutu ukazuje się od razu (np. potrzeba dodania DRBD kiedy cały dysk jest popartycjonowany).
 
-Ext4 sprawia zwykle problemy bo nie da się go w locie pomniejszać &#8211; trzeba go najpierw odmontować. Ale jak wiadomo dostaniemy taki przyjemny komunikat:
+Ext4 sprawia zwykle problemy bo nie da się go w locie pomniejszać - trzeba go najpierw odmontować. Ale jak wiadomo dostaniemy taki przyjemny komunikat:
 
 <pre class="lang:sh EnlighterJSRAW">vps&gt; umount /
 umount: /: target is busy
@@ -21,7 +21,7 @@ umount: /: target is busy
          use the device is found by lsof(8) or fuser(1).)
 vps&gt;</pre>
 
-Rozwiązanie polega na wykorzystaniu narzędzia które zwykle pracuje tylko w initiowym ramdysku &#8211; **pivot_root**. W środowiskach z ograniczoną pamięcią w tmpfs (mało RAMu) skopiowanie minimalnego rootfsa z żywego systemu będzie kłopotliwe, ale zawsze można sobie taki minimalny system zbootstrapować. Przykładowo dla ubuntu:
+Rozwiązanie polega na wykorzystaniu narzędzia które zwykle pracuje tylko w initiowym ramdysku - **pivot_root**. W środowiskach z ograniczoną pamięcią w tmpfs (mało RAMu) skopiowanie minimalnego rootfsa z żywego systemu będzie kłopotliwe, ale zawsze można sobie taki minimalny system zbootstrapować. Przykładowo dla ubuntu:
 
 <pre class="lang:sh EnlighterJSRAW">vps&gt; apt install debootstrap
 vps&gt; mkdir /tmp/tmproot/
@@ -34,7 +34,7 @@ chrooted&gt; passwd
 chrooted&gt; exit
 vps&gt; mkdir /tmp/tmproot/{proc,sys,dev,run,usr,var,tmp,oldroot}</pre>
 
-Ważna uwaga &#8211; dla ubuntu trzeba dodać osobne konto (bo zbootstrapowany system nie ma ani naszych kluczy ssh ani nie pozwoli na sshowanie się jako root) i ustawić jakieś hasło roota żeby użyć potem su. Będąc w chroocie trzeba przetestować czy wszystko działa (narzędzia do raida, LVMa, LUKSa itp.) i ew. doinstalować.
+Ważna uwaga - dla ubuntu trzeba dodać osobne konto (bo zbootstrapowany system nie ma ani naszych kluczy ssh ani nie pozwoli na sshowanie się jako root) i ustawić jakieś hasło roota żeby użyć potem su. Będąc w chroocie trzeba przetestować czy wszystko działa (narzędzia do raida, LVMa, LUKSa itp.) i ew. doinstalować.
 
 Żeby przełączyć się do nowego systemu należy wykonać:
 
@@ -42,7 +42,7 @@ Ważna uwaga &#8211; dla ubuntu trzeba dodać osobne konto (bo zbootstrapowany s
 vps&gt;  pivot_root /tmp/tmproot /tmp/tmproot/oldroot
 pivoted&gt; for i in dev proc sys run; do mount --move /oldroot/$i /$i; done</pre>
 
-Główna zabawa czyli odmontowanie rootfsa &#8211; teraz na /oldroot:
+Główna zabawa czyli odmontowanie rootfsa - teraz na /oldroot:
 
 <pre class="lang:default EnlighterJSRAW ">pivoted&gt; systemctl daemon-reexec # init startuje już z nowego rootfs
 pivoted&gt; systemctl restart sshd

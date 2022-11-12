@@ -8,12 +8,12 @@ tags:
   - c++
 
 ---
-Ten artykuł w ogóle nie zasługuje na miano artykułu. Powiedzmy o nim bardzo krótki wpis. A rzecz jest o niby oczywistej, a jednak bez przykładu nie &#8211; stosowaniu przesunięcia bitowego.  
+Ten artykuł w ogóle nie zasługuje na miano artykułu. Powiedzmy o nim bardzo krótki wpis. A rzecz jest o niby oczywistej, a jednak bez przykładu nie - stosowaniu przesunięcia bitowego.  
 <!--break-->
 
   
   
-Przesunięcie bitowe jak wiadomo przesuwa bity: 00001011<<2 = 00101100, 11110100 >>3 00011110 itd. Problem polega na tym, że to niby operator jednoargumentowy, ale nie działa jak inkrementacja/dekrementacja &#8211; sama na samą siebie, zatem 
+Przesunięcie bitowe jak wiadomo przesuwa bity: 00001011<<2 = 00101100, 11110100 >>3 00011110 itd. Problem polega na tym, że to niby operator jednoargumentowy, ale nie działa jak inkrementacja/dekrementacja - sama na samą siebie, zatem 
 
 <pre class="EnlighterJSRAW cpp">int a=123; c&lt;&lt;4;</pre>
 

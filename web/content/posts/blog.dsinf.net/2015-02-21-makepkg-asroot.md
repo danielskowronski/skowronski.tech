@@ -21,9 +21,9 @@ Efekt?
 
 Administratorzy mogli to zauważyć przy aktualizacji pakietów z AURa, że nagle nie mogą dokończyć operacji. Zwykłym użytkownikom niektóre programy przestały działać (dyskusja [tutaj][2]). 
 
-Kwestia używania Linuksa z konta superużytkownika to osobna sprawa, ale powinna pozostać jako w pełni osobista decyzja. Wprowadzanie "dobrych" praktyk na siłę to styl ubuntu, ale na pewno nie Archa &#8211; zawiodłem się 🙁 Tym bardziej, że akurat zarządzanie pakietami to typowo administracyjny task. Nadmienię jeszcze, że nie było do tej pory cienia ostrzeżenia od możliwości skasowania tej opcji, a nadto ostrzeżenia o niebezpieczeństwie były wszędzie (razem z czerwonym komunikatem na starcie).
+Kwestia używania Linuksa z konta superużytkownika to osobna sprawa, ale powinna pozostać jako w pełni osobista decyzja. Wprowadzanie "dobrych" praktyk na siłę to styl ubuntu, ale na pewno nie Archa - zawiodłem się 🙁 Tym bardziej, że akurat zarządzanie pakietami to typowo administracyjny task. Nadmienię jeszcze, że nie było do tej pory cienia ostrzeżenia od możliwości skasowania tej opcji, a nadto ostrzeżenia o niebezpieczeństwie były wszędzie (razem z czerwonym komunikatem na starcie).
 
-A więc czas na poprawkę &#8211; na szczęście istnieje pakiet AUR [makepkg-asroot][3], ale tu problem bo rzecz jasna aktualnie nie możemy kompiliwać pakietów z AURa. Coby zautomatyzować to zadanie można użyć takiego oto skryptu:
+A więc czas na poprawkę - na szczęście istnieje pakiet AUR [makepkg-asroot][3], ale tu problem bo rzecz jasna aktualnie nie możemy kompiliwać pakietów z AURa. Coby zautomatyzować to zadanie można użyć takiego oto skryptu:
 
 <pre class="lang:sh EnlighterJSRAW " >pacman --noconfirm -S fakeroot &&
 sudo -u nobody yaourt --noconfirm -S makepkg-asroot</pre>

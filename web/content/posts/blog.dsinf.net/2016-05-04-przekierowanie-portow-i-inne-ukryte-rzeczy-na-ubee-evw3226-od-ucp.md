@@ -12,12 +12,12 @@ tags:
   - upc
 
 ---
-UPC wciska klientom modemo-routery różnych firm. Jednym z nich jest Ubee EVW3226 &#8211; czarny z małymi diodkami na froncie. Wygląda on tak:  
+UPC wciska klientom modemo-routery różnych firm. Jednym z nich jest Ubee EVW3226 - czarny z małymi diodkami na froncie. Wygląda on tak:  
 <img decoding="async" src="http://www.ubeeinteractive.com/sites/default/files/styles/product_gallery_slide/public/EVW3226_1.png?itok=38xSZuh7" alt="" /> 
 
 &nbsp;
 
-Z pewnych powodów operator <del>wyciął</del> ukrył niektóre funkcjonalności takie jak przekierowanie portów, tryb DMZ czy zmiana trybu z router na bridge. Aby się do nich dostać wystarczy wejść na ścieżki tych ustawień &#8211; linki zostały wycięte z menu i tyle. Odpowiednie adresy to:
+Z pewnych powodów operator <del>wyciął</del> ukrył niektóre funkcjonalności takie jak przekierowanie portów, tryb DMZ czy zmiana trybu z router na bridge. Aby się do nich dostać wystarczy wejść na ścieżki tych ustawień - linki zostały wycięte z menu i tyle. Odpowiednie adresy to:
 
 [http://192.168.0.1/cgi-bin/setup.cgi?gonext=**RgAdvancedForwarding**][1]
 

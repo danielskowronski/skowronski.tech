@@ -16,7 +16,7 @@ Kod krótki, ale jakże niezbędny.
 foreach ($_POST as &$z)  $z = preg_replace('/[^a-zA-Z0-9_ \[\]\.\(\)\{\}\^\@\#\?\!.,&-]/s', '', $z);
 </pre>
 
-Regexa (pomiędzy ukośnikami) można dostroić do naszych potrzeb i pokusić się o ładną funkcję, która będzie zależna od typu danych &#8211; coś w rodzaju 
+Regexa (pomiędzy ukośnikami) można dostroić do naszych potrzeb i pokusić się o ładną funkcję, która będzie zależna od typu danych - coś w rodzaju 
 
 <pre class="EnlighterJSRAW php">function make_string_safe($string, $type){
   $regex_inters = array ( 
@@ -36,7 +36,7 @@ Pewną modyfikacją byłoby zmienienie parametru
 
 na 
 
-<pre style="display: inline !important;">&&#36;string</pre>
+<pre style="display: inline !important;">&$string</pre>
 
 i w ostatniej linii funkcji zmiana z 
 
@@ -44,6 +44,6 @@ i w ostatniej linii funkcji zmiana z
 
 na 
 
-<pre style="display: inline !important;">&#36;string=...</pre>
+<pre style="display: inline !important;">$string=...</pre>
 
 (przekazanie przez referencję).

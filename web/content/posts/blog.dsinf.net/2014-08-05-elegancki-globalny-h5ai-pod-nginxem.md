@@ -10,7 +10,7 @@ tags:
   - php
 
 ---
-[h5ai][1] to lister plików w katalogach dla webserwerów oparty o PHP. Zamiast nudnego <ul><li> produkowanego przez Apache&#8217;a, nginxa i całą resztę możemy dostać dowolnie ułożony spis plików (siatka, lista, szczegóły&#8230;) z ikonkami, podglądem w colorboxie, kody QR z linkami oraz m.in. filtr [patrz: [demo][2]]. Twórca twierdzi, że żadna specyficzna dla serwera funkcja w tym aliasowane katalogi [w nginxie <kbd>server { ... }</kbd> jest już takim aliasem] nie działa. Ma rację, ale dziś pokażę jak mu tę rację odebrać 😉
+[h5ai][1] to lister plików w katalogach dla webserwerów oparty o PHP. Zamiast nudnego <ul><li> produkowanego przez Apache'a, nginxa i całą resztę możemy dostać dowolnie ułożony spis plików (siatka, lista, szczegóły...) z ikonkami, podglądem w colorboxie, kody QR z linkami oraz m.in. filtr [patrz: [demo][2]]. Twórca twierdzi, że żadna specyficzna dla serwera funkcja w tym aliasowane katalogi [w nginxie <kbd>server { ... }</kbd> jest już takim aliasem] nie działa. Ma rację, ale dziś pokażę jak mu tę rację odebrać 😉
 
 Żeby nie duplikować wpisów konfigurację nginxa dla h5ai robimy sami. Najpierw zakładamy plik o nazwie np. <span class="lang:default EnlighterJSRAW  crayon-inline " >h5ai.conf</span> , który trafia do głównego katalogu z konfigami nginxa (dla ręcznie kompilowanych instancji będzie to zapewne <span class="lang:default EnlighterJSRAW  crayon-inline " >/opt/nginx/conf</span> ); zawartość jak następuje:
 
@@ -35,15 +35,15 @@ location /pub{
 	index index.php index.html /_h5ai/server/php/index.php;
 }</pre>
 
-Na sam koniec &#8211; najważniejsze &#8211; modyfikacja kodu PHP.  
+Na sam koniec - najważniejsze - modyfikacja kodu PHP.  
 Zmieniamy w pliku <span class="lang:default EnlighterJSRAW  crayon-inline " >h5ai/_h5ai/server/php/inc/setup.php</span>  
-z <span class="lang:default EnlighterJSRAW  crayon-inline " >define(&#8222;ROOT_PATH&#8221;, normalize_path(dirname(APP_PATH), false));</span>  
-na <span class="lang:default EnlighterJSRAW  crayon-inline " >define(&#8222;ROOT_PATH&#8221;, normalize_path($_SERVER[&#8222;DOCUMENT_ROOT&#8221;], false));</span>  
-co przy zachowaniu ludzkich wartości zmiennych fastcgi powinno działać w 99% wypadków &#8211; DOCUMENT_ROOT przekazany do fastcgi jest właściwym katalogiem, którego zawartość chcemy wylistować.
+z <span class="lang:default EnlighterJSRAW  crayon-inline " >define("ROOT_PATH", normalize_path(dirname(APP_PATH), false));</span>  
+na <span class="lang:default EnlighterJSRAW  crayon-inline " >define("ROOT_PATH", normalize_path($_SERVER["DOCUMENT_ROOT"], false));</span>  
+co przy zachowaniu ludzkich wartości zmiennych fastcgi powinno działać w 99% wypadków - DOCUMENT_ROOT przekazany do fastcgi jest właściwym katalogiem, którego zawartość chcemy wylistować.
 
 Na sam koniec, rzecz jasna, restartujemy nginxa i gotowe.
 
-Reasumując: dokonując zmiany jednej wartości w kodzie i tworząc jeden plik konfiguracyjny uzyskaliśmy potężne narzędzie listujące pliki w katalogach na nginxie. Na dodatek nie trzeba teraz mnożyć teraz konfigów &#8211; wystarczy jeden include i dodanie indexu dla wybranej ścieżki. Działa i jest zrobione porządnie. A samego h5ai warto postawić na każdym serwerze &#8211; sprawia wrażenie profesjonalizmu i jest niezastąpiony przy nagłej potrzebie udostępnienia wielu plików.
+Reasumując: dokonując zmiany jednej wartości w kodzie i tworząc jeden plik konfiguracyjny uzyskaliśmy potężne narzędzie listujące pliki w katalogach na nginxie. Na dodatek nie trzeba teraz mnożyć teraz konfigów - wystarczy jeden include i dodanie indexu dla wybranej ścieżki. Działa i jest zrobione porządnie. A samego h5ai warto postawić na każdym serwerze - sprawia wrażenie profesjonalizmu i jest niezastąpiony przy nagłej potrzebie udostępnienia wielu plików.
 
  [1]: http://larsjung.de/h5ai/
  [2]: http://larsjung.de/h5ai/sample/

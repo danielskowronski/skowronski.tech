@@ -10,7 +10,7 @@ tags:
   - web
 
 ---
-Jak się okazuje webowa wersja Office z której możemy korzystać na Skydrive (i raczej ta z Office 365) nie chce działać gdy łączymy się posiadając IPv6 &#8211; można tylko zgadywać o co chodzi, ale prawdopodobnie w jednym miejscu serwer odczytuje IPv4 a wdrugim v6 i poowoduje to niezgodności.  
+Jak się okazuje webowa wersja Office z której możemy korzystać na Skydrive (i raczej ta z Office 365) nie chce działać gdy łączymy się posiadając IPv6 - można tylko zgadywać o co chodzi, ale prawdopodobnie w jednym miejscu serwer odczytuje IPv4 a wdrugim v6 i poowoduje to niezgodności.  
 Objawy: sam Skydrive działa, ale otwarcie dokumentu powoduje załadowanie strony, jednak jeden z serwerów z którego ładowany jest interfejs ma _timeout_  
 Rozwiązanie: wyłączyć IPv6 😉
 

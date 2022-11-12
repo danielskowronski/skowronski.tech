@@ -10,12 +10,12 @@ tags:
   - smtp
 
 ---
-Są jeszcze na tym świecie systemy teleinformatyczne, w których ktoś systemu poczty nie oparł na Gmailu, czy na czymkolwiek co ma jakiekolwiek możliwości importowania maili. Są sytuacje, gdy konto, z którego chcemy odbierać pocztę to WP i musimy im zapłacić(!) za delegowanie maili. Trzeba działać szybko, ale i na ograniczonym polu (shell bez roota). Jedyne, co przychodzi na myśl (poza rzecz jasna słowami &#8222;nie da się&#8221;) to skrypt w Pyhtonie.  
+Są jeszcze na tym świecie systemy teleinformatyczne, w których ktoś systemu poczty nie oparł na Gmailu, czy na czymkolwiek co ma jakiekolwiek możliwości importowania maili. Są sytuacje, gdy konto, z którego chcemy odbierać pocztę to WP i musimy im zapłacić(!) za delegowanie maili. Trzeba działać szybko, ale i na ograniczonym polu (shell bez roota). Jedyne, co przychodzi na myśl (poza rzecz jasna słowami "nie da się") to skrypt w Pyhtonie.  
 <!--break-->
 
 Zadanie: pobrać maile ze skrzynki na WP i wysłać je na konto na innym serwerze, posiadając serwer SMTP u mnie lokalny. Trzeba to robić okresowo i nie może wymagać dużego nakładu zasobów.
 
-Ten skrypt wykorzystuje kilka ciekawych funkcji Pythona. Ale po kolei. Na początek kilka zmiennych &#8211; _verbose_ określa, czy mają wyświetlać się komunikaty o każdym mailu (ważne przy pierwszym uruchomieniu lub robieniu logów), kolejne to dane logowania do POP3, a ostatnia linia opisuje do kogo przekazujemy maila.
+Ten skrypt wykorzystuje kilka ciekawych funkcji Pythona. Ale po kolei. Na początek kilka zmiennych - _verbose_ określa, czy mają wyświetlać się komunikaty o każdym mailu (ważne przy pierwszym uruchomieniu lub robieniu logów), kolejne to dane logowania do POP3, a ostatnia linia opisuje do kogo przekazujemy maila.
 
 Obsługa dat jest nieco pokrętna w Pythonie, toteż wolałem zrobić funkcję tworzącą timestamp, bo jest to dosyć unikalna wartość, prosta do obliczania i przechowywania:
 

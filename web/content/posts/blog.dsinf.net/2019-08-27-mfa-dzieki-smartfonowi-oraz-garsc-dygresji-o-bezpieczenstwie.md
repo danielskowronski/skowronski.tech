@@ -108,7 +108,7 @@ A co z macOS, póki GoTrust ID nie ogarnia Apple'a? Pozostaje podobna aplikacja 
 
 
 <div class="wp-block-media-text alignwide is-vertically-aligned-top" style="grid-template-columns:18% auto">
-  <figure class="wp-block-media-text__media"><img decoding="async" src="https://pbs.twimg.com/profile_images/783749088730841091/oc7J3mVX.jpg" alt="Znalezione obrazy dla zapytania krypt.co" /></figure>
+  <figure class="wp-block-media-text__media">![Znalezione obrazy dla zapytania krypt.co](https://pbs.twimg.com/profile_images/783749088730841091/oc7J3mVX.jpg)</figure>
   
   <div class="wp-block-media-text__content">
     <p>

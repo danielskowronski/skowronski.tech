@@ -13,7 +13,7 @@ tags:
 
 ---
 UPC wciska klientom modemo-routery różnych firm. Jednym z nich jest Ubee EVW3226 - czarny z małymi diodkami na froncie. Wygląda on tak:  
-<img decoding="async" src="http://www.ubeeinteractive.com/sites/default/files/styles/product_gallery_slide/public/EVW3226_1.png?itok=38xSZuh7" alt="" /> 
+![](http://www.ubeeinteractive.com/sites/default/files/styles/product_gallery_slide/public/EVW3226_1.png?itok=38xSZuh7) 
 
 &nbsp;
 

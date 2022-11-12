@@ -39,4 +39,4 @@ Co z tego wszystkiego wynika? Po pierwsze MS naprawdę używa najlepszych ludzi 
 
 Co dla mnie chyba jednak najważniejsze: **następne releasy Win10 Tech Preview! Wersja PC w czwartym tygodniu stycznia, a WinPhone już w lutym** (Cortana, CI, poprawki UI desktop i Spartan).
 
-<img decoding="async" loading="lazy" src="http://blog.dsinf.net/wp-content/uploads/2015/01/win101.png" alt="win10" width="468" height="262" class="alignnone size-full wp-image-645" srcset="https://blog.dsinf.net/wp-content/uploads/2015/01/win101.png 468w, https://blog.dsinf.net/wp-content/uploads/2015/01/win101-300x167.png 300w" sizes="(max-width: 468px) 100vw, 468px" />
+![win10](https://blog.dsinf.net/wp-content/uploads/2015/01/win101.png)

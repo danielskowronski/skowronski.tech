@@ -9,7 +9,7 @@ url: /2018/02/aplikacja-do-podgladu-stanu-wszechswiata/
 ---
 Projekt jest w zasadzie respinem cyklu zegarków które popełniłem bazując na arduino i raspberry pi, przechodząc wreszcie [na tablet][1] z przeglądarką i prostą aplikacją w JavaScript. Główne zadanie to wyświetlanie czasu w przyjemnej formie (wybrałem zegar kartkowy) i innych przydatnych informacji - takich jak pogoda czy stan maszyn - wykorzystując projekt sauron3. Nazwa kodowa to colorovo, ale tylko dlatego że tak nazywa się producent tabletu na którym ją uruchamiam.
 
-<img decoding="async" loading="lazy" class="alignnone size-large wp-image-1136" src="http://blog.dsinf.net/wp-content/uploads/2018/02/colorovo-1024x639.png" alt="" width="665" height="415" srcset="https://blog.dsinf.net/wp-content/uploads/2018/02/colorovo-1024x639.png 1024w, https://blog.dsinf.net/wp-content/uploads/2018/02/colorovo-300x187.png 300w, https://blog.dsinf.net/wp-content/uploads/2018/02/colorovo-768x479.png 768w, https://blog.dsinf.net/wp-content/uploads/2018/02/colorovo-660x412.png 660w, https://blog.dsinf.net/wp-content/uploads/2018/02/colorovo.png 1278w" sizes="(max-width: 665px) 100vw, 665px" /> 
+![](https://blog.dsinf.net/wp-content/uploads/2018/02/colorovo.png) 
 
 Ciężko było taki system stworzyć uniwersalnym (a na pewno byłoby to więcej roboty niż można by poświęcić na coś takiego) więc kod nie trafi na GitHuba, tylko tutaj. Głównie dlatego że pełen jest rzeczy które zapewne tylko ja znajdę użytecznymi, ale pewne tricki mogą się okazać przydatne dla innych.
 

@@ -12,7 +12,7 @@ Jakiś czas temu [zbudowałem stację pogody z czujnikiem smogu][1] w oparciu o 
 
 ## Obudowa stacji meteo<figure class="wp-block-image">
 
-<img decoding="async" loading="lazy" width="1024" height="682" src="https://blog.dsinf.net/wp-content/uploads/2019/02/nam2-1024x682.jpg" alt="" class="wp-image-1366" srcset="https://blog.dsinf.net/wp-content/uploads/2019/02/nam2-1024x682.jpg 1024w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam2-300x200.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam2-768x512.jpg 768w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam2.jpg 1280w" sizes="(max-width: 1024px) 100vw, 1024px" /> <figcaption>Tak wygląda właściwa stacja meteorologiczna; [© Marek Argent [CC BY-SA 4.0]][2]</figcaption></figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2019/02/nam2.jpg) <figcaption>Tak wygląda właściwa stacja meteorologiczna; [© Marek Argent [CC BY-SA 4.0]][2]</figcaption></figure> 
 
 Jako że skrzynki z ażurowymi ściankami budować mi się nie chciało poszedłem w rozwiązanie prostsze ale dość skutecznie pozbywające się problemu słońca - pudełko po butach i folia aluminiowa. Pudełko nie zamknięte całkowicie zapewnia dostęp ciepła. Pomiary od kilku dni prowadzone także zwykłą sklepową stacją meteo i porównywane z prognozami wykazują brak odchyleń. 
 
@@ -20,10 +20,10 @@ Płaski kabel USB dostarczony przez Nettigo okazał się bardzo przydatny do mon
 
 <ul class="is-layout-flex wp-block-gallery-3 wp-block-gallery columns-2 is-cropped">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2019/02/nam3-1024x768.jpg"><img decoding="async" loading="lazy" width="1024" height="768" src="https://blog.dsinf.net/wp-content/uploads/2019/02/nam3-1024x768.jpg" alt="" data-id="1367" data-link="https://blog.dsinf.net/?attachment_id=1367" class="wp-image-1367" srcset="https://blog.dsinf.net/wp-content/uploads/2019/02/nam3-1024x768.jpg 1024w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam3-300x225.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam3-768x576.jpg 768w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam3.jpg 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2019/02/nam3-1024x768.jpg">![](https://blog.dsinf.net/wp-content/uploads/2019/02/nam3.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2019/02/nam4-1024x768.jpg"><img decoding="async" loading="lazy" width="1024" height="768" src="https://blog.dsinf.net/wp-content/uploads/2019/02/nam4-1024x768.jpg" alt="" data-id="1368" data-link="https://blog.dsinf.net/?attachment_id=1368" class="wp-image-1368" srcset="https://blog.dsinf.net/wp-content/uploads/2019/02/nam4-1024x768.jpg 1024w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam4-300x225.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam4-768x576.jpg 768w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam4.jpg 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2019/02/nam4-1024x768.jpg">![](https://blog.dsinf.net/wp-content/uploads/2019/02/nam4.jpg)</a></figure>
   </li>
 </ul>
 
@@ -44,13 +44,13 @@ Do alertowania użyłem modułu Grafany do obsługi mojego ulubionego systemu pa
 
 Mój dashboard grafany aktualizuję na bieżąco jak pojawią się tylko drobne pomysły ale umieszczę poniżej wersję którą można uznać za podstawę do użycia u siebie.<figure class="wp-block-image">
 
-[<img decoding="async" loading="lazy" width="1919" height="1079" src="https://blog.dsinf.net/wp-content/uploads/2019/02/nam1.png" alt="" class="wp-image-1371" srcset="https://blog.dsinf.net/wp-content/uploads/2019/02/nam1.png 1919w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam1-300x169.png 300w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam1-768x432.png 768w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam1-1024x576.png 1024w" sizes="(max-width: 1919px) 100vw, 1919px" />][3]</figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2019/02/nam1.png)</figure> 
 
 <div class="wp-block-file">
   <a href="http://blog.dsinf.net/wp-content/uploads/2019/02/nettigo-air-monitor-grafana.json_.txt">nettigo-air-monitor-grafana.json</a><a href="http://blog.dsinf.net/wp-content/uploads/2019/02/nettigo-air-monitor-grafana.json_.txt" class="wp-block-file__button" download>Pobierz</a>
 </div><figure class="wp-block-image is-resized">
 
-[<img decoding="async" loading="lazy" src="https://blog.dsinf.net/wp-content/uploads/2019/02/nam6-576x1024.jpg" alt="" class="wp-image-1377" width="288" height="512" srcset="https://blog.dsinf.net/wp-content/uploads/2019/02/nam6-576x1024.jpg 576w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam6-169x300.jpg 169w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam6.jpg 750w" sizes="(max-width: 288px) 100vw, 288px" />][4]<figcaption>Przykładowy alert wysłany przez Grafanę</figcaption></figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2019/02/nam6.jpg)<figcaption>Przykładowy alert wysłany przez Grafanę</figcaption></figure> 
 
 ## Lekki klient mobilny
 
@@ -58,7 +58,7 @@ Na koniec jeszcze kilka słów o kliencie mobilnym. Otóż Grafana na telefonie 
 
 Jedyne co nam potrzebne poza plikiem HTML to plik JSON wysyłany przez czujnik na wskazany serwer - dokładnie to co zbiera [collect.php z poprzedniego wpisu][1]. Tutaj umieszczony w tym samym folderze serwera www pod nazwą smog.json (dla ułatwienia i obejścia problemów z CORS jeśli stosujemy różne domeny można na serwerze stworzyć symlink).<figure class="wp-block-image is-resized">
 
-[<img decoding="async" loading="lazy" src="https://blog.dsinf.net/wp-content/uploads/2019/02/nam5-576x1024.jpg" alt="" class="wp-image-1372" width="288" height="512" srcset="https://blog.dsinf.net/wp-content/uploads/2019/02/nam5-576x1024.jpg 576w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam5-169x300.jpg 169w, https://blog.dsinf.net/wp-content/uploads/2019/02/nam5.jpg 750w" sizes="(max-width: 288px) 100vw, 288px" />][5]</figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2019/02/nam5.jpg)</figure> 
 
 <pre class="EnlighterJSRAW" data-enlighter-language="html" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">&lt;!DOCTYPE html>
 &lt;html>

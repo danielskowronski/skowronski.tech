@@ -18,16 +18,16 @@ Ale po kolei. Mój setup wykorzystujący sprzętowy RAID to proste mirrorowanie 
 
 <ul class="is-layout-flex wp-block-gallery-1 wp-block-gallery columns-2 is-cropped">
   <li class="blocks-gallery-item">
-    <figure><a href="http://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0a-1024x620.png"><img decoding="async" loading="lazy" width="1024" height="620" src="http://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0a-1024x620.png" alt="" data-id="1316" data-link="http://blog.dsinf.net/2019/01/megaraid-w-stacji-roboczej-i-poszukiwanie-smarta/megaraid0a/" class="wp-image-1316" srcset="https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0a-1024x620.png 1024w, https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0a-300x182.png 300w, https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0a-768x465.png 768w, https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0a.png 1200w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+    <figure><a href="http://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0a-1024x620.png">![](https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0a.png)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="http://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0-1024x768.png"><img decoding="async" loading="lazy" width="1024" height="768" src="http://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0-1024x768.png" alt="" data-id="1313" data-link="http://blog.dsinf.net/2019/01/megaraid-w-stacji-roboczej-i-poszukiwanie-smarta/megaraid0/" class="wp-image-1313" srcset="https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0-1024x768.png 1024w, https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0-300x225.png 300w, https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0-768x576.png 768w, https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+    <figure><a href="http://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0-1024x768.png">![](https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0.png)</a></figure>
   </li>
 </ul>
 
 Aż pewnego pięknego dnia zaczął wyskakiwać komunikat o wypadnięciu dysku z macierzy. W logach pojawiał się z datą "2000-01-01 12:00:00". Co ciekawe eventy o pomyślnym logowaniu do konsoli mają poprawną datę. W każdym razie okazało się że leci rebuild. Po czym drugi raz. I trzeci.<figure class="wp-block-image">
 
-<img decoding="async" loading="lazy" width="950" height="858" src="https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid1.png" alt="" class="wp-image-1314" srcset="https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid1.png 950w, https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid1-300x271.png 300w, https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid1-768x694.png 768w" sizes="(max-width: 950px) 100vw, 950px" /> </figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid1.png) </figure> 
 
 Wtedy postanowiłem zbadać stan SMARTa dysków (niektórzy mogą się domyślić że nie ma to sensu, ale o tym potem). Czas pobrać pakiet _smarrtmontools_. Bash na Windowsa był pierwszym strzałem. Pudło bo to kontener który nie ma bindowań do devfs (w sumie nie ma za bardzo jak mieć). Kolejna próba to build smartctl na Windowsa. Nawet [wiki projektu][1] potwierdza że się powinno dać - przez CSMI. Znowu pudło bo support megaraida wyparował z wersji windowsowej. Próby enumerowania ukrytych urządzeń przez cygwina też upadły (_smartctl -scan_). 
 

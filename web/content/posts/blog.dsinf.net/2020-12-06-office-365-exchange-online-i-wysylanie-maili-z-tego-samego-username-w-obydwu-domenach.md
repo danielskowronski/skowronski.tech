@@ -17,13 +17,13 @@ Teoretycznie, jeśli użytkownik Exchange'a posiada kilka aliasów, na które po
 
 W webowym centrum administracyjnym powinna być gdzieś tutaj, ale nie zawsze będzie widoczna.<figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="1024" height="649" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_042-1024x649.png" alt="" class="wp-image-2023" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_042-1024x649.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_042-300x190.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_042-768x487.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_042-1536x974.png 1536w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_042-2048x1299.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" />][1]</figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_042-300x190.png)</figure> 
 
 Odkąd Microsoft stworzył PowerShella, część zadań administracyjnych da się wykonać tylko z PowerShella - także w hostowanym przez Microsoft Exchange Online. Wyłączenie domyślnej polityki może brzmieć groźnie, ale jeśli tyczy się to administratorów Office 365 (najczęściej nas samych) to raczej wiedzą co robią 😉
 
 Problem polega na tym, że Knowledge Base Microsoftu zaleca w opisanej powyżej sytuacji użycie cmldetu `Set-Mailbox` z przełącznikiem `-EmailAddressPolicyEnabled:$false` (<https://docs.microsoft.com/en-us/powershell/module/exchange/set-mailbox?view=exchange-ps>). Poza koniecznością odpalenia tego na Windowsie - żaden problem - prawda?<figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="1024" height="714" src="https://blog.dsinf.net/wp-content/uploads/2020/12/screen3-1024x714.png" alt="" class="wp-image-2021" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/screen3-1024x714.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/12/screen3-300x209.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/12/screen3-768x536.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/screen3-1536x1071.png 1536w, https://blog.dsinf.net/wp-content/uploads/2020/12/screen3.png 1708w" sizes="(max-width: 1024px) 100vw, 1024px" />][2]</figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2020/12/screen3.png)</figure> 
 
 Odpowiedź na powyższy błąd znajdziemy w pierwszym akapicie dokumentacji tego cmldetu:
 
@@ -55,13 +55,13 @@ Zatem do dzieła:<figure class="is-layout-flex wp-block-gallery-29 wp-block-gall
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_043.png"><img decoding="async" loading="lazy" width="1024" height="754" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_043-1024x754.png" alt="" data-id="2024" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_043.png" data-link="https://blog.dsinf.net/?attachment_id=2024" class="wp-image-2024" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_043-1024x754.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_043-300x221.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_043-768x565.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_043-1536x1130.png 1536w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_043-2048x1507.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></a><figcaption class="blocks-gallery-item__caption">Najpierw należy zlokalizować formularz nowego Shared Mailbox,</figcaption></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_043.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_043-300x221.png)</a><figcaption class="blocks-gallery-item__caption">Najpierw należy zlokalizować formularz nowego Shared Mailbox,</figcaption></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_044.png"><img decoding="async" loading="lazy" width="769" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_044-769x1024.png" alt="" data-id="2025" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_044.png" data-link="https://blog.dsinf.net/?attachment_id=2025" class="wp-image-2025" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_044-769x1024.png 769w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_044-225x300.png 225w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_044-768x1023.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_044.png 1084w" sizes="(max-width: 769px) 100vw, 769px" /></a><figcaption class="blocks-gallery-item__caption">potem wskazać adres skrzynki i jej nazwię wyświetlaną</figcaption></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_044.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_044.png)</a><figcaption class="blocks-gallery-item__caption">potem wskazać adres skrzynki i jej nazwię wyświetlaną</figcaption></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_045.png"><img decoding="async" loading="lazy" width="768" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_045-768x1024.png" alt="" data-id="2026" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_045.png" data-link="https://blog.dsinf.net/?attachment_id=2026" class="wp-image-2026" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_045-768x1024.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_045-225x300.png 225w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_045.png 846w" sizes="(max-width: 768px) 100vw, 768px" /></a><figcaption class="blocks-gallery-item__caption">i na koniec ustawić, kto będzie miał do niej uprawnienia.</figcaption></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_045.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_045.png)</a><figcaption class="blocks-gallery-item__caption">i na koniec ustawić, kto będzie miał do niej uprawnienia.</figcaption></figure>
   </li>
 </ul></figure> 
 
@@ -83,13 +83,13 @@ Obejście na szczęście jest dość proste - należy stworzyć _Shared Mailbox_
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_047-1.png"><img decoding="async" loading="lazy" width="766" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_047-1-766x1024.png" alt="" data-id="2033" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_047-1.png" data-link="https://blog.dsinf.net/?attachment_id=2033" class="wp-image-2033" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_047-1-766x1024.png 766w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_047-1-224x300.png 224w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_047-1-768x1026.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_047-1.png 844w" sizes="(max-width: 766px) 100vw, 766px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_047-1.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_047-1.png)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_048-1.png"><img decoding="async" loading="lazy" width="1024" height="986" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_048-1-1024x986.png" alt="" data-id="2034" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_048-1.png" data-link="https://blog.dsinf.net/?attachment_id=2034" class="wp-image-2034" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_048-1-1024x986.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_048-1-300x289.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_048-1-768x740.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_048-1.png 1404w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_048-1.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_048-1.png)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_049-1.png"><img decoding="async" loading="lazy" width="1024" height="777" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_049-1-1024x777.png" alt="" data-id="2035" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_049-1.png" data-link="https://blog.dsinf.net/?attachment_id=2035" class="wp-image-2035" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_049-1-1024x777.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_049-1-300x228.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_049-1-768x583.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_049-1.png 1189w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_049-1.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_049-1.png)</a></figure>
   </li>
 </ul></figure> 
 
@@ -99,10 +99,10 @@ Skoro mamy gotową skrzynkę współdzieloną użytkownik musi ją jeszcze podpi
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_051.png"><img decoding="async" loading="lazy" width="776" height="460" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_051.png" alt="" data-id="2037" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_051.png" data-link="https://blog.dsinf.net/?attachment_id=2037" class="wp-image-2037" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_051.png 776w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_051-300x178.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_051-768x455.png 768w" sizes="(max-width: 776px) 100vw, 776px" /></a><figcaption class="blocks-gallery-item__caption">Podpięcie skrzynki współdzielonej</figcaption></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_051.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_051.png)</a><figcaption class="blocks-gallery-item__caption">Podpięcie skrzynki współdzielonej</figcaption></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_052.png"><img decoding="async" loading="lazy" width="1024" height="655" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_052-1024x655.png" alt="" data-id="2038" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_052.png" data-link="https://blog.dsinf.net/?attachment_id=2038" class="wp-image-2038" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_052-1024x655.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_052-300x192.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_052-768x491.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_052-1536x982.png 1536w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_052-2048x1310.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></a><figcaption class="blocks-gallery-item__caption">Oraz dodanie na niej przekierowania na skrzynkę główną</figcaption></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_052.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_052-300x192.png)</a><figcaption class="blocks-gallery-item__caption">Oraz dodanie na niej przekierowania na skrzynkę główną</figcaption></figure>
   </li>
 </ul></figure> 
 
@@ -110,14 +110,14 @@ Skoro mamy gotową skrzynkę współdzieloną użytkownik musi ją jeszcze podpi
 
 Aby potwierdzić, że wszystko działa, jak należy, sprawdzimy, czy możemy wysłać maile z nowego aliasu poprawnie oraz, czy możemy je odebrać. Najłatwiej wykorzystać darmowe usługi online do testowania maili - ja użyłem <a href="http://10minutemail.com" data-type="URL" data-id="10minutemail.com">10minutemail.com</a> do testu poczty wychodzącej oraz [ismyemailworking.com][3] do testu maili przychodzących.<figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="1024" height="467" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_053-1024x467.png" alt="" class="wp-image-2040" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_053-1024x467.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_053-300x137.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_053-768x350.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_053-1536x700.png 1536w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_053-2048x933.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" />][4]<figcaption>Mail wpada do spamu, ale przychodzi poprawnie</figcaption></figure> <figure class="is-layout-flex wp-block-gallery-35 wp-block-gallery columns-2 is-cropped">
+![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_053-300x137.png)<figcaption>Mail wpada do spamu, ale przychodzi poprawnie</figcaption></figure> <figure class="is-layout-flex wp-block-gallery-35 wp-block-gallery columns-2 is-cropped">
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055.png"><img decoding="async" loading="lazy" width="1005" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055-1005x1024.png" alt="" data-id="2041" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055.png" data-link="https://blog.dsinf.net/?attachment_id=2041" class="wp-image-2041" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055-1005x1024.png 1005w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055-294x300.png 294w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055-768x783.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055.png 1209w" sizes="(max-width: 1005px) 100vw, 1005px" /></a><figcaption class="blocks-gallery-item__caption">Żeby wysłać maila z aliasu - trzeba dodać sobie w widoku pole From</figcaption></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055.png)</a><figcaption class="blocks-gallery-item__caption">Żeby wysłać maila z aliasu - trzeba dodać sobie w widoku pole From</figcaption></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_056.png"><img decoding="async" loading="lazy" width="1024" height="836" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_056-1024x836.png" alt="" data-id="2042" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_056.png" data-link="https://blog.dsinf.net/?attachment_id=2042" class="wp-image-2042" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_056-1024x836.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_056-300x245.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_056-768x627.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_056.png 1391w" sizes="(max-width: 1024px) 100vw, 1024px" /></a><figcaption class="blocks-gallery-item__caption">Mail wychodzi z poprawnego adresu email</figcaption></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_056.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_056.png)</a><figcaption class="blocks-gallery-item__caption">Mail wychodzi z poprawnego adresu email</figcaption></figure>
   </li>
 </ul></figure> 
 
@@ -127,7 +127,7 @@ Exchange jest nietrywialny, a w wersji Online - tym bardziej. Na szczęście da 
 
 Na zakończenie - taki oto maili wpada na główną skrzynkę odbiorczą, informując, iż skrzynka współdzielona właśnie zaczęła forwardowanie wszystkich maili - na tę główną 😉<figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="747" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_054-747x1024.png" alt="" class="wp-image-2044" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_054-747x1024.png 747w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_054-219x300.png 219w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_054-768x1053.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_054-1120x1536.png 1120w, https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_054.png 1267w" sizes="(max-width: 747px) 100vw, 747px" />][5]</figure>
+![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_054.png)</figure>
 
  [1]: https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_042.png
  [2]: https://blog.dsinf.net/wp-content/uploads/2020/12/screen3.png

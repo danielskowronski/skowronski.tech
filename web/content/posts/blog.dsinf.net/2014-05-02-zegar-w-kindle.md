@@ -15,7 +15,7 @@ tags:
 W kindlach definitywnie brakowało mi zegarka. Podobno w pierwszej generacji dało się wyświetlić tekstowy za pomocą Alt+T. Dla nowszych modeli istnieje porada "wciśnij klawisz menu" - pojawia się pasek systemowy na górze z zegarkiem. Ale to nie jest żadne rozwiązanie.  
 Oczywiście - napisałem na to skrypt 🙂
 
-[<img decoding="async" loading="lazy" class="alignnone size-large wp-image-435" src="http://blog.dsinf.net/wp-content/uploads/2014/05/WP_20140502_001-1024x768.jpg" alt="Kindle - zegarek" width="665" height="498" srcset="https://blog.dsinf.net/wp-content/uploads/2014/05/WP_20140502_001-1024x768.jpg 1024w, https://blog.dsinf.net/wp-content/uploads/2014/05/WP_20140502_001-300x225.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2014/05/WP_20140502_001-660x495.jpg 660w, https://blog.dsinf.net/wp-content/uploads/2014/05/WP_20140502_001-900x675.jpg 900w" sizes="(max-width: 665px) 100vw, 665px" />][1]
+![Kindle - zegarek](https://blog.dsinf.net/wp-content/uploads/2014/05/WP_20140502_001-300x225.jpg)
 
 Po pierwsze - **potrzebny nam będzie Launchpad**. LP to program pozwalający odpalać komendy za pomocą skrótów klawiaturowych. Rzecz jasna - "<span style="text-decoration: underline;">it may void your varranty</span>", ale kto by się przejmował. Szansa, że coś wybuchnie jest znikoma. Instrukcje - [tutaj][2] (minimum to LP). W skrócie instalacja polega na wgraniu na główną pamięć (tą dostępną po wpięciu do komputera przez USB) pliku .bin i wykonanie aktualizacji systemu.
 

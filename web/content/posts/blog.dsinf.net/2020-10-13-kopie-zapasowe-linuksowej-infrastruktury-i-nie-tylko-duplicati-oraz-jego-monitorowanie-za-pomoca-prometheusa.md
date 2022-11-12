@@ -118,7 +118,7 @@ Pierwsza sprawa to docelowa lokalizacja backupów: umieszczane są tak jak typow
 
 Dalsze elementy ścieżki to prefiks (na screenshocie poniżej jest to _amaterasu_ - tak nazywa się mój serwer), nazwa hosta wyciągana dynamicznie przez skrypt, oraz pełna ścieżka do backupowanego foldero - bardzo ułatwia to lokalizację konkretnych danych.<figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="1024" height="756" src="https://blog.dsinf.net/wp-content/uploads/2020/10/Selection_039-1024x756.png" alt="" class="wp-image-1933" srcset="https://blog.dsinf.net/wp-content/uploads/2020/10/Selection_039-1024x756.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/10/Selection_039-300x221.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/10/Selection_039-768x567.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/10/Selection_039-1536x1134.png 1536w, https://blog.dsinf.net/wp-content/uploads/2020/10/Selection_039.png 1733w" sizes="(max-width: 1024px) 100vw, 1024px" />][2]</figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2020/10/Selection_039.png)</figure> 
 
 Kolejny element to _dbpath_, który odpowiada za lokalną bazę danych pomagającą Duplicati utrzymać stan plików. Bashowy potworek `echo ${path} | base32 | tr '=' '_'`, który tworzy jego wartość enkoduje ścieżkę tak by mogła być nazwą pliku bazy SQLite. Nie może to być stała wartość, gdyż wtedy nie można by uruchomić dwóch różnych procesów backupowania na jednym hoście. Natomiast odwracalne base32 z podmianą znaku równości (który sprawia kłopot w niektórych miejscach w bashu) ma tę przewagę nad funkcją skrótu w rodzaju MD5, że późniejsze debugowanie sytuacji w rodzaju przepełniającej się bazy danych jest łatwiejsze.
 
@@ -249,7 +249,7 @@ Teraz warto zainstalować i skonfigurować _prometheus_nodexporter_ na monitorow
 
 Efekt naszych starań powinien przypominać coś takiego w Prometheusowym WebUI:<figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="1024" height="945" src="https://blog.dsinf.net/wp-content/uploads/2020/10/Selection_040-1024x945.png" alt="" class="wp-image-1934" srcset="https://blog.dsinf.net/wp-content/uploads/2020/10/Selection_040-1024x945.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/10/Selection_040-300x277.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/10/Selection_040-768x709.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/10/Selection_040-1536x1418.png 1536w, https://blog.dsinf.net/wp-content/uploads/2020/10/Selection_040-2048x1891.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" />][3]</figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2020/10/Selection_040-300x277.png)</figure> 
 
 ## Deployment jobów
 

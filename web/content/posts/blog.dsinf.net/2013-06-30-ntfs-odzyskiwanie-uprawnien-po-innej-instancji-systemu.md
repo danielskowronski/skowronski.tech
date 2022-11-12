@@ -16,21 +16,21 @@ Oczywiście - można pod Linuksem pliki skopiować, oryginały usunąć i wgrać
 Oto lista kroków niezbędnych do odzyskania pełnej kontroli nad plikami (oczywiście najlepiej byłoby mieć uprawnienia administratora na naszym systemie):
 
 **1.**  
-<img decoding="async" src="http://www.ds.lublin.pl/sites/default/files/permreset.png" />  
+![](http://www.ds.lublin.pl/sites/default/files/permreset.png)  
 Wchodzimy we właściwości obiektu w Eksploratorze Windows - prawe kliknięcie pliku bądź katalogu. Tamże w karcie _Zabezpieczenia_ wybieramy _Zaawansowane_
 
 **2.**  
-<img decoding="async" src="http://www.ds.lublin.pl/sites/default/files/permreset2.png" />  
+![](http://www.ds.lublin.pl/sites/default/files/permreset2.png)  
 Wybieramy opcję zmiany właściciela
 
 **3.**  
-<img decoding="async" src="http://www.ds.lublin.pl/sites/default/files/permreset3.png" />  
+![](http://www.ds.lublin.pl/sites/default/files/permreset3.png)  
 Teraz albo wpisujemy pełną ścieżkę do nauszego użytkownika, albo tylko login i klikamy uzupełnianie nazw.
 
 **4.**  
-<img decoding="async" src="http://www.ds.lublin.pl/sites/default/files/permreset4.png" />  
+![](http://www.ds.lublin.pl/sites/default/files/permreset4.png)  
 Jeśli obiektem jest katalog na 99% chodzi nam także o dziedziczenie praw - odpowiedzialny jest za to najniżej położony checkbox. Uwaga: naprawdę trzeba całkiem zamknąć oknieko własciwowści obiektu i wywołac je ponownie, żeby zobaczyć zmiany.
 
 **5.**  
-<img decoding="async" src="http://www.ds.lublin.pl/sites/default/files/permreset5.png" />  
+![](http://www.ds.lublin.pl/sites/default/files/permreset5.png)  
 Teraz pozostaje nam w podstawowym widoku edytora uprawnień odnaleźć siebie i wybrać _Zezwól_ -> _Pełen dostęp_

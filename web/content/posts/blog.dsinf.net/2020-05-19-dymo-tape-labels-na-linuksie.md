@@ -14,11 +14,11 @@ tags:
 ---
 Od jakieś czasu jestem szczęśliwym posiadaczem drukarki etykiet Dymo - LabelWriter 450 Duo. A od niedawna w końcu wróciłem do Linuksa jako głównego systemu na stacji roboczej. Mój sukces z tym podwójnym urządzeniem - potrafi ono bowiem drukować zarówno etykiety prostokątne, jak i na taśmie - był połowiczny: etykiety o stałych wymiarach nie stanowią problemu dla programu gLabels. Natomiast te drukowane na taśmie typu D1 (a więc o stałej wysokości, ale zmiennej długości) nijak nie chcą współpracować z żadnym znanym mi programem. <figure class="wp-block-image size-large is-resized">
 
-<img decoding="async" loading="lazy" src="http://blog.dsinf.net/wp-content/uploads/2020/05/dymo450.jpeg" alt="" class="wp-image-1735" width="310" height="325" srcset="https://blog.dsinf.net/wp-content/uploads/2020/05/dymo450.jpeg 960w, https://blog.dsinf.net/wp-content/uploads/2020/05/dymo450-286x300.jpeg 286w, https://blog.dsinf.net/wp-content/uploads/2020/05/dymo450-768x806.jpeg 768w" sizes="(max-width: 310px) 100vw, 310px" /> </figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2020/05/dymo450.jpeg) </figure> 
 
 Na Windowsie i macOS sprawa wygląda prosto - dostarczone narzędzie _**DYMO** **Label**_, które niedawno zostało przebrandowane na _**DYMO Connect**_, bardzo sprawnie daje sobie radę. Ba, wystawia nawet webowe API dostępne na localhoście które pozwala na generowanie etykiet na przykład w przeglądarce. Ten ostatni fakt wykorzystuję w moim generatorze etykiet do puszek herbaty - _**DymoTeaLabel**_, który jest dostępny [na githubie][1].<figure class="wp-block-image size-large">
 
-<img decoding="async" loading="lazy" width="856" height="696" src="http://blog.dsinf.net/wp-content/uploads/2020/05/dymo_connect.jpg" alt="" class="wp-image-1736" srcset="https://blog.dsinf.net/wp-content/uploads/2020/05/dymo_connect.jpg 856w, https://blog.dsinf.net/wp-content/uploads/2020/05/dymo_connect-300x244.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2020/05/dymo_connect-768x624.jpg 768w" sizes="(max-width: 856px) 100vw, 856px" /> <figcaption>Tak prezentuje się DYMO Connect</figcaption></figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2020/05/dymo_connect.jpg) <figcaption>Tak prezentuje się DYMO Connect</figcaption></figure> 
 
 Oczywiście artykułu by nie było, gdyby któreś z oficjalnych narzędzi odpalało się na Wine. Odpala się za to w VirtualBoxie, no ale bez przesady - na pewno da się pominąć Windowsa.
 
@@ -285,14 +285,14 @@ end sub</pre>
 
 Żeby móc łatwo wywołać świeżo stworzone makra można je dodać jako przyciski do interfejsu Writera. Jak się okazuje sam dokument ODT może zawierać customowe menu. <figure class="wp-block-image size-large is-resized">
 
-<img decoding="async" loading="lazy" src="http://blog.dsinf.net/wp-content/uploads/2020/05/libreoffice-customize.jpg" alt="" class="wp-image-1737" width="580" height="547" srcset="https://blog.dsinf.net/wp-content/uploads/2020/05/libreoffice-customize.jpg 923w, https://blog.dsinf.net/wp-content/uploads/2020/05/libreoffice-customize-300x283.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2020/05/libreoffice-customize-768x726.jpg 768w" sizes="(max-width: 580px) 100vw, 580px" /> <figcaption>Aby dodać przycisk menu dostępny w konkretnym dokumencie (zapisany w pliku) wystarczy wybrać _Tools/Customize_, a następnie zmienić _Scope_ na dokument.</figcaption></figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2020/05/libreoffice-customize.jpg) <figcaption>Aby dodać przycisk menu dostępny w konkretnym dokumencie (zapisany w pliku) wystarczy wybrać _Tools/Customize_, a następnie zmienić _Scope_ na dokument.</figcaption></figure> 
 
 Pozostaje jedynie podpisać cyfrowo dokument tak, żeby LibreOffice nie krzyczał na nas, że w dokumencie są makra, a makra to jak wiadomo w 99% wirusy.
 
   
 Aby to osiągnąć, skorzystałem z cert stora z Firefoxa gdzie mam załadowany certyfikat osobisty do podpisywania emaili.<figure class="wp-block-image size-large is-resized">
 
-<img decoding="async" loading="lazy" src="http://blog.dsinf.net/wp-content/uploads/2020/05/libreoffice-certpath-1024x704.jpg" alt="" class="wp-image-1739" width="580" height="398" srcset="https://blog.dsinf.net/wp-content/uploads/2020/05/libreoffice-certpath-1024x704.jpg 1024w, https://blog.dsinf.net/wp-content/uploads/2020/05/libreoffice-certpath-300x206.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2020/05/libreoffice-certpath-768x528.jpg 768w, https://blog.dsinf.net/wp-content/uploads/2020/05/libreoffice-certpath.jpg 1314w" sizes="(max-width: 580px) 100vw, 580px" /> <figcaption>Aby wybrać skąd LibreOffice będzie brał certyfikaty, należy wybrać _Tools/Options_ a następnie otworzyć widok _Security_ a w nim _Certificate..._</figcaption></figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2020/05/libreoffice-certpath.jpg) <figcaption>Aby wybrać skąd LibreOffice będzie brał certyfikaty, należy wybrać _Tools/Options_ a następnie otworzyć widok _Security_ a w nim _Certificate..._</figcaption></figure> 
 
 Ważna uwaga szczególnie dla ubuntowców - LibreOffice musi być zainstalowany z pakietu deb, a nie ze snapa - w przeciwnym wypadku wystąpi spory problem z uprawnieniami.
 

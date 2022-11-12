@@ -13,24 +13,24 @@ Najpierw kilka słów o historri decyzji o wyborze tego telefonu. Na początku m
 Koniec końców wybrałem HTC One V. Z recenzją wstrzymałem się do momentu zakończonego sukcesem zrootowania. Udało się, więc przystępuję do rzeczy.
 
 **Pierwsze wrażenie**  
-<img decoding="async" src="/uploaded/images/stories/htc-recenzja/widok-ogolny-01.JPG" />  
+![](/uploaded/images/stories/htc-recenzja/widok-ogolny-01.JPG)  
 Tym co dla entuzjasty technologii mobilnych jest oczywiste w pierwszym momecie jest stwierdzenie: HTC sięgnęło po legendę. A konkretnie model Legend. Trudno byłoby zostawiać opis podbródka na potem. Nie posiada trackballa jak Legend, ale nadal pełni kilka ważnych funkcji: sprawia, że telefon jest solidny, pewniej się go trzyma i podczas rozmowy "pasuje" do głowy. Mi szczególnie podbródek przypadł do gustu podczas trzymania telefonu w orientacji poziomej - chwyt kciukiem od wierzchu jest pewny i drugą ręką możemy wykonywać dowolne ruchy na ekranie.  
 Ogólnie aparat sprawia wrażenie solidnego i eleganckiego: przyciski są stonowane, jeśli można tak powiedzieć o ich dyskretności. Dobre wrażenie robi widoczna diodka stanu, która spełnia swoje zadanie: widać ją. Spodnia klapka z logo beatsaudio zapowiada, że koensrzy dźwięku znajdą coś dla siebie, ale tak do końca nie jest. O tym później.
 
 **Konstrukcja, złącza i ekran**  
 Patrząc od góry kolejno widzimy: fragment diody stanu, poniżej głośnik z bardzo ukrytymi sensorami (m.in. jasności), ekran, trzy przyciski dotykowe i podbródek wykonany ze szczotkowanej w poziome pasy blachy.  
-<img decoding="async" src="/uploaded/images/stories/htc-recenzja/widok-przod-01.JPG" />  
+![](/uploaded/images/stories/htc-recenzja/widok-przod-01.JPG)  
 Dioda może świecić na zielono lub pomarańczowo. Podczas łądowania cały czas na pomarańczowo, jak już skończy się łądować to zmienia kolor na zielony. Miganie w tymże kolorze oznacza jakąś notyfikację, np. niedebrane połączenie, czy mail, zaś gdy prąd się kończy zmienia się jej kolor. Jej umiejscowienie jest perfekcyjne: widać ją z góry, z boku i z tyłu, zaś jasność wystarcza do widoczności w jasny dzień. Niedosyt związany z brakiem wielu kolorów wynoszę z N900: trójkolorowa diodka pozwalała dodatkowo je łączyć i pozwalała tworzyć dowolny układ migania. Ale nie wymagajmy zbyt wiele - to co jest zdecydowanie wystarcza.  
 Ekran jest bardzo dobry. Co prawda czerni ClearBlack, czy kontrastom AMOLEDów wbudowany IPS nie dorówna, ale jak na komunikator, czy nawet smartfon daje więcej niż dobre efekty. Dzięki zastosowaniu czegoś co producent nazwał Optical Lamination możliwe są kąty widzenia jak w Asusiie TF Prime czyli "widać z boku minus 1 stopień"; technologia sprawia, że ekran pochłania mniej światła, a barwy są żywe. Jego umiejscowienie tuż pod osłoną GorillaGlass powoduje efekt dotykania bezpośednio wyświetlacza; nie dość, że nie nakurzy się to i wizualnie ładniej się prezentuje. Ma to swój minus, którego bym nigdy nie odkrył gdyby nie jedna z recenzji (nie pamiętam która): jak się mocniej naciśnie to powstaje chwilowe odkształcenie. Ale z tym mamy doczynienia w każdym smartfonie. Poza ajfonem. Tam chyba od razu pęka szybka, a użytkownik traci gwarancję za nieprawidłowe użytkowanie ;P  
-<img decoding="async" src="/uploaded/images/stories/htc-recenzja/widok-bok-03.JPG" />  
+![](/uploaded/images/stories/htc-recenzja/widok-bok-03.JPG)  
 Do przycisków dotykowych nie byłem zbytnio przekonany póki nie znalazł się w moich rękach - miałem okazję testować Lumię 800. Tam przyciski można było łatwo atywować co powodowało niechciane cofnięcia; w WP powoduje to aż zawieszenie aplikacji więc efekt bardzo przykry. W One V takiego problemu nie ma - przyczynia się do tego podbródek i kształt smarftona. Warto chwilę uwagi poświęcić ich ilości. ICS do pracy wymaga (teoretycznie) czterech: wstecz, home, przełącznik aplikacji (ja zwykłem go nazywać Alt+Tab) oraz menu/properties znany z klawiatur pecetów (ten pomiędzy prawym altem a prawym controlem). W tym modelu HTC brakuje tego ostatniego. Zanim zdążymy zadać sobie pytanie "jak dostać się do menu kontekstowego?" system udzieli nam informacji, że wystarczy dłużej przytrzymać przycisk Alt+Tab. Prostota. Zwłaszcza, że ICS wyznacza standard zgodnie z którym deveoperzy powinni w ogóle zapomnieć o tym przycisku. A jak rozwiązano to w One S/V? Obrzydliwy pasek na dole ekranu.  
-<img decoding="async" src="/uploaded/images/stories/htc-recenzja/widok-tyl-01.JPG" />  
+![](/uploaded/images/stories/htc-recenzja/widok-tyl-01.JPG)  
 Obróćmy telefon do dołu ekranem.  
-<img decoding="async" src="/uploaded/images/stories/htc-recenzja/widok-kamera-01.JPG" />  
+![](/uploaded/images/stories/htc-recenzja/widok-kamera-01.JPG)  
 Na górze widoczna gumowa wstawka z aparatem i diodą LED, swoja drogą dość mocną; można nawet wybrać 3 poziomy jasności we wbudowanej(!) aplikacji producenta.  
-<img decoding="async" src="/uploaded/images/stories/htc-recenzja/widok-klapka-01.JPG" />  
+![](/uploaded/images/stories/htc-recenzja/widok-klapka-01.JPG)  
 Z tyłu podbródka klapka pokryta gumą identyczną z tą wokół aparatu. Logo beatsaudio i kratka głośnika. Po jej zdjęciu dzieje się rzecz, którą w każdym innym smartfonie uznalibyśmy za bodziec do odwiedzenia serwisu - momentalnie tracimy jakąkolwiek łączność. To dlatego, że klapka spełnia rolę anteny. Jeśli nie mamy co robić to jest to furtka do podpięcia zewnętrznej anteny WiFi. A zdroworozsądkowo: złącze SIM (normalnie, nie micro - jak dla mnie ogromny plus) oraz microSD.  
-<img decoding="async" src="/uploaded/images/stories/htc-recenzja/widok-bok-01.JPG" />  
+![](/uploaded/images/stories/htc-recenzja/widok-bok-01.JPG)  
 Krawędzie urządzenia są proste: po lewej przy styku ekranu z podbródkiem złącze microUSB (na 99% wyleci za 2 lata), po prawe regulacja głosności. Od bóry poza wyłącznikiem mini-jack. Nie spełnia on niestety funkcji jak w N900 - nie mozna podpiąć telefonu pod telewizor. Ale przypomnę: to model za 1200-1300zł.
 
 **Łączność**  
@@ -42,7 +42,7 @@ Jak na telefon z tej półki cenowej zdjęcia robi dość dobre. Zdarzają się 
 Nagrania 720p to standard, ale opcja robienia zdjęć w trakcie kręcenia to wybicie się pona tłum.  
 To co zdecydowanie jest plusem to bezgłośna optyka. Może to wpływ wręcz łomotu podczas zmiany agniskowej kamery w TF Prime, ale tu optyka milczy. I obrazem nie rzuca w trakcie jej zmieniania.  
 Test na autostradzie ukazał nietypowe oblicze aparatu OneV'a. Kręcenie filmu przy 130km/h jest niemożliwe ze względu na optyke, która nie może złapać ostrości. Natomiast zdjęcia wychodzą cudownie: nie są rozmyte. Jego szybkość potwierdził test zrobienie fotografii znaku drogowego: wyjęcie telefonu z kieszeni, uruchomienie "od zera" aplikacji, fotka i w momencie zapisu na dysk już jestem sporo za znakiem. <!--Wynik:
-<img decoding="async" src="/uploaded/images/stories/htc-recenzja/foto-testznaku-01.JPG" />-->
+![](/uploaded/images/stories/htc-recenzja/foto-testznaku-01.JPG)-->
 
   
 Podsumowywując: nie jest to urządzenie do profesjonalnych zdjęć (tablet Asusa jest tu przykładem urządzenia które spełnia to kryterium), nie jest to też aparat przeciętny jak na Androidowy telefon, nie jest słaby, ani nie jest to ajfon robiący czerwone oczy na plaży w słoneczny dzień. Oferowane przez One V 5MPx/HD wystarczy każdemu na fotografie widoczków, portrety ludzi, zdjęcia techniczne i dokumentów, filmiki z eventów lub szpiegowskie nagrywanie.
@@ -69,7 +69,7 @@ Ostatnie zdanie poprzedniej sekcji nieco spoileruje ten dział. Ale pisanie na p
 Przestrzeń dyskową można nazwać jedynym zasadniczym minusem. Gdy przeczytać w specyfikacji "4GB" zdaje się, że to mało, ale od biedy starczy. Okazyje się, że producentowi udało się zapchać aż 3GB systemem i aplikacjami, zostawiając 900MB na appki użytkownika i 100MB na jego pliki. To jakiś żart?! Czy czysta przyzwoitość nie nakazała dołożenia do pudełka choćby cztero gigowej microSD? Mówi się trudno i kupuje się własną.  
 Jeśli chodzi o możliwość podpięcia przez USB to jest dobrze: istnieje możliwość pracy jako zwykły dysk zewnętrzny bez bawienia się w MTP (to funkcja dołożona przez HTC). Poza dostępem do pamięci, który co oczywiste odbiera takowy aplikacjom (jak dla mnie zbyt brutalnie), możemy za pomocą microUSB dokonać synchronizacji w programie HTCsync, używać telefonu jako modemu i... używać komputera jako modemu do telefonu. Nie jest to takie głupie, gdy jesteśmy w miescu bez WiFi, a chcemy zaktualizować aplikacje, czy pobrać sporą grę.
 
-<img decoding="async" src="/uploaded/images/stories/htc-recenzja/z-n900-01.JPG" />  
+![](/uploaded/images/stories/htc-recenzja/z-n900-01.JPG)  
 **System i rootowanie**  
 Powyższe zdjęcia porównujące recenzowany model z legendarną N900 zapowiadają, że dla systemu nie będzie litości. I rzeczywiście.  
 Chcąc zrootować telefon niestety trzeba odblokować bootloader. I to na początku odebrało mi zapał do tej czynności. Sporo szukałem, wypróbowałem nawet znany z tabletów Asusa z ICSem SparkyRoot, który działa z One X, ale bezskutecznie. A więc trzeba było odblokować bootloader.  

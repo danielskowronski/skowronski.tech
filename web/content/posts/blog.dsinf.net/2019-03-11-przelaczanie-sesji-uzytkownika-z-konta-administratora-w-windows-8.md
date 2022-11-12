@@ -11,7 +11,7 @@ tags:
 ---
 Czasem w domowym Windowsie trzeba przełączyć sesję na innego użytkownika, np. żeby upewnić się że ściąganie czy instalacja uruchomiona nie u nas poszła gładko, albo żeby podmienić komuś ustawienia np. usypiania komputera. Albo wykonać całą masę innych operacji bez wiedzy tego drugiego użytkownika, a przynajmniej bez resetowania mu hasła. Oczywiście zakładamy że posiadamy uprawnienia lokalnego administratora.<figure class="wp-block-image">
 
-<img decoding="async" loading="lazy" width="350" height="350" src="https://blog.dsinf.net/wp-content/uploads/2019/03/windows.png" alt="" class="wp-image-1410" srcset="https://blog.dsinf.net/wp-content/uploads/2019/03/windows.png 350w, https://blog.dsinf.net/wp-content/uploads/2019/03/windows-150x150.png 150w, https://blog.dsinf.net/wp-content/uploads/2019/03/windows-300x300.png 300w" sizes="(max-width: 350px) 100vw, 350px" /> </figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2019/03/windows.png) </figure> 
 
 Windows Server z usługami terminalowymi problem rozwiązuje dosyć prosto:
 

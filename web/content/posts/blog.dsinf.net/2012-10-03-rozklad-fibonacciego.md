@@ -40,7 +40,7 @@ for i in range(1, 101):
 Wszystko działa dzięki temu, że Python domyślnie sumę/różnicę bardzo dużych liczb przedstawia precyzyjnie, a nie przybliżenie na dodatek w notacji wykładniczej (co dzieje się przy mnożeniu). Czy można inaczej uzyskać dostęp do n-tego wyrazu ciągu? Ależ oczywiście, można na przykład:
 
   * zrobić funkcję fib(liczba) i wywoływać ją za każdym razem
-  * korzystać z cudownego wzoru, na który dowód jest na wikipedii:<img decoding="async" src="http://upload.wikimedia.org/math/5/7/e/57eaa418ea8df41ac1473eb5430ca6c9.png" /> 
+  * korzystać z cudownego wzoru, na który dowód jest na wikipedii:![](http://upload.wikimedia.org/math/5/7/e/57eaa418ea8df41ac1473eb5430ca6c9.png) 
   * wprowadzić ztablicowane przedziały w celu przyspieszenia wybierania przedziału w którym należy szukać wyrazu ciągu, ale stąd już tylko krok do pełnego ztablicowania
 
 Jednak w tym zadaniu chyba trzeba było odkryć, że można je łatwo zrobić siłowo.

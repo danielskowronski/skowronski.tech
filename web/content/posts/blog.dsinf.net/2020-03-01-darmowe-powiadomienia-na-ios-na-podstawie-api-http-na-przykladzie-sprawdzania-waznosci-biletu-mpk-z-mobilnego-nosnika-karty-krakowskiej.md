@@ -19,10 +19,10 @@ Czas na programowanie graficzne. Aplikacja jest odinstalowywalna więc pewnie wi
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.41.png"><img decoding="async" loading="lazy" width="576" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.41-576x1024.png" alt="" data-id="1687" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.41.png" data-link="https://blog.dsinf.net/?attachment_id=1687" class="wp-image-1687" srcset="https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.41-576x1024.png 576w, https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.41-169x300.png 169w, https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.41.png 750w" sizes="(max-width: 576px) 100vw, 576px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.41.png">![](https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.41.png)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.50.png"><img decoding="async" loading="lazy" width="576" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.50-576x1024.png" alt="" data-id="1688" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.50.png" data-link="https://blog.dsinf.net/?attachment_id=1688" class="wp-image-1688" srcset="https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.50-576x1024.png 576w, https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.50-169x300.png 169w, https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.50.png 750w" sizes="(max-width: 576px) 100vw, 576px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.50.png">![](https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.50.png)</a></figure>
   </li>
 </ul></figure> 
 
@@ -30,10 +30,10 @@ Kroki przedstawione powyżej raczej nie wymagają komentarza. Testować można k
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="http://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.29.png"><img decoding="async" loading="lazy" width="576" height="1024" src="http://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.29-576x1024.png" alt="" data-id="1689" data-full-url="http://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.29.png" data-link="http://blog.dsinf.net/?attachment_id=1689" class="wp-image-1689" srcset="https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.29-576x1024.png 576w, https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.29-169x300.png 169w, https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.29.png 750w" sizes="(max-width: 576px) 100vw, 576px" /></a></figure>
+    <figure><a href="http://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.29.png">![](https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.29.png)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="http://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-13.17.20.png"><img decoding="async" loading="lazy" width="576" height="1024" src="http://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-13.17.20-576x1024.png" alt="" data-id="1693" data-full-url="http://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-13.17.20.png" data-link="http://blog.dsinf.net/?attachment_id=1693" class="wp-image-1693" srcset="https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-13.17.20-576x1024.png 576w, https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-13.17.20-169x300.png 169w, https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-13.17.20.png 750w" sizes="(max-width: 576px) 100vw, 576px" /></a></figure>
+    <figure><a href="http://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-13.17.20.png">![](https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-13.17.20.png)</a></figure>
   </li>
 </ul></figure> 
 

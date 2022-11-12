@@ -83,7 +83,7 @@ Jeśli wiemy, że liczba główna jest kwadratem jakiejś liczby naturalnej to w
 **Iloczyn** tych dzielników jest sprawą ciewaką. Wyrażona jest funkcją $ \tau $ (tau lub częściej spotykana nazwa angielska _divisor function_ stąd <u>d(n)</u>) przybiera formę wzoru $ \tau(n) = \sum (a_i + 1) $, czyli jest to iloczyn powiększonych o jeden ilości dzielników. Np. $ n = 28 = 2^2+3^0+5^0+7^1;\n \tau(28) = (2+1)\*(0+1)\*(0+1)\*(1+1) = 3\*1*2 =6 $  
   
 Funkcja ta ma dość ciekawy wykres:  
-<img decoding="async" src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Divisor.svg/600px-Divisor.svg.png" /> 
+![](http://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Divisor.svg/600px-Divisor.svg.png) 
 
 <pre class="EnlighterJSRAW cpp">int iloczyn=1;
 for (int i=2; i &lt; sqrt(n); i++){

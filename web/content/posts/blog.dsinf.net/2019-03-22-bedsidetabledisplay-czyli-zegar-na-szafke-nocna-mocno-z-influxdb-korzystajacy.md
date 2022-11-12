@@ -12,12 +12,12 @@ Zegar to mój powracający od dawna projekt konstruktorsko-elektroniczny. Bież�
 
 Poprzednie iteracje zegara to [zegar-beta][2] - bazujący na arduino nano służący głównie jako budzik (alfa to niezrealizowany projekt olbrzymiego wyświetlacza), [zegar-delta][3] - zasadniczo RaspberryPi z wyświetlaczem oraz webgui do konfiguracji budzika i prymitywnym zbieraniem danych oraz [zegar-gamma][4] czyli powrót do korzeni w formie arduino, ale ze sterowaniem na pilota.<figure class="wp-block-image">
 
-[<img decoding="async" loading="lazy" width="1024" height="684" src="https://blog.dsinf.net/wp-content/uploads/2019/03/zegarbeta-1024x684.jpg" alt="" class="wp-image-1439" srcset="https://blog.dsinf.net/wp-content/uploads/2019/03/zegarbeta-1024x684.jpg 1024w, https://blog.dsinf.net/wp-content/uploads/2019/03/zegarbeta-300x200.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2019/03/zegarbeta-768x513.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px" />][5]<figcaption>zegar-beta - pierwszy z serii</figcaption></figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2019/03/zegarbeta-300x200.jpg)<figcaption>zegar-beta - pierwszy z serii</figcaption></figure> 
 
 **BedsideTableDisplay** to przede wszystkim przedłużenie [Nettigo Air Monitor][1]a oraz zegar. Niby dane można odczytać z telefonu ale wyświetlacz zawsze bardziej zachęca do spojrzenia na odczyty i docelowo ładniej się prezentuje.
 
 <div class="wp-block-image">
-  <figure class="aligncenter"><a href="https://blog.dsinf.net/wp-content/uploads/2019/03/btd-1.png"><img decoding="async" loading="lazy" width="618" height="586" src="https://blog.dsinf.net/wp-content/uploads/2019/03/btd-1.png" alt="" class="wp-image-1440" srcset="https://blog.dsinf.net/wp-content/uploads/2019/03/btd-1.png 618w, https://blog.dsinf.net/wp-content/uploads/2019/03/btd-1-300x284.png 300w" sizes="(max-width: 618px) 100vw, 618px" /></a><figcaption>BedsideTableDisplay (czyli teoretycznie zegar-epsilon)</figcaption></figure>
+  <figure class="aligncenter"><a href="https://blog.dsinf.net/wp-content/uploads/2019/03/btd-1.png">![](https://blog.dsinf.net/wp-content/uploads/2019/03/btd-1.png)</a><figcaption>BedsideTableDisplay (czyli teoretycznie zegar-epsilon)</figcaption></figure>
 </div>
 
 Ponieważ postanowiłem że nie będę dodawał dodatkowych bridgy do łączności mikrokontroler-internet (np. bluetootha aktywnego w RaspberryPi) tylko wejdę w "IoT".
@@ -35,7 +35,7 @@ Ważna uwaga o OneWire w ESP8266, a przynajmniej w Wemosie D1 mini pro - na pewn
 
 
 <div class="wp-block-image">
-  <figure class="aligncenter is-resized"><a href="https://blog.dsinf.net/wp-content/uploads/2019/03/d1-mini-esp8266-board-sh_fixled.jpg"><img decoding="async" loading="lazy" src="https://blog.dsinf.net/wp-content/uploads/2019/03/d1-mini-esp8266-board-sh_fixled.jpg" alt="" class="wp-image-1441" width="500" height="500" srcset="https://blog.dsinf.net/wp-content/uploads/2019/03/d1-mini-esp8266-board-sh_fixled.jpg 1000w, https://blog.dsinf.net/wp-content/uploads/2019/03/d1-mini-esp8266-board-sh_fixled-150x150.jpg 150w, https://blog.dsinf.net/wp-content/uploads/2019/03/d1-mini-esp8266-board-sh_fixled-300x300.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2019/03/d1-mini-esp8266-board-sh_fixled-768x768.jpg 768w" sizes="(max-width: 500px) 100vw, 500px" /></a><figcaption> <br />Pinout dla Arduino, bowiem numery i możliwości portów to mała pułapka<br />źródło: https://escapequotes.net/wp-content/uploads/2016/02/d1-mini-esp8266-board-sh_fixled.jpg </figcaption></figure>
+  <figure class="aligncenter is-resized"><a href="https://blog.dsinf.net/wp-content/uploads/2019/03/d1-mini-esp8266-board-sh_fixled.jpg">![](https://blog.dsinf.net/wp-content/uploads/2019/03/d1-mini-esp8266-board-sh_fixled.jpg)</a><figcaption> <br />Pinout dla Arduino, bowiem numery i możliwości portów to mała pułapka<br />źródło: https://escapequotes.net/wp-content/uploads/2016/02/d1-mini-esp8266-board-sh_fixled.jpg </figcaption></figure>
 </div>
 
 Szkieletem konstrukcji są 2 płytki prototypowe 3x7cm, śruby łączące wspomniane płytki oraz nóżki. W kanapce między płytkami mamy przestrzeń na kable z górnej płytki łączące peryferia z mikrokontrolerem, dolna płytka nie ma żadnych elementów poza nóżkami. Zasilanie to port microUSB samej płytki Wemos. 
@@ -43,12 +43,12 @@ Szkieletem konstrukcji są 2 płytki prototypowe 3x7cm, śruby łączące wspomn
 Kod w C++ oczywiście trafił [na Githuba][8]. Ale co ze schematem? Szukałem długo narzędzia niezbyt dziecinnego (czyli bez klasycznych arduinowych kabelków i breadboarda) ale i takiego żebym je obsłużył. Ostateczny wybór to CircuitMaker od Altium. Jest co prawda tylko pod Windows, ale jako że nie ma za bardzo standardu pliku do schematów elektronicznych to uznałem że export do PDF/obrazka wystarczy na potrzeby projektu. Poza tym środowisko całkiem fajne gdyż mamy wbudowaną bazę elementów elektronicznych (w sumie jedyne środowisko które miało pinout ESP8266!), obsługę projektowania płytek drukowanych (export plików gerber) i system hostowania projektów - podobny do Thingverse (gdzie można trzymać projekty do druku 3D). Projekt części fizycznej BTD trafił zatem [na CircuitMakera][9].
 
 <div class="wp-block-image">
-  <figure class="aligncenter is-resized"><a href="https://raw.githubusercontent.com/danielskowronski/btd/master/hw/schematics.png"><img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/danielskowronski/btd/master/hw/schematics.png" alt="" width="968" height="591" /></a><figcaption>Schemat stworzony w CircuitMakerze</figcaption></figure>
+  <figure class="aligncenter is-resized"><a href="https://raw.githubusercontent.com/danielskowronski/btd/master/hw/schematics.png">![](https://raw.githubusercontent.com/danielskowronski/btd/master/hw/schematics.png)</a><figcaption>Schemat stworzony w CircuitMakerze</figcaption></figure>
 </div>
 
 Co z tytułowym [InfluxDB][10]? Otóż dane z NettigoAirMonitor pobierane są właśnie z tej bazy danych. Otrzymuje ona też aktualne wartości temperatury i natężenia światła. Stąd tylko krok do wrzucenia pomiarów w Grafanę. Tu jeszcze jedna uwaga - Grafana wymaga zrobienia jednego _Data Source_ na każdą bazę danych Influxa.<figure class="wp-block-image">
 
-<img decoding="async" loading="lazy" width="914" height="199" src="https://blog.dsinf.net/wp-content/uploads/2019/03/Screenshot_2.png" alt="" class="wp-image-1454" srcset="https://blog.dsinf.net/wp-content/uploads/2019/03/Screenshot_2.png 914w, https://blog.dsinf.net/wp-content/uploads/2019/03/Screenshot_2-300x65.png 300w, https://blog.dsinf.net/wp-content/uploads/2019/03/Screenshot_2-768x167.png 768w" sizes="(max-width: 914px) 100vw, 914px" /> <figcaption>Jak InfluxDB to i Grafana</figcaption></figure>
+![](https://blog.dsinf.net/wp-content/uploads/2019/03/Screenshot_2.png) <figcaption>Jak InfluxDB to i Grafana</figcaption></figure>
 
  [1]: https://blog.dsinf.net/2019/01/budowa-stacji-pogody-z-czujnikiem-smogu-i-prezentacja-danych/
  [2]: https://github.com/danielskowronski/zegar-beta

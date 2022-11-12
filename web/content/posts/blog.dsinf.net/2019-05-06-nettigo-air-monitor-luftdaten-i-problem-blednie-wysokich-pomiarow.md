@@ -33,4 +33,4 @@ W komentarzu odezwał się twórca projektu z Nettigo i okazuje się że faktycz
 
 Przedłużacz USB który oryginalnie działał, a podczas pierwszych testów też okazał się podejrzany i wypadł ostatecznie z całości dalej ubija jakość pomiarów. Ale wpięcie wolto- i amperomierza USB przy pewnym wygięciu kabla pokazało 3.5V...<figure class="wp-block-image">
 
-<img decoding="async" loading="lazy" width="1000" height="500" src="https://blog.dsinf.net/wp-content/uploads/2019/05/29l193-1.png" alt="" class="wp-image-1527" srcset="https://blog.dsinf.net/wp-content/uploads/2019/05/29l193-1.png 1000w, https://blog.dsinf.net/wp-content/uploads/2019/05/29l193-1-300x150.png 300w, https://blog.dsinf.net/wp-content/uploads/2019/05/29l193-1-768x384.png 768w" sizes="(max-width: 1000px) 100vw, 1000px" /> </figure>
+![](https://blog.dsinf.net/wp-content/uploads/2019/05/29l193-1.png) </figure>

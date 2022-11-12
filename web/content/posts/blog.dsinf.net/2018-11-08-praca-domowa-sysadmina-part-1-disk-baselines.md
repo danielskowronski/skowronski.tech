@@ -74,7 +74,7 @@ Including JS code of each graph page in this document would be pointless but sca
 
 Pierwsze polegało na przeprowadzeniu testów obciążeniowych dysku i zebranie metryk wydajności w formie umożliwiającej łatwe zobrazowanie w formie wykresów.
 
-[<img decoding="async" loading="lazy" class="alignnone size-full wp-image-1265" src="http://blog.dsinf.net/wp-content/uploads/2018/11/sah1.png" alt="" width="913" height="888" srcset="https://blog.dsinf.net/wp-content/uploads/2018/11/sah1.png 913w, https://blog.dsinf.net/wp-content/uploads/2018/11/sah1-300x292.png 300w, https://blog.dsinf.net/wp-content/uploads/2018/11/sah1-768x747.png 768w" sizes="(max-width: 913px) 100vw, 913px" />][3]
+![](https://blog.dsinf.net/wp-content/uploads/2018/11/sah1.png)
 
 ### Environment
 

@@ -20,7 +20,7 @@ Ten wpis jest kontynuacją wpisu ["Praca domowa" SysAdmina – part 1: disk bas
 
 **tl;dr**? Podsumowanie jest [na końcu artykułu][2] 😉
 
-[<img decoding="async" loading="lazy" class="alignnone size-full wp-image-1270" src="http://blog.dsinf.net/wp-content/uploads/2018/11/sah2.png" alt="" width="982" height="866" srcset="https://blog.dsinf.net/wp-content/uploads/2018/11/sah2.png 982w, https://blog.dsinf.net/wp-content/uploads/2018/11/sah2-300x265.png 300w, https://blog.dsinf.net/wp-content/uploads/2018/11/sah2-768x677.png 768w" sizes="(max-width: 982px) 100vw, 982px" />][3]
+![](https://blog.dsinf.net/wp-content/uploads/2018/11/sah2.png)
 
 ### Intro notes
 
@@ -496,7 +496,7 @@ $ntfy "ALL DONE"</pre>
 
 Below are performance tests with various **atonce** parameter values in table. They were parsed in same way as \`parallel_2.csv\`. Truncate on target table was performed between tests.
 
-[<img decoding="async" loading="lazy" class="alignnone wp-image-1267" src="http://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingParalel-1024x507.png" alt="" width="801" height="397" srcset="https://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingParalel-1024x507.png 1024w, https://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingParalel-300x148.png 300w, https://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingParalel-768x380.png 768w, https://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingParalel.png 1124w" sizes="(max-width: 801px) 100vw, 801px" />][4]  
+![](https://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingParalel.png)  
 Obviously performance started to degrade after running more tasks than physically available CPU cores (8). Best result is achieved with atonce equal to number of cores.  
 Best total speed is 290krps.
 
@@ -510,7 +510,7 @@ Plots have also average import speed of single part marked as purple line. Spike
 
 Another thing worth checking is how chunk size affects performance of \copy. Sizes will be: 1x, 2x and 4x bigger chunks - 4x original size means if 8 threads are run at once maximum performance should be achieved. Bigger parallel processing will hit CPU cores limitation. Also various atonce parameter values are tested to check how it affects memory limitation (as reminder system has 16GB physical and average of 14G free memory).
 
-[<img decoding="async" loading="lazy" class="alignnone wp-image-1268" src="http://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingChunks-1024x460.png" alt="" width="800" height="360" srcset="https://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingChunks-1024x460.png 1024w, https://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingChunks-300x135.png 300w, https://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingChunks-768x345.png 768w, https://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingChunks.png 1124w" sizes="(max-width: 800px) 100vw, 800px" />][5]
+![](https://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingChunks.png)
 
 Highest throughput was achieved with 8 threads, each importing 2.4GB data chunk which is 19.2GB in total which exceeds total memory. Rest of results show only small performance difference between chunk sizes with same number of threads.
 

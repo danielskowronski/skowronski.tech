@@ -16,7 +16,7 @@ W Linuksie defaultowy prompt, czyli znak zachęty, oscyluje wokół czegoś na k
 gdzie oczywiście # wskazuje na konto root'a, zamiast niego zwykły użytkownik ma $. Ale czemu prompt ma nie przekazywać innych użytecznych informacji, a przede wszystki przekazywać ich ładnie? 
 
 Mój prompt na tą godzinę (zmiany są niemal natychmiastowe, ale o tym pod koniec) wygląda tak:  
-<img decoding="async" src="http://blog.dsinf.net/wp-content/uploads/2013/01/choinka.png" />  
+![](http://blog.dsinf.net/wp-content/uploads/2013/01/choinka.png)  
   
 Nie to jest ładne, co jest ładne, ale co się komu podoba. Przeanalizujmy jednak taką konfigurację by nauczyć się tworzyć własne. Ale najpierw powiem co jest po kolei bo ciężko się chyba od razu połapać. Kolejno: numer tego polecenia w historii, użytkownik, host, data, stan baterii, temperatura CPU i bieżący katalog. Konfiga pobrać można na dole.
 

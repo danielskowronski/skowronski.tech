@@ -19,7 +19,7 @@ Ale było jednak jakieś "ale"
 Instalator pięknie działał, aż zachciało mi się skorzystać z oferowanego konta Ubuntu-one. Całkiem zgrabnie wkomponowana opcja rejestracji w instalator systemu. No, może poza topornym tłumaczeniem w rodzaju _Ja posiadam, konto w ubuntu one a nazwa użytkownika i moje hasło to_... Akceptuję regulamin i nic. Zwiesił się. Dysk niby pracuje, dałem mu 10 minut. Dalej nic. Aż cały system się zawiesił. Zero reakcji, tylko hard reset pozostał.
 
 OK, uznałem, że zwykła zwiecha. Restartuję, ale omyłkowo klapa laptopa pozostaje otwarta. Ma to znaczenie dla Windowsów - nie umieją wyświetlić ponad dwóch pulpitów i klonują jeden z nich - psuje rozdzielczość, nieładnie jest, ale zwykle wystarczy zamknąć klapę i jest dobrze. Z ciekawości sprawdzam jak zachowa się ubuntu - odpalam ustawienia ekranów i bum!  
-[<img decoding="async" loading="lazy" src="http://blog.dsinf.net/wp-content/uploads/2013/12/WP_000129-1024x768.jpg" alt="WP_000129" width="665" height="498" class="alignnone size-large wp-image-326" srcset="https://blog.dsinf.net/wp-content/uploads/2013/12/WP_000129-1024x768.jpg 1024w, https://blog.dsinf.net/wp-content/uploads/2013/12/WP_000129-300x225.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2013/12/WP_000129-660x495.jpg 660w" sizes="(max-width: 665px) 100vw, 665px" />][1]  
+![WP_000129](https://blog.dsinf.net/wp-content/uploads/2013/12/WP_000129-300x225.jpg)  
 Piękny komunikat o błędzie, menadżer okien zwisł tak permanentnie, że nawet TTY nie dało się zmienić. Niech mu będzie - do trzech razy sztuka.
 
 Czy na pewno do trzech razy sztuka? Cóż, za trzecim razem nie pojawiła się obsługa myszy (próbowałem 3 różnych na USB i touchpada). Restart.

@@ -15,7 +15,7 @@ tags:
 ---
 Podejść do U2F jest wiele i [jak pokazuje Krypton][1] - mogą być one ciekawsze od noszenia wielu Yubikeyów. Dziś krótka prezentacja klucza sprzętowego Bluink Key będącego w zasadzie najpełniejszą hybrydą sprzętowego klucza z aplikacją w zaufanym urządzeniu mobilnym.<figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="1024" height="768" src="https://blog.dsinf.net/wp-content/uploads/2019/12/1-1-1024x768.jpg" alt="" class="wp-image-1661" srcset="https://blog.dsinf.net/wp-content/uploads/2019/12/1-1-1024x768.jpg 1024w, https://blog.dsinf.net/wp-content/uploads/2019/12/1-1-300x225.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2019/12/1-1-768x576.jpg 768w, https://blog.dsinf.net/wp-content/uploads/2019/12/1-1-1536x1152.jpg 1536w, https://blog.dsinf.net/wp-content/uploads/2019/12/1-1-2048x1536.jpg 2048w" sizes="(max-width: 1024px) 100vw, 1024px" />][2]<figcaption>Dwie instancje bohatera artykułu. Jeden z nich na skipassie z kartą dostępu.</figcaption></figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2019/12/1-1-300x225.jpg)<figcaption>Dwie instancje bohatera artykułu. Jeden z nich na skipassie z kartą dostępu.</figcaption></figure> 
 
 Rozwiązanie Bluink Key (<https://bluink.ca/key>) składa się z dwóch składników: aplikacji w smartfonie (iOS/Android) i dongla USB (korzystającego z Bluetooch 4.0) kosztującego $30 i dostarczanego przez kandayjską firmę Bluink Inc.
 
@@ -27,19 +27,19 @@ Zdecydowanie **ogromny jest zysk z minimalizacji ekspozycji sekretu na ekranie**
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><img decoding="async" loading="lazy" width="576" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2019/12/4-1-576x1024.jpg" alt="" data-id="1670" data-full-url="https://blog.dsinf.net/wp-content/uploads/2019/12/4-1.jpg" data-link="https://blog.dsinf.net/?attachment_id=1670" class="wp-image-1670" srcset="https://blog.dsinf.net/wp-content/uploads/2019/12/4-1-576x1024.jpg 576w, https://blog.dsinf.net/wp-content/uploads/2019/12/4-1-169x300.jpg 169w, https://blog.dsinf.net/wp-content/uploads/2019/12/4-1.jpg 750w" sizes="(max-width: 576px) 100vw, 576px" /></figure>
+    <figure>![](https://blog.dsinf.net/wp-content/uploads/2019/12/4-1.jpg)</figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><img decoding="async" loading="lazy" width="576" height="1024" src="http://blog.dsinf.net/wp-content/uploads/2019/12/2-576x1024.jpg" alt="" data-id="1658" data-link="http://blog.dsinf.net/?attachment_id=1658" class="wp-image-1658" srcset="https://blog.dsinf.net/wp-content/uploads/2019/12/2-576x1024.jpg 576w, https://blog.dsinf.net/wp-content/uploads/2019/12/2-169x300.jpg 169w, https://blog.dsinf.net/wp-content/uploads/2019/12/2.jpg 750w" sizes="(max-width: 576px) 100vw, 576px" /></figure>
+    <figure>![](https://blog.dsinf.net/wp-content/uploads/2019/12/2.jpg)</figure>
   </li>
 </ul><figcaption class="blocks-gallery-caption">Ekrany aplikacji - parowanie używanego klucza i lista sekretów tekstowych z listą kluczy.</figcaption></figure> <figure class="is-layout-flex wp-block-gallery-11 wp-block-gallery columns-2 is-cropped">
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><img decoding="async" loading="lazy" width="576" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2019/12/5-1-576x1024.jpg" alt="" data-id="1664" data-link="https://blog.dsinf.net/?attachment_id=1664" class="wp-image-1664" srcset="https://blog.dsinf.net/wp-content/uploads/2019/12/5-1-576x1024.jpg 576w, https://blog.dsinf.net/wp-content/uploads/2019/12/5-1-169x300.jpg 169w, https://blog.dsinf.net/wp-content/uploads/2019/12/5-1.jpg 750w" sizes="(max-width: 576px) 100vw, 576px" /></figure>
+    <figure>![](https://blog.dsinf.net/wp-content/uploads/2019/12/5-1.jpg)</figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><img decoding="async" loading="lazy" width="576" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2019/12/3-1-576x1024.jpg" alt="" data-id="1665" data-full-url="https://blog.dsinf.net/wp-content/uploads/2019/12/3-1.jpg" data-link="https://blog.dsinf.net/?attachment_id=1665" class="wp-image-1665" srcset="https://blog.dsinf.net/wp-content/uploads/2019/12/3-1-576x1024.jpg 576w, https://blog.dsinf.net/wp-content/uploads/2019/12/3-1-169x300.jpg 169w, https://blog.dsinf.net/wp-content/uploads/2019/12/3-1.jpg 750w" sizes="(max-width: 576px) 100vw, 576px" /></figure>
+    <figure>![](https://blog.dsinf.net/wp-content/uploads/2019/12/3-1.jpg)</figure>
   </li>
 </ul><figcaption class="blocks-gallery-caption"> Prompt U2F z listą tekstowych sekretów w tle oraz tryb zdalnego sterowania klawiatury i myszki.</figcaption></figure> 
 

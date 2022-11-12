@@ -322,11 +322,11 @@ Compressing and encrypting back should be easy, right? Well, to compress it back
 
 Next section will only describe happy path and why some parameters were used - the discovery process took me a few hours in which I heavily used `man` and `hexdump` paired with `diff` to compare files. Any broken nesting of containers caused the following error in Web UI when I tried to upload the prepared file:<figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="1024" height="768" src="https://blog.dsinf.net/wp-content/uploads/2021/02/backup_struct_error_in_gui-1024x768.png" alt="" class="wp-image-2159" srcset="https://blog.dsinf.net/wp-content/uploads/2021/02/backup_struct_error_in_gui-1024x768.png 1024w, https://blog.dsinf.net/wp-content/uploads/2021/02/backup_struct_error_in_gui-300x225.png 300w, https://blog.dsinf.net/wp-content/uploads/2021/02/backup_struct_error_in_gui-768x576.png 768w, https://blog.dsinf.net/wp-content/uploads/2021/02/backup_struct_error_in_gui-1536x1152.png 1536w, https://blog.dsinf.net/wp-content/uploads/2021/02/backup_struct_error_in_gui-2048x1536.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" />][1]</figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2021/02/backup_struct_error_in_gui-300x225.png)</figure> 
 
 Backup structure, when visualized, is kind of weird, but it's created on router with different tools so it may make sense.<figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="1024" height="955" src="https://blog.dsinf.net/wp-content/uploads/2021/02/ArcherC6BAckupStructure-1024x955.png" alt="" class="wp-image-2158" srcset="https://blog.dsinf.net/wp-content/uploads/2021/02/ArcherC6BAckupStructure-1024x955.png 1024w, https://blog.dsinf.net/wp-content/uploads/2021/02/ArcherC6BAckupStructure-300x280.png 300w, https://blog.dsinf.net/wp-content/uploads/2021/02/ArcherC6BAckupStructure-768x716.png 768w, https://blog.dsinf.net/wp-content/uploads/2021/02/ArcherC6BAckupStructure-1536x1433.png 1536w, https://blog.dsinf.net/wp-content/uploads/2021/02/ArcherC6BAckupStructure.png 1753w" sizes="(max-width: 1024px) 100vw, 1024px" />][2]</figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2021/02/ArcherC6BAckupStructure.png)</figure> 
 
 Few parameters to `gzip` and `tar` require explanation:
 
@@ -365,7 +365,7 @@ This is a place where I could `strace` Lua interpreter and see what commands are
 
 After I extracted that `new_config.bin` from MIPS VM via sandbox VM to my workstation I could finally upload proper hacked backup to Web UI of router. After a few minutes waiting for reboot I still had Internet connection and router UI worked fine. Time for SSH then:<figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="1024" height="887" src="https://blog.dsinf.net/wp-content/uploads/2021/02/logged_in-1024x887.png" alt="" class="wp-image-2160" srcset="https://blog.dsinf.net/wp-content/uploads/2021/02/logged_in-1024x887.png 1024w, https://blog.dsinf.net/wp-content/uploads/2021/02/logged_in-300x260.png 300w, https://blog.dsinf.net/wp-content/uploads/2021/02/logged_in-768x665.png 768w, https://blog.dsinf.net/wp-content/uploads/2021/02/logged_in-1536x1331.png 1536w, https://blog.dsinf.net/wp-content/uploads/2021/02/logged_in.png 2034w" sizes="(max-width: 1024px) 100vw, 1024px" />][3]</figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2021/02/logged_in.png)</figure> 
 
 It works and admin user (while having non-zero UID) anyway has root user privileges. Mission accomplished.
 

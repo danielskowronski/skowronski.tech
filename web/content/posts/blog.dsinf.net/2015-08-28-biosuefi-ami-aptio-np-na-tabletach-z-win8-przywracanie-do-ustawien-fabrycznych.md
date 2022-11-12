@@ -16,7 +16,7 @@ tags:
   - windows 8
 
 ---
-BIOS, czy wł[<img decoding="async" loading="lazy" class="wp-image-764 alignleft" src="http://blog.dsinf.net/wp-content/uploads/2015/08/0-649x1024.png" alt="Aptio Setup Utility" width="243" height="384" srcset="https://blog.dsinf.net/wp-content/uploads/2015/08/0-649x1024.png 649w, https://blog.dsinf.net/wp-content/uploads/2015/08/0-190x300.png 190w, https://blog.dsinf.net/wp-content/uploads/2015/08/0-660x1041.png 660w, https://blog.dsinf.net/wp-content/uploads/2015/08/0-900x1420.png 900w, https://blog.dsinf.net/wp-content/uploads/2015/08/0.png 1592w" sizes="(max-width: 243px) 100vw, 243px" />][1]aściwie UEFI wydany przez AMI - APTIO 4 jest zdradziecki nawet dla osób mających już trochę doświadczenia w grzebaniu po tego typu systemach - ma się w pamięci, że w razie czego da się otworzyć klapę i przestawić zworkę, która zresetuje ustawienia do fabrycznych. Tabletu się nie otworzy tak łatwo. A o omyłkowe wyłączenie USB OTG, które wyłącza też klawiaturę w BIOSie nietrudno. Jest jednak na to sposób. 
+BIOS, czy wł![Aptio Setup Utility](https://blog.dsinf.net/wp-content/uploads/2015/08/0.png)aściwie UEFI wydany przez AMI - APTIO 4 jest zdradziecki nawet dla osób mających już trochę doświadczenia w grzebaniu po tego typu systemach - ma się w pamięci, że w razie czego da się otworzyć klapę i przestawić zworkę, która zresetuje ustawienia do fabrycznych. Tabletu się nie otworzy tak łatwo. A o omyłkowe wyłączenie USB OTG, które wyłącza też klawiaturę w BIOSie nietrudno. Jest jednak na to sposób. 
 
 Na zdjęciu obok przykładowy widok na Aptio Setup Utility. Widoczne także ekstremalne lenistwo producenta - nie podmienił "To be filled by O.E.M." - i takiego producenta widzą Linuksy...  
 <br clear="all" /> 
@@ -27,7 +27,7 @@ Zacznijmy od próby identyfikacji scalaka BIOSu - tablety z Win8 robione są w w
 
 Posłuży nam do tego narzędzie, którym na końcu przywrócimy ustawienia fabryczne - AFUWIN (Ami Flash Utility WINdows) - [udostępnia][2] je samo AMI, ale ponieważ już raz zawęzili dostępne oprogramowanie dlatego jest dostępny [mirror][3] i [pewna strona][4] agregująca podobne narzędzia.
 
-[<img decoding="async" loading="lazy" class="alignnone size-full wp-image-759" src="http://blog.dsinf.net/wp-content/uploads/2015/08/1.png" alt="1" width="609" height="471" srcset="https://blog.dsinf.net/wp-content/uploads/2015/08/1.png 609w, https://blog.dsinf.net/wp-content/uploads/2015/08/1-300x232.png 300w" sizes="(max-width: 609px) 100vw, 609px" />][5]
+![1](https://blog.dsinf.net/wp-content/uploads/2015/08/1.png)
 
 Kiedy odczytamy firmware ID możemy wpisać go w google i liczyć na to, że ktoś go wrzucił. I często faktycznie daje się znaleźć obraz na XDA albo polskojęzycznych forach. Jeśli po długim szukaniu nic nie znajdziemy warto pomęczyć producenta (o ile nie jest to ekstremalnie chińska firma bez polskiego dystrybutora) - może udostępni (Colorovo udostępnił kiedyś oryginalne sterowniki do CityTab Supreme 8 krążące teraz po elektrodzie także warto próbować; skoro już tyle wtrąciłem to wspomnę, że pod Win10 działa na nich wszystko poza sensorem orientacji Kionix, ale nad tym obecnie pracuję). W zakładce setup zaznaczamy "tylko nvram", żeby nie zfalshować za dużo (urządzenia w ostateczności mogą się nieco różnić i lepiej zminimalizować zakres flashowania, ponadto by default ustawienia nie są zmieniane).
 
@@ -41,8 +41,8 @@ Ale co jeszcze można zrobić?
 
 AFUWIN pozwala zgrać obraz ROMu. Możemy na ślepo edytować plik binarny albo skorzystać z AMIBCP (AMI Bios Configuration Program). Najnowsza wersja dostępna mało oficjalnie to 4.55 dostępna jest [tutaj][7]. Niestety umie tylko czytać obrazy z Aptio4. Docelowo powinna pozwolić zmienić defaultowe wartości w menu (możemy się nawigować jakbysmy byli w Aptio Setup Utility) oraz inne parametry obrazu. Potem wystarczyłoby zapisać obraz i go zflashować. Jednak obrazy z Aptio4 w trakcie zapisu powodują błąd i obraz się nie zapisuje (nawet jeśli nie wprowadziliśmy zmian). Kod błędu - Error occurred in BIOS rebuild (#80000015).
 
-[<img decoding="async" loading="lazy" class="alignnone size-large wp-image-760" src="http://blog.dsinf.net/wp-content/uploads/2015/08/2-1024x690.png" alt="2" width="665" height="448" srcset="https://blog.dsinf.net/wp-content/uploads/2015/08/2-1024x690.png 1024w, https://blog.dsinf.net/wp-content/uploads/2015/08/2-300x202.png 300w, https://blog.dsinf.net/wp-content/uploads/2015/08/2-660x444.png 660w, https://blog.dsinf.net/wp-content/uploads/2015/08/2-900x606.png 900w, https://blog.dsinf.net/wp-content/uploads/2015/08/2.png 1188w" sizes="(max-width: 665px) 100vw, 665px" />][8]  
-[<img decoding="async" loading="lazy" class="alignnone size-full wp-image-761" src="http://blog.dsinf.net/wp-content/uploads/2015/08/3.png" alt="3" width="470" height="372" srcset="https://blog.dsinf.net/wp-content/uploads/2015/08/3.png 470w, https://blog.dsinf.net/wp-content/uploads/2015/08/3-300x237.png 300w" sizes="(max-width: 470px) 100vw, 470px" />][9]
+![2](https://blog.dsinf.net/wp-content/uploads/2015/08/2.png)  
+![3](https://blog.dsinf.net/wp-content/uploads/2015/08/3.png)
 
 Jeśli to zawiedzie można spróbować użyć AMISCE/SCEWIN (AMI Setup Control Environment, różnież mało oficjalnie [dostępny][10]). Pozwala on edytować ustawienia, jednak z moim Aptio4 nie współpracował narzekając na problem z odczytem bazy HII. Może komuś jednak pomoże.
 

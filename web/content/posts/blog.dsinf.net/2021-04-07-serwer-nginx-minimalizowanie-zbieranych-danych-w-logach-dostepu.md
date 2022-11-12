@@ -91,6 +91,6 @@ Jeśli używamy Promtaila do przekazywania logów do centralnego serwera przyda 
 
 Efektem zbierania logów przez Promtaila są takie oto dane widoczne w Loki:<figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="1024" height="647" src="https://blog.dsinf.net/wp-content/uploads/2021/04/Screenshot-2021-04-07-at-22.55.53-1024x647.jpg" alt="" class="wp-image-2210" srcset="https://blog.dsinf.net/wp-content/uploads/2021/04/Screenshot-2021-04-07-at-22.55.53-1024x647.jpg 1024w, https://blog.dsinf.net/wp-content/uploads/2021/04/Screenshot-2021-04-07-at-22.55.53-300x190.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2021/04/Screenshot-2021-04-07-at-22.55.53-768x485.jpg 768w, https://blog.dsinf.net/wp-content/uploads/2021/04/Screenshot-2021-04-07-at-22.55.53-1536x970.jpg 1536w, https://blog.dsinf.net/wp-content/uploads/2021/04/Screenshot-2021-04-07-at-22.55.53-2048x1294.jpg 2048w" sizes="(max-width: 1024px) 100vw, 1024px" />][1]</figure>
+![](https://blog.dsinf.net/wp-content/uploads/2021/04/Screenshot-2021-04-07-at-22.55.53-300x190.jpg)</figure>
 
  [1]: https://blog.dsinf.net/wp-content/uploads/2021/04/Screenshot-2021-04-07-at-22.55.53-scaled.jpg

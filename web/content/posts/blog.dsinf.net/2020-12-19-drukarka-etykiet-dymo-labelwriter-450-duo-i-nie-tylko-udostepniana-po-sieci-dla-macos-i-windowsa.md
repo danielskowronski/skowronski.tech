@@ -40,7 +40,7 @@ Kolejny krok to włączenie CUPSowi zdalnego panelu administracyjnego - tak, że
 
 Następny etap to dodanie drukarki lub dwóch - w przypadku urządzeń DUO (osobno do etykiet o stałym rozmiarze i etykiet na ciągłej taśmie). W webowym UI, do którego autoryzujemy się login i hasłem użytkownika root będziemy chcieli osiągnąć coś takiego:<figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="770" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2020/12/dymo_in_cups-770x1024.png" alt="" class="wp-image-2058" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/dymo_in_cups-770x1024.png 770w, https://blog.dsinf.net/wp-content/uploads/2020/12/dymo_in_cups-226x300.png 226w, https://blog.dsinf.net/wp-content/uploads/2020/12/dymo_in_cups-768x1022.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/dymo_in_cups-1155x1536.png 1155w, https://blog.dsinf.net/wp-content/uploads/2020/12/dymo_in_cups-1539x2048.png 1539w, https://blog.dsinf.net/wp-content/uploads/2020/12/dymo_in_cups.png 1804w" sizes="(max-width: 770px) 100vw, 770px" />][4]</figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2020/12/dymo_in_cups.png)</figure> 
 
 ## Współdzielenie drukarki
 
@@ -74,29 +74,29 @@ Po restarcie `smdb` można konfigurować urządzenia klienckie.
 
 Na Windowsie sprawa wygląda następująco: należy podłączyć się pod udział sieciowy `\\RASPBERRY_PI_ADDRESS`, wybrać drukarkę i wskazać sterownik - ważne by wcześniej mieć już zainstalowany program _DYMO Connect_. <figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="973" height="374" src="https://blog.dsinf.net/wp-content/uploads/2020/12/03.png" alt="" class="wp-image-2059" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/03.png 973w, https://blog.dsinf.net/wp-content/uploads/2020/12/03-300x115.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/12/03-768x295.png 768w" sizes="(max-width: 973px) 100vw, 973px" />][5]</figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2020/12/03.png)</figure> 
 
 Po dodaniu drukarki warto potwierdzić, że wybraliśmy odpowiedni sterownik - ja miałem sporo zamieszania, przez fakt, że model 450 DUO to tak naprawdę dwa urządzenia w jednym, a dodatkowo model DUO to nie to samo.<figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="463" height="528" src="https://blog.dsinf.net/wp-content/uploads/2020/12/04.png" alt="" class="wp-image-2060" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/04.png 463w, https://blog.dsinf.net/wp-content/uploads/2020/12/04-263x300.png 263w" sizes="(max-width: 463px) 100vw, 463px" />][6]</figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2020/12/04.png)</figure> 
 
 Po zakończeniu instalacji drukarki musimy koniecznie zrestartować _DYMO Connect_. Po uruchomieniu będziemy widzieć drukarkę/drukarki nazwaną zgodnie ze ścieżką udziału sieciowego - nie mamy na to wpływu.<figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="1024" height="673" src="https://blog.dsinf.net/wp-content/uploads/2020/12/01-1024x673.png" alt="" class="wp-image-2062" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/01-1024x673.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/12/01-300x197.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/12/01-768x505.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/01.png 1123w" sizes="(max-width: 1024px) 100vw, 1024px" />][7]</figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2020/12/01.png)</figure> 
 
 ## Ustawianie drukarki na macOS
 
 Na macOS sprawa wygląda równie prosto, jak nie prościej. W _Preferencjach systemowych_ należy wybrać _Drukarki i skanery_, a następnie kliknąć plusik w lewym dolnym rogu.<figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="1024" height="726" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27-1024x726.png" alt="" class="wp-image-2063" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27-1024x726.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27-300x213.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27-768x545.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27.png 1472w" sizes="(max-width: 1024px) 100vw, 1024px" />][8]</figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27.png)</figure> 
 
 Odnalezione za pomocą Bonjour drukarki ujrzymy na liście - sterownik zostanie wybrany automatycznie, o ile wcześniej zainstalowaliśmy _DYMO Label_. Ciekawostka z nazwami programów od DYMO - jakiś czas temu na obu platformach program nazywał się _Label_, ale z pół roku temu windowsowa wersja została przebudowana i nazwana _Connect_, a mackintoshowa - nie. Chociaż ta druga dalej dostaje aktualizacje. `</dygresja>`<figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="1024" height="726" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27-1-1024x726.png" alt="" class="wp-image-2064" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27-1-1024x726.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27-1-300x213.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27-1-768x545.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27-1.png 1472w" sizes="(max-width: 1024px) 100vw, 1024px" />][9]</figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27-1.png)</figure> 
 
 W programie _DYMO Label_ mamy teraz dostępne drukarki i wszystko działa:<figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="1024" height="623" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.18.55-1024x623.png" alt="" class="wp-image-2065" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.18.55-1024x623.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.18.55-300x182.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.18.55-768x467.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.18.55-1536x934.png 1536w, https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.18.55.png 2036w" sizes="(max-width: 1024px) 100vw, 1024px" />][10]</figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.18.55.png)</figure> 
 
 ## Podsumowanie
 
@@ -104,7 +104,7 @@ Kluczem do udostępniania drukarki DYMO w sieci lokalnej na kilka platform jest 
 
 Jako bonus ciekawostka: w macOS BigSur wydanym kilka miesięcy temu hosty Windowsowe dalej mają ikonkę antycznego monitora CRT z widocznym Blue Screenem.<figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="1024" height="775" src="https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.30.14-1024x775.png" alt="" class="wp-image-2066" srcset="https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.30.14-1024x775.png 1024w, https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.30.14-300x227.png 300w, https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.30.14-768x581.png 768w, https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.30.14.png 1448w" sizes="(max-width: 1024px) 100vw, 1024px" />][11]</figure>
+![](https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.30.14.png)</figure>
 
  [1]: https://blog.dsinf.net/2019/12/proba-reanimacji-akumulatora-w-dymo-labelmanager-pnp/
  [2]: https://blog.dsinf.net/2020/05/dymo-tape-labels-na-linuksie/

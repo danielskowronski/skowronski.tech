@@ -13,7 +13,7 @@ tags:
 ---
 Używanie VirtualBoxa na Windowsie obok HyperV jest niemożliwe - tylko jeden hypervisor może na raz używać VT-x, czyli sprzętowego wsparcia wirtualizacji od Intela. Jednak poza brakiem włączenia wirtualizacji w BIOSie/UEFI czy aktywnym HyperV jest kilka innych czynników blokujących VirtualBoxa przed działaniem.<figure class="wp-block-image size-large">
 
-<img decoding="async" loading="lazy" width="1024" height="577" src="https://blog.dsinf.net/wp-content/uploads/2019/09/image-1-1024x577.png" alt="" class="wp-image-1576" srcset="https://blog.dsinf.net/wp-content/uploads/2019/09/image-1-1024x577.png 1024w, https://blog.dsinf.net/wp-content/uploads/2019/09/image-1-300x169.png 300w, https://blog.dsinf.net/wp-content/uploads/2019/09/image-1-768x433.png 768w, https://blog.dsinf.net/wp-content/uploads/2019/09/image-1.png 1124w" sizes="(max-width: 1024px) 100vw, 1024px" /> <figcaption>Lokalizacja ustawień funkcji systemu Windows</figcaption></figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2019/09/image-1.png) <figcaption>Lokalizacja ustawień funkcji systemu Windows</figcaption></figure> 
 
 Aby wyłączyć wszystko co związane z HyperV w ustawieniach funkcji systemu Windows (w "klasycznym" panelu sterowania) należy odznaczyć poniższe i zatwierdzić reboot:
 
@@ -33,7 +33,7 @@ Aby to uczynić należy pobrać od Microsoftu [**Device Guard and Credential Gua
 
 Po automatycznym rebopocie system zada nam dwa pytania - czy na pewno chcemy wyłączyć Device Guard oraz Credentials Guard. Pytania będą miały styl starego bootloadera Windowsowego (z ery siódemki - biały tekst na czarnym tle, zatwierdzanie klawiszem F3). <figure class="wp-block-image size-large">
 
-<img decoding="async" loading="lazy" width="401" height="374" src="https://blog.dsinf.net/wp-content/uploads/2019/09/image-2.png" alt="" class="wp-image-1579" srcset="https://blog.dsinf.net/wp-content/uploads/2019/09/image-2.png 401w, https://blog.dsinf.net/wp-content/uploads/2019/09/image-2-300x280.png 300w" sizes="(max-width: 401px) 100vw, 401px" /> </figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2019/09/image-2.png) </figure> 
 
 Po automatycznym rebopocie system zada nam dwa pytania - czy na pewno chcemy wyłączyć Device Guard oraz Credentials Guard. Pytania będą miały styl starego bootloadera Windowsowego (z ery siódemki - biały tekst na czarnym tle, zatwierdzanie klawiszem F3). 
 

@@ -18,12 +18,12 @@ Na początku w lodówce - tu brak odchyłów, choć można było zauważyć że 
 
 Kolej na ułożenie w temperaturze lekko wyższej od pokojowej czyli na biurku. Tu znudzony czekaniem na wyrównanie temperatury schładzałem oba termometry sprężonym powietrzem odwróconym do góry nogami. Znowu BTD nagrzewał się dużo szybciej, ale tym razem różnica w pomiarze ustabilizowanym wynosiła 2-3 stopnie. Dużo.<figure class="wp-block-image">
 
-<img decoding="async" loading="lazy" width="1024" height="994" src="https://blog.dsinf.net/wp-content/uploads/2019/05/1-1024x994.jpg" alt="" class="wp-image-1515" srcset="https://blog.dsinf.net/wp-content/uploads/2019/05/1-1024x994.jpg 1024w, https://blog.dsinf.net/wp-content/uploads/2019/05/1-300x291.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2019/05/1-768x746.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px" /> <figcaption>_Zdjęcie późniejsze, radiatory będą dołożone w dalszej fazie eksperymentowania  
+![](https://blog.dsinf.net/wp-content/uploads/2019/05/1-300x291.jpg) <figcaption>_Zdjęcie późniejsze, radiatory będą dołożone w dalszej fazie eksperymentowania  
 DS18B20 ukrywa się między nóżkami fotorezystora._</figcaption></figure> 
 
 Po zweryfikowaniu że jak każdy chip tak DS28B20 może mieć pewne odchyły spróbowałem go wymienić na zapasowy - dalej to samo. Wtedy dotarło do mnie że może któryś ze scalaków grzeje się nadmiernie i powoduje zwiększenie temperatury całego BTD. Pomiar "z palca" wydawał się potwierdzać teorię więc wyposażyłem się w pirometr - zakup kamery termowizyjnej do tego projektu byłby lekką przesadą 😉 <figure class="wp-block-image">
 
-<img decoding="async" loading="lazy" width="1024" height="768" src="https://blog.dsinf.net/wp-content/uploads/2019/05/2-1024x768.jpg" alt="" class="wp-image-1516" srcset="https://blog.dsinf.net/wp-content/uploads/2019/05/2-1024x768.jpg 1024w, https://blog.dsinf.net/wp-content/uploads/2019/05/2-300x225.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2019/05/2-768x576.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px" /> </figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2019/05/2-300x225.jpg) </figure> 
 
 Pomiary w izolowanej szafce w chłodnym pomieszczeniu potwierdziły że scalaki na Wemos D1 Mini Pro istotnie wpływają na temperaturę całości.
 
@@ -164,10 +164,10 @@ Rozwiązanie problemu było w zasadzie oczywiste, ale unikałem go trochę by za
 
 <ul class="is-layout-flex wp-block-gallery-7 wp-block-gallery columns-2 is-cropped">
   <li class="blocks-gallery-item">
-    <figure><img decoding="async" loading="lazy" width="3024" height="4032" src="https://blog.dsinf.net/wp-content/uploads/2019/05/4-768x1024.jpg" alt="" data-id="1517" data-link="https://blog.dsinf.net/?attachment_id=1517" class="wp-image-1517" srcset="https://blog.dsinf.net/wp-content/uploads/2019/05/4-768x1024.jpg 768w, https://blog.dsinf.net/wp-content/uploads/2019/05/4-225x300.jpg 225w" sizes="(max-width: 3024px) 100vw, 3024px" /></figure>
+    <figure>![](https://blog.dsinf.net/wp-content/uploads/2019/05/4-225x300.jpg)</figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><img decoding="async" loading="lazy" width="768" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2019/05/5-768x1024.jpg" alt="" data-id="1518" data-link="https://blog.dsinf.net/?attachment_id=1518" class="wp-image-1518" srcset="https://blog.dsinf.net/wp-content/uploads/2019/05/5-768x1024.jpg 768w, https://blog.dsinf.net/wp-content/uploads/2019/05/5-225x300.jpg 225w" sizes="(max-width: 768px) 100vw, 768px" /></figure>
+    <figure>![](https://blog.dsinf.net/wp-content/uploads/2019/05/5-225x300.jpg)</figure>
   </li>
 </ul>
 
@@ -177,7 +177,7 @@ Skoro termometr miał wrócić do sypialni to czas najwyższy zająć się jasno
 
 Jako że maksymalna jasność potrzebna jest i tak rzadko to dołożyłem mocno hardware'owe rozwiązanie - przyciemnioną plexi. Przy okazji całość trafiła do jakiegoś luźnego pudełka kuchennego - trochę jako stelaż dla plexi (odziedziczonego po innym projekcie więc nieco za dużego), trochę jako stabilizacja, bowiem BTD był tak mały że sztywny kabel zasilający powodował że ciężko było utrzymać go w pożądanym miejscu<figure class="wp-block-image">
 
-<img decoding="async" loading="lazy" width="1024" height="809" src="https://blog.dsinf.net/wp-content/uploads/2019/05/3-1024x809.jpg" alt="" class="wp-image-1519" srcset="https://blog.dsinf.net/wp-content/uploads/2019/05/3-1024x809.jpg 1024w, https://blog.dsinf.net/wp-content/uploads/2019/05/3-300x237.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2019/05/3-768x607.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px" /> </figure>
+![](https://blog.dsinf.net/wp-content/uploads/2019/05/3-300x237.jpg) </figure>
 
  [1]: http://BedsideTableDisplay czyli zegar na szafkę nocną mocno z InfluxDB korzystający
  [2]: https://wiki.wemos.cc/products:retired:d1_mini_pro_v1.1.0

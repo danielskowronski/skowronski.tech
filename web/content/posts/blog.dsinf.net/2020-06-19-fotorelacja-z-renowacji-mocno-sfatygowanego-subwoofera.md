@@ -18,13 +18,13 @@ Niestety ten 80 watowy potworek był w dość tragicznym wizualnie stanie, ale p
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7026.jpg"><img decoding="async" loading="lazy" width="591" height="879" src="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7026.jpg" alt="" data-id="1759" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7026.jpg" data-link="http://blog.dsinf.net/?attachment_id=1759" class="wp-image-1759" srcset="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7026.jpg 591w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7026-202x300.jpg 202w" sizes="(max-width: 591px) 100vw, 591px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7026.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7026.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7027.jpg"><img decoding="async" loading="lazy" width="709" height="839" src="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7027.jpg" alt="" data-id="1760" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7027.jpg" data-link="http://blog.dsinf.net/?attachment_id=1760" class="wp-image-1760" srcset="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7027.jpg 709w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7027-254x300.jpg 254w" sizes="(max-width: 709px) 100vw, 709px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7027.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7027.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7033-rotated.jpg"><img decoding="async" loading="lazy" width="768" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7033-768x1024.jpg" alt="" data-id="1762" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7033-rotated.jpg" data-link="http://blog.dsinf.net/?attachment_id=1762" class="wp-image-1762" srcset="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7033-768x1024.jpg 768w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7033-225x300.jpg 225w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7033-1152x1536.jpg 1152w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7033-rotated.jpg 1512w" sizes="(max-width: 768px) 100vw, 768px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7033-rotated.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7033-225x300.jpg)</a></figure>
   </li>
 </ul></figure> 
 
@@ -34,13 +34,13 @@ Czas więc zacząć renowację, a przyokazji odkryć co kryje wnętrze. Na pocz�
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7025.jpg"><img decoding="async" loading="lazy" width="1024" height="768" src="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7025-1024x768.jpg" alt="" data-id="1767" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7025.jpg" data-link="https://blog.dsinf.net/?attachment_id=1767" class="wp-image-1767" srcset="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7025-1024x768.jpg 1024w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7025-300x225.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7025-768x576.jpg 768w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7025-1536x1152.jpg 1536w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7025.jpg 2016w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7025.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7025.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7023.jpg"><img decoding="async" loading="lazy" width="1024" height="768" src="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7023-1024x768.jpg" alt="" data-id="1768" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7023.jpg" data-link="https://blog.dsinf.net/?attachment_id=1768" class="wp-image-1768" srcset="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7023-1024x768.jpg 1024w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7023-300x225.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7023-768x576.jpg 768w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7023-1536x1152.jpg 1536w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7023.jpg 2016w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7023.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7023.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7024.jpg"><img decoding="async" loading="lazy" width="1024" height="768" src="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7024-1024x768.jpg" alt="" data-id="1769" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7024.jpg" data-link="https://blog.dsinf.net/?attachment_id=1769" class="wp-image-1769" srcset="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7024-1024x768.jpg 1024w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7024-300x225.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7024-768x576.jpg 768w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7024-1536x1152.jpg 1536w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7024.jpg 2016w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7024.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7024.jpg)</a></figure>
   </li>
 </ul></figure> 
 
@@ -52,13 +52,13 @@ Czas na lekką dygresję - widoczny na zdjęciu chiński śrubokręt elektryczny
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7031.jpg"><img decoding="async" loading="lazy" width="900" height="675" src="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7031.jpg" alt="" data-id="1771" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7031.jpg" data-link="https://blog.dsinf.net/?attachment_id=1771" class="wp-image-1771" srcset="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7031.jpg 900w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7031-300x225.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7031-768x576.jpg 768w" sizes="(max-width: 900px) 100vw, 900px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7031.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7031.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7037.jpg"><img decoding="async" loading="lazy" width="1024" height="768" src="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7037-1024x768.jpg" alt="" data-id="1772" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7037.jpg" data-link="https://blog.dsinf.net/?attachment_id=1772" class="wp-image-1772" srcset="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7037-1024x768.jpg 1024w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7037-300x225.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7037-768x576.jpg 768w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7037-1536x1152.jpg 1536w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7037.jpg 2016w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7037.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7037.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7039-rotated.jpg"><img decoding="async" loading="lazy" width="768" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7039-768x1024.jpg" alt="" data-id="1773" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7039-rotated.jpg" data-link="https://blog.dsinf.net/?attachment_id=1773" class="wp-image-1773" srcset="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7039-768x1024.jpg 768w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7039-225x300.jpg 225w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7039-1152x1536.jpg 1152w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7039-rotated.jpg 1512w" sizes="(max-width: 768px) 100vw, 768px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7039-rotated.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7039-225x300.jpg)</a></figure>
   </li>
 </ul></figure> 
 
@@ -68,13 +68,13 @@ Samo wykonanie naprawdę świetne, kondensatory elektrolityczne bardzo porządne
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7041.jpg"><img decoding="async" loading="lazy" width="1024" height="768" src="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7041-1024x768.jpg" alt="" data-id="1775" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7041.jpg" data-link="https://blog.dsinf.net/?attachment_id=1775" class="wp-image-1775" srcset="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7041-1024x768.jpg 1024w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7041-300x225.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7041-768x576.jpg 768w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7041-1536x1152.jpg 1536w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7041.jpg 2016w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7041.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7041.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7042.jpg"><img decoding="async" loading="lazy" width="1024" height="768" src="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7042-1024x768.jpg" alt="" data-id="1776" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7042.jpg" data-link="https://blog.dsinf.net/?attachment_id=1776" class="wp-image-1776" srcset="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7042-1024x768.jpg 1024w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7042-300x225.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7042-768x576.jpg 768w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7042-1536x1152.jpg 1536w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7042.jpg 2016w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7042.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7042.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/z.jpg"><img decoding="async" loading="lazy" width="512" height="512" src="https://blog.dsinf.net/wp-content/uploads/2020/06/z.jpg" alt="" data-id="1777" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/06/z.jpg" data-link="https://blog.dsinf.net/?attachment_id=1777" class="wp-image-1777" srcset="https://blog.dsinf.net/wp-content/uploads/2020/06/z.jpg 512w, https://blog.dsinf.net/wp-content/uploads/2020/06/z-300x300.jpg 300w, https://blog.dsinf.net/wp-content/uploads/2020/06/z-150x150.jpg 150w" sizes="(max-width: 512px) 100vw, 512px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/z.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/z.jpg)</a></figure>
   </li>
 </ul></figure> 
 
@@ -88,10 +88,10 @@ Z efektu końcowego jestem bardzo zadowolony - głośnik gotowy jest do ustawien
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7048-1-rotated.jpg"><img decoding="async" loading="lazy" width="768" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7048-1-768x1024.jpg" alt="" data-id="1779" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7048-1-rotated.jpg" data-link="https://blog.dsinf.net/?attachment_id=1779" class="wp-image-1779" srcset="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7048-1-768x1024.jpg 768w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7048-1-225x300.jpg 225w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7048-1-1152x1536.jpg 1152w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7048-1-rotated.jpg 1512w" sizes="(max-width: 768px) 100vw, 768px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7048-1-rotated.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7048-1-225x300.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7133-rotated.jpg"><img decoding="async" loading="lazy" width="768" height="1024" src="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7133-768x1024.jpg" alt="" data-id="1780" data-full-url="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7133-rotated.jpg" data-link="https://blog.dsinf.net/?attachment_id=1780" class="wp-image-1780" srcset="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7133-768x1024.jpg 768w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7133-225x300.jpg 225w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7133-1152x1536.jpg 1152w, https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7133-rotated.jpg 1512w" sizes="(max-width: 768px) 100vw, 768px" /></a></figure>
+    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7133-rotated.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7133-225x300.jpg)</a></figure>
   </li>
 </ul></figure>
 

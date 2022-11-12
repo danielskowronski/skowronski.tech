@@ -16,7 +16,7 @@ Zanim przejdę do opisu mojej listy kontrolnej, to opiszę narzędzie, z któreg
 
 Mój wybór w czasach, kiedy infrastrukturą prywatnie nie zarządzałem centralnie (choć i dziś nie wszystkie maszyny restartuję automatycznie tuż po aktualizacji kernela) padł na Process Street - [process.st][1]. Jest to narzędzie darmowe, umożliwiające zespołową pracę nad listami kontrolnymi z dość zaawansowaną paletą elementów list (w tym approvali), a także możliwością edycji templatki listy w trakcie jej wypełniania - co jest dość częstą potrzebą w przypadku list wykonywanych rzadziej niż raz na miesiąc.<figure class="wp-block-image size-large">
 
-[<img decoding="async" loading="lazy" width="1024" height="611" src="https://blog.dsinf.net/wp-content/uploads/2021/01/Screenshot-2021-01-26-at-23.40.40-1024x611.png" alt="" class="wp-image-2120" srcset="https://blog.dsinf.net/wp-content/uploads/2021/01/Screenshot-2021-01-26-at-23.40.40-1024x611.png 1024w, https://blog.dsinf.net/wp-content/uploads/2021/01/Screenshot-2021-01-26-at-23.40.40-300x179.png 300w, https://blog.dsinf.net/wp-content/uploads/2021/01/Screenshot-2021-01-26-at-23.40.40-768x458.png 768w, https://blog.dsinf.net/wp-content/uploads/2021/01/Screenshot-2021-01-26-at-23.40.40-1536x917.png 1536w, https://blog.dsinf.net/wp-content/uploads/2021/01/Screenshot-2021-01-26-at-23.40.40-2048x1222.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" />][2]<figcaption>Ekran edycji kroku w checkliście na Process Street</figcaption></figure> 
+![](https://blog.dsinf.net/wp-content/uploads/2021/01/Screenshot-2021-01-26-at-23.40.40-300x179.png)<figcaption>Ekran edycji kroku w checkliście na Process Street</figcaption></figure> 
 
 ### Lista kontrolna - bezpieczeństwo
 

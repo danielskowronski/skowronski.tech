@@ -5,7 +5,7 @@ type: post
 date: 2019-02-13T08:29:50+00:00
 excerpt: 'Artykuł z małą dozą treści pisanej, za to chyba największym załącznikiem na blogu do tej pory - paczką sterowników do tabletu Kiano Slimtab Pro2 MS. Tabletu, który niby jest klonem Chuwi Hi8, ale nie do końca (zwłaszcza kiedy weźmiemy pod uwagę wersję dual boot).'
 url: /2019/02/sterowniki-do-kiano-slimtab-pro2-ms/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2019/02/kiano.png
+featured_image: /wp-content/uploads/2019/02/kiano.png
 tags:
   - drivers
   - hardware
@@ -316,5 +316,5 @@ Sterowniki w formie ZIPa (którego DoubleDriver ładnie sam importuje) dostępne
 Listing jest też dostępny jako plik [kiano\_slimtab\_pro2\_ms\_\_driver\_list.txt][3]
 
  [1]: https://double-driver.en.softonic.com/
- [2]: https://blog.dsinf.net/wp-content/uploads/kiano/kiano_slimtab_pro2_ms__doubledriver.zip
- [3]: https://blog.dsinf.net/wp-content/uploads/kiano/kiano_slimtab_pro2_ms__driver_list.txt
+ [2]: /wp-content/uploads/kiano/kiano_slimtab_pro2_ms__doubledriver.zip
+ [3]: /wp-content/uploads/kiano/kiano_slimtab_pro2_ms__driver_list.txt

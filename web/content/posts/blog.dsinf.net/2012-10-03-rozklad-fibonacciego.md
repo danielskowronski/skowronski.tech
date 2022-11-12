@@ -98,4 +98,4 @@ Po prostu najpierw szukamy najbliższej liczby w ciągu (ale musi to być <u>war
 Wsytarczy zliczyć liczbę kroków i zadanie rozwiązane. [Całościowe rozwiązanie w C++][2].
 
  [1]: http://pl.wikisource.org/wiki/Ci%C4%85g_Fibonacciego
- [2]: http://blog.dsinf.net/wp-content/uploads/2012/10/rozklad_fibonacciego.txt
+ [2]: /wp-content/uploads/2012/10/rozklad_fibonacciego.txt

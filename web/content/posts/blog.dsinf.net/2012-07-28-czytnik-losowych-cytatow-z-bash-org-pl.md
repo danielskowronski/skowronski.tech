@@ -149,4 +149,4 @@ namespace Bash.org.pl_Reader
 
 [Link][1] do kompletnego projektu wraz z designerem (licencja -"róbta co chceta").
 
- [1]: http://blog.dsinf.net/wp-content/uploads/2012/07/bashorg_reader.7z
+ [1]: /wp-content/uploads/2012/07/bashorg_reader.7z

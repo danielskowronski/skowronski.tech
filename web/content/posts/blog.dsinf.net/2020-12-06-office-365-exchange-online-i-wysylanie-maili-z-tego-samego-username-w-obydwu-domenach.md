@@ -17,13 +17,13 @@ Teoretycznie, jeśli użytkownik Exchange'a posiada kilka aliasów, na które po
 
 W webowym centrum administracyjnym powinna być gdzieś tutaj, ale nie zawsze będzie widoczna.<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_042-300x190.png)</figure> 
+![](/wp-content/uploads/2020/12/Selection_042-300x190.png)</figure> 
 
 Odkąd Microsoft stworzył PowerShella, część zadań administracyjnych da się wykonać tylko z PowerShella - także w hostowanym przez Microsoft Exchange Online. Wyłączenie domyślnej polityki może brzmieć groźnie, ale jeśli tyczy się to administratorów Office 365 (najczęściej nas samych) to raczej wiedzą co robią 😉
 
 Problem polega na tym, że Knowledge Base Microsoftu zaleca w opisanej powyżej sytuacji użycie cmldetu `Set-Mailbox` z przełącznikiem `-EmailAddressPolicyEnabled:$false` (<https://docs.microsoft.com/en-us/powershell/module/exchange/set-mailbox?view=exchange-ps>). Poza koniecznością odpalenia tego na Windowsie - żaden problem - prawda?<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/12/screen3.png)</figure> 
+![](/wp-content/uploads/2020/12/screen3.png)</figure> 
 
 Odpowiedź na powyższy błąd znajdziemy w pierwszym akapicie dokumentacji tego cmldetu:
 
@@ -55,13 +55,13 @@ Zatem do dzieła:<figure class="is-layout-flex wp-block-gallery-29 wp-block-gall
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_043.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_043-300x221.png)</a><figcaption class="blocks-gallery-item__caption">Najpierw należy zlokalizować formularz nowego Shared Mailbox,</figcaption></figure>
+    <figure><a href="/wp-content/uploads/2020/12/Selection_043.png">![](/wp-content/uploads/2020/12/Selection_043-300x221.png)</a><figcaption class="blocks-gallery-item__caption">Najpierw należy zlokalizować formularz nowego Shared Mailbox,</figcaption></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_044.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_044.png)</a><figcaption class="blocks-gallery-item__caption">potem wskazać adres skrzynki i jej nazwię wyświetlaną</figcaption></figure>
+    <figure><a href="/wp-content/uploads/2020/12/Selection_044.png">![](/wp-content/uploads/2020/12/Selection_044.png)</a><figcaption class="blocks-gallery-item__caption">potem wskazać adres skrzynki i jej nazwię wyświetlaną</figcaption></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_045.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_045.png)</a><figcaption class="blocks-gallery-item__caption">i na koniec ustawić, kto będzie miał do niej uprawnienia.</figcaption></figure>
+    <figure><a href="/wp-content/uploads/2020/12/Selection_045.png">![](/wp-content/uploads/2020/12/Selection_045.png)</a><figcaption class="blocks-gallery-item__caption">i na koniec ustawić, kto będzie miał do niej uprawnienia.</figcaption></figure>
   </li>
 </ul></figure> 
 
@@ -83,13 +83,13 @@ Obejście na szczęście jest dość proste - należy stworzyć _Shared Mailbox_
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_047-1.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_047-1.png)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/12/Selection_047-1.png">![](/wp-content/uploads/2020/12/Selection_047-1.png)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_048-1.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_048-1.png)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/12/Selection_048-1.png">![](/wp-content/uploads/2020/12/Selection_048-1.png)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_049-1.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_049-1.png)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/12/Selection_049-1.png">![](/wp-content/uploads/2020/12/Selection_049-1.png)</a></figure>
   </li>
 </ul></figure> 
 
@@ -99,10 +99,10 @@ Skoro mamy gotową skrzynkę współdzieloną użytkownik musi ją jeszcze podpi
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_051.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_051.png)</a><figcaption class="blocks-gallery-item__caption">Podpięcie skrzynki współdzielonej</figcaption></figure>
+    <figure><a href="/wp-content/uploads/2020/12/Selection_051.png">![](/wp-content/uploads/2020/12/Selection_051.png)</a><figcaption class="blocks-gallery-item__caption">Podpięcie skrzynki współdzielonej</figcaption></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_052.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_052-300x192.png)</a><figcaption class="blocks-gallery-item__caption">Oraz dodanie na niej przekierowania na skrzynkę główną</figcaption></figure>
+    <figure><a href="/wp-content/uploads/2020/12/Selection_052.png">![](/wp-content/uploads/2020/12/Selection_052-300x192.png)</a><figcaption class="blocks-gallery-item__caption">Oraz dodanie na niej przekierowania na skrzynkę główną</figcaption></figure>
   </li>
 </ul></figure> 
 
@@ -110,14 +110,14 @@ Skoro mamy gotową skrzynkę współdzieloną użytkownik musi ją jeszcze podpi
 
 Aby potwierdzić, że wszystko działa, jak należy, sprawdzimy, czy możemy wysłać maile z nowego aliasu poprawnie oraz, czy możemy je odebrać. Najłatwiej wykorzystać darmowe usługi online do testowania maili - ja użyłem <a href="http://10minutemail.com" data-type="URL" data-id="10minutemail.com">10minutemail.com</a> do testu poczty wychodzącej oraz [ismyemailworking.com][3] do testu maili przychodzących.<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_053-300x137.png)<figcaption>Mail wpada do spamu, ale przychodzi poprawnie</figcaption></figure> <figure class="is-layout-flex wp-block-gallery-35 wp-block-gallery columns-2 is-cropped">
+![](/wp-content/uploads/2020/12/Selection_053-300x137.png)<figcaption>Mail wpada do spamu, ale przychodzi poprawnie</figcaption></figure> <figure class="is-layout-flex wp-block-gallery-35 wp-block-gallery columns-2 is-cropped">
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_055.png)</a><figcaption class="blocks-gallery-item__caption">Żeby wysłać maila z aliasu - trzeba dodać sobie w widoku pole From</figcaption></figure>
+    <figure><a href="/wp-content/uploads/2020/12/Selection_055.png">![](/wp-content/uploads/2020/12/Selection_055.png)</a><figcaption class="blocks-gallery-item__caption">Żeby wysłać maila z aliasu - trzeba dodać sobie w widoku pole From</figcaption></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_056.png">![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_056.png)</a><figcaption class="blocks-gallery-item__caption">Mail wychodzi z poprawnego adresu email</figcaption></figure>
+    <figure><a href="/wp-content/uploads/2020/12/Selection_056.png">![](/wp-content/uploads/2020/12/Selection_056.png)</a><figcaption class="blocks-gallery-item__caption">Mail wychodzi z poprawnego adresu email</figcaption></figure>
   </li>
 </ul></figure> 
 
@@ -127,10 +127,10 @@ Exchange jest nietrywialny, a w wersji Online - tym bardziej. Na szczęście da 
 
 Na zakończenie - taki oto maili wpada na główną skrzynkę odbiorczą, informując, iż skrzynka współdzielona właśnie zaczęła forwardowanie wszystkich maili - na tę główną 😉<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_054.png)</figure>
+![](/wp-content/uploads/2020/12/Selection_054.png)</figure>
 
- [1]: https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_042.png
- [2]: https://blog.dsinf.net/wp-content/uploads/2020/12/screen3.png
+ [1]: /wp-content/uploads/2020/12/Selection_042.png
+ [2]: /wp-content/uploads/2020/12/screen3.png
  [3]: http://ismyemailworking.com/
- [4]: https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_053.png
- [5]: https://blog.dsinf.net/wp-content/uploads/2020/12/Selection_054.png
+ [4]: /wp-content/uploads/2020/12/Selection_053.png
+ [5]: /wp-content/uploads/2020/12/Selection_054.png

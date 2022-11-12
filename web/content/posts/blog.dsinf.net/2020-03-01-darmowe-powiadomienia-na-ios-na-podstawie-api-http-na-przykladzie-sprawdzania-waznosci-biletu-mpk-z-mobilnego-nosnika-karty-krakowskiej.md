@@ -4,7 +4,7 @@ author: Daniel Skowroński
 type: post
 date: 2020-03-01T12:23:52+00:00
 url: /2020/03/darmowe-powiadomienia-na-ios-na-podstawie-api-http-na-przykladzie-sprawdzania-waznosci-biletu-mpk-z-mobilnego-nosnika-karty-krakowskiej/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.13.jpg
+featured_image: /wp-content/uploads/2020/03/2020-03-01-12.48.13.jpg
 
 ---
 Zacznijmy od zdefiniowania problemu - w Krakowie posiadacze Karty Krakowskiej mogą korzystać z biletu na dwóch nośnikach - klasycznej karty zbliżeniowej (takiej jak KKM, albo plastikowa KK), albo w aplikacji mobilnej. I można by oczekiwać że aplikacja raczy przypomnieć że bilet się kończy. Ale najwyraźniej nie w Krakowie.
@@ -19,10 +19,10 @@ Czas na programowanie graficzne. Aplikacja jest odinstalowywalna więc pewnie wi
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.41.png">![](https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.41.png)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/03/2020-03-01-12.48.41.png">![](/wp-content/uploads/2020/03/2020-03-01-12.48.41.png)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.50.png">![](https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.50.png)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/03/2020-03-01-12.48.50.png">![](/wp-content/uploads/2020/03/2020-03-01-12.48.50.png)</a></figure>
   </li>
 </ul></figure> 
 
@@ -30,10 +30,10 @@ Kroki przedstawione powyżej raczej nie wymagają komentarza. Testować można k
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="http://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.29.png">![](https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-12.48.29.png)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/03/2020-03-01-12.48.29.png">![](/wp-content/uploads/2020/03/2020-03-01-12.48.29.png)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="http://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-13.17.20.png">![](https://blog.dsinf.net/wp-content/uploads/2020/03/2020-03-01-13.17.20.png)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/03/2020-03-01-13.17.20.png">![](/wp-content/uploads/2020/03/2020-03-01-13.17.20.png)</a></figure>
   </li>
 </ul></figure> 
 

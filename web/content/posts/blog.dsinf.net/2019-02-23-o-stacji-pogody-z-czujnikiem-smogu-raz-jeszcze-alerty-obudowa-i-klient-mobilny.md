@@ -5,14 +5,14 @@ type: post
 date: 2019-02-23T14:12:40+00:00
 excerpt: 'Jakiś czas temu zbudowałem stację pogody z czujnikiem smogu w oparciu o projekt Nettigo Air Monitor. Od tego czasu przybył do niej system alertowania za pomocą grafany i obudowa której co prawda daleko do stacji meteorologicznej ale rozwiązała najpoważniejszy problem - padające bezpośrednio słońce generujące w środku zimy odczyty około 40°C (umiejscowienie poza balkonem odpadało).'
 url: /2019/02/o-stacji-pogody-z-czujnikiem-smogu-raz-jeszcze-alerty-obudowa-i-klient-mobilny/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2019/02/nam3.jpg
+featured_image: /wp-content/uploads/2019/02/nam3.jpg
 
 ---
 Jakiś czas temu [zbudowałem stację pogody z czujnikiem smogu][1] w oparciu o projekt Nettigo Air Monitor. Od tego czasu przybył do niej system alertowania za pomocą grafany i obudowa której co prawda daleko do stacji meteorologicznej ale rozwiązała najpoważniejszy problem - padające bezpośrednio słońce generujące w środku zimy odczyty około 40°C (umiejscowienie poza balkonem odpadało).
 
 ## Obudowa stacji meteo<figure class="wp-block-image">
 
-![](https://blog.dsinf.net/wp-content/uploads/2019/02/nam2.jpg) <figcaption>Tak wygląda właściwa stacja meteorologiczna; [© Marek Argent [CC BY-SA 4.0]][2]</figcaption></figure> 
+![](/wp-content/uploads/2019/02/nam2.jpg) <figcaption>Tak wygląda właściwa stacja meteorologiczna; [© Marek Argent [CC BY-SA 4.0]][2]</figcaption></figure> 
 
 Jako że skrzynki z ażurowymi ściankami budować mi się nie chciało poszedłem w rozwiązanie prostsze ale dość skutecznie pozbywające się problemu słońca - pudełko po butach i folia aluminiowa. Pudełko nie zamknięte całkowicie zapewnia dostęp ciepła. Pomiary od kilku dni prowadzone także zwykłą sklepową stacją meteo i porównywane z prognozami wykazują brak odchyleń. 
 
@@ -20,10 +20,10 @@ Płaski kabel USB dostarczony przez Nettigo okazał się bardzo przydatny do mon
 
 <ul class="is-layout-flex wp-block-gallery-3 wp-block-gallery columns-2 is-cropped">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2019/02/nam3-1024x768.jpg">![](https://blog.dsinf.net/wp-content/uploads/2019/02/nam3.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2019/02/nam3-1024x768.jpg">![](/wp-content/uploads/2019/02/nam3.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2019/02/nam4-1024x768.jpg">![](https://blog.dsinf.net/wp-content/uploads/2019/02/nam4.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2019/02/nam4-1024x768.jpg">![](/wp-content/uploads/2019/02/nam4.jpg)</a></figure>
   </li>
 </ul>
 
@@ -44,13 +44,13 @@ Do alertowania użyłem modułu Grafany do obsługi mojego ulubionego systemu pa
 
 Mój dashboard grafany aktualizuję na bieżąco jak pojawią się tylko drobne pomysły ale umieszczę poniżej wersję którą można uznać za podstawę do użycia u siebie.<figure class="wp-block-image">
 
-![](https://blog.dsinf.net/wp-content/uploads/2019/02/nam1.png)</figure> 
+![](/wp-content/uploads/2019/02/nam1.png)</figure> 
 
 <div class="wp-block-file">
-  <a href="http://blog.dsinf.net/wp-content/uploads/2019/02/nettigo-air-monitor-grafana.json_.txt">nettigo-air-monitor-grafana.json</a><a href="http://blog.dsinf.net/wp-content/uploads/2019/02/nettigo-air-monitor-grafana.json_.txt" class="wp-block-file__button" download>Pobierz</a>
+  <a href="/wp-content/uploads/2019/02/nettigo-air-monitor-grafana.json_.txt">nettigo-air-monitor-grafana.json</a><a href="/wp-content/uploads/2019/02/nettigo-air-monitor-grafana.json_.txt" class="wp-block-file__button" download>Pobierz</a>
 </div><figure class="wp-block-image is-resized">
 
-![](https://blog.dsinf.net/wp-content/uploads/2019/02/nam6.jpg)<figcaption>Przykładowy alert wysłany przez Grafanę</figcaption></figure> 
+![](/wp-content/uploads/2019/02/nam6.jpg)<figcaption>Przykładowy alert wysłany przez Grafanę</figcaption></figure> 
 
 ## Lekki klient mobilny
 
@@ -58,7 +58,7 @@ Na koniec jeszcze kilka słów o kliencie mobilnym. Otóż Grafana na telefonie 
 
 Jedyne co nam potrzebne poza plikiem HTML to plik JSON wysyłany przez czujnik na wskazany serwer - dokładnie to co zbiera [collect.php z poprzedniego wpisu][1]. Tutaj umieszczony w tym samym folderze serwera www pod nazwą smog.json (dla ułatwienia i obejścia problemów z CORS jeśli stosujemy różne domeny można na serwerze stworzyć symlink).<figure class="wp-block-image is-resized">
 
-![](https://blog.dsinf.net/wp-content/uploads/2019/02/nam5.jpg)</figure> 
+![](/wp-content/uploads/2019/02/nam5.jpg)</figure> 
 
 <pre class="EnlighterJSRAW" data-enlighter-language="html" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">&lt;!DOCTYPE html>
 &lt;html>
@@ -138,6 +138,6 @@ Jedyne co nam potrzebne poza plikiem HTML to plik JSON wysyłany przez czujnik n
 
  [1]: https://blog.dsinf.net/2019/01/budowa-stacji-pogody-z-czujnikiem-smogu-i-prezentacja-danych/
  [2]: https://commons.wikimedia.org/wiki/File:20150114_1555_008_radzyn_stacja_hydrologiczna_imgw_a.jpg
- [3]: https://blog.dsinf.net/wp-content/uploads/2019/02/nam1.png
- [4]: https://blog.dsinf.net/wp-content/uploads/2019/02/nam6.jpg
- [5]: https://blog.dsinf.net/wp-content/uploads/2019/02/nam5.jpg
+ [3]: /wp-content/uploads/2019/02/nam1.png
+ [4]: /wp-content/uploads/2019/02/nam6.jpg
+ [5]: /wp-content/uploads/2019/02/nam5.jpg

@@ -4,7 +4,7 @@ author: Daniel Skowroński
 type: post
 date: 2019-05-06T03:34:19+00:00
 url: /2019/05/nettigo-air-monitor-luftdaten-i-problem-blednie-wysokich-pomiarow/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2019/05/29l193-1.png
+featured_image: /wp-content/uploads/2019/05/29l193-1.png
 tags:
   - hardware
   - luftdaten
@@ -33,4 +33,4 @@ W komentarzu odezwał się twórca projektu z Nettigo i okazuje się że faktycz
 
 Przedłużacz USB który oryginalnie działał, a podczas pierwszych testów też okazał się podejrzany i wypadł ostatecznie z całości dalej ubija jakość pomiarów. Ale wpięcie wolto- i amperomierza USB przy pewnym wygięciu kabla pokazało 3.5V...<figure class="wp-block-image">
 
-![](https://blog.dsinf.net/wp-content/uploads/2019/05/29l193-1.png) </figure>
+![](/wp-content/uploads/2019/05/29l193-1.png) </figure>

@@ -5,7 +5,7 @@ type: post
 date: 2018-05-28T02:36:30+00:00
 excerpt: 'Internet rzeczy to zwykle wdzięczy temat do reverse engineeringu - standardowy Linux 2.6.32, dziurawe antyczne mini serwery HTTP, brak zabezpieczeń... TP-Link w swojej ofercie posiada smart żarówki sterowane za pomocą aplikacja na Androida i iOS. Jakiś czas temu kupiłem dwie sztuki - LB120 (z kontrolą temperatury bieli) i LB130 (full RGB). No i wszystko fajnie, ale można by sterować światłem z poza telefonu. Niezbyt zależało mi na integracji z Apple HomeKit, ale bardziej na podpięciu jakichś akcji pod stację roboczą, czy w przyszłości pod kolejną wersję budzika. A więc czas na research.'
 url: /2018/05/hackowanie-smart-zarowek-tp-linka-lb1xx/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2018/05/LB130-01_1517973391940L-660x495.jpg
+featured_image: /wp-content/uploads/2018/05/LB130-01_1517973391940L-660x495.jpg
 tags:
   - hardware
   - iot
@@ -17,11 +17,11 @@ tags:
 ---
 Internet rzeczy to zwykle wdzięczny temat do reverse engineeringu - standardowy Linux 2.6.32, dziurawe antyczne mini serwery HTTP, brak zabezpieczeń... TP-Link w swojej ofercie posiada smart żarówki sterowane za pomocą aplikacja na Androida i iOS. Jakiś czas temu kupiłem dwie sztuki - LB120 (z kontrolą temperatury bieli) i LB130 (full RGB). No i wszystko fajnie, ale można by sterować światłem z poza telefonu. Niezbyt zależało mi na integracji z Apple HomeKit, ale bardziej na podpięciu jakichś akcji pod stację roboczą, czy w przyszłości pod kolejną wersję budzika. A więc czas na research.
 
-![](https://blog.dsinf.net/wp-content/uploads/2018/05/LB130-01_1517973391940L.jpg) 
+![](/wp-content/uploads/2018/05/LB130-01_1517973391940L.jpg) 
 
 Interfejs aplikacji na iOS - Kasa:
 
-![](https://blog.dsinf.net/wp-content/uploads/2018/05/IMG_5269.png) ![](https://blog.dsinf.net/wp-content/uploads/2018/05/IMG_5270.png) ![](https://blog.dsinf.net/wp-content/uploads/2018/05/IMG_5272.png) ![](https://blog.dsinf.net/wp-content/uploads/2018/05/IMG_5271-1.png)
+![](/wp-content/uploads/2018/05/IMG_5269.png) ![](/wp-content/uploads/2018/05/IMG_5270.png) ![](/wp-content/uploads/2018/05/IMG_5272.png) ![](/wp-content/uploads/2018/05/IMG_5271-1.png)
 
 Pierwszym punktem w poszukiwaniach była lektura artykułu o reverse engineeringu podobnego produktu TP-Linka w postaci sterowalnego gniazdka - <https://www.softscheck.com/en/reverse-engineering-tp-link-hs110/>, gdzie dostajemy garść informacji o całym urządzeniu - filesystemie squashfs z obrazem firmware'u, sshd z hasłem niemal plaintextowym, własnym "szyfrowany" protokole sterującym/API (port 9999), protokole diagnostycznym (port 1040). Warta uwagi jest też lista komend API (<https://github.com/softScheck/tplink-smartplug/blob/master/tplink-smarthome-commands.txt>). Jak można przypuszczać gotowe projekty kontrolujące żarówkę już są. Warte odnotowania są trzy:
 
@@ -165,7 +165,7 @@ Uznałem zatem że czas znaleźć firmware i poddać go szybkiemu reversowi. Apl
 
 Okazało się jednak że wątek na forum TP-Linka (<https://forum.tp-link.com/showthread.php?93906-lb-110-bulb-loses-connection>) posiada odnośnik do narzędzia "iotUpgradeTool". Nie namyślając się wiele ściągnąłem i odpaliłem. W paczce znajduje się tool który potrafi to co aplikacja (aktualizuje do najnowszej wersji), binarki (yay!) i plik z definicjami - czyli na upartego można by pewnie zrobić downgrade (ale nie testowałem).
 
-![](https://blog.dsinf.net/wp-content/uploads/2018/05/iotupgradetool.png) 
+![](/wp-content/uploads/2018/05/iotupgradetool.png) 
 
 TP-Link nie ułatwia znalezienie najnowszej wersji (v1.0 miała stary firmware) bo nie mają listowania folderów na swojej stronie. A przynajmniej na głównej w domenie .com - bo ta .de już takowy ma włączony. To ogólny protip - producenci bardzo często zapominają patchować (w tym wyłączać listing) serwery swoich oddziałów (a szczególnie te w domenie .ru - tam swego czasu znalazłem pliki DRACa o które pewnie Della musiałbym się długo prosić). Dla potomnych (gdyby TP-Link postanowił usunąć pliki) załączam zipa z najnowszą wersją - [iotUpgradeTool_V1.3.zip][5]
 
@@ -196,7 +196,7 @@ Skład trochę dziwny - mamy znane z artykułu certyfikaty (SSL pinning w akcji)
 
 Plik XML to... examplowe dane z ezXML (<https://github.com/lxfontes/ezxml/blob/master/README>). Pliki HTML ze znacznikiem <span class="lang:default EnlighterJSRAW crayon-inline "><title>IOE QCA4010 OTA</title></span>  zaś zaprowadziły mnie do takiego oto maleństwa:
 
-![](https://blog.dsinf.net/wp-content/uploads/2018/05/qca4010chip.jpg) 
+![](/wp-content/uploads/2018/05/qca4010chip.jpg) 
 
 QCA4010 (<https://developer.qualcomm.com/hardware/qca4010-12>) to gotowiec IoT od Qualcomma. Pliki HTML znowu okazały się examplem (<https://developer.qualcomm.com/download/qca4010/qca4010-sdk2-user-guide.pdf>) którgo TP-Linkowi nie chciało się usunąć - testowałem wszelkie opcje żeby uzyskać dostęp do URLi widocznych w HTMLu - bezskutecznie.
 
@@ -212,9 +212,9 @@ Samo API także jest bezpieczne - walidowane i escapowane są stringi - numer z 
 
 Ogólnie rzecz biorąc bezpieczeństwo nie jest takie tragiczne - jest wręcz dobre. Rzecz jasna fuzzing pewnie coś wykaże, ale wątpię w możliwość zrootowania żarówki z (i ponownego męczenia Krebsa - tym razem na googlowym CDNie). Jedyny mankament to autoryzacja "przez obecność w tej samej sieci". Bo w ten sposób można nawet przerejestrować żarówkę na cudze konto. Już widzę złośliwe aplety flashowe/javowe/kiedyś-JSowe (jak raw sockety na frontendzie wejdą; póki co zwykłe strony HTMLowe nie są groźne) które wysyłają requesty do żarówek. O dowcipnych gościach nie mówiąc. Jedyna chyba opcja to wydzielnie VLANu dla IoT - najlepiej osobnego dla urządzeń każdego producenta (żeby odkurzacz nie zhackował nam światła). I jeśli ufamy że nasz telefon nie zacznie wysyłać requestów to można go wpiąć do tego vlanu. A jak nie - to zostaje sterowanie z proxy w postaci serwerów producenta - a one mogą mieć awarię. No i zawsze pakiet trochę daleko leci...
 
- [1]: http://blog.dsinf.net/wp-content/uploads/2018/05/IMG_5269.png
- [2]: http://blog.dsinf.net/wp-content/uploads/2018/05/IMG_5270.png
- [3]: http://blog.dsinf.net/wp-content/uploads/2018/05/IMG_5272.png
- [4]: http://blog.dsinf.net/wp-content/uploads/2018/05/IMG_5271-1.png
+ [1]: /wp-content/uploads/2018/05/IMG_5269.png
+ [2]: /wp-content/uploads/2018/05/IMG_5270.png
+ [3]: /wp-content/uploads/2018/05/IMG_5272.png
+ [4]: /wp-content/uploads/2018/05/IMG_5271-1.png
  [5]: /wp-content/uploads/iotUpgradeTool_V1.3.zip
  [6]: https://niebezpiecznik.pl/post/tym-artykulem-zabijesz-komus-iphona-i-maca/

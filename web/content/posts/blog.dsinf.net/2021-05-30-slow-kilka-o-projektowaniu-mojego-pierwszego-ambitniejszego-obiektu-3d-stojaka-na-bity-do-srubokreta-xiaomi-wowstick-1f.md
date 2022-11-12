@@ -4,7 +4,7 @@ author: Daniel Skowroński
 type: post
 date: 2021-05-29T22:03:02+00:00
 url: /2021/05/slow-kilka-o-projektowaniu-mojego-pierwszego-ambitniejszego-obiektu-3d-stojaka-na-bity-do-srubokreta-xiaomi-wowstick-1f/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2021/05/XWH_0-scaled.jpg
+featured_image: /wp-content/uploads/2021/05/XWH_0-scaled.jpg
 xyz_twap_future_to_publish:
   - 'a:3:{s:26:"xyz_twap_twpost_permission";s:1:"1";s:32:"xyz_twap_twpost_image_permission";s:1:"1";s:18:"xyz_twap_twmessage";s:26:"{POST_TITLE} - {PERMALINK}";}'
 xyz_twap:
@@ -25,17 +25,17 @@ Pierwszym etapem projektowania była ogólna idea, którą od samego początku m
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2021/05/bit_holder_flat.jpg">![](https://blog.dsinf.net/wp-content/uploads/2021/05/bit_holder_flat.jpg)</a><figcaption class="blocks-gallery-item__caption">Dość popularny generyczny zestaw bitów, <br />w niepraktycznym dla mnie etui</figcaption></figure>
+    <figure><a href="/wp-content/uploads/2021/05/bit_holder_flat.jpg">![](/wp-content/uploads/2021/05/bit_holder_flat.jpg)</a><figcaption class="blocks-gallery-item__caption">Dość popularny generyczny zestaw bitów, <br />w niepraktycznym dla mnie etui</figcaption></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2021/05/Screenshot-2021-05-19-at-22.40.09.png">![](https://blog.dsinf.net/wp-content/uploads/2021/05/Screenshot-2021-05-19-at-22.40.09.png)</a><figcaption class="blocks-gallery-item__caption">Inspiracja formy, jaką chciałem osiągnąć</figcaption></figure>
+    <figure><a href="/wp-content/uploads/2021/05/Screenshot-2021-05-19-at-22.40.09.png">![](/wp-content/uploads/2021/05/Screenshot-2021-05-19-at-22.40.09.png)</a><figcaption class="blocks-gallery-item__caption">Inspiracja formy, jaką chciałem osiągnąć</figcaption></figure>
   </li>
 </ul></figure> 
 
 Kolejny etap to zbadanie potrzeb szczegółowych, czyli posortowanie bitów wedle typów, opisanie ich oraz zaprojektowanie ich przestrzennego ułożenia. Mało ambitnie użyłem w tym celu MS Excela, ale zadziałało.  
 Przy okazji spędziłem nieco za dużo czasu, wędrując po stronach Wikipedii o śrubokrętach...<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2021/05/Screenshot-2021-05-19-at-05.56.34-300x231.png)</figure> 
+![](/wp-content/uploads/2021/05/Screenshot-2021-05-19-at-05.56.34-300x231.png)</figure> 
 
 Wiedząc już, co chciałbym osiągnąć, nadszedł czas, żeby znaleźć narzędzie do realizacji. Wybór padł na otwartoźródłowy program OpenSCAD (<https://openscad.org/>), który zdaje się dość popularny w środowisku hobbystycznych projektantów 3D, a także jest używany przez portal ThingVerse do personalizowania projektów poprzez ich narzędzie Customizer. Nauka podstaw nie jest trudna - wystarczy jakikolwiek zmysł geometryczny i można już szukać w internecie jak budować konkretne bloki składowe naszego projektu - za pomocą kodu. Poza tym jest cała masa tutoriali, więc szybko można poznać bardziej zaawansowane sposoby opisywania naszego obiektu 3D.
 
@@ -47,7 +47,7 @@ Po oswojeniu się z narzędziem wydzieliłem trzy elementy składowe obiektu wym
   * Pełny prostopadłościan bez wgłębienia na bit umożliwiający tworzenie odstępów między różnymi typami bitów; również stałe rozmiary; kolor różowy
   * Prostopadłościan o szerokości i głębokości segmentu na bit, ale o wysokości będącej wielokrotnością wysokości segmentu na bit - znajdującego się pomiędzy segmentem na bit a podłożem; kolor zielony<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2021/05/xwh_elements.jpg)</figure> 
+![](/wp-content/uploads/2021/05/xwh_elements.jpg)</figure> 
 
 Ze względu na naturę obiektów 3D nie widać wszystkich granic między elementami składowymi. Żółtych jest co widać 10, różowych 2, a zielonych 8 (lub licząc także elementy o zerowej wysokości - 12). Te ostatnie występują w czwórkach: dwu-, jedno- i zerowo- krotnie wysokich względem obiektów żółtych i różowych.
 
@@ -139,19 +139,19 @@ Prototypy na zdjęciach poniżej nie mają docelowej czytelności znakowania - n
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2021/05/IMG_3418.jpeg">![](https://blog.dsinf.net/wp-content/uploads/2021/05/IMG_3418-300x225.jpeg)</a><figcaption class="blocks-gallery-item__caption">testowanie średnicy slotu - <code>$hole_width</code></figcaption></figure>
+    <figure><a href="/wp-content/uploads/2021/05/IMG_3418.jpeg">![](/wp-content/uploads/2021/05/IMG_3418-300x225.jpeg)</a><figcaption class="blocks-gallery-item__caption">testowanie średnicy slotu - <code>$hole_width</code></figcaption></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2021/05/IMG_3413-scaled.jpeg">![](https://blog.dsinf.net/wp-content/uploads/2021/05/IMG_3413-300x225.jpeg)</a><figcaption class="blocks-gallery-item__caption">testowanie głębokości slotu - <code>$hole_height</code></figcaption></figure>
+    <figure><a href="/wp-content/uploads/2021/05/IMG_3413-scaled.jpeg">![](/wp-content/uploads/2021/05/IMG_3413-300x225.jpeg)</a><figcaption class="blocks-gallery-item__caption">testowanie głębokości slotu - <code>$hole_height</code></figcaption></figure>
   </li>
 </ul></figure> <figure class="is-layout-flex wp-block-gallery-47 wp-block-gallery columns-2 is-cropped">
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2021/05/IMG_3420.jpeg">![](https://blog.dsinf.net/wp-content/uploads/2021/05/IMG_3420-300x225.jpeg)</a><figcaption class="blocks-gallery-item__caption">różne warianty rozmiaru segmentu - <code>$segment_width</code></figcaption></figure>
+    <figure><a href="/wp-content/uploads/2021/05/IMG_3420.jpeg">![](/wp-content/uploads/2021/05/IMG_3420-300x225.jpeg)</a><figcaption class="blocks-gallery-item__caption">różne warianty rozmiaru segmentu - <code>$segment_width</code></figcaption></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2021/05/IMG_3426.jpeg">![](https://blog.dsinf.net/wp-content/uploads/2021/05/IMG_3426-300x225.jpeg)</a><figcaption class="blocks-gallery-item__caption">jeden z ostatnich testów - orientacja na drukarce</figcaption></figure>
+    <figure><a href="/wp-content/uploads/2021/05/IMG_3426.jpeg">![](/wp-content/uploads/2021/05/IMG_3426-300x225.jpeg)</a><figcaption class="blocks-gallery-item__caption">jeden z ostatnich testów - orientacja na drukarce</figcaption></figure>
   </li>
 </ul></figure> 
 
@@ -161,10 +161,10 @@ Na sam koniec należy już tylko złożyć kod w całość, wygenerować obiekt 
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2021/05/XWH_0-scaled.jpg">![](https://blog.dsinf.net/wp-content/uploads/2021/05/XWH_0-scaled.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2021/05/XWH_0-scaled.jpg">![](/wp-content/uploads/2021/05/XWH_0-scaled.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2021/05/XWH_1-scaled.jpg">![](https://blog.dsinf.net/wp-content/uploads/2021/05/XWH_1-scaled.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2021/05/XWH_1-scaled.jpg">![](/wp-content/uploads/2021/05/XWH_1-scaled.jpg)</a></figure>
   </li>
 </ul></figure> 
 
@@ -172,11 +172,11 @@ Obiekt, wraz z kodem źródłowym opublikowałem na Thingversie - [**https://www
 
 Obiekt został pozbawiony wnętrza _(hollow)_ z wypełnieniem w trybie _lattice 20%_, dodałem dwa kwadratowe otwory odpływowe na nieutwardzoną żywicę z wnętrza _(drain holes)_ z tyłu: kilka milimetrów od dołu i boków, po jednym z każdej strony. Żadne supporty nie były wymagane.<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2021/05/IMG_3560.jpg)<figcaption>wypełnienie i jeden z _drain holes_ widoczne pod silnym światłem (całkiem porządnej latarki Nitecore Tup)</figcaption></figure> 
+![](/wp-content/uploads/2021/05/IMG_3560.jpg)<figcaption>wypełnienie i jeden z _drain holes_ widoczne pod silnym światłem (całkiem porządnej latarki Nitecore Tup)</figcaption></figure> 
 
 Od rozpoczęcia prac do gotowego wydruku minęło kilka wieczorów kodowania, cięcia i testowania wydruków, a efekt bardzo mnie cieszy, bo stojak w 100% odpowiada moim oczekiwaniom i jeśli kiedyś będę potrzebował podobnego, ale dla innego zestawu bitów - wystarczy kilka zmian w parametrach kodu, render i obiekt będzie gotowy do wydruku. Zabawę polecam każdemu.
 
- [1]: https://blog.dsinf.net/wp-content/uploads/2021/05/Screenshot-2021-05-19-at-05.56.34.png
- [2]: https://blog.dsinf.net/wp-content/uploads/2021/05/xwh_elements.jpg
+ [1]: /wp-content/uploads/2021/05/Screenshot-2021-05-19-at-05.56.34.png
+ [2]: /wp-content/uploads/2021/05/xwh_elements.jpg
  [3]: https://www.thingiverse.com/thing:4859145
- [4]: https://blog.dsinf.net/wp-content/uploads/2021/05/IMG_3560.jpg
+ [4]: /wp-content/uploads/2021/05/IMG_3560.jpg

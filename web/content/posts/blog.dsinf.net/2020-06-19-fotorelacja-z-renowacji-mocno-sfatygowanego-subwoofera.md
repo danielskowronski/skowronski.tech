@@ -4,7 +4,7 @@ author: Daniel Skowroński
 type: post
 date: 2020-06-19T14:55:38+00:00
 url: /2020/06/fotorelacja-z-renowacji-mocno-sfatygowanego-subwoofera/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7048-rotated.jpg
+featured_image: /wp-content/uploads/2020/06/IMG_7048-rotated.jpg
 tags:
   - denon
   - głośniki
@@ -18,13 +18,13 @@ Niestety ten 80 watowy potworek był w dość tragicznym wizualnie stanie, ale p
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7026.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7026.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/06/IMG_7026.jpg">![](/wp-content/uploads/2020/06/IMG_7026.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7027.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7027.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/06/IMG_7027.jpg">![](/wp-content/uploads/2020/06/IMG_7027.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7033-rotated.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7033-225x300.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/06/IMG_7033-rotated.jpg">![](/wp-content/uploads/2020/06/IMG_7033-225x300.jpg)</a></figure>
   </li>
 </ul></figure> 
 
@@ -34,13 +34,13 @@ Czas więc zacząć renowację, a przyokazji odkryć co kryje wnętrze. Na pocz�
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7025.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7025.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/06/IMG_7025.jpg">![](/wp-content/uploads/2020/06/IMG_7025.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7023.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7023.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/06/IMG_7023.jpg">![](/wp-content/uploads/2020/06/IMG_7023.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7024.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7024.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/06/IMG_7024.jpg">![](/wp-content/uploads/2020/06/IMG_7024.jpg)</a></figure>
   </li>
 </ul></figure> 
 
@@ -52,13 +52,13 @@ Czas na lekką dygresję - widoczny na zdjęciu chiński śrubokręt elektryczny
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7031.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7031.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/06/IMG_7031.jpg">![](/wp-content/uploads/2020/06/IMG_7031.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7037.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7037.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/06/IMG_7037.jpg">![](/wp-content/uploads/2020/06/IMG_7037.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7039-rotated.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7039-225x300.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/06/IMG_7039-rotated.jpg">![](/wp-content/uploads/2020/06/IMG_7039-225x300.jpg)</a></figure>
   </li>
 </ul></figure> 
 
@@ -68,13 +68,13 @@ Samo wykonanie naprawdę świetne, kondensatory elektrolityczne bardzo porządne
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7041.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7041.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/06/IMG_7041.jpg">![](/wp-content/uploads/2020/06/IMG_7041.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7042.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7042.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/06/IMG_7042.jpg">![](/wp-content/uploads/2020/06/IMG_7042.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/z.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/z.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/06/z.jpg">![](/wp-content/uploads/2020/06/z.jpg)</a></figure>
   </li>
 </ul></figure> 
 
@@ -88,10 +88,10 @@ Z efektu końcowego jestem bardzo zadowolony - głośnik gotowy jest do ustawien
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7048-1-rotated.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7048-1-225x300.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/06/IMG_7048-1-rotated.jpg">![](/wp-content/uploads/2020/06/IMG_7048-1-225x300.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7133-rotated.jpg">![](https://blog.dsinf.net/wp-content/uploads/2020/06/IMG_7133-225x300.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2020/06/IMG_7133-rotated.jpg">![](/wp-content/uploads/2020/06/IMG_7133-225x300.jpg)</a></figure>
   </li>
 </ul></figure>
 

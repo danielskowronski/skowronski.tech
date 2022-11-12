@@ -4,7 +4,7 @@ author: Daniel Skowroński
 type: post
 date: 2018-11-08T18:43:38+00:00
 url: /2018/11/praca-domowa-sysadmina-part-2-etl-czyli-ladowanie-duzej-ilosci-danych-do-bazy-danych/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2018/11/sah2.png
+featured_image: /wp-content/uploads/2018/11/sah2.png
 tags:
   - csv
   - database
@@ -20,7 +20,7 @@ Ten wpis jest kontynuacją wpisu ["Praca domowa" SysAdmina – part 1: disk bas
 
 **tl;dr**? Podsumowanie jest [na końcu artykułu][2] 😉
 
-![](https://blog.dsinf.net/wp-content/uploads/2018/11/sah2.png)
+![](/wp-content/uploads/2018/11/sah2.png)
 
 ### Intro notes
 
@@ -496,11 +496,11 @@ $ntfy "ALL DONE"</pre>
 
 Below are performance tests with various **atonce** parameter values in table. They were parsed in same way as \`parallel_2.csv\`. Truncate on target table was performed between tests.
 
-![](https://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingParalel.png)  
+![](/wp-content/uploads/2018/11/sah2_testingParalel.png)  
 Obviously performance started to degrade after running more tasks than physically available CPU cores (8). Best result is achieved with atonce equal to number of cores.  
 Best total speed is 290krps.
 
-**Logs and plots at https://blog.dsinf.net/wp-content/uploads/sah/task2\_import\_performance/parallel.html **
+**Logs and plots at /wp-content/uploads/sah/task2\_import\_performance/parallel.html **
 
 #### Observations
 
@@ -510,7 +510,7 @@ Plots have also average import speed of single part marked as purple line. Spike
 
 Another thing worth checking is how chunk size affects performance of \copy. Sizes will be: 1x, 2x and 4x bigger chunks - 4x original size means if 8 threads are run at once maximum performance should be achieved. Bigger parallel processing will hit CPU cores limitation. Also various atonce parameter values are tested to check how it affects memory limitation (as reminder system has 16GB physical and average of 14G free memory).
 
-![](https://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingChunks.png)
+![](/wp-content/uploads/2018/11/sah2_testingChunks.png)
 
 Highest throughput was achieved with 8 threads, each importing 2.4GB data chunk which is 19.2GB in total which exceeds total memory. Rest of results show only small performance difference between chunk sizes with same number of threads.
 
@@ -678,8 +678,8 @@ pg_bulkload was small disappointment - mentioned in several places in internet, 
 
 #### Plots
 
-  * joined: https://blog.dsinf.net/wp-content/uploads/sah/task2\_import\_performance/joined.html
-  * parallel: https://blog.dsinf.net/wp-content/uploads/sah/task2\_import\_performance/parallel.html
+  * joined: /wp-content/uploads/sah/task2\_import\_performance/joined.html
+  * parallel: /wp-content/uploads/sah/task2\_import\_performance/parallel.html
 
 #### Sources
 
@@ -723,8 +723,8 @@ pg_bulkload was small disappointment - mentioned in several places in internet, 
 
 #### Plots
 
-  * joined: https://blog.dsinf.net/wp-content/uploads/sah/task2\_import\_performance/joined.html
-  * parallel: https://blog.dsinf.net/wp-content/uploads/sah/task2\_import\_performance/parallel.html
+  * joined: /wp-content/uploads/sah/task2\_import\_performance/joined.html
+  * parallel: /wp-content/uploads/sah/task2\_import\_performance/parallel.html
 
 #### Sources
 
@@ -760,8 +760,8 @@ pg_bulkload was small disappointment - mentioned in several places in internet, 
 
 #### Plots
 
-  * joined: https://blog.dsinf.net/wp-content/uploads/sah/task2\_import\_performance/joined.html
-  * parallel: https://blog.dsinf.net/wp-content/uploads/sah/task2\_import\_performance/parallel.html
+  * joined: /wp-content/uploads/sah/task2\_import\_performance/joined.html
+  * parallel: /wp-content/uploads/sah/task2\_import\_performance/parallel.html
 
 #### Sources
 
@@ -805,8 +805,8 @@ pg_bulkload was small disappointment - mentioned in several places in internet, 
 
 #### Plots
 
-  * joined: https://blog.dsinf.net/wp-content/uploads/sah/task2\_import\_performance/joined.html
-  * parallel: https://blog.dsinf.net/wp-content/uploads/sah/task2\_import\_performance/parallel.html
+  * joined: /wp-content/uploads/sah/task2\_import\_performance/joined.html
+  * parallel: /wp-content/uploads/sah/task2\_import\_performance/parallel.html
 
 #### Sources
 
@@ -842,8 +842,8 @@ pg_bulkload was small disappointment - mentioned in several places in internet, 
 
 #### Plots
 
-  * joined: https://blog.dsinf.net/wp-content/uploads/sah/task2\_import\_performance/joined.html
-  * parallel: https://blog.dsinf.net/wp-content/uploads/sah/task2\_import\_performance/parallel.html
+  * joined: /wp-content/uploads/sah/task2\_import\_performance/joined.html
+  * parallel: /wp-content/uploads/sah/task2\_import\_performance/parallel.html
 
 #### Sources
 
@@ -889,8 +889,8 @@ pg_bulkload was small disappointment - mentioned in several places in internet, 
 
 #### Plots
 
-  * joined: https://blog.dsinf.net/wp-content/uploads/sah/task2\_import\_performance/joined.html
-  * parallel: https://blog.dsinf.net/wp-content/uploads/sah/task2\_import\_performance/parallel.html
+  * joined: /wp-content/uploads/sah/task2\_import\_performance/joined.html
+  * parallel: /wp-content/uploads/sah/task2\_import\_performance/parallel.html
 
 #### Sources
 
@@ -904,7 +904,7 @@ pg_bulkload was small disappointment - mentioned in several places in internet, 
 
  [1]: https://blog.dsinf.net/2018/11/praca-domowa-sysadmina-part-1-disk-baselines/
  [2]: #summary
- [3]: http://blog.dsinf.net/wp-content/uploads/2018/11/sah2.png
- [4]: http://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingParalel.png
- [5]: http://blog.dsinf.net/wp-content/uploads/2018/11/sah2_testingChunks.png
- [6]: https://blog.dsinf.net/wp-content/uploads/sah/task2_import_performance/joined.html
+ [3]: /wp-content/uploads/2018/11/sah2.png
+ [4]: /wp-content/uploads/2018/11/sah2_testingParalel.png
+ [5]: /wp-content/uploads/2018/11/sah2_testingChunks.png
+ [6]: /wp-content/uploads/sah/task2_import_performance/joined.html

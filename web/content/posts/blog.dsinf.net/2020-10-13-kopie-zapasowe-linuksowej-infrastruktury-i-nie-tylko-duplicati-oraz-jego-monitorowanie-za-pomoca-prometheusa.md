@@ -5,7 +5,7 @@ type: post
 date: 2020-10-13T19:20:40+00:00
 excerpt: 'Szukając systemu do tworzenia kopii zapasowej, który będzie działał zarówno na boxach na labowym serwerze, jak i na stacjach roboczych z Linuksem, Windowsem i macOS kilka lat temu zatrzymałem się na rozwiązaniu UrBackup, które opisałem tutaj. Skusiła mnie głównie funkcjonalność backupowania nie tylko plików, lecz i obrazów dysków twardych. Okazało się jednak, że działa ona głównie na Windowsie przez VSS (Volume Shadow Copy), a na Linuksach wymaga zewnętrznych skryptów, które zrobią migawkę systemu plików mniej, lub bardziej inteligentnie (np. za pomocą datto). Przez serię problemów z triggerowaniem zadań z serwera (głównie na stacjach roboczych, które nie są online 24/7) i przechodzeniem agentów w stan nieoperacyjny postanowiłem szukać dalej. Tym sposobem doszedłem do Duplicati i monitorowaniu go za pomocą Prometheusa. '
 url: /2020/10/kopie-zapasowe-linuksowej-infrastruktury-i-nie-tylko-duplicati-oraz-jego-monitorowanie-za-pomoca-prometheusa/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2020/10/logo-duplicati.png
+featured_image: /wp-content/uploads/2020/10/logo-duplicati.png
 tags:
   - backup
   - duplicati
@@ -118,7 +118,7 @@ Pierwsza sprawa to docelowa lokalizacja backupów: umieszczane są tak jak typow
 
 Dalsze elementy ścieżki to prefiks (na screenshocie poniżej jest to _amaterasu_ - tak nazywa się mój serwer), nazwa hosta wyciągana dynamicznie przez skrypt, oraz pełna ścieżka do backupowanego foldero - bardzo ułatwia to lokalizację konkretnych danych.<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/10/Selection_039.png)</figure> 
+![](/wp-content/uploads/2020/10/Selection_039.png)</figure> 
 
 Kolejny element to _dbpath_, który odpowiada za lokalną bazę danych pomagającą Duplicati utrzymać stan plików. Bashowy potworek `echo ${path} | base32 | tr '=' '_'`, który tworzy jego wartość enkoduje ścieżkę tak by mogła być nazwą pliku bazy SQLite. Nie może to być stała wartość, gdyż wtedy nie można by uruchomić dwóch różnych procesów backupowania na jednym hoście. Natomiast odwracalne base32 z podmianą znaku równości (który sprawia kłopot w niektórych miejscach w bashu) ma tę przewagę nad funkcją skrótu w rodzaju MD5, że późniejsze debugowanie sytuacji w rodzaju przepełniającej się bazy danych jest łatwiejsze.
 
@@ -249,7 +249,7 @@ Teraz warto zainstalować i skonfigurować _prometheus_nodexporter_ na monitorow
 
 Efekt naszych starań powinien przypominać coś takiego w Prometheusowym WebUI:<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/10/Selection_040-300x277.png)</figure> 
+![](/wp-content/uploads/2020/10/Selection_040-300x277.png)</figure> 
 
 ## Deployment jobów
 
@@ -310,5 +310,5 @@ Duplicati jest bardzo przyjemnym w używaniu systemem backupów, a właściwie t
 W artykule opisałem jak w szybki sposób zintegrować Duplicati na serwerach przy użyciu crontaba i prostego wrappera oraz monitorować stan używają Prometheusa.
 
  [1]: https://blog.dsinf.net/2017/07/prosty-choc-nie-zawsze-trywialny-w-obsludze-system-backupowania-urbackup/
- [2]: https://blog.dsinf.net/wp-content/uploads/2020/10/Selection_039.png
- [3]: https://blog.dsinf.net/wp-content/uploads/2020/10/Selection_040.png
+ [2]: /wp-content/uploads/2020/10/Selection_039.png
+ [3]: /wp-content/uploads/2020/10/Selection_040.png

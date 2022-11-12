@@ -5,7 +5,7 @@ type: post
 date: 2021-02-07T20:09:16+00:00
 excerpt: 'Aktywny hub USB od D-linka model DUB-H7 to leciwa, ale bardzo mocna konstrukcja - zwłaszcza, jeśli chodzi o wykorzystanie jej w roli aż 7-portowej ładowarki. Niestety obydwa porty oznaczone symbolem pioruna, a więc te, które powinny dostarczać większy prąd jakiś czas temu przestały działać. Chcąc przywrócić sprzęt do świetności, musiałem zanurkować trochę w odmętach rosyjskojęzycznych forów internetowych i dość długo czekać na elementy zastępcze z Chin. Jednakże dzięki temu może powstać ten artykuł, który dodatkowo opowie o wykorzystywanych przeze mnie narzędziach diagnostycznych zasilania po USB, a także o samym zasilaniu USB i trybach ładowania.'
 url: /2021/02/naprawa-aktywnego-huba-usb-i-rzecz-o-narzedziach-diagnostycznych-zasilania-po-usb-wraz-z-dygresja-o-samym-zasilaniu-usb-i-trybach-ladowania/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2021/02/05_pomiary.jpg
+featured_image: /wp-content/uploads/2021/02/05_pomiary.jpg
 xyz_twap_future_to_publish:
   - 'a:3:{s:26:"xyz_twap_twpost_permission";s:1:"1";s:32:"xyz_twap_twpost_image_permission";s:1:"1";s:18:"xyz_twap_twmessage";s:26:"{POST_TITLE} - {PERMALINK}";}'
 xyz_twap:
@@ -26,7 +26,7 @@ Wyższe prądy, a także czasem inne niż 5 V napięcia dostępne są przy pomoc
 
 W większości wypadków deklaracja dostępnego trybu zasilania ze strony ładowarki, czy urządzenia hosta polega na ustawieniu odpowiednich napięć na liniach danych. Przykładowo poniżej schemat potrzebny do uzyskania trybu Apple 2.1 A - napięcia to odpowiednio `D-: 2.0V` i `D+: 2.75V`<figure class="wp-block-image size-large is-resized">
 
-![](https://blog.dsinf.net/wp-content/uploads/2021/02/x5tSD.gif)<figcaption>Źródło: https://electronics.stackexchange.com/a/177792</figcaption></figure> 
+![](/wp-content/uploads/2021/02/x5tSD.gif)<figcaption>Źródło: https://electronics.stackexchange.com/a/177792</figcaption></figure> 
 
 Jak widać - temat jest dość szeroki. Zazwyczaj, jeśli ładowarka ma dwa lub więcej portów USB z różnymi oznaczeniami, np. "1 A" i "2 A" to oba porty mogą dostarczyć 2 A, często są one wręcz połączone równolegle - jedynie konfiguracja linii danych jest różna. Czemu zatem nie oznaczyć obu portów jako "2 A"? Otóż nie wszystkie urządzenia "zrozumieją" inne tryby zasilania i mogą uznać, że port dostarczy maksymalnie 500 mA, co znacznie ograniczy czas ładowania. Rzecz jasna co nowocześniejsze ładowarki, czy power banki nie mają dyskretnych zworek lub dzielników napięć, lecz dedykowane układy scalone dokonujące negocjacji z ładowanym urządzeniem ustalając najwyższy możliwy prąd ładowania. 
 
@@ -42,7 +42,7 @@ Obciążeniem dla portu może być dowolne urządzenie, ale te zwykle bywają ka
 
 Mój wybór padł na HD35 - na AliExpress można znaleźć za około $10-$12. Sprzęt generuje maksymalnie 35 W obciążenia, prąd 5 A i współpracuje ze znaczną większością popularnych trybów szybkiego ładowania. Ponadto ma aktywnie sterowany wentylator, regulację prądu co 10 mA, zestaw ustawień (chociażby tak ważne, jak automatyczne załączanie obciążenia po pojawieniu się zasilania) i ręczne wyzwalanie negocjacji trybów QuickCharge. Podłączymy go do złącza USB-A, USB-C i microUSB. Instrukcja wraz ze specyfikacją jest dostępna między innymi na <https://needful.co.ua/image/catalog/product/rd-hd35/HD25-35-USB-load-user-manual.pdf><figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2021/02/Screenshot-2021-02-07-at-20.06.00.png)</figure> 
+![](/wp-content/uploads/2021/02/Screenshot-2021-02-07-at-20.06.00.png)</figure> 
 
 
 
@@ -50,7 +50,7 @@ Mój wybór padł na HD35 - na AliExpress można znaleźć za około $10-$12. Sp
 
 Mając na wyposażeniu dość prosty miernik "CHARGER Doctor", a kupiwszy solidne obciążenie elektroniczne, uznałem, że czas na upgrade - również do wysokiego poziomu i kupiłem UM34C. Poza pomiarem napięcia pomiędzy 4 V a 24 V i prądu do 4 A wyróżnia go też pomiar napięcia na liniach danych oraz oczywiście detekcja trybów ładowania na tej podstawie. Posiada też możliwość pomiaru temperatury oraz zliczania energii - np. by zbadać pojemność ładowanej baterii. Wszystkie pomiary można transmitować po Bluetooth do telefonu z Androidem lub iOS, a następnie eksportować do Excela, by później przeanalizować charakterystykę ładowania. Cena - około $18 na AliExpress. Instrukcja wraz ze specyfikacją - <https://supereyes.ru/img/instructions/Instruction_UM34(C).pdf> <figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2021/02/Screenshot-2021-02-07-at-20.20.51.png)</figure> 
+![](/wp-content/uploads/2021/02/Screenshot-2021-02-07-at-20.20.51.png)</figure> 
 
 ## Naprawa huba USB
 
@@ -62,16 +62,16 @@ Czas było więc odkryć, jak mawia pewien Szary Jeleń - "co kryje wnętrze".<f
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2021/02/01_obudowa.jpg">![](https://blog.dsinf.net/wp-content/uploads/2021/02/01_obudowa-300x225.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2021/02/01_obudowa.jpg">![](/wp-content/uploads/2021/02/01_obudowa-300x225.jpg)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="https://blog.dsinf.net/wp-content/uploads/2021/02/02_plytka.jpg">![](https://blog.dsinf.net/wp-content/uploads/2021/02/02_plytka-300x224.jpg)</a></figure>
+    <figure><a href="/wp-content/uploads/2021/02/02_plytka.jpg">![](/wp-content/uploads/2021/02/02_plytka-300x224.jpg)</a></figure>
   </li>
 </ul></figure> 
 
 Problem okazał się dość szybki do zlokalizowania po naocznym przejrzeniu płytki komponent po komponencie - dwa tranzystory `Q31` i `Q32` eksplodowały.<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2021/02/03_uszkodzone_tranzystory-300x225.jpg)</figure> 
+![](/wp-content/uploads/2021/02/03_uszkodzone_tranzystory-300x225.jpg)</figure> 
 
 Można zaryzykować zatem twierdzenie, że wystarczy je wymienić i sprzęt powinien działać. Problem polegał na tym, że eksplozja zniszczyła oznaczenia komponentów, a dość prawdopodobne jest, że to jedyne takie dwa tranzystory przełączające porty wysokoprądowe.
 
@@ -89,11 +89,11 @@ Zdjęcie poniżej jest dość drastyczne dla elektroników z doświadczeniem - k
 
 Najważniejszy jednak jest fakt, że mimo urwania padu udało mi się wlutować oba tranzystory oraz naprawić uszkodzoną ścieżkę od `Q32` do `Q34` solidnym kawałkiem cyny. <figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2021/02/04_lutowanie-300x225.jpg)</figure> 
+![](/wp-content/uploads/2021/02/04_lutowanie-300x225.jpg)</figure> 
 
 Weryfikacja pobiegała pomyślnie - wszystkie porty działają, a te "szybsze" używają trybu Apple 2.1 A<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2021/02/05_pomiary-300x251.jpg)</figure> 
+![](/wp-content/uploads/2021/02/05_pomiary-300x251.jpg)</figure> 
 
 ## Podsumowanie
 
@@ -103,9 +103,9 @@ Koszt (poza zapleczem elektronika-bardzo-amatora lubiącego kupować sprzęt nie
 
 Lekcje wyniesione: nie umiem lutować elementów powierzchniowych i muszę to poprawić, ładowanie po USB jest ciekawe, a cyrylica przydaje się inżynierom wielu dziedzin.
 
- [1]: https://blog.dsinf.net/wp-content/uploads/2021/02/x5tSD.gif
- [2]: https://blog.dsinf.net/wp-content/uploads/2021/02/Screenshot-2021-02-07-at-20.06.00.png
- [3]: https://blog.dsinf.net/wp-content/uploads/2021/02/Screenshot-2021-02-07-at-20.20.51.png
- [4]: https://blog.dsinf.net/wp-content/uploads/2021/02/03_uszkodzone_tranzystory.jpg
- [5]: https://blog.dsinf.net/wp-content/uploads/2021/02/04_lutowanie.jpg
- [6]: https://blog.dsinf.net/wp-content/uploads/2021/02/05_pomiary.jpg
+ [1]: /wp-content/uploads/2021/02/x5tSD.gif
+ [2]: /wp-content/uploads/2021/02/Screenshot-2021-02-07-at-20.06.00.png
+ [3]: /wp-content/uploads/2021/02/Screenshot-2021-02-07-at-20.20.51.png
+ [4]: /wp-content/uploads/2021/02/03_uszkodzone_tranzystory.jpg
+ [5]: /wp-content/uploads/2021/02/04_lutowanie.jpg
+ [6]: /wp-content/uploads/2021/02/05_pomiary.jpg

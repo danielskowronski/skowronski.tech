@@ -5,7 +5,7 @@ type: post
 date: 2022-02-13T14:20:06+00:00
 excerpt: "Chcąc połączyć ze sobą dwa data-center lub dwa serwery hostujące kontenery potrzebujemy łączności site-to-site. Można to osiągnąć zwykłym VPNem w rodzaju OpenVPN i ręcznym ustawianiem routingu, jednak nie jest to zbyt wydajne, ani eleganckie. Zaprezentuję jak zestawić takie połączenie dzięki strongSwan sterującym zaimplementowanym w jądrze stosem IPsec - XFRM. Dodatkowo pokażę jak się do takiej sieci podłączyć z zewnątrz i podam kilka wskazówek dotyczących zestawienia tego u Hetznera - łącząc dedykowany serwer używający vSwitch'a z serwerem w Hetzner Cloud. Na koniec kilka słów o podłączaniu się do takiego VPNa z zewnątrz."
 url: /2022/02/vpn-site-to-site-oparty-o-strongswan-ipsec-i-xfrm/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2022/02/strongswan_square_large.png
+featured_image: /wp-content/uploads/2022/02/strongswan_square_large.png
 xyz_twap_future_to_publish:
   - 'a:3:{s:26:"xyz_twap_twpost_permission";s:1:"1";s:32:"xyz_twap_twpost_image_permission";s:1:"1";s:18:"xyz_twap_twmessage";s:26:"{POST_TITLE} - {PERMALINK}";}'
 xyz_twap:
@@ -36,7 +36,7 @@ Co będzie nam potrzebne:
 
 Topologia przykładowej sieci i usług wygląda następująco:<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2022/02/strongswan.drawio-1-300x260.png)</figure> 
+![](/wp-content/uploads/2022/02/strongswan.drawio-1-300x260.png)</figure> 
 
 ## Instalacja pakietów {#instalacja-pakietow}
 
@@ -152,7 +152,7 @@ Namierzenie tego problemu zajęło mi dość dużo czasu, a było o tyle irytuj�
 
 Moje pierwsze podejrzenie dotyczyło stabilności łącza prywatnego, jednak okazało się błędne. W celu badania jakichś zależności postawiłem taki oto dashboard w Grafanie:<figure class="is-layout-flex wp-block-gallery-51 wp-block-gallery has-nested-images columns-default is-cropped"> <figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana.png)</figure> <figure class="wp-block-image size-large">![](https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana.png)</figure> <figcaption class="blocks-gallery-caption">Jak widać - nic konkretnego nie widać poza pozorami regularności</figcaption></figure> 
+![](/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana.png)</figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana.png)</figure> <figcaption class="blocks-gallery-caption">Jak widać - nic konkretnego nie widać poza pozorami regularności</figcaption></figure> 
 
 Dopiero analiza logów z `journalctl` skorelowanych z kilkoma punktami gdzie pokazał się packet loss jedynie na sieci routowanej przez VPN pokazał, w czym tkwi problem - `172.16.0.2 is initiating an IKE_SA` występował zawsze przed utratą połączenia. 
 
@@ -256,7 +256,7 @@ client_b : EAP plaintext-password-for-client_b</pre>
 
 Przykładowa konfiguracja zaufania certyfikatu i klienta VPN na macOS:<figure class="is-layout-flex wp-block-gallery-53 wp-block-gallery has-nested-images columns-default is-cropped"> <figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2022/02/macos_vpn_3.png)</figure> <figure class="wp-block-image size-large">![](https://blog.dsinf.net/wp-content/uploads/2022/02/macos_vpn_1.png)</figure> <figure class="wp-block-image size-large">![](https://blog.dsinf.net/wp-content/uploads/2022/02/macos_vpn_2.png)</figure> </figure> 
+![](/wp-content/uploads/2022/02/macos_vpn_3.png)</figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2022/02/macos_vpn_1.png)</figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2022/02/macos_vpn_2.png)</figure> </figure> 
 
 ## Podsumowanie {#podsumowanie}
 
@@ -265,10 +265,10 @@ Konfiguracja strongSwan jest w miarę prosta, lecz można wpaść na wiele puła
  [1]: https://wiki.strongswan.org/projects/strongswan/wiki/IpsecConf
  [2]: https://www.man7.org/linux/man-pages/man8/ip-xfrm.8.html
  [3]: https://man7.org/linux/man-pages/man8/ip-vrf.8.html
- [4]: https://blog.dsinf.net/wp-content/uploads/2022/02/strongswan.drawio-1.png
- [5]: https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana.png
- [6]: https://blog.dsinf.net/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana.png
+ [4]: /wp-content/uploads/2022/02/strongswan.drawio-1.png
+ [5]: /wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana.png
+ [6]: /wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana.png
  [7]: https://smallstep.com/docs/step-cli/reference/ca/certificate
- [8]: https://blog.dsinf.net/wp-content/uploads/2022/02/macos_vpn_3.png
- [9]: https://blog.dsinf.net/wp-content/uploads/2022/02/macos_vpn_1.png
- [10]: https://blog.dsinf.net/wp-content/uploads/2022/02/macos_vpn_2.png
+ [8]: /wp-content/uploads/2022/02/macos_vpn_3.png
+ [9]: /wp-content/uploads/2022/02/macos_vpn_1.png
+ [10]: /wp-content/uploads/2022/02/macos_vpn_2.png

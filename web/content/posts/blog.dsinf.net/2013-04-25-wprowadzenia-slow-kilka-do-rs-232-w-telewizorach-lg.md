@@ -167,4 +167,4 @@ Szczegóły na temat formatu EPK: http://openlgtv.org.ru/wiki/index.php/EPK\_fil
 
 ROM dla Flatrona M80 (np. M2280DF) -> [EPK_\_LG\_FLATRON.zip][1]
 
- [1]: http://blog.dsinf.net/wp-content/uploads/2015/08/EPK__LG_FLATRON.zip
+ [1]: /wp-content/uploads/2015/08/EPK__LG_FLATRON.zip

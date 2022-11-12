@@ -5,7 +5,7 @@ type: post
 date: 2017-03-02T20:36:53+00:00
 excerpt: 'Po długiej batalii o bezpieczeństwo 3 publicznych stacji roboczych (docodząc do paranoi w stylu totalnie ograniczony windows server) doszedłem do wniosku że najlepiej będzie jednak bootować je po sieci w trybie read-only - wówczas trzeba by się włamać na serwer, co już nieco łatwiej ograniczyć. Wystarczy teoretycznie postawić coś co wystawia storage i tyle. I tu zaczyna się zabawa - w TFTP, iPXE, NFS.'
 url: /2017/03/sieciowe-bootowanie-linuksa-w-trybie-live-ale-nie-live-cd/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2017/03/ipxe-660x495.png
+featured_image: /wp-content/uploads/2017/03/ipxe-660x495.png
 tags:
   - arch
   - boot

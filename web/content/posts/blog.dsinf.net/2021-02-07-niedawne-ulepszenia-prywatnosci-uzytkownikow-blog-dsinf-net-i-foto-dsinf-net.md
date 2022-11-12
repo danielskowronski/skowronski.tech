@@ -5,7 +5,7 @@ type: post
 date: 2021-02-07T14:19:39+00:00
 excerpt: Od jakiegoś czasu moje osobiste celowanie w prywatność stało się jeszcze większym priorytetem i uznałem, że czas zająć się także moim blogiem. Efektem tych działań było między innymi pozbycie się usług Google oraz WordPressa.
 url: /2021/02/niedawne-ulepszenia-prywatnosci-uzytkownikow-blog-dsinf-net-i-foto-dsinf-net/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2021/02/Screenshot-2021-02-07-at-14.57.48.jpg
+featured_image: /wp-content/uploads/2021/02/Screenshot-2021-02-07-at-14.57.48.jpg
 xyz_twap_future_to_publish:
   - 'a:3:{s:26:"xyz_twap_twpost_permission";s:1:"1";s:32:"xyz_twap_twpost_image_permission";s:1:"1";s:18:"xyz_twap_twmessage";s:26:"{POST_TITLE} - {PERMALINK}";}'
 xyz_twap:
@@ -44,7 +44,7 @@ Problem, z którym borykałem się najdłużej to usługa Google Fonts. Jest uza
 
 Ponieważ (prawdopodobnie za bardzo) lubię fonty Ubuntu i Ubuntu Mono to jakiś hosting tychże jest mi potrzebny. Dlaczego jednak nie trzymać po prostu dwóch plików `woff2` na swoim własnym serwerze i zamiast używania specjalizowanych plug-inów do WordPressa (np. WP Google Fonts), skorzystać z takiego, którego i tak wykorzystuję do wstawek HTML/CSS/JS (który pozwala dodawać treść z UI WordPressa, bez edycji kodu motywu) - <https://pl.wordpress.org/plugins/custom-css-js/> <figure class="wp-block-image size-large is-resized">
 
-![](https://blog.dsinf.net/wp-content/uploads/2021/02/Screenshot-2021-02-07-at-15.01.21.png)<figcaption>Rozwiązanie może i nieco mniej eleganckie (zwłaszcza, jeśli motyw nie daje możliwości wyboru własnego fonta),  
+![](/wp-content/uploads/2021/02/Screenshot-2021-02-07-at-15.01.21.png)<figcaption>Rozwiązanie może i nieco mniej eleganckie (zwłaszcza, jeśli motyw nie daje możliwości wyboru własnego fonta),  
 ale dające dużo więcej władzy nad ustawieniami.</figcaption></figure> 
 
 ## Standardowe logi na serwerze
@@ -62,4 +62,4 @@ Prywatność ma znaczenie, warto więc jako webmaster przemyśleć, czy używani
  [1]: https://plausible.io/
  [2]: https://www.reddit.com/r/raspberry_pi/comments/lc07um/microsoft_repo_stealth_added_in_latest_rpios/
  [3]: https://decentraleyes.org/
- [4]: https://blog.dsinf.net/wp-content/uploads/2021/02/Screenshot-2021-02-07-at-15.01.21.png
+ [4]: /wp-content/uploads/2021/02/Screenshot-2021-02-07-at-15.01.21.png

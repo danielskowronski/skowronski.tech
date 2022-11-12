@@ -5,7 +5,7 @@ type: post
 date: 2017-07-23T07:02:48+00:00
 excerpt: 'Ludzie dzielą się na tych co robią backupy i na tych co je będą robili. A sposób ich wykonywania jest dość ważny. No i warto żeby móc odzyskać dane i mieć coś więcej niż backup z ostatnim błędem. Tym razem pochylę się nad rozwiązaniem urbackup - miłym i przyjemnym serwerem backupów, który jednak nie zawsze jest trywialny w obsłudze.'
 url: /2017/07/prosty-choc-nie-zawsze-trywialny-w-obsludze-system-backupowania-urbackup/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2017/07/urb.png
+featured_image: /wp-content/uploads/2017/07/urb.png
 tags:
   - backup
   - linux
@@ -138,16 +138,16 @@ Po stronie serwera warto zauważyć że w zakładce logs poza logami konkretnych
   Dwa sprawdzone przeze mnie scenariusze użycia - lokalny storage server i "cloud storage" na dedyku działają i mają się dobrze. Pierwszy przypadek to postawiony w LANie <strong>OpenMediaVault</strong>, czyli dystrybucja Debiana z GUI do storage'u (warte polecenia ze względu na metodykę "wyklikaj i zostaw") wraz z zainstalowanym rozszerzeniem do urbackup który zrzuca migawki po zbondowanym 2x gigabit ethernet na macierz raid5. Klienci to mix Windowsów Server i Linuksa. I działa.
 </p>
 
-![](https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-38-07.png) 
+![](/wp-content/uploads/2017/07/Screenshot-at-13-38-07.png) 
 
 Drugi to zainstalowany z paczki na openSUSE na zdalnym serwerze dedykowanym z łączem gigabitowym backupujący inne serwery (w innych DC) oraz stację roboczą za domowym łączem UPC z uplinkiem 10mbps. Nawet działa. Maszyny spięte są za pomocą SDNa ZeroTier o którym pisałem wcześniej - <https://blog.dsinf.net/2017/02/zerotier-czyli-software-defined-network-czyli-alternatywa-dla-klasycznego-vpna/> - znowu spadku wydajności nie ma.
 
-![](https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-49-07.png) 
+![](/wp-content/uploads/2017/07/Screenshot-at-13-49-07.png) 
 
 Co do interfejsu screenów jeszcze kilka:
 
-![](https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-44-53.png) 
+![](/wp-content/uploads/2017/07/Screenshot-at-13-44-53.png) 
 
-![](https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-45-28.png)![](https://blog.dsinf.net/wp-content/uploads/2017/07/Screenshot-at-13-42-33.png) 
+![](/wp-content/uploads/2017/07/Screenshot-at-13-45-28.png)![](/wp-content/uploads/2017/07/Screenshot-at-13-42-33.png) 
 
 Reasumując: urbackup pomimo pewnych nietrywialności dobrze nadaje się jako pierwszy krok po odejściu od backupowania 7zipem po sshfs.

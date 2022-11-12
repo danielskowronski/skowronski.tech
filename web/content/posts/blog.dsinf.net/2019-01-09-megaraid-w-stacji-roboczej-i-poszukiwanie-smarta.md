@@ -5,7 +5,7 @@ type: post
 date: 2019-01-09T18:58:58+00:00
 excerpt: 'Kolejny artykuł o zabawie z moją stacją roboczą (Dell T5500) - tym razem w roli głównej kontroler RAID firmy LSI - MegaRAID SAS6IR. A konkretniej podejrzenie awarii jednego z dysków w macierzy.'
 url: /2019/01/megaraid-w-stacji-roboczej-i-poszukiwanie-smarta/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0a.png
+featured_image: /wp-content/uploads/2019/01/megaraid0a.png
 tags:
   - hardware
   - raid
@@ -18,16 +18,16 @@ Ale po kolei. Mój setup wykorzystujący sprzętowy RAID to proste mirrorowanie 
 
 <ul class="is-layout-flex wp-block-gallery-1 wp-block-gallery columns-2 is-cropped">
   <li class="blocks-gallery-item">
-    <figure><a href="http://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0a-1024x620.png">![](https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0a.png)</a></figure>
+    <figure><a href="/wp-content/uploads/2019/01/megaraid0a-1024x620.png">![](/wp-content/uploads/2019/01/megaraid0a.png)</a></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure><a href="http://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0-1024x768.png">![](https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid0.png)</a></figure>
+    <figure><a href="/wp-content/uploads/2019/01/megaraid0-1024x768.png">![](/wp-content/uploads/2019/01/megaraid0.png)</a></figure>
   </li>
 </ul>
 
 Aż pewnego pięknego dnia zaczął wyskakiwać komunikat o wypadnięciu dysku z macierzy. W logach pojawiał się z datą "2000-01-01 12:00:00". Co ciekawe eventy o pomyślnym logowaniu do konsoli mają poprawną datę. W każdym razie okazało się że leci rebuild. Po czym drugi raz. I trzeci.<figure class="wp-block-image">
 
-![](https://blog.dsinf.net/wp-content/uploads/2019/01/megaraid1.png) </figure> 
+![](/wp-content/uploads/2019/01/megaraid1.png) </figure> 
 
 Wtedy postanowiłem zbadać stan SMARTa dysków (niektórzy mogą się domyślić że nie ma to sensu, ale o tym potem). Czas pobrać pakiet _smarrtmontools_. Bash na Windowsa był pierwszym strzałem. Pudło bo to kontener który nie ma bindowań do devfs (w sumie nie ma za bardzo jak mieć). Kolejna próba to build smartctl na Windowsa. Nawet [wiki projektu][1] potwierdza że się powinno dać - przez CSMI. Znowu pudło bo support megaraida wyparował z wersji windowsowej. Próby enumerowania ukrytych urządzeń przez cygwina też upadły (_smartctl -scan_). 
 
@@ -143,4 +143,4 @@ Na sam koniec jeszcze [mój mirror lsiutil'a][6] na wszelki wypadek.
  [3]: https://www.thomas-krenn.com/en/wiki/StorCLI
  [4]: https://wiki.debian.org/LinuxRaidForAdmins#megaraid
  [5]: https://www.dzhang.com/blog/2013/03/22/where-to-get-download-lsiutil
- [6]: http://blog.dsinf.net/wp-content/uploads/2019/01/lsiutil.zip
+ [6]: /wp-content/uploads/2019/01/lsiutil.zip

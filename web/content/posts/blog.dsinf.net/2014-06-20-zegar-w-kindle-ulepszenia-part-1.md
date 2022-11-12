@@ -24,8 +24,8 @@ Pierwszym wyzwaniem było sprawdzenie czy aktualnie otwarta jest książka, czy 
 Następnym krokiem było użycie mniejszego fontu. Problem polega na tym, że eips na Kindle 3 niezbyt dobrze radzi sobie z wstawianiem obrazków (a już miałem robić 10+1 bitmap kilka na kilka pikseli). Rysowanie prostokątów na mojej wersji urządzenia też zawodzi. Odnalazłem jednak binarkę fbprint (dostępną na [mobileread.com][2]), która pisze po ekranie w natywny dla interfejsu sposób. 
 
 Trochę kalibracji i efekty są takie:  
-<figure id="attachment_469" aria-describedby="caption-attachment-469" style="width: 665px" class="wp-caption alignnone">![ZEGAR 0.2 - w trybie książki](https://blog.dsinf.net/wp-content/uploads/2014/06/WP_20140620_001-300x225.jpg)<figcaption id="caption-attachment-469" class="wp-caption-text">ZEGAR 0.2 - w trybie książki</figcaption></figure>  
-<figure id="attachment_470" aria-describedby="caption-attachment-470" style="width: 665px" class="wp-caption alignnone">![ZEGAR 0.2 - w reszcie UI](https://blog.dsinf.net/wp-content/uploads/2014/06/WP_20140620_003-300x225.jpg)<figcaption id="caption-attachment-470" class="wp-caption-text">ZEGAR 0.2 - w reszcie UI</figcaption></figure>
+<figure id="attachment_469" aria-describedby="caption-attachment-469" style="width: 665px" class="wp-caption alignnone">![ZEGAR 0.2 - w trybie książki](/wp-content/uploads/2014/06/WP_20140620_001-300x225.jpg)<figcaption id="caption-attachment-469" class="wp-caption-text">ZEGAR 0.2 - w trybie książki</figcaption></figure>  
+<figure id="attachment_470" aria-describedby="caption-attachment-470" style="width: 665px" class="wp-caption alignnone">![ZEGAR 0.2 - w reszcie UI](/wp-content/uploads/2014/06/WP_20140620_003-300x225.jpg)<figcaption id="caption-attachment-470" class="wp-caption-text">ZEGAR 0.2 - w reszcie UI</figcaption></figure>
 
 <pre class="lang:default EnlighterJSRAW " >#!/bin/sh
 
@@ -72,6 +72,6 @@ Całość ładnie upakowaną można pobrać tutaj: [zegar_0.2][5]
 
  [1]: http://blog.dsinf.net/2014/05/zegar-w-kindle/
  [2]: http://www.mobileread.com/forums/showthread.php?t=147870
- [3]: http://blog.dsinf.net/wp-content/uploads/2014/06/WP_20140620_001.jpg
- [4]: http://blog.dsinf.net/wp-content/uploads/2014/06/WP_20140620_003.jpg
- [5]: http://blog.dsinf.net/wp-content/uploads/2014/06/zegar_0.2.zip
+ [3]: /wp-content/uploads/2014/06/WP_20140620_001.jpg
+ [4]: /wp-content/uploads/2014/06/WP_20140620_003.jpg
+ [5]: /wp-content/uploads/2014/06/zegar_0.2.zip

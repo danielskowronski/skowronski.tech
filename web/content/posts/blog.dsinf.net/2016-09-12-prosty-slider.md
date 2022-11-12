@@ -26,4 +26,4 @@ W projekcie **sflider** wykorzystałem kilka wartych wspomnienia rozwiązań:
 
 Kod źródłowy: <https://github.com/danielskowronski/sflider>
 
-Demo: https://blog.dsinf.net/wp-content/uploads/2016/09/sflider-demo/01_simple.html
+Demo: /wp-content/uploads/2016/09/sflider-demo/01_simple.html

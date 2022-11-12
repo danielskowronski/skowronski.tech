@@ -8,7 +8,7 @@ excerpt: |
   
   Po przeklikaniu się przez tragiczne menu webowe (które swoją drogą odcina dostęp do panelu na urządzeniu) udało mi się wprowadzić parametry serwera SMTP. Wybrałem gotowy serwer który mam dostępny razem z hostingiem na mydevilu. Wszystko pięknie a tam: "CANNOT CONNECT – SMTP Server".
 url: /2019/04/kombajn-konicaminolta-i-cannot-connect-smtp-server/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2019/04/device.gif
+featured_image: /wp-content/uploads/2019/04/device.gif
 tags:
   - email
   - hardware
@@ -21,10 +21,10 @@ Po przeklikaniu się przez tragiczne menu webowe (które swoją drogą odcina do
 
 <ul class="is-layout-flex wp-block-gallery-5 wp-block-gallery columns-2 is-cropped">
   <li class="blocks-gallery-item">
-    <figure>![](https://blog.dsinf.net/wp-content/uploads/2019/04/error_device.png)</figure>
+    <figure>![](/wp-content/uploads/2019/04/error_device.png)</figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure>![](https://blog.dsinf.net/wp-content/uploads/2019/04/error_web-1.png)</figure>
+    <figure>![](/wp-content/uploads/2019/04/error_web-1.png)</figure>
   </li>
 </ul>
 
@@ -33,7 +33,7 @@ Po przeklikaniu się przez tragiczne menu webowe (które swoją drogą odcina do
 
 Drobna uwaga: [windowsowy build][1] wymaga DLLa winpcap'a - jeśli instalowaliśmy wiresharka przez chocolatey trzeba osobno doinstalować globalnie dostępną bibliotekę.<figure class="wp-block-image">
 
-![](https://blog.dsinf.net/wp-content/uploads/2019/04/wireshark.png) </figure> 
+![](/wp-content/uploads/2019/04/wireshark.png) </figure> 
 
 Co się okazuje? Że drukarka zawsze wysyła nazwę hosta w komendzie EHLO jako **DIGITAL_MFP**, a EXIM nie lubi "podłogi" w nazwie hosta. W odpowiedzi rzuca **501 syntactically invalid ehlo argument(s).** 
 
@@ -45,7 +45,7 @@ Po chwili, albo i kilku godzinach researchu połączonego z eksperymentowaniem o
 
 Konfiguracja w webpanelu wymaga ustawienia adresu email "od" w trzech polach (E-mail Address, Login Name, User Name), adresu serwera w dwóch (SMTP Server Address, POP3 Server Address) oraz hasła (Password). POP3 nie trzeba ustawiać ale pole musi być wypełnione. Z moich obserwacji wynika że mój model nie umie rozwiązywać DNSów przy wysyłaniu maili więc osobiście podałem po prostu adres IP.<figure class="wp-block-image">
 
-![](https://blog.dsinf.net/wp-content/uploads/2019/04/config.png) </figure>
+![](/wp-content/uploads/2019/04/config.png) </figure>
 
  [1]: https://github.com/alandau/arpspoof
  [2]: https://heapdump.wordpress.com/2010/07/07/exim4-helo-config-in-debian/

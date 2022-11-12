@@ -5,7 +5,7 @@ type: post
 date: 2020-08-22T19:10:12+00:00
 excerpt: 'Jak większość osób mających małą sieć hostującą laba z eksperymentami i kilka prywatnych rozwiązań, które nie powinny być otwarte dla całego świata z szerokiego wachlarza powodów (od bezpieczeństwa infrastruktury po ratelimiting kluczy API zewnętrznych aplikacji) jednym z wyzwań, przed jakimi stoję, jest zabezpieczenie czegoś, co można by nazwać intranetem. Niekoniecznie VPNem, bo nie zewsząd da się do takowego podłączyć, a zwykle i tak chodzi o zestaw webaplikacji - nierzadko napisanych na kolanie bez cienia autoryzacji.'
 url: /2020/08/ochrona-wlasnego-intranetu-za-pomoca-rozwiazania-authelia-i-historia-odejscia-od-webserwera-caddy/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2020/08/authelia_square.png
+featured_image: /wp-content/uploads/2020/08/authelia_square.png
 tags:
   - caddy
   - https
@@ -326,41 +326,41 @@ Na koniec konfiguracji potrzebujemy ustawionego Duo. Wystarczy konto _Duo Free_,
 
 Po zalogowaniu się w domenie admin.duosecurity.com należy wybrać _Protect new application_ i odnaleźć pozycję _Partner Auth API_. Powstanie nowa aplikacja, którą możemy przemianować scrollując jej stronę niżej do _Settings._ To, co na pewno trzeba zrobić to zapisać w konfiguracji Authelii wartości _integration key, secret key_ oraz _domain_. <figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/08/1.png)</figure> <figure class="wp-block-image size-large">![](https://blog.dsinf.net/wp-content/uploads/2020/08/2.png)</figure> 
+![](/wp-content/uploads/2020/08/1.png)</figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2020/08/2.png)</figure> 
 
 #### Logowanie do systemu
 
 Po zrestartowaniu nginxa oraz Authelii czas na logowanie. <figure class="wp-block-image size-large is-resized">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/08/5.png)</figure> <figure class="wp-block-image size-large is-resized">![](https://blog.dsinf.net/wp-content/uploads/2020/08/9.png)</figure> 
+![](/wp-content/uploads/2020/08/5.png)</figure> <figure class="wp-block-image size-large is-resized">![](/wp-content/uploads/2020/08/9.png)</figure> 
 
 #### Enrollowanie użytkownika do Duo
 
 Proces enrolowania wykonujemy całkowicie po stronie panelu administracyjnego Duo. Aby dodać użytkownika należy wybrać _Users -> Add user_. Trzeba pamiętać, żeby dodać mu odpowiednie aliasy i adres e-mailowy pasujące do tych z bazy danych Authelii. Nie można wykorzystać użytkownika panelu administracyjnego Duo, ale nic nie stoi na przeszkodzie, by używać tego samego maila czy loginu.<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/08/3.png)</figure> <figure class="wp-block-image size-large">![](https://blog.dsinf.net/wp-content/uploads/2020/08/4a.png)</figure> 
+![](/wp-content/uploads/2020/08/3.png)</figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2020/08/4a.png)</figure> 
 
 Kolejny krok to dodanie urządzenia autoryzującego, w naszym wypadku telefonu z aplikacją Duo do obsługi powiadomień push. Po przewinięciu strony użytkownika do dołu znajdziemy link _Add phone_<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/08/10aa.png)</figure> 
+![](/wp-content/uploads/2020/08/10aa.png)</figure> 
 
 Następnie wybieramy typ urządzenia. _Phone_ jest przydatne przy enrollmencie po numerze telefonu - kod przychodzi SMSem, _Tablet_ to wybór dla urządzeń bez numeru telefonu - wiadomość przyjdzie mailem.<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/08/11.png)</figure> 
+![](/wp-content/uploads/2020/08/11.png)</figure> 
 
 Teraz należy aktywować urządzenie poprzez wysłanie maila z linkiem i kodem.<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/08/12aaa.png)</figure> <figure class="wp-block-image size-large">![](https://blog.dsinf.net/wp-content/uploads/2020/08/13.png)</figure> 
+![](/wp-content/uploads/2020/08/12aaa.png)</figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2020/08/13.png)</figure> 
 
 Mail przychodzi od Duo - co jest wygodniejsze niż opisana za chwilę opcja z TOTP od Authelii. Instrukcje dla użytkownika są dość proste.<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/08/14.png)</figure> 
+![](/wp-content/uploads/2020/08/14.png)</figure> 
 
 #### Enrollowanie użytkownika do klasycznego TOTP
 
 Zawsze można używać klasycznego TOTP jako backupu - za pomocą dowolnej aplikacji typu Authy czy Google Authenticator. Tutaj procedura jest nieco bardziej zawiła i wymaga użycia wspomnianego pliku z powiadomieniami lub setupu SMTP. Pierwszym krokiem jest wybranie po zalogowaniu do Authelii _Methods -> One-Time Password -> Not registered yet._ Następnie należy przegrepować plik z powiadomieniami, wybrać z niego link do rejestracji, otworzyć go i zeskanować dowolną aplikacją do TOTP kod QR.<figure class="wp-block-image size-large is-resized">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/08/6.png)</figure> <figure class="wp-block-image size-large">![](https://blog.dsinf.net/wp-content/uploads/2020/08/7-300x163.png)</figure> <figure class="wp-block-image size-large is-resized">![](https://blog.dsinf.net/wp-content/uploads/2020/08/8.png)</figure> 
+![](/wp-content/uploads/2020/08/6.png)</figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2020/08/7-300x163.png)</figure> <figure class="wp-block-image size-large is-resized">![](/wp-content/uploads/2020/08/8.png)</figure> 
 
 #### Podsumowanie
 
@@ -371,15 +371,15 @@ A decyzje twórców Caddiego łatwo się szkaluje - okazało się to kolejne opr
  [1]: https://web.archive.org/web/20190701123752/https://caddyserver.com/docs/http.login
  [2]: https://github.com/caddyserver/caddy/issues/2894
  [3]: https://smallstep.com/docs/cli/ca/certificate/
- [4]: https://blog.dsinf.net/wp-content/uploads/2020/08/1.png
- [5]: https://blog.dsinf.net/wp-content/uploads/2020/08/5.png
- [6]: https://blog.dsinf.net/wp-content/uploads/2020/08/9.png
- [7]: https://blog.dsinf.net/wp-content/uploads/2020/08/3.png
- [8]: https://blog.dsinf.net/wp-content/uploads/2020/08/4a.png
- [9]: https://blog.dsinf.net/wp-content/uploads/2020/08/10aa.png
- [10]: https://blog.dsinf.net/wp-content/uploads/2020/08/11.png
- [11]: https://blog.dsinf.net/wp-content/uploads/2020/08/12aaa.png
- [12]: https://blog.dsinf.net/wp-content/uploads/2020/08/13.png
- [13]: https://blog.dsinf.net/wp-content/uploads/2020/08/14.png
- [14]: https://blog.dsinf.net/wp-content/uploads/2020/08/6.png
- [15]: https://blog.dsinf.net/wp-content/uploads/2020/08/7.png
+ [4]: /wp-content/uploads/2020/08/1.png
+ [5]: /wp-content/uploads/2020/08/5.png
+ [6]: /wp-content/uploads/2020/08/9.png
+ [7]: /wp-content/uploads/2020/08/3.png
+ [8]: /wp-content/uploads/2020/08/4a.png
+ [9]: /wp-content/uploads/2020/08/10aa.png
+ [10]: /wp-content/uploads/2020/08/11.png
+ [11]: /wp-content/uploads/2020/08/12aaa.png
+ [12]: /wp-content/uploads/2020/08/13.png
+ [13]: /wp-content/uploads/2020/08/14.png
+ [14]: /wp-content/uploads/2020/08/6.png
+ [15]: /wp-content/uploads/2020/08/7.png

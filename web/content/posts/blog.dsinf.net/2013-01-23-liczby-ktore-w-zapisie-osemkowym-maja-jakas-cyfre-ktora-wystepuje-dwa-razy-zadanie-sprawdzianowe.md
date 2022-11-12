@@ -96,4 +96,4 @@ bool czy(int* tab_we, int rozm, int base){
 
 Przykładową implementację dla podanego założenia można pobrać [zad5.cpp][1].
 
- [1]: http://blog.dsinf.net/wp-content/uploads/2013/01/zad5.cpp_.txt
+ [1]: /wp-content/uploads/2013/01/zad5.cpp_.txt

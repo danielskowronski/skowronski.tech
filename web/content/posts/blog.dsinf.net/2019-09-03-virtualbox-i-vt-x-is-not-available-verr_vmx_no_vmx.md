@@ -5,7 +5,7 @@ type: post
 date: 2019-09-03T07:12:11+00:00
 excerpt: 'Używanie VirtualBoxa na Windowsie obok HyperV jest niemożliwe - tylko jeden hypervisor może na raz używać VT-x, czyli sprzętowego wsparcia wirtualizacji od Intela. Jednak poza brakiem włączenia wirtualizacji w BIOSie/UEFI czy aktywnym HyperV jest kilka innych czynników blokujących VirtualBoxa przed działaniem.'
 url: /2019/09/virtualbox-i-vt-x-is-not-available-verr_vmx_no_vmx/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2019/09/Untitled.png
+featured_image: /wp-content/uploads/2019/09/Untitled.png
 tags:
   - virtualbox
   - windows
@@ -13,7 +13,7 @@ tags:
 ---
 Używanie VirtualBoxa na Windowsie obok HyperV jest niemożliwe - tylko jeden hypervisor może na raz używać VT-x, czyli sprzętowego wsparcia wirtualizacji od Intela. Jednak poza brakiem włączenia wirtualizacji w BIOSie/UEFI czy aktywnym HyperV jest kilka innych czynników blokujących VirtualBoxa przed działaniem.<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2019/09/image-1.png) <figcaption>Lokalizacja ustawień funkcji systemu Windows</figcaption></figure> 
+![](/wp-content/uploads/2019/09/image-1.png) <figcaption>Lokalizacja ustawień funkcji systemu Windows</figcaption></figure> 
 
 Aby wyłączyć wszystko co związane z HyperV w ustawieniach funkcji systemu Windows (w "klasycznym" panelu sterowania) należy odznaczyć poniższe i zatwierdzić reboot:
 
@@ -33,7 +33,7 @@ Aby to uczynić należy pobrać od Microsoftu [**Device Guard and Credential Gua
 
 Po automatycznym rebopocie system zada nam dwa pytania - czy na pewno chcemy wyłączyć Device Guard oraz Credentials Guard. Pytania będą miały styl starego bootloadera Windowsowego (z ery siódemki - biały tekst na czarnym tle, zatwierdzanie klawiszem F3). <figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2019/09/image-2.png) </figure> 
+![](/wp-content/uploads/2019/09/image-2.png) </figure> 
 
 Po automatycznym rebopocie system zada nam dwa pytania - czy na pewno chcemy wyłączyć Device Guard oraz Credentials Guard. Pytania będą miały styl starego bootloadera Windowsowego (z ery siódemki - biały tekst na czarnym tle, zatwierdzanie klawiszem F3). 
 

@@ -40,7 +40,7 @@ Kolejny krok to włączenie CUPSowi zdalnego panelu administracyjnego - tak, że
 
 Następny etap to dodanie drukarki lub dwóch - w przypadku urządzeń DUO (osobno do etykiet o stałym rozmiarze i etykiet na ciągłej taśmie). W webowym UI, do którego autoryzujemy się login i hasłem użytkownika root będziemy chcieli osiągnąć coś takiego:<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/12/dymo_in_cups.png)</figure> 
+![](/wp-content/uploads/2020/12/dymo_in_cups.png)</figure> 
 
 ## Współdzielenie drukarki
 
@@ -74,29 +74,29 @@ Po restarcie `smdb` można konfigurować urządzenia klienckie.
 
 Na Windowsie sprawa wygląda następująco: należy podłączyć się pod udział sieciowy `\\RASPBERRY_PI_ADDRESS`, wybrać drukarkę i wskazać sterownik - ważne by wcześniej mieć już zainstalowany program _DYMO Connect_. <figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/12/03.png)</figure> 
+![](/wp-content/uploads/2020/12/03.png)</figure> 
 
 Po dodaniu drukarki warto potwierdzić, że wybraliśmy odpowiedni sterownik - ja miałem sporo zamieszania, przez fakt, że model 450 DUO to tak naprawdę dwa urządzenia w jednym, a dodatkowo model DUO to nie to samo.<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/12/04.png)</figure> 
+![](/wp-content/uploads/2020/12/04.png)</figure> 
 
 Po zakończeniu instalacji drukarki musimy koniecznie zrestartować _DYMO Connect_. Po uruchomieniu będziemy widzieć drukarkę/drukarki nazwaną zgodnie ze ścieżką udziału sieciowego - nie mamy na to wpływu.<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/12/01.png)</figure> 
+![](/wp-content/uploads/2020/12/01.png)</figure> 
 
 ## Ustawianie drukarki na macOS
 
 Na macOS sprawa wygląda równie prosto, jak nie prościej. W _Preferencjach systemowych_ należy wybrać _Drukarki i skanery_, a następnie kliknąć plusik w lewym dolnym rogu.<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27.png)</figure> 
+![](/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27.png)</figure> 
 
 Odnalezione za pomocą Bonjour drukarki ujrzymy na liście - sterownik zostanie wybrany automatycznie, o ile wcześniej zainstalowaliśmy _DYMO Label_. Ciekawostka z nazwami programów od DYMO - jakiś czas temu na obu platformach program nazywał się _Label_, ale z pół roku temu windowsowa wersja została przebudowana i nazwana _Connect_, a mackintoshowa - nie. Chociaż ta druga dalej dostaje aktualizacje. `</dygresja>`<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27-1.png)</figure> 
+![](/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27-1.png)</figure> 
 
 W programie _DYMO Label_ mamy teraz dostępne drukarki i wszystko działa:<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.18.55.png)</figure> 
+![](/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.18.55.png)</figure> 
 
 ## Podsumowanie
 
@@ -104,16 +104,16 @@ Kluczem do udostępniania drukarki DYMO w sieci lokalnej na kilka platform jest 
 
 Jako bonus ciekawostka: w macOS BigSur wydanym kilka miesięcy temu hosty Windowsowe dalej mają ikonkę antycznego monitora CRT z widocznym Blue Screenem.<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.30.14.png)</figure>
+![](/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.30.14.png)</figure>
 
  [1]: https://blog.dsinf.net/2019/12/proba-reanimacji-akumulatora-w-dymo-labelmanager-pnp/
  [2]: https://blog.dsinf.net/2020/05/dymo-tape-labels-na-linuksie/
  [3]: https://wiki.archlinux.org/index.php/CUPS/Printer_sharing
- [4]: https://blog.dsinf.net/wp-content/uploads/2020/12/dymo_in_cups.png
- [5]: https://blog.dsinf.net/wp-content/uploads/2020/12/03.png
- [6]: https://blog.dsinf.net/wp-content/uploads/2020/12/04.png
- [7]: https://blog.dsinf.net/wp-content/uploads/2020/12/01.png
- [8]: https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27.png
- [9]: https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27-1.png
- [10]: https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.18.55.png
- [11]: https://blog.dsinf.net/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.30.14.png
+ [4]: /wp-content/uploads/2020/12/dymo_in_cups.png
+ [5]: /wp-content/uploads/2020/12/03.png
+ [6]: /wp-content/uploads/2020/12/04.png
+ [7]: /wp-content/uploads/2020/12/01.png
+ [8]: /wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27.png
+ [9]: /wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27-1.png
+ [10]: /wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.18.55.png
+ [11]: /wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.30.14.png

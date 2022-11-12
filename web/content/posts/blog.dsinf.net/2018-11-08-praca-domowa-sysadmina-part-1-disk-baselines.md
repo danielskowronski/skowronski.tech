@@ -4,7 +4,7 @@ author: Daniel Skowroński
 type: post
 date: 2018-11-08T18:06:43+00:00
 url: /2018/11/praca-domowa-sysadmina-part-1-disk-baselines/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2018/11/sah1.png
+featured_image: /wp-content/uploads/2018/11/sah1.png
 tags:
   - baselines
   - bonnie++
@@ -74,7 +74,7 @@ Including JS code of each graph page in this document would be pointless but sca
 
 Pierwsze polegało na przeprowadzeniu testów obciążeniowych dysku i zebranie metryk wydajności w formie umożliwiającej łatwe zobrazowanie w formie wykresów.
 
-![](https://blog.dsinf.net/wp-content/uploads/2018/11/sah1.png)
+![](/wp-content/uploads/2018/11/sah1.png)
 
 ### Environment
 
@@ -557,7 +557,7 @@ As with bonnie++ they were run with 15 seconds overlap of idle state.
 ### Results {#summary}
 
   * baselines: [https://storage.dsinf.net/sah/task1_benchmarks/baselines.html][4]
-  * binaries: https://blog.dsinf.net/wp-content/uploads/sah/task1_benchmarks/bin/
+  * binaries: /wp-content/uploads/sah/task1_benchmarks/bin/
 
 <pre class="lang:default EnlighterJSRAW ">DELIMITER=\t' -i $f import_alldata.ctl; done; sleep 15; kill -9 `jobs -p`
 [1] 50658
@@ -569,9 +569,9 @@ As with bonnie++ they were run with 15 seconds overlap of idle state.
 ### Results {#summary}
 
   * baselines: [https://storage.dsinf.net/sah/task1_benchmarks/baselines.html][4]
-  * binaries: https://blog.dsinf.net/wp-content/uploads/sah/task1_benchmarks/bin/
+  * binaries: /wp-content/uploads/sah/task1_benchmarks/bin/
 
  [1]: #summary
  [2]: http://(https://ark.intel.com/pl/products/37104/Intel-Xeon-Processor-E5540-8M-Cache-2_53-GHz-5_86-GTs-Intel-QPI
- [3]: http://blog.dsinf.net/wp-content/uploads/2018/11/sah1.png
- [4]: https://blog.dsinf.net/wp-content/uploads/sah/task1_benchmarks/baselines.html
+ [3]: /wp-content/uploads/2018/11/sah1.png
+ [4]: /wp-content/uploads/sah/task1_benchmarks/baselines.html

@@ -5,7 +5,7 @@ type: post
 date: 2021-01-26T22:55:41+00:00
 excerpt: 'Listy kontrolne, w światach korpo-szczurów oraz IT znane bardziej jako checklisty, są bardzo przydatnym sposobem powtarzalnego wykonywania zadań, zwłaszcza okresowych. Jednym z nich może (moim zdaniem powinien) być przegląd bezpieczeństwa i prywatności osobistej - zestaw zadań od sprawdzenia, począwszy od weryfikacji czy do managera haseł nie wkradło się jakieś zbyt proste np. stworzone poza nim, poprzez wykonanie backupu kodów odzyskiwania MFA, aż po weryfikację uprawnień aplikacji na naszym telefonie.'
 url: /2021/01/okresowy-przeglad-bezpieczenstwa-i-prywatnosci-oraz-narzedzie-do-list-kontrolnych-process-street/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2021/01/Screenshot-2021-01-26-at-23.43.50.png
+featured_image: /wp-content/uploads/2021/01/Screenshot-2021-01-26-at-23.43.50.png
 
 ---
 Listy kontrolne, w światach korpo-szczurów oraz IT znane bardziej jako _checklisty_, są bardzo przydatnym sposobem powtarzalnego wykonywania zadań, zwłaszcza okresowych. Jednym z nich może (moim zdaniem powinien) być przegląd bezpieczeństwa i prywatności osobistej - zestaw zadań od sprawdzenia, począwszy od weryfikacji czy do managera haseł nie wkradło się jakieś zbyt proste np. stworzone poza nim, poprzez wykonanie backupu kodów odzyskiwania MFA, aż po weryfikację uprawnień aplikacji na naszym telefonie.
@@ -16,7 +16,7 @@ Zanim przejdę do opisu mojej listy kontrolnej, to opiszę narzędzie, z któreg
 
 Mój wybór w czasach, kiedy infrastrukturą prywatnie nie zarządzałem centralnie (choć i dziś nie wszystkie maszyny restartuję automatycznie tuż po aktualizacji kernela) padł na Process Street - [process.st][1]. Jest to narzędzie darmowe, umożliwiające zespołową pracę nad listami kontrolnymi z dość zaawansowaną paletą elementów list (w tym approvali), a także możliwością edycji templatki listy w trakcie jej wypełniania - co jest dość częstą potrzebą w przypadku list wykonywanych rzadziej niż raz na miesiąc.<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2021/01/Screenshot-2021-01-26-at-23.40.40-300x179.png)<figcaption>Ekran edycji kroku w checkliście na Process Street</figcaption></figure> 
+![](/wp-content/uploads/2021/01/Screenshot-2021-01-26-at-23.40.40-300x179.png)<figcaption>Ekran edycji kroku w checkliście na Process Street</figcaption></figure> 
 
 ### Lista kontrolna - bezpieczeństwo
 
@@ -90,7 +90,7 @@ Jeśli chcemy dbać o własne bezpieczeństwo i prywatność w internecie, poza 
 Niektórzy do opisanych wyżej kategorii i przykładów okresowych zadań dodadzą zapewne zupełnie inne pozycje jak na przykład audyty bezpieczeństwa, aktualizowanie oprogramowania w routerach itp - w moim wypadku te znajdują się na cotygodniowej checkliście maintenance'owej.
 
  [1]: https://process.st
- [2]: https://blog.dsinf.net/wp-content/uploads/2021/01/Screenshot-2021-01-26-at-23.40.40.png
+ [2]: /wp-content/uploads/2021/01/Screenshot-2021-01-26-at-23.40.40.png
  [3]: http://bitwarden.com/
  [4]: https://haveibeenpwned.com/
  [5]: https://monitor.firefox.com/

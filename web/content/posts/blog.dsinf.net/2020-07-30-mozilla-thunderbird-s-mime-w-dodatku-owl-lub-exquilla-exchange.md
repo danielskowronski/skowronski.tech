@@ -5,7 +5,7 @@ type: post
 date: 2020-07-30T19:50:39+00:00
 excerpt: Mozilla Thunderbird wraz z dodatkiem Owl lub Exquilla (oba od tej samej firmy) świetnie współpracuje z sererami mailowymi Microsoft Exchange (głównie używany w wypadku Office 365). Jednak z jakiegoś powodu nie można z ich pomocą skonfigurować S/MIME, czyli cyfrowego podpisywania i/lub szyfrowania maili za pomocą osobistych certyfikatów SSL. A przynajmniej nie w oczywisty sposób.
 url: /2020/07/mozilla-thunderbird-s-mime-w-dodatku-owl-lub-exquilla-exchange/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2020/07/exchange-thunderbird-smime-colage.png
+featured_image: /wp-content/uploads/2020/07/exchange-thunderbird-smime-colage.png
 
 ---
  
@@ -16,17 +16,17 @@ Drobna dygresja na start - darmowy certyfikat S/MIME do celów prywatnych można
 
 Jak już mamy nasz certyfikat w formacie PFX/P12 należy go zainstalować w Thunderbirdzie w analogiczny sposób do Firefoxa - też posiada własny cert store, dostępny przez _Menu -> Preferences -> Advanced -> Certificates -> Manage Certificates -> Import..._<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/07/Thunderbird-Preferences-Mozilla-Thunderbird_001.png) </figure> 
+![](/wp-content/uploads/2020/07/Thunderbird-Preferences-Mozilla-Thunderbird_001.png) </figure> 
 
 Następny krok to wybranie certyfikatu w ustawieniach konta mailowego - docelowo tak żeby zgadzało się identity jeśli mamy na przykład kilka adresów mailowych i odpowiadające im certyfikaty. Nie ma czegoś w rodzaju globalnego defaultowego certyfikatu.
 
 I to właśnie miejsce gdzie zaczyna się problem - ani _Owl_ ani _Exquilla_ nie mają w ustawieniach zakładki _Security_. Po kilkugodzinnym dłubaniu dla samego dłubania odkryłem jak to uczynić.<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/07/Account-Settings_002.png) <figcaption>Konto mailowe _daniel@skowron.ski_ dostarczane jest przez Owl i ma wyraźnie mniej zakładek</figcaption></figure> 
+![](/wp-content/uploads/2020/07/Account-Settings_002.png) <figcaption>Konto mailowe _daniel@skowron.ski_ dostarczane jest przez Owl i ma wyraźnie mniej zakładek</figcaption></figure> 
 
 W trakcie tego dłubania skowertowałem 3 pluginy w starym formacie tak, żeby dały się zainstalować na nowym silniku firefoxowym. Osiągnąłem to konwertując stare formaty manifestów _install.rdf_ i _chrome.manifest_ na _manifest.json_. Jest to dość proste co opisuje [dokumentacja Thunderbirda][1]. Same pluginy w formacie _.xpi_ to tak naprawdę przemianowane archiwa ZIP. Niestety żaden z nich nie pomógł mi wybrać certyfikatu do podpisywania maili, lecz jeden z nich dał wskazówkę - tym czego szukałem była modyfikacja konfiguracji Thunderbirda - taka jak w firefoxie dostępna jest przez `about:config`_._ W kliencie mailowym dostępne są one pod ścieżką menu: _Menu -> Preferences -> Advanced -> General -> Config Editor_.<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/07/Thunderbird-Preferences-Mozilla-Thunderbird_003.png) </figure> 
+![](/wp-content/uploads/2020/07/Thunderbird-Preferences-Mozilla-Thunderbird_003.png) </figure> 
 
 Klucze konfiguracji które nas interesują są poniżej. `X` w `idX` to numeryczny ID profilu klienta poczty - wystarczy wpisywać w pole _search_ wpisywać kolejno id1, id2, id3... żeby połapać się który profil ma który ID, ale generalnie są one numerowane po kolei.
 
@@ -39,10 +39,10 @@ Przy okazji warto polecić plugin Enigmail, który poza supportem OpenPGP umożl
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure>![](https://blog.dsinf.net/wp-content/uploads/2020/07/Write-cert-test-Thunderbird_004.png)<figcaption class="blocks-gallery-item__caption">Tworzenie...</figcaption></figure>
+    <figure>![](/wp-content/uploads/2020/07/Write-cert-test-Thunderbird_004.png)<figcaption class="blocks-gallery-item__caption">Tworzenie...</figcaption></figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure>![](https://blog.dsinf.net/wp-content/uploads/2020/07/Selection_005.png)<figcaption class="blocks-gallery-item__caption">i odczytywanie podpisanego maila.</figcaption></figure>
+    <figure>![](/wp-content/uploads/2020/07/Selection_005.png)<figcaption class="blocks-gallery-item__caption">i odczytywanie podpisanego maila.</figcaption></figure>
   </li>
 </ul></figure>
 

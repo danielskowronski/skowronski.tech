@@ -5,7 +5,7 @@ type: post
 date: 2021-04-07T21:00:51+00:00
 excerpt: Kończąc opisane dwa miesiące temu zmiany w polityce prywatności (https://blog.dsinf.net/2021/02/niedawne-ulepszenia-prywatnosci-uzytkownikow-blog-dsinf-net-i-foto-dsinf-net/), skończyłem projekt usuwania zbędnych danych z logów dostępu nginxa. Opiszę pokrótce gotowy fragment pliku konfiguracyjnego serwera i pokażę, jak skonfigurować Promtaila, żeby przetwarzał logi w nowym formacie.
 url: /2021/04/serwer-nginx-minimalizowanie-zbieranych-danych-w-logach-dostepu/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2021/04/nginx.jpg
+featured_image: /wp-content/uploads/2021/04/nginx.jpg
 xyz_twap_future_to_publish:
   - 'a:3:{s:26:"xyz_twap_twpost_permission";s:1:"1";s:32:"xyz_twap_twpost_image_permission";s:1:"1";s:18:"xyz_twap_twmessage";s:26:"{POST_TITLE} - {PERMALINK}";}'
 xyz_twap:
@@ -91,6 +91,6 @@ Jeśli używamy Promtaila do przekazywania logów do centralnego serwera przyda 
 
 Efektem zbierania logów przez Promtaila są takie oto dane widoczne w Loki:<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2021/04/Screenshot-2021-04-07-at-22.55.53-300x190.jpg)</figure>
+![](/wp-content/uploads/2021/04/Screenshot-2021-04-07-at-22.55.53-300x190.jpg)</figure>
 
- [1]: https://blog.dsinf.net/wp-content/uploads/2021/04/Screenshot-2021-04-07-at-22.55.53-scaled.jpg
+ [1]: /wp-content/uploads/2021/04/Screenshot-2021-04-07-at-22.55.53-scaled.jpg

@@ -4,7 +4,7 @@ author: Daniel Skowroński
 type: post
 date: 2019-03-05T09:18:22+00:00
 url: /2019/03/grafana-bez-logowania-wystawiona-na-swiat-ale-z-filtrowaniem-ip/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2019/03/AppLogo_Grafana.png
+featured_image: /wp-content/uploads/2019/03/AppLogo_Grafana.png
 tags:
   - grafana
   - proxy

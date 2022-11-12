@@ -23,16 +23,16 @@ Na prawie koniec słów kilka o informacjach, które możemy uzyskać z aplikacj
 Posłowie:  
 Odbiegając od recenzowanie software'u wspomnę o kilku informacjach praktycznych przywiezionych z podróży. Po pierwsze <u>Wadowice zaliczam do tych małych miejscowości, którymi przejazd to koszmar</u> - złożone są jaśli nie w całości to w połowie z dróg jednokierunkowych, a więc bez nawigacji się nie obędzie. A co jeśli jest remont? Tragedia. Powaliło mnie także na łopatki jedno rondo: znaki informujące gdzie ono prowadzi dwustronne (tj. kierowca jadący ku i od ronda wie gdzie jedzie), natomiast droga od centrum nie posiada takowego. Ponieważ nawigacja akurat się restartowała trzeba było objechać rondo dookoła.  
   
-![rondo1](https://blog.dsinf.net/wp-content/uploads/2012/08/rondo1.png)  
+![rondo1](/wp-content/uploads/2012/08/rondo1.png)  
   
 Dopiero po zorientowaniu się którym zjazdem do Krakowa zauważyłem drogowskazik typu strzałka z napisem "Kraków".  
   
-![rondo2](https://blog.dsinf.net/wp-content/uploads/2012/08/rondo2.png)  
+![rondo2](/wp-content/uploads/2012/08/rondo2.png)  
   
 Chociaż autostrada A4 ma ręce i nogi, ładne, widoczne znaki i wyświetlacze, ale jak każda autostrada jest nudna. No poza Wielkim Bratem czającym się za monitorem kamer rozstawionych co jakiś czas. Nie znając Sygica można zgłupieć, bo obok drogi o oznaczeniu 4 jest A4. Przy odpowiednim zoomie nie widać A4 i można pojechać złą trasą.  
   
-![a4-vs-4](https://blog.dsinf.net/wp-content/uploads/2012/08/a4-vs-4.png)
+![a4-vs-4](/wp-content/uploads/2012/08/a4-vs-4.png)
 
- [1]: http://blog.dsinf.net/wp-content/uploads/2012/08/rondo1.png
- [2]: http://blog.dsinf.net/wp-content/uploads/2012/08/rondo2.png
- [3]: http://blog.dsinf.net/wp-content/uploads/2012/08/a4-vs-4.png
+ [1]: /wp-content/uploads/2012/08/rondo1.png
+ [2]: /wp-content/uploads/2012/08/rondo2.png
+ [3]: /wp-content/uploads/2012/08/a4-vs-4.png

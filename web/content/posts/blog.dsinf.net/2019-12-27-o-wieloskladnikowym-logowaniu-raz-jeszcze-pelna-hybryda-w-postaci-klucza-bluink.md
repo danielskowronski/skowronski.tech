@@ -5,7 +5,7 @@ type: post
 date: 2019-12-27T15:09:39+00:00
 excerpt: 'Podejść do U2F jest wiele i jak pokazuje Krypton - mogą być one ciekawsze od noszenia wielu Yubikeyów. Dziś krótka prezentacja klucza sprzętowego Bluink Key będącego w zasadzie najpełniejszą hybrydą sprzętowego klucza z aplikacją w zaufanym urządzeniu mobilnym.'
 url: /2019/12/o-wieloskladnikowym-logowaniu-raz-jeszcze-pelna-hybryda-w-postaci-klucza-bluink/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2019/12/bluink_logo.png
+featured_image: /wp-content/uploads/2019/12/bluink_logo.png
 tags:
   - mfa
   - security
@@ -15,7 +15,7 @@ tags:
 ---
 Podejść do U2F jest wiele i [jak pokazuje Krypton][1] - mogą być one ciekawsze od noszenia wielu Yubikeyów. Dziś krótka prezentacja klucza sprzętowego Bluink Key będącego w zasadzie najpełniejszą hybrydą sprzętowego klucza z aplikacją w zaufanym urządzeniu mobilnym.<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2019/12/1-1-300x225.jpg)<figcaption>Dwie instancje bohatera artykułu. Jeden z nich na skipassie z kartą dostępu.</figcaption></figure> 
+![](/wp-content/uploads/2019/12/1-1-300x225.jpg)<figcaption>Dwie instancje bohatera artykułu. Jeden z nich na skipassie z kartą dostępu.</figcaption></figure> 
 
 Rozwiązanie Bluink Key (<https://bluink.ca/key>) składa się z dwóch składników: aplikacji w smartfonie (iOS/Android) i dongla USB (korzystającego z Bluetooch 4.0) kosztującego $30 i dostarczanego przez kandayjską firmę Bluink Inc.
 
@@ -27,19 +27,19 @@ Zdecydowanie **ogromny jest zysk z minimalizacji ekspozycji sekretu na ekranie**
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure>![](https://blog.dsinf.net/wp-content/uploads/2019/12/4-1.jpg)</figure>
+    <figure>![](/wp-content/uploads/2019/12/4-1.jpg)</figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure>![](https://blog.dsinf.net/wp-content/uploads/2019/12/2.jpg)</figure>
+    <figure>![](/wp-content/uploads/2019/12/2.jpg)</figure>
   </li>
 </ul><figcaption class="blocks-gallery-caption">Ekrany aplikacji - parowanie używanego klucza i lista sekretów tekstowych z listą kluczy.</figcaption></figure> <figure class="is-layout-flex wp-block-gallery-11 wp-block-gallery columns-2 is-cropped">
 
 <ul class="blocks-gallery-grid">
   <li class="blocks-gallery-item">
-    <figure>![](https://blog.dsinf.net/wp-content/uploads/2019/12/5-1.jpg)</figure>
+    <figure>![](/wp-content/uploads/2019/12/5-1.jpg)</figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure>![](https://blog.dsinf.net/wp-content/uploads/2019/12/3-1.jpg)</figure>
+    <figure>![](/wp-content/uploads/2019/12/3-1.jpg)</figure>
   </li>
 </ul><figcaption class="blocks-gallery-caption"> Prompt U2F z listą tekstowych sekretów w tle oraz tryb zdalnego sterowania klawiatury i myszki.</figcaption></figure> 
 
@@ -56,6 +56,6 @@ Reasumując jest to dość ciekawa alternatywa, a na pewno praktyczny dodatek do
 Na koniec ważna uwaga - ostatnio klucze przestały być dostępne na Amazonie i wygląda na to że Bluink przerzucił się na sprzedaż na swojej stronie (<https://bluink.ca/buy>). Jeśli jednak byłyby ponownie dostępne na Amazonie to możliwe że wysyłka do Polski będzie dostępna tak jak poprzednio tylko z kanadyjskiej wersji serwisu (dostawa zajęła 5-6 tygodni).
 
  [1]: https://blog.dsinf.net/2019/08/mfa-dzieki-smartfonowi-oraz-garsc-dygresji-o-bezpieczenstwie/
- [2]: https://blog.dsinf.net/wp-content/uploads/2019/12/1-1-scaled.jpg
+ [2]: /wp-content/uploads/2019/12/1-1-scaled.jpg
  [3]: https://sekurak.pl/pendrive-przejmujacy-komputer-za-30-zlotych/
  [4]: https://www.schneier.com/blog/archives/2005/09/snooping_on_tex.html

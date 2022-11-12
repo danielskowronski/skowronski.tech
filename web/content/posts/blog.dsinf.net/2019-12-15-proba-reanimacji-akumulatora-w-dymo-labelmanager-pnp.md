@@ -5,7 +5,7 @@ type: post
 date: 2019-12-15T13:28:03+00:00
 excerpt: 'Dymo LabelManager PnP to dość zgrabna i tania drukarka etykiet na taśmach o szerokości do pół cala, a więc znalazła się i na moim biurku do etykietowania pojemników z elektroniką, podpisywania kabli czy puszek z herbatą (stworzyłem nawet generator etykiet na puszki - DymoTeaLabel). Jest z nią jednak pewien problem - akumulator. W tym artykule opiszę diagnozę problemu, próbę naprawy, odkrycie powszechności problemu i jego hackerskie obejście.'
 url: /2019/12/proba-reanimacji-akumulatora-w-dymo-labelmanager-pnp/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2019/12/2019-11-22-18.49.26_2.jpg
+featured_image: /wp-content/uploads/2019/12/2019-11-22-18.49.26_2.jpg
 tags:
   - dymo
   - hardware
@@ -14,7 +14,7 @@ tags:
 Dymo LabelManager PnP to dość zgrabna i tania drukarka etykiet na taśmach o szerokości do pół cala, a więc znalazła się i na moim biurku do etykietowania pojemników z elektroniką, podpisywania kabli czy puszek z herbatą (stworzyłem nawet generator etykiet na puszki - [DymoTeaLabel][1]). Jest z nią jednak pewien problem - akumulator. W tym artykule opiszę diagnozę problemu, próbę naprawy, odkrycie powszechności problemu i jego hackerskie obejście.
 
 <div class="wp-block-image">
-  <figure class="aligncenter size-large is-resized"><a href="https://blog.dsinf.net/wp-content/uploads/2019/12/2019-11-22-18.49.26_2-1.jpg">![](https://blog.dsinf.net/wp-content/uploads/2019/12/2019-11-22-18.49.26_2-1.jpg)</a><figcaption>Bohater artykułu wraz z lekkim spoilerem</figcaption></figure>
+  <figure class="aligncenter size-large is-resized"><a href="/wp-content/uploads/2019/12/2019-11-22-18.49.26_2-1.jpg">![](/wp-content/uploads/2019/12/2019-11-22-18.49.26_2-1.jpg)</a><figcaption>Bohater artykułu wraz z lekkim spoilerem</figcaption></figure>
 </div>
 
 #### Diagnoza i plan reanimacji
@@ -43,7 +43,7 @@ Reanimacja zakładała naładowanie "ręczne" akumulatora które powinno spowodo
       * banany-aligatorki łączące zasilacz z akumulatorem
       * przydały się jeszcze tymczasowo dolutowane kable do samego akumulatora gdyż żadne aligatorki nie były w stanie stabilnie złapać jego złączy<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2019/12/2019-11-16-23.48.02-300x225.jpg)</figure> 
+![](/wp-content/uploads/2019/12/2019-11-16-23.48.02-300x225.jpg)</figure> 
 
 #### Wstępne ładowanie
 
@@ -121,7 +121,7 @@ Po eweidentnym braku sukcesu postanowiłem sprawdzić czy tylko ja mam taki prob
 
 Może nieco w tonie teorii spiskowej o celowym postarzaniu sprzętu postanowiłem sprawdzić co znajduje się w akumulatorze - może jakiś podejrzanie wyglądający kondensator...<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2019/12/2019-11-18-22.04.06-300x209.jpg)<figcaption>Całość trzeba było zacząć od rozładowania baterii żeby uniknąć przypadkowego wybuchu</figcaption></figure> <figure class="wp-block-image size-large">![](https://blog.dsinf.net/wp-content/uploads/2019/12/2019-11-18-21.54.25-300x225.jpg)<figcaption>Tuż po otwarciu plastikowej obudowy</figcaption></figure> <figure class="wp-block-image size-large">![](https://blog.dsinf.net/wp-content/uploads/2019/12/2019-11-18-21.56.25-300x115.jpg)<figcaption>Wewnątrz pakietu ogniw owiniętego limonkową taśmą znajduje się tylko ta płytka</figcaption></figure> <figure class="wp-block-image size-large">![](https://blog.dsinf.net/wp-content/uploads/2019/12/2019-11-18-21.57.31-300x120.jpg)<figcaption>Druga strona poprzedniej płytki z terminalami ogniw i całego pakietu</figcaption></figure> 
+![](/wp-content/uploads/2019/12/2019-11-18-22.04.06-300x209.jpg)<figcaption>Całość trzeba było zacząć od rozładowania baterii żeby uniknąć przypadkowego wybuchu</figcaption></figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2019/12/2019-11-18-21.54.25-300x225.jpg)<figcaption>Tuż po otwarciu plastikowej obudowy</figcaption></figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2019/12/2019-11-18-21.56.25-300x115.jpg)<figcaption>Wewnątrz pakietu ogniw owiniętego limonkową taśmą znajduje się tylko ta płytka</figcaption></figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2019/12/2019-11-18-21.57.31-300x120.jpg)<figcaption>Druga strona poprzedniej płytki z terminalami ogniw i całego pakietu</figcaption></figure> 
 
 Płytka podłączona do ogniw 3.7V jest opisana jako **SP-PCM-0025** to wedle tego co udało mi się znaleźć na [starej aukcji z allegro][13] - układ zabezpieczający i balansujący ładowanie/rozładowanie ogniw, czyli coś czego by się można było spodziewać.
 
@@ -141,12 +141,12 @@ Cała historia skończyła się wystawieniem na aukcji starego urządzenia i zak
  [2]: https://www.gotronik.pl/trk-325d-zasilacz-laboratoryjny-0-32-00v-0-5-000a-p-4255.html
  [3]: https://www.uni-t.cz/en/p/multimeter-uni-t-ut-61c
  [4]: https://www.aliexpress.com/i/32827231119.html
- [5]: https://blog.dsinf.net/wp-content/uploads/2019/12/2019-11-16-23.48.02.jpg
+ [5]: /wp-content/uploads/2019/12/2019-11-16-23.48.02.jpg
  [6]: https://www.amazon.com/gp/customer-reviews/R1X9IT256W0NOL/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8&ASIN=B00464E5P2
  [7]: https://www.amazon.com/gp/customer-reviews/R3NJJ4COCTB1LO/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8&ASIN=B00464E5P2
  [8]: https://www.amazon.com/gp/customer-reviews/R37WZ32UO8Y5U5/ref=cm_cr_getr_d_rvw_ttl?ie=UTF8&ASIN=B00464E5P2
  [9]: https://www.amazon.com/gp/customer-reviews/R5D4P9BEXZVKH/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8&ASIN=B00464E5P2
- [10]: https://blog.dsinf.net/wp-content/uploads/2019/12/2019-11-18-22.04.06.jpg
- [11]: https://blog.dsinf.net/wp-content/uploads/2019/12/2019-11-18-21.56.25.jpg
- [12]: https://blog.dsinf.net/wp-content/uploads/2019/12/2019-11-18-21.57.31.jpg
+ [10]: /wp-content/uploads/2019/12/2019-11-18-22.04.06.jpg
+ [11]: /wp-content/uploads/2019/12/2019-11-18-21.56.25.jpg
+ [12]: /wp-content/uploads/2019/12/2019-11-18-21.57.31.jpg
  [13]: https://allegro.pl/oferta/2s-7-4v-8-4v-10a-pcb-bms-pcm-do-ogniw-li-ion-1szt-7018583908

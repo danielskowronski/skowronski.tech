@@ -4,14 +4,14 @@ author: Daniel Skowroński
 type: post
 date: 2019-03-11T09:19:29+00:00
 url: /2019/03/przelaczanie-sesji-uzytkownika-z-konta-administratora-w-windows-8/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2019/03/windows.png
+featured_image: /wp-content/uploads/2019/03/windows.png
 tags:
   - windows
 
 ---
 Czasem w domowym Windowsie trzeba przełączyć sesję na innego użytkownika, np. żeby upewnić się że ściąganie czy instalacja uruchomiona nie u nas poszła gładko, albo żeby podmienić komuś ustawienia np. usypiania komputera. Albo wykonać całą masę innych operacji bez wiedzy tego drugiego użytkownika, a przynajmniej bez resetowania mu hasła. Oczywiście zakładamy że posiadamy uprawnienia lokalnego administratora.<figure class="wp-block-image">
 
-![](https://blog.dsinf.net/wp-content/uploads/2019/03/windows.png) </figure> 
+![](/wp-content/uploads/2019/03/windows.png) </figure> 
 
 Windows Server z usługami terminalowymi problem rozwiązuje dosyć prosto:
 

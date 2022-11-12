@@ -5,7 +5,7 @@ type: post
 date: 2018-12-20T04:22:03+00:00
 excerpt: Moja główna stacja robocza to Dell Precision T5500 – nie taki mały potworek z mocno przesadzoną konfiguracją (kto montuje w niemal 10-letnim sprzęcie GTX1060?). Chodzi sobie grzecznie na Windowsie 10 głównie ze względu na gry. Poza tym głównie wykorzystywana jako host wirtualizacji laba i stacja robocza admina. Zazwyczaj odpalona nieprzerwanie. No ale jakoś parę miesięcy temu (jak się później okaże to dokładnie w kwietniu tego roku) komputer zaczął mieć problemy z trybem uśpienia.
 url: /2018/12/windows-10-i-problemy-z-wybudzaniem-z-uspienia/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2018/12/dellt5500.jpg
+featured_image: /wp-content/uploads/2018/12/dellt5500.jpg
 tags:
   - bios
   - hardware
@@ -40,12 +40,12 @@ Podstawowa checklista wyglądała tak:
 Dalej nic. A więc uznałem że czas przetestować _tryb&nbsp;debugowania_ po starym dobrym połączeniu szeregowym. Można włączyć przez _msconfig_ albo _bcdedit_ (szczegóły na [stronie Microsoftu][1]). Zacząłem od prymitywnego odczytu gołych danych bez użycia _windbg_ (nie mam drugiej maszyny z windowsem więc liczyłem na brak konieczności stawiania wirtualki). W momencie startu windows nadaje sygnały dla debuggera - _KDTARGET: Refeshing&nbsp;KD&nbsp;connection._ Ale w krytycznym momencie crashu wysyła także jakąś sekwencję danych której nie udało mi się odcyfrować - mimo testowania wszelkich baudrate'ów.  
 Tak oto prezentuje się dump ASCII przy 115200bps (wedle ustawień z windowsa) z podziałem na linie gdzie przewiduję granice sekwencji wiadomości:<figure class="wp-block-image">
 
-![](https://blog.dsinf.net/wp-content/uploads/2018/12/msg.png) </figure> 
+![](/wp-content/uploads/2018/12/msg.png) </figure> 
 
 Czas więc na _windbg_. [Pobrać go można łatwo][2], w obsłudze jest nieco trudniej. No i trzeba uważać na to które windbg odpalamy. Bo do menu start dodane są wersje x86, amd64 i arm. No i jak łatwo zgadnąć armowa się na x64 nie odapli.  
 Ale zasadniczo trzeba kliknąć _File/Kernel&nbsp;debug..._, wskazać parametry połączenia (polecam wybrać _reconnect_), warto ustawić _View/Verbose&nbsp;output_ i na koniec zrebootować windowsa którego się debuguje (inaczej się nie podłączy). Przez tryb verbose będzie się bootować długo, ale zobaczymy wszelkie moduły które są ładowane do jądra. Do normalnych celów testowania np. sterownika można by dać Ctrl+Break, ale to nie jest normalne debugowanie więc o tym nie w tym wpisie. <figure class="wp-block-image">
 
-![](https://blog.dsinf.net/wp-content/uploads/2018/12/VirtualBox_windbg_20_12_2018_04_35_45.png) </figure> 
+![](/wp-content/uploads/2018/12/VirtualBox_windbg_20_12_2018_04_35_45.png) </figure> 
 
 Co widać powyżej? Do zaznaczonego fragmentu mamy moduły ładowane na starcie, potem 2 zaznaczone linijki to moduły ładowane w czasie przechodzenia do trybu uśpienia S3. Na samym końcu nieistotny błąd samego windbg wynikający z odłączenia adaptera RS232 na USB. Jednak wcale nie uzyskujemy żadnych informacji o najważniejszej transmisji z crashu przy próbie wznowienia S0.  
 Po zdiagnozowaniu problemu i jego ostatecznych obejściu sprawdziłem czy tajemniczy sygnał się pojawia podczas normalnego przejścia S3->S0. Otóż nie.
@@ -54,7 +54,7 @@ W tym momencie uznałem że spróbuję w BIOSie wyłączyć wszystko co nie jest
 
 I wybudzanie z S3 zadziałało. Metodą prób i błędów włączając jedną opcję na raz doszedłem do zasadniczego problemu - **VT-d. Wystarczy go wyłączyć.**<figure class="wp-block-image">
 
-![](https://blog.dsinf.net/wp-content/uploads/2018/12/bios-300x225.jpg) <figcaption>W moim BIOSie VT-d wygląda tak</figcaption></figure> 
+![](/wp-content/uploads/2018/12/bios-300x225.jpg) <figcaption>W moim BIOSie VT-d wygląda tak</figcaption></figure> 
 
 [VT-d][3] w skrócie pozwala maszynom wirtualnym na bezpośredni (bez udziału OSu) dostęp do urządzeń PCI. Szansa że zechcemy skorzystać z jego mocy na starym sprzęcie jest niska więc nie zaszkodzi żyć z wyłączonym.
 

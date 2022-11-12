@@ -5,7 +5,7 @@ type: post
 date: 2021-02-21T13:57:36+00:00
 excerpt: "My research/hacking into TP-Link's Archer C6 router stock firmware to obtain root shell without physical disassembly - just by uploading manipulated backup file via Web UI. Lua on MIPS."
 url: /2021/02/hacking-into-tp-link-archer-c6-shell-access-without-physical-disassembly/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2021/02/logged_in.png
+featured_image: /wp-content/uploads/2021/02/logged_in.png
 xyz_twap_future_to_publish:
   - 'a:3:{s:26:"xyz_twap_twpost_permission";s:1:"0";s:32:"xyz_twap_twpost_image_permission";s:1:"1";s:18:"xyz_twap_twmessage";s:26:"{POST_TITLE} - {PERMALINK}";}'
 xyz_twap:
@@ -322,11 +322,11 @@ Compressing and encrypting back should be easy, right? Well, to compress it back
 
 Next section will only describe happy path and why some parameters were used - the discovery process took me a few hours in which I heavily used `man` and `hexdump` paired with `diff` to compare files. Any broken nesting of containers caused the following error in Web UI when I tried to upload the prepared file:<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2021/02/backup_struct_error_in_gui-300x225.png)</figure> 
+![](/wp-content/uploads/2021/02/backup_struct_error_in_gui-300x225.png)</figure> 
 
 Backup structure, when visualized, is kind of weird, but it's created on router with different tools so it may make sense.<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2021/02/ArcherC6BAckupStructure.png)</figure> 
+![](/wp-content/uploads/2021/02/ArcherC6BAckupStructure.png)</figure> 
 
 Few parameters to `gzip` and `tar` require explanation:
 
@@ -365,7 +365,7 @@ This is a place where I could `strace` Lua interpreter and see what commands are
 
 After I extracted that `new_config.bin` from MIPS VM via sandbox VM to my workstation I could finally upload proper hacked backup to Web UI of router. After a few minutes waiting for reboot I still had Internet connection and router UI worked fine. Time for SSH then:<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2021/02/logged_in.png)</figure> 
+![](/wp-content/uploads/2021/02/logged_in.png)</figure> 
 
 It works and admin user (while having non-zero UID) anyway has root user privileges. Mission accomplished.
 
@@ -383,6 +383,6 @@ One thing that helped me a lot when searching for various strings (especially ne
 
 <pre class="EnlighterJSRAW" data-enlighter-language="shell" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">for f in `find . -type f`; do echo "=== $f"; strings $f; done > ../squashfs_strings.txt</pre>
 
- [1]: https://blog.dsinf.net/wp-content/uploads/2021/02/backup_struct_error_in_gui.png
- [2]: https://blog.dsinf.net/wp-content/uploads/2021/02/ArcherC6BAckupStructure.png
- [3]: https://blog.dsinf.net/wp-content/uploads/2021/02/logged_in.png
+ [1]: /wp-content/uploads/2021/02/backup_struct_error_in_gui.png
+ [2]: /wp-content/uploads/2021/02/ArcherC6BAckupStructure.png
+ [3]: /wp-content/uploads/2021/02/logged_in.png

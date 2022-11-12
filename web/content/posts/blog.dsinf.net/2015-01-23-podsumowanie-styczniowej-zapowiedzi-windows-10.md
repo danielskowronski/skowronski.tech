@@ -7,7 +7,7 @@ excerpt: |
   Konferencja z 21 stycznia zapowiedziała bardzo dużo ilościowo i jakościowo odnośnie Windowsa 10. Dla mnie najważniejszą ideą było ogłoszenie pełnej przenośności (<em>experience mobility</em>) i ciągłości pracy niezależnid od urządzenia oraz dodawanie nowych platform.<br />
   Ale po kolei...
 url: /2015/01/podsumowanie-styczniowej-zapowiedzi-windows-10/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2015/01/win101.png
+featured_image: /wp-content/uploads/2015/01/win101.png
 tags:
   - microsoft
   - windows
@@ -39,4 +39,4 @@ Co z tego wszystkiego wynika? Po pierwsze MS naprawdę używa najlepszych ludzi 
 
 Co dla mnie chyba jednak najważniejsze: **następne releasy Win10 Tech Preview! Wersja PC w czwartym tygodniu stycznia, a WinPhone już w lutym** (Cortana, CI, poprawki UI desktop i Spartan).
 
-![win10](https://blog.dsinf.net/wp-content/uploads/2015/01/win101.png)
+![win10](/wp-content/uploads/2015/01/win101.png)

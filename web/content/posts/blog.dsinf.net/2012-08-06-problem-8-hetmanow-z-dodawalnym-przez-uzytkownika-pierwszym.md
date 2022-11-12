@@ -91,4 +91,4 @@ void wstawHetmana(int wiersz)
 }
 </pre>
 
- [1]: http://blog.dsinf.net/wp-content/uploads/2012/08/hetmaty.cpp_.txt
+ [1]: /wp-content/uploads/2012/08/hetmaty.cpp_.txt

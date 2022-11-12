@@ -4,7 +4,7 @@ author: Daniel Skowroński
 type: post
 date: 2019-08-27T19:54:14+00:00
 url: /2019/08/mfa-dzieki-smartfonowi-oraz-garsc-dygresji-o-bezpieczenstwie/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2019/07/Kryptonite_DC_Comics.jpg
+featured_image: /wp-content/uploads/2019/07/Kryptonite_DC_Comics.jpg
 tags:
   - iphone
   - mfa

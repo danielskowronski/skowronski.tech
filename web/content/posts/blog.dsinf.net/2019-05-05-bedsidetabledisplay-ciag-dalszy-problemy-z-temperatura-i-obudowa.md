@@ -5,7 +5,7 @@ type: post
 date: 2019-05-05T10:33:49+00:00
 excerpt: BedsideTableDisplay czyli zegar na szafkę nocną mocno z InfluxDB korzystający opisywałem jakiś czas temu. Tym razem opiszę nieoczekiwane problemy z grzaniem się mikroprocesora, kwestię pomiaru temperatury "przy łóżku" oraz jak rozwiązałem kwestię jasności wyświetlacza.
 url: /2019/05/bedsidetabledisplay-ciag-dalszy-problemy-z-temperatura-i-obudowa/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2019/05/2.jpg
+featured_image: /wp-content/uploads/2019/05/2.jpg
 
 ---
 [BedsideTableDisplay czyli zegar na szafkę nocną mocno z InfluxDB korzystający][1] opisywałem jakiś czas temu. Tym razem opiszę nieoczekiwane problemy z grzaniem się mikroprocesora, kwestię pomiaru temperatury "przy łóżku" oraz jak rozwiązałem kwestię jasności wyświetlacza.
@@ -18,12 +18,12 @@ Na początku w lodówce - tu brak odchyłów, choć można było zauważyć że 
 
 Kolej na ułożenie w temperaturze lekko wyższej od pokojowej czyli na biurku. Tu znudzony czekaniem na wyrównanie temperatury schładzałem oba termometry sprężonym powietrzem odwróconym do góry nogami. Znowu BTD nagrzewał się dużo szybciej, ale tym razem różnica w pomiarze ustabilizowanym wynosiła 2-3 stopnie. Dużo.<figure class="wp-block-image">
 
-![](https://blog.dsinf.net/wp-content/uploads/2019/05/1-300x291.jpg) <figcaption>_Zdjęcie późniejsze, radiatory będą dołożone w dalszej fazie eksperymentowania  
+![](/wp-content/uploads/2019/05/1-300x291.jpg) <figcaption>_Zdjęcie późniejsze, radiatory będą dołożone w dalszej fazie eksperymentowania  
 DS18B20 ukrywa się między nóżkami fotorezystora._</figcaption></figure> 
 
 Po zweryfikowaniu że jak każdy chip tak DS28B20 może mieć pewne odchyły spróbowałem go wymienić na zapasowy - dalej to samo. Wtedy dotarło do mnie że może któryś ze scalaków grzeje się nadmiernie i powoduje zwiększenie temperatury całego BTD. Pomiar "z palca" wydawał się potwierdzać teorię więc wyposażyłem się w pirometr - zakup kamery termowizyjnej do tego projektu byłby lekką przesadą 😉 <figure class="wp-block-image">
 
-![](https://blog.dsinf.net/wp-content/uploads/2019/05/2-300x225.jpg) </figure> 
+![](/wp-content/uploads/2019/05/2-300x225.jpg) </figure> 
 
 Pomiary w izolowanej szafce w chłodnym pomieszczeniu potwierdziły że scalaki na Wemos D1 Mini Pro istotnie wpływają na temperaturę całości.
 
@@ -164,10 +164,10 @@ Rozwiązanie problemu było w zasadzie oczywiste, ale unikałem go trochę by za
 
 <ul class="is-layout-flex wp-block-gallery-7 wp-block-gallery columns-2 is-cropped">
   <li class="blocks-gallery-item">
-    <figure>![](https://blog.dsinf.net/wp-content/uploads/2019/05/4-225x300.jpg)</figure>
+    <figure>![](/wp-content/uploads/2019/05/4-225x300.jpg)</figure>
   </li>
   <li class="blocks-gallery-item">
-    <figure>![](https://blog.dsinf.net/wp-content/uploads/2019/05/5-225x300.jpg)</figure>
+    <figure>![](/wp-content/uploads/2019/05/5-225x300.jpg)</figure>
   </li>
 </ul>
 
@@ -177,7 +177,7 @@ Skoro termometr miał wrócić do sypialni to czas najwyższy zająć się jasno
 
 Jako że maksymalna jasność potrzebna jest i tak rzadko to dołożyłem mocno hardware'owe rozwiązanie - przyciemnioną plexi. Przy okazji całość trafiła do jakiegoś luźnego pudełka kuchennego - trochę jako stelaż dla plexi (odziedziczonego po innym projekcie więc nieco za dużego), trochę jako stabilizacja, bowiem BTD był tak mały że sztywny kabel zasilający powodował że ciężko było utrzymać go w pożądanym miejscu<figure class="wp-block-image">
 
-![](https://blog.dsinf.net/wp-content/uploads/2019/05/3-300x237.jpg) </figure>
+![](/wp-content/uploads/2019/05/3-300x237.jpg) </figure>
 
  [1]: http://BedsideTableDisplay czyli zegar na szafkę nocną mocno z InfluxDB korzystający
  [2]: https://wiki.wemos.cc/products:retired:d1_mini_pro_v1.1.0

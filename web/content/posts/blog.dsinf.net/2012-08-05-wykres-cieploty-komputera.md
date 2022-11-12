@@ -110,5 +110,5 @@ print "\n";
 
 Sam plik perla można pobrać [tutaj][1], natomiast niezbędna biblioteka GD jest dostępna [tutaj][2]. Kilka słów co do wymogów pod Linuksem. Oczywistością jest pakiet acpi, który wszędzie nazywa się tak samo (nawet w ubuntu).
 
- [1]: http://blog.dsinf.net/wp-content/uploads/2012/08/cieplo.pl_.txt
+ [1]: /wp-content/uploads/2012/08/cieplo.pl_.txt
  [2]: http://search.cpan.org/~lds/GD-2.11/GD.pm

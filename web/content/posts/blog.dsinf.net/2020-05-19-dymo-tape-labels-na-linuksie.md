@@ -5,7 +5,7 @@ type: post
 date: 2020-05-19T21:49:22+00:00
 excerpt: 'Od jakieś czasu jestem szczęśliwym posiadaczem drukarki etykiet Dymo - LabelWriter 450 Duo. A od niedawna w końcu wróciłem do Linuksa jako głównego systemu na stacji roboczej. Mój sukces z tym podwójnym urządzeniem - potrafi ono bowiem drukować zarówno etykiety prostokątne jak i na taśmie - był połowiczny: etykiety o stałych wymiarach nie stanowią problemu dla programu gLabels. Natomiast te drukowane na taśmie typu D1 (a więc o stałej wysokości, ale zmiennej długości) nijak nie chcą współpracować z żadnym znanym mi programem. '
 url: /2020/05/dymo-tape-labels-na-linuksie/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2020/05/dymo450.jpeg
+featured_image: /wp-content/uploads/2020/05/dymo450.jpeg
 tags:
   - drukarka
   - dymo
@@ -14,11 +14,11 @@ tags:
 ---
 Od jakieś czasu jestem szczęśliwym posiadaczem drukarki etykiet Dymo - LabelWriter 450 Duo. A od niedawna w końcu wróciłem do Linuksa jako głównego systemu na stacji roboczej. Mój sukces z tym podwójnym urządzeniem - potrafi ono bowiem drukować zarówno etykiety prostokątne, jak i na taśmie - był połowiczny: etykiety o stałych wymiarach nie stanowią problemu dla programu gLabels. Natomiast te drukowane na taśmie typu D1 (a więc o stałej wysokości, ale zmiennej długości) nijak nie chcą współpracować z żadnym znanym mi programem. <figure class="wp-block-image size-large is-resized">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/05/dymo450.jpeg) </figure> 
+![](/wp-content/uploads/2020/05/dymo450.jpeg) </figure> 
 
 Na Windowsie i macOS sprawa wygląda prosto - dostarczone narzędzie _**DYMO** **Label**_, które niedawno zostało przebrandowane na _**DYMO Connect**_, bardzo sprawnie daje sobie radę. Ba, wystawia nawet webowe API dostępne na localhoście które pozwala na generowanie etykiet na przykład w przeglądarce. Ten ostatni fakt wykorzystuję w moim generatorze etykiet do puszek herbaty - _**DymoTeaLabel**_, który jest dostępny [na githubie][1].<figure class="wp-block-image size-large">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/05/dymo_connect.jpg) <figcaption>Tak prezentuje się DYMO Connect</figcaption></figure> 
+![](/wp-content/uploads/2020/05/dymo_connect.jpg) <figcaption>Tak prezentuje się DYMO Connect</figcaption></figure> 
 
 Oczywiście artykułu by nie było, gdyby któreś z oficjalnych narzędzi odpalało się na Wine. Odpala się za to w VirtualBoxie, no ale bez przesady - na pewno da się pominąć Windowsa.
 
@@ -285,14 +285,14 @@ end sub</pre>
 
 Żeby móc łatwo wywołać świeżo stworzone makra można je dodać jako przyciski do interfejsu Writera. Jak się okazuje sam dokument ODT może zawierać customowe menu. <figure class="wp-block-image size-large is-resized">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/05/libreoffice-customize.jpg) <figcaption>Aby dodać przycisk menu dostępny w konkretnym dokumencie (zapisany w pliku) wystarczy wybrać _Tools/Customize_, a następnie zmienić _Scope_ na dokument.</figcaption></figure> 
+![](/wp-content/uploads/2020/05/libreoffice-customize.jpg) <figcaption>Aby dodać przycisk menu dostępny w konkretnym dokumencie (zapisany w pliku) wystarczy wybrać _Tools/Customize_, a następnie zmienić _Scope_ na dokument.</figcaption></figure> 
 
 Pozostaje jedynie podpisać cyfrowo dokument tak, żeby LibreOffice nie krzyczał na nas, że w dokumencie są makra, a makra to jak wiadomo w 99% wirusy.
 
   
 Aby to osiągnąć, skorzystałem z cert stora z Firefoxa gdzie mam załadowany certyfikat osobisty do podpisywania emaili.<figure class="wp-block-image size-large is-resized">
 
-![](https://blog.dsinf.net/wp-content/uploads/2020/05/libreoffice-certpath.jpg) <figcaption>Aby wybrać skąd LibreOffice będzie brał certyfikaty, należy wybrać _Tools/Options_ a następnie otworzyć widok _Security_ a w nim _Certificate..._</figcaption></figure> 
+![](/wp-content/uploads/2020/05/libreoffice-certpath.jpg) <figcaption>Aby wybrać skąd LibreOffice będzie brał certyfikaty, należy wybrać _Tools/Options_ a następnie otworzyć widok _Security_ a w nim _Certificate..._</figcaption></figure> 
 
 Ważna uwaga szczególnie dla ubuntowców - LibreOffice musi być zainstalowany z pakietu deb, a nie ze snapa - w przeciwnym wypadku wystąpi spory problem z uprawnieniami.
 
@@ -304,4 +304,4 @@ Ludziom przejmującym się bezpieczeństwem pozostaje zbudowanie własnego dokum
 
  [1]: https://github.com/danielskowronski/DymoTeaLabel
  [2]: https://www.gnu.org/software/enscript/
- [3]: http://blog.dsinf.net/wp-content/uploads/2020/05/DymoTape.odt
+ [3]: /wp-content/uploads/2020/05/DymoTape.odt

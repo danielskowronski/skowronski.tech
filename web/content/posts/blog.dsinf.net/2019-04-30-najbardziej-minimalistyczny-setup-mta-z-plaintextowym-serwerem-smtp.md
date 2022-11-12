@@ -5,7 +5,7 @@ type: post
 date: 2019-04-30T13:04:16+00:00
 excerpt: Wymaganie które postawiłem gotowemu setupowi to MTA który umie przesyłać maile od lokalnych użytkowników unixowych zalogowanych zdalnie po SMTP za pomocą auth plain w trybie plaintext, a relay jest zablokowany (żeby serwer nie stał się ofiarą spamerów).
 url: /2019/04/najbardziej-minimalistyczny-setup-mta-z-plaintextowym-serwerem-smtp/
-featured_image: https://blog.dsinf.net/wp-content/uploads/2019/04/1200px-Postfix-logo.svg_.png
+featured_image: /wp-content/uploads/2019/04/1200px-Postfix-logo.svg_.png
 tags:
   - linux
   - postfix

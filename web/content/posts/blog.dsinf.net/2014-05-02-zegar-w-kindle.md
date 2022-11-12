@@ -15,7 +15,7 @@ tags:
 W kindlach definitywnie brakowało mi zegarka. Podobno w pierwszej generacji dało się wyświetlić tekstowy za pomocą Alt+T. Dla nowszych modeli istnieje porada "wciśnij klawisz menu" - pojawia się pasek systemowy na górze z zegarkiem. Ale to nie jest żadne rozwiązanie.  
 Oczywiście - napisałem na to skrypt 🙂
 
-![Kindle - zegarek](https://blog.dsinf.net/wp-content/uploads/2014/05/WP_20140502_001-300x225.jpg)
+![Kindle - zegarek](/wp-content/uploads/2014/05/WP_20140502_001-300x225.jpg)
 
 Po pierwsze - **potrzebny nam będzie Launchpad**. LP to program pozwalający odpalać komendy za pomocą skrótów klawiaturowych. Rzecz jasna - "<span style="text-decoration: underline;">it may void your varranty</span>", ale kto by się przejmował. Szansa, że coś wybuchnie jest znikoma. Instrukcje - [tutaj][2] (minimum to LP). W skrócie instalacja polega na wgraniu na główną pamięć (tą dostępną po wpięciu do komputera przez USB) pliku .bin i wykonanie aktualizacji systemu.
 
@@ -67,6 +67,6 @@ Przydatne linki:
 
 &nbsp;
 
- [1]: http://blog.dsinf.net/wp-content/uploads/2014/05/WP_20140502_001.jpg
+ [1]: /wp-content/uploads/2014/05/WP_20140502_001.jpg
  [2]: http://www.eksiazki.org/odpicuj-swojego-kindle/
  [3]: http://wiki.mobileread.com/wiki/Eips

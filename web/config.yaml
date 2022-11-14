@@ -1,0 +1,92 @@
+---
+title: "[skowronski.tech - tech blog]"
+
+baseURL: "https://skowronski.tech/"
+
+languageCode: "en-us"
+enableRobotsTXT: true
+
+buildDrafts: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+theme: blowfish
+
+menu:
+  main:
+    - identifier: posts
+      name: posts
+      url: /posts/
+      weight: 10
+    - identifier: old_posts
+      name: old posts [PL]
+      url: /posts/blog.dsinf.net/
+      weight: 20
+    - identifier: homepage
+      name: homepage
+      url: https://skowron.ski/
+      weight: 30
+    - identifier: contact
+      name: contact
+      url: /contact/
+      weight: 40
+
+deployment:
+  targets:
+    name: s3
+    URL: s3://skowronski.tech?region=eu-central-1
+
+author:
+  name: "Daniel Skowroński"
+  image: "img/memoji.jpg"
+  headline: "[skowronski.tech - tech blog]"
+  links:
+    - github: "https://github.com/danielskowronski/"
+    - linkedin: "https://linkedin.com/in/daniel-skowronski/"
+    - blogger: "https://skowronski.tech/"
+    - keybase: "https://keybase.io/dskowronski"
+    - email: "mailto:daniel@skowron.ski"
+
+outputs:
+  home:
+    - "HTML"
+    - "RSS"
+    - "JSON"
+
+# https://nunocoracao.github.io/blowfish/docs/configuration/
+
+params:
+  colorScheme: "blue"
+  defaultAppearance: "dark"
+
+  logo: "img/logo.png"
+
+  enableSearch: true
+
+  homepage:
+    layout: "profile"
+    showRecent: true
+    showRecentItems: 20
+
+  list:
+    showSummary: true
+    showHero: true
+
+  article:
+    showEdit: false
+    showDate: true
+    showAuthor: true
+    showPagination: true
+    showReadingTime: true
+    showWordCount: true
+    sharingLinks: false
+    showBreadcrumbs: true
+    showHero: true
+    showTableOfContents: true
+    showTaxonomies: true
+
+  taxonomy:
+    showTermCount: true

@@ -19,7 +19,10 @@ Część dystrybucji ma sprytny instalator, na części trzeba to zrobić ręczn
 
 Windows trzyma plik .EFI w następującej lokacji:
 
-<pre class="lang:default EnlighterJSRAW " >&lt;partycja EFI&gt;\EFI\BOOT\BOOTX64.EFI</pre>
+```
+<partycja EFI>\EFI\BOOT\BOOTX64.EFI
+```
+
 
 Nazwa pliku musi być dokładnie taka. Niestety symlink nie pomoże bo to FAT + na tym etapie nie ma montowania innych partycji, trzeba plik brutalnie skopiować, Po takiej manipulacji BIOS, tfu... UEFI wykrywa system samoczynnie.
 

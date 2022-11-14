@@ -17,11 +17,17 @@ Potrzebujemy wpiąć się w trybie shadow. Jak to zrobić? Najpierw trzeba nada�
 
 Teraz trzeba sprawdzić jakie sesje są aktywne poprzez
 
-<pre class="lang:default EnlighterJSRAW">query session</pre>
+```cmd
+query session
+```
+
 
 Aby się podpiąć używamy polecenia
 
-<pre class="lang:default EnlighterJSRAW ">mstsc /shadow:&lt;ID&gt; /control /noConsentPrompt</pre>
+```cmd
+mstsc /shadow:<ID> /control /noConsentPrompt
+```
+
 
 Ostatnia flaga jest wbrew pozorom ważna - choć jesteśmy administratorem to trzeba jawnie zadeklarować chęć grzebania użytkownikowi po sesji bez jego zgody. Flaga /control pozwala włączyć/wyłączyć kontrolę - bez niej możemy bezpiecznie podglądać.
 

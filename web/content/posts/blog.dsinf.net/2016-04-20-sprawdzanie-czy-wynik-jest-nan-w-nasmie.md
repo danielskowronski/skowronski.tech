@@ -18,12 +18,16 @@ W tym artykule zakładam że Czytelnik wie jak działa FPU i co to jest ST0, ST1
 
 Problem wejściowy - mamy funkcję, która jest podatna na wystąpienie stanu NaN - dla celów artykułu przyjąłem zwykłe dzielenie. Mamy też kod w C, który służy tylko jako ułatwiacz wypisywania wartości na ekran. Jest też skrypt kompilujący i uruchamiający - zabrany wprost z mojego środowiska na laboratorium - oczekuje on plików NAZWA.c i NAZWA.asm i parametru wiersza poleceń NAZWA.
 
-<pre class="lang:default EnlighterJSRAW" title="odpal.sh">gcc -m32 -o $1_c.o -c $1.c &&
+```bash
+gcc -m32 -o $1_c.o -c $1.c &&
 nasm -felf32 -o $1_a.o $1.asm &&
 gcc -m32 -o $1 $1_a.o $1_c.o &&
-./$1</pre>
+./$1
+```
 
-<pre class="lang:default EnlighterJSRAW" title="funkcja.c">#include &lt;stdio.h&gt;
+
+```c++
+#include <stdio.h>
 extern int funkcja(double a, double b, double* c);
 
 int main()
@@ -37,9 +41,12 @@ int main()
     printf("NaN catched!\n");
   }
   return 0;
-}</pre>
+}
+```
 
-<pre class="lang:default mark:21 EnlighterJSRAW" title="funkcja.asm">segment .text
+
+```nasm
+segment .text
 global funkcja
 funkcja:
 
@@ -62,7 +69,9 @@ fstp
 mov esp, ebp
 pop ebp
 
-ret</pre>
+ret
+```
+
 
 W kodzie NASMowym linia 21 na razie zawsze zakłada że NaNa nie było. Na koniec będzie już lepiej 🙂
 
@@ -256,14 +265,18 @@ Tworząc kombinacje ifów możemy wyłapać NaN. Warto zwrócić uwagę, że mo�
 
 Można jednak uprościć program pomijając krok z SAHF (chociaż skoro już tak się zgłębiamy to warto wiedzieć o możliwościach tego rozkazu - dlatego nie pominąłem szczegółów) i sprawdzając sam rejestr AH po odczycie FSTSW.
 
-<pre class="lang:default EnlighterJSRAW " title="rozkład flag w rejestrze">SF:ZF:xx:AF:xx:PF:xx:CF</pre>
+```
+SF:ZF:xx:AF:xx:PF:xx:CF
+```
+
 
 A więc NaN będzie odpowiadał pseudoregexowi: \*0\**\*0\*1 - czyli XOR na 01000100 (\*->0, reszta negowana) a potem OR na 10111010 (\*->1, reszta na zera). Potem można zaNOTować wynik i użyć JZ.  
 Co lepsze? Tak czy inaczej kod będzie mało czytelny (jak chyba wszystko w assemblerze) więc pytanie czy potrzebujemy obsłużyć wszystkie stany z FXAM czy tylko jeden - jeśli jeden to 3 operacje bitowe i jeden skok warunkowy wydają się lepsze od etykiet na wszystkie kombinacje 3 stanów logicznych. Tak czy inaczej użycie któregokolwiek z tych rozwiązań bez kilku linijek komentarza to samobójstwo, albo umyślne zabójstwo naszego następcy...
 
 Ja proponuję wersję bez SAHF jako prostszą realizację tytułowego problemu (nadpisujemy linię 21 z funkcja.asm):
 
-<pre class="lang:default EnlighterJSRAW">fxam 
+```nasm
+fxam 
 fstsw ax
 sahf 
 
@@ -283,7 +296,9 @@ nan:
 mov eax, 0
 jmp koniec
 
-koniec:</pre>
+koniec:
+```
+
 
 &nbsp;
 

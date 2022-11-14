@@ -18,7 +18,7 @@ tags:
 ---
 Chcąc połączyć ze sobą dwa data-center lub dwa serwery hostujące kontenery potrzebujemy łączności site-to-site. Można to osiągnąć zwykłym VPNem w rodzaju OpenVPN i ręcznym ustawianiem routingu, jednak nie jest to zbyt wydajne, ani eleganckie. Zaprezentuję jak zestawić takie połączenie dzięki strongSwan sterującym zaimplementowanym w jądrze stosem IPsec - XFRM. Dodatkowo pokażę jak się do takiej sieci podłączyć z zewnątrz i podam kilka wskazówek dotyczących zestawienia tego u Hetznera - łącząc dedykowany serwer używający vSwitch'a z serwerem w Hetzner Cloud. Na koniec kilka słów o podłączaniu się do takiego VPNa z zewnątrz.
 
-## Topologia i wymagania wstępne {#topologia-i-wymagania-wstepne}
+## Topologia i wymagania wstępne
 
 Zacznijmy od wyjaśnienia, czym zajmują się poszczególne komponenty:
 
@@ -34,21 +34,23 @@ Co będzie nam potrzebne:
   * PSK (_pre shared key_) / hasło (np. długi alfanumeryczny ciągi) dla połączenia site-to-site
   * opcjonalnie dla klientów zewnętrznych: PKI, którego proste tworzenie opiszę pod koniec artykułu
 
-Topologia przykładowej sieci i usług wygląda następująco:<figure class="wp-block-image size-large">
+Topologia przykładowej sieci i usług wygląda następująco:
 
-![](/wp-content/uploads/2022/02/strongswan.drawio-1-300x260.png)</figure> 
 
-## Instalacja pakietów {#instalacja-pakietow}
+![](/wp-content/uploads/2022/02/strongswan.drawio-1.png)
+
+## Instalacja pakietów
 
 Wstępnym założeniem jest używanie Ubuntu Server z pakietem `netplan` do zarządzania połączeniami sieciowymi. Oczywiście każdy inny Linuks też zadziała z odpowiednimi modyfikacjami dla sterowania siecią.
 
 Do samego VPNa będą nam potrzebne dodatkowo `strongswan libcharon-extra-plugins libstrongswan-extra-plugins iptables`. 
 
-## Konfiguracja dodatkowych interfejsów (Hetzner vSwitch) {#konfiguracja-dodatkowych-interfejsow-hetzner-vswitch}
+## Konfiguracja dodatkowych interfejsów (Hetzner vSwitch) 
 
 Jeśli połączenie VPN będziemy realizować po sieci prywatnej takiej jak Hetzner vSwitch, na początek musimy skonfigurować odpowiednie interfejsy. Na maszynach wirtualnych Hetzner Cloud najlepiej skorzystać z gotowego narzędzia `hc-utils` (<https://docs.hetzner.com/cloud/networks/server-configuration/>). Na maszynach dedykowanych interfejs można ustawić za pomocą `netplan`. Przykładowy plik konfiguracyjny `/etc/netplan/01-netcfg.yaml` może wyglądać tak:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">---
+```yaml
+---
 network:
   version: 2
   renderer: networkd
@@ -75,21 +77,24 @@ network:
       routes:
         - on-link: true
           to: 172.16.0.0/24
-          via: 172.16.0.17</pre>
+          via: 172.16.0.17
+```
+
 
 Sekcja `ethernets` w powyższym prawdopodobnie będzie już skonfigurowana przez instalatora. Po zmianie pliku zmiany można zaaplikować przez użycie `netplan apply` lub `netplan try`.
 
-## Pułapka z MTU {#pulapka-z-mtu}
+## Pułapka z MTU
 
 To, co okazało się dla mnie istotne podczas używania połączenia to odpowiednie MTU. Linuks powinien sam dobrać odpowiednie, ale w moim wypadku ustawił wartość maksymalnego rozmiaru jednostki transportu na taką samą jak fizyczny interfejs, czyli 1500 bajtów. Ze względu na specyfikę Hetznerowego vSwitcha, wartość ta powinna być mniejsza, na przykład 1450 bajtów. Problem odkryłem, kiedy łączność z serwera dedykowanego do maszyny wirtualnej nawiązywana przez VLAN vSwitcha niby działała, ale połączenia SSH zawieszały się całkowicie na komunikacie `expecting SSH2_MSG_KEX_ECDH_REPLY` (widocznym przy trybie debugowania `ssh -vvvv`).
 
-## Konfiguracja strongSwan - site-to-site {#konfiguracja-strongswan-site-to-site}
+## Konfiguracja strongSwan - site-to-site
 
 Składnia pliku `/etc/ipsec.conf` jest dość prosta - sekcja `setup` określa globalne ustawienia, takie jak poziom szczegółowości logów, a sekcje `conn ...` określają konkretne połączenia. W sekcjach połączeń strona lewa to strona "nasza", a prawa to zdalna. Parametr `left` określa IP, na którym zostanie zestawione połączenie IPsec, a `leftsubnet` to podsieć, którą będziemy routować (podobnie dla `right`). Przykładowe pliki konfiguracyjne poniżej.
 
 Na serwerze A:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">config setup
+```cfg
+config setup
   charondebug="ike 1, knl 1, cfg 1"
   uniqueids=no
 
@@ -107,11 +112,14 @@ conn a-to-b
   ike=aes256-sha2_256-modp1024!
   keyexchange=ikev2
   esp=aes256-sha2_256!
-  reauth=no</pre>
+  reauth=no
+```
+
 
 Na serwerze B:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">config setup
+```cfg
+config setup
   charondebug="ike 1, knl 1, cfg 1"
   uniqueids=no
 
@@ -131,12 +139,17 @@ conn b-to-a
   ike=aes256-sha2_256-modp1024!
   keyexchange=ikev2
   esp=aes256-sha2_256!
-  reauth=no</pre>
+  reauth=no
+```
+
 
 Dodatkowo należy skonfigurować PSK w pliku `/etc/ipsec.secrets` (w obie strony PSK jest taki sam):
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">172.16.0.2  172.16.0.18 super-secret-psk
-172.16.0.18 172.16.0.2  super-secret-psk</pre>
+```cfg
+172.16.0.2  172.16.0.18 super-secret-psk
+172.16.0.18 172.16.0.2  super-secret-psk
+```
+
 
 Konfiguracja zawiera aż trzy pułapki. 
 
@@ -150,9 +163,11 @@ Jeśli połączenie ma być stabilne, a za dodatkową warstwę bezpieczeństwa o
 
 Namierzenie tego problemu zajęło mi dość dużo czasu, a było o tyle irytujące, że Prometheus, którego używam do monitorowania serwerów, bardzo szybko zauważał brak połączenia i wywoływał alerty w PagerDuty. Doprowadziło to do odświeżenia przeze mnie starego projektu _Sauron_, czyli narzędzia do monitorowania packet lossu do zadanych adresów IP i przepisania go tak, żeby mógł wysyłać wyniki do bazy danych InfluxDB. Projekt jest dostępny na GitHubie - <https://github.com/danielskowronski/sauron4/> 
 
-Moje pierwsze podejrzenie dotyczyło stabilności łącza prywatnego, jednak okazało się błędne. W celu badania jakichś zależności postawiłem taki oto dashboard w Grafanie:<figure class="is-layout-flex wp-block-gallery-51 wp-block-gallery has-nested-images columns-default is-cropped"> <figure class="wp-block-image size-large">
+Moje pierwsze podejrzenie dotyczyło stabilności łącza prywatnego, jednak okazało się błędne. W celu badania jakichś zależności postawiłem taki oto dashboard w Grafanie:
 
-![](/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana.png)</figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana.png)</figure> <figcaption class="blocks-gallery-caption">Jak widać - nic konkretnego nie widać poza pozorami regularności</figcaption></figure> 
+
+![](/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana.png)
+![Jak widać - nic konkretnego nie widać poza pozorami regularności](/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana.png)
 
 Dopiero analiza logów z `journalctl` skorelowanych z kilkoma punktami gdzie pokazał się packet loss jedynie na sieci routowanej przez VPN pokazał, w czym tkwi problem - `172.16.0.2 is initiating an IKE_SA` występował zawsze przed utratą połączenia. 
 
@@ -162,14 +177,17 @@ Dopiero analiza logów z `journalctl` skorelowanych z kilkoma punktami gdzie pok
 
 Aby tego uniknąć, należy zmienić ustawienie interfejsu sieciowego lxc za pomocą `lxc network edit lxdbr0` tak, by `config.ipv4.nat` miał wartość `false` oraz ręcznie ustawić maskaradę. Można to osiągnąć za pomocą takiego ustawienia iptables: 
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">MY_NET=10.1.0
+```bash
+MY_NET=10.1.0
 REMOTE_NET=10.2.0
 
 iptables-legacy \
   -t nat -A POSTROUTING \
   -s "${MY_NET}.0/16" ! -d 10.0.0.0/8 \
   -m comment --comment "10.0.0.0/8 lxdbr0" \
-  -j MASQUERADE</pre>
+  -j MASQUERADE
+```
+
 
 Aby wykonywał się przy każdym zrestartowaniu połączenia VPN, można dodać do `/etc/ipsec.conf` do sekcji `conn x-to-y` wpisy `rightupdown=` i `leftupdown=` z podaną ścieżką do naszego skryptu.
 
@@ -177,7 +195,8 @@ Aby wykonywał się przy każdym zrestartowaniu połączenia VPN, można dodać 
 
 Mając wszystkie pliki na miejscu można startować - serwis zazwyczaj nazywa się ipsec, choć może to być jedynie alias. W Ubuntu 21.10 usługa to `strongswan-starter.service`. Stan połączeń możemy sprawdzić za pomocą `ipsec status`:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">Routed Connections:
+```
+Routed Connections:
 ulthar-to-rlyeh{1}:  ROUTED, TUNNEL, reqid 1
 ulthar-to-rlyeh{1}:   10.1.0.0/16 === 10.2.0.0/16
 Security Associations (2 up, 0 connecting):
@@ -186,7 +205,9 @@ ulthar-to-rlyeh{695}:  INSTALLED, TUNNEL, reqid 1, ESP in UDP SPIs: xxxxxxxx_i x
 ulthar-to-rlyeh{695}:   10.1.0.0/16 === 10.2.0.0/16
 ulthar-to-rlyeh[684]: ESTABLISHED 35 minutes ago, 172.16.0.2[172.16.0.2]...172.16.0.18[172.16.0.18]
 ulthar-to-rlyeh{696}:  INSTALLED, TUNNEL, reqid 1, ESP in UDP SPIs: xxxxxxxx_i xxxxxxxx_o
-ulthar-to-rlyeh{696}:   10.1.0.0/16 === 10.2.0.0/16</pre>
+ulthar-to-rlyeh{696}:   10.1.0.0/16 === 10.2.0.0/16
+```
+
 
 Sama komenda `ipsec` pozwala na restartowanie połączeń, jednak jeśli używamy `systemctl` do startowania połączeń może pojawić się konflikt - osobiście używam `ipsec` tylko do diagnostyki, nie kontroli.
 
@@ -200,12 +221,15 @@ Na początek potrzebny będzie nam Root CA - możemy to załatwić jedną komend
 
 Następnie potrzebujemy certyfikatu dla serwera. Jeśli będziemy używać macOS lub iOS do łączenia się nie możemy używać ECDSA do tego certyfikatu (sam Root CA może być ECDSA) tylko standardowego RSA. Problem polega na tym, że niby macOS obsługuje kryptografię krzywej eliptycznej w IKEv2 (<https://support.apple.com/pl-pl/guide/deployment/depae3d361d0/web>), to nie można tego ustawić z normalnego interfejsu - jedynie przez narzędzia do generowania profili konfiguracyjnych (<https://wiki.strongswan.org/projects/strongswan/wiki/AppleIKEv2Profile> i <https://github.com/skowronski-cloud/skowronski-cloud-wiki/blob/master/rlyeh/03_vpn.md#note-on-key-type-selection>). Taki certyfikat ważny przez 5 lat możemy wygenerować w ten sposób:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">step certificate create ipsec.example.com ipsec.crt ipsec.key \
-     --kty RSA --size 4096 --ca root_ca.crt --ca-key root_ca_key \
-     --no-password --insecure \
-     --san ipsec.example.com --san 1.1.1.1 \
-     --not-after 43800h
-</pre>
+```bash
+step certificate create ipsec.example.com ipsec.crt ipsec.key \
+  --kty RSA --size 4096 --ca root_ca.crt --ca-key root_ca_key \
+  --no-password --insecure \
+  --san ipsec.example.com --san 1.1.1.1 \
+  --not-after 43800h
+
+```
+
 
 Flaga `--insecure` jest potrzebna, by ustawić brak hasła do klucza prywatnego. Jako SAN należy podać domenę, warto dodać też adres IP.
 
@@ -213,7 +237,8 @@ Certyfikat CA, serwera oraz klucz serwera wrzucamy jako pliki PEM odpowiednio do
 
 Aby dodać klientów do naszego VPNa, do `/etc/ipsec.conf` dodajemy:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">conn ikev2-vpn
+```cfg
+conn ikev2-vpn
   auto=add
   compress=no
   type=tunnel
@@ -242,7 +267,9 @@ conn ikev2-vpn-client_b
   also=ikev2-vpn
   rightid=client_b
   eap_identity=client_b
-  rightsourceip=10.0.255.200/32</pre>
+  rightsourceip=10.0.255.200/32
+```
+
 
 Poprawność instalacji kluczy możemy zweryfikować przy użyciu `ipsec listcerts` i `ipsec listcacerts`.
 
@@ -250,9 +277,12 @@ Sekcja `conn ikev2-vpn` pozwala stworzyć szablon dla konkretnych połączeń do
 
 W pliku `/etc/ipsec.secrets` musimy wskazać na certyfikat serwera oraz zdefiniować hasła każdego z klientów (dopasowywane według pola `eap_identity`):
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">: RSA /etc/ipsec.d/private/server-key.pem
+```cfg
+: RSA /etc/ipsec.d/private/server-key.pem
 client_a : EAP plaintext-password-for-client_a
-client_b : EAP plaintext-password-for-client_b</pre>
+client_b : EAP plaintext-password-for-client_b
+```
+
 
 Przykładowa konfiguracja zaufania certyfikatu i klienta VPN na macOS:<figure class="is-layout-flex wp-block-gallery-53 wp-block-gallery has-nested-images columns-default is-cropped"> <figure class="wp-block-image size-large">
 
@@ -265,10 +295,4 @@ Konfiguracja strongSwan jest w miarę prosta, lecz można wpaść na wiele puła
  [1]: https://wiki.strongswan.org/projects/strongswan/wiki/IpsecConf
  [2]: https://www.man7.org/linux/man-pages/man8/ip-xfrm.8.html
  [3]: https://man7.org/linux/man-pages/man8/ip-vrf.8.html
- [4]: /wp-content/uploads/2022/02/strongswan.drawio-1.png
- [5]: /wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana.png
- [6]: /wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana.png
  [7]: https://smallstep.com/docs/step-cli/reference/ca/certificate
- [8]: /wp-content/uploads/2022/02/macos_vpn_3.png
- [9]: /wp-content/uploads/2022/02/macos_vpn_1.png
- [10]: /wp-content/uploads/2022/02/macos_vpn_2.png

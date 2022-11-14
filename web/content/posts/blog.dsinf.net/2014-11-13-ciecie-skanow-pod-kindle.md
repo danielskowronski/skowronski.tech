@@ -30,7 +30,7 @@ Następna sprawa to ustawienie metadanych w PDFach - Kindle będzie wyświetlał
 </div>
 
 Ważna uwaga - te aplety Javy są podpisane cyfrowo jedynie przez autorów - nowa Java będzie się drzeć, że uruchamianie ich może być niebezpieczne. Owszem - może, jak każdego innego pliku binarnego. W razie paranoi kod źródłowy jest dostępny 😉  
-W pewnych wypadkach aplety w ogóle się nie uruchomią. Wówczas szukamy "Java settings" - w Windowsie ścieżka do exe to `c:\Program Files (x86)\Java\jre7\bin\javacpl.exe` (ale jest też w menu Start) i w zakładce _Security_ obniżamy poziom do _Medium_.  
+W pewnych wypadkach aplety w ogóle się nie uruchomią. Wówczas szukamy "Java settings" - w Windowsie ścieżka do exe to `c:\Program Files (x86)\Java\jre7\bin\javacpl.exe` (ale jest też w menu Start) i w zakładce _Security_ obniżamy poziom do _Medium_.  
 ![](/wp-content/uploads/2014/11/java_security0.png)
 
 Teraz za każdym razem będziemy pytani czy uruchomić dany aplet.

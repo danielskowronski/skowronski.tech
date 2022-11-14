@@ -24,17 +24,17 @@ Można oczywiście podłączyć laptopa czy peceta po HDMI i zainstalować na ni
 
 Rozwiązanie pierwsze (bo mam jeszcze jeden pomysł w zanadrzu) wykorzystuje fakt że od jakiegoś czasu po skończeniu starego projektu kurzył mi się w szufladzie **mały komputerek typu Raspberry PI - NanoPI M1** konkretnie.
 
-Plan jest prosty: podłączyć do niego drugą kartę sieciową (taka na USB to rzecz wybitnie tania, a i tak te 80-90mbps osiągniemy), wpiąć go pomiędzy router a telewizor, włączyć najprościej jak się da routing i dodać VPNa. <figure class="wp-block-image">
+Plan jest prosty: podłączyć do niego drugą kartę sieciową (taka na USB to rzecz wybitnie tania, a i tak te 80-90mbps osiągniemy), wpiąć go pomiędzy router a telewizor, włączyć najprościej jak się da routing i dodać VPNa.
 
-![](/wp-content/uploads/2019/05/hw-demo.jpg) </figure> 
+![](/wp-content/uploads/2019/05/hw-demo.jpg)
 
 W moim wypadku dostawcą jest [NordVPN][2] (kupiłem go zanim Niebezpiecznik zaczął go strasznie promować.) A jest tani przy 3 letnim planie i ma sporo serwerów które dość rzadko mają problemy z netflixem. Przynajmniej amerykańskim. Ale to już zaciekłość Netflixa - kiedyś odkryłem że wszystkie dostępne lokalizacje w korpo-VPNie zrzucają na netflixie na USA. 
 
 Dodatkową zaletą NordVPNa jest to że na Linuksie mamy gotową binarkę - szczerze powiedziawszy umarłem przy próbie postawienia IPseca
 
-Jeszcze tylko WebUI i gotowe.<figure class="wp-block-image">
+Jeszcze tylko WebUI i gotowe.
 
-![](/wp-content/uploads/2019/05/webui-demo.jpg) </figure> 
+![](/wp-content/uploads/2019/05/webui-demo.jpg)
 
 #### Całość konfiguracji opisałem na Githubie -  
 <https://github.com/danielskowronski/nordvpn-on-webos-via-linux-box>

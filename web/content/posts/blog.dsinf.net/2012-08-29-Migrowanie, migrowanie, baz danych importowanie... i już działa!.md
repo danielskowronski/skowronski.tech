@@ -1,7 +1,7 @@
 ---
 title: Migrowanie, migrowanie, baz danych importowanie… i już działa!
 type: post
-date: -001-11-30T00:00:00+00:00
+date: 2012-08-29T00:00:00+00:00
 url: /2012/08/Migrowanie, migrowanie, baz danych importowanie... i już działa!/
 
 ---

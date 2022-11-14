@@ -11,7 +11,9 @@ tags:
 ---
 Będąc lekko poddenerwowany "inteligencją" ósemki polegającą na zmianie języka systemowego na ruski po dodaniu nowego układu klawiatury wkurzyłem się kolejnym problem: podpinając kabel sieciowy do laptopa nie ujrzałem żadnego komunikatu systemowego. Wchodzę w cmd, odpalam 
 
-<pre class="EnlighterJSRAW bash">c:\Windows\System32\IPCONFIG.EXE</pre>
+```cmd
+c:\Windows\System32\IPCONFIG.EXE
+```
 
 (%PATH% jakimś cudem znikł).  
 Karta odłączona. 

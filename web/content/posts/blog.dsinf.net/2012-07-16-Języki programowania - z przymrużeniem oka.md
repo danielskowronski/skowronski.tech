@@ -1,7 +1,7 @@
 ---
 title: Języki programowania – z przymrużeniem oka
 type: post
-date: -001-11-30T00:00:00+00:00
+date: 2012-07-16T00:00:00+00:00
 url: '/2012/07/Języki programowania - z przymrużeniem oka/'
 
 ---

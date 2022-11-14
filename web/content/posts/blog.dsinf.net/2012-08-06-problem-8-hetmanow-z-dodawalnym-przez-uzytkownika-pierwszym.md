@@ -24,7 +24,8 @@ Zakańczanie jest warte chili uwagi, bowiem, gdybyśmy nie przerwali po dojściu
 
 Poniżej funkcje "jądra" programu, reszta struktur i metod (głównie rysujących) dostępne są [tutaj][1] pod licencją GNU/GPL v2.
 
-<pre class="EnlighterJSRAW cpp">int hetmany[31];
+```c++
+int hetmany[31];
 int wierszPierwszego = 0;//userinput lock for excute - prevents from changing
 bool ok;
 
@@ -89,6 +90,6 @@ void wstawHetmana(int wiersz)
 
     }
 }
-</pre>
+```
 
  [1]: /wp-content/uploads/2012/08/hetmaty.cpp_.txt

@@ -14,7 +14,8 @@ Przetwarzając manualnie stertę katalogów doszedłem do potrzeby zwizualizowan
 Aplikacyjka trywailan i naturalnie napisana w C# w jakieś 20 minut razem z (mam nadzieję) ladnym designem i dpracowaniem fukcjonalności. Generalnie sprowadza się ona do progress bara i przycisków plus/minus. Istnieje jednak możliwość definiowania postępu "z palucha" oraz zmiany celu (domyślnie 100) i naturalnie zresetowania licznika. Tym co zajęło mi w kodzie najwięcej bo aż 3 linijki było ustrzymywanie label'ki z informacją tekstową o progresie w centrum paska postępu.  
 Nie wiem, czy kod jest godny męczyć SyntaxHighlightera, ale skoro ładnie to wygląda to wstawię:
 
-<pre class="EnlighterJSRAW csharp">using System;
+```c#
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -116,7 +117,8 @@ namespace ds_progress
                 );
         }
     }
-}</pre>
+}
+```
 
 Klasycznie w przypadku tak małego programiku licencja "róbta co chceta", [DS Progress VS 2012 Solution][2]. Ale uwaga: _solution_ powstał pod VisualStudio 2012 (RC), więc być może nie zadziała z wersją 2010.
 

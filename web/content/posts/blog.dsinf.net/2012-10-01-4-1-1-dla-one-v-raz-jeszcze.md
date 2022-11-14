@@ -12,9 +12,7 @@ tags:
 
 ---
 Jak było do przewidzenia, długo nie wytrzymałem korzystając "tylko" ze stabilnej wersji od razu jak tylko znalazłem wgrałem wersję nighty.  
-Po nie wartej opisania przeprawie z aktualizacją pozostaje tylko jeden wniosek, szczególnie cenny dla początkujących (tak jak ja) w świecie "psucia" Androida: **każdy ROM musi mieć swój _boot image_**. Oznacza to, że jak developer da nowszy plik boot.img to <u>trzeba</u> go wgrać, bo inaczej system się nie odpali. Odpowiedzialna jest za to komenda
-
-<pre class="EnlighterJSRAW bash">fastboot flash boot obraz.img</pre>
+Po nie wartej opisania przeprawie z aktualizacją pozostaje tylko jeden wniosek, szczególnie cenny dla początkujących (tak jak ja) w świecie "psucia" Androida: **każdy ROM musi mieć swój _boot image_**. Oznacza to, że jak developer da nowszy plik boot.img to <u>trzeba</u> go wgrać, bo inaczej system się nie odpali. Odpowiedzialna jest za to komenda `fastboot flash boot obraz.img`
 
 Naturalnie telefon musi być w trybie bootloader'a (Power+VolDown), po aktywowaniu USB (odpowiedni wpis w menu) i przejściu do menu HBOOT.
 

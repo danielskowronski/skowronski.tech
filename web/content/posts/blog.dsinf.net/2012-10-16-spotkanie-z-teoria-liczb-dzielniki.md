@@ -20,7 +20,8 @@ Najpierw jakoś tablicujemy wszystkie liczby w naszym zbiorze. Może ku temu pos
   
 Przykładowa implementacja:
 
-<pre class="EnlighterJSRAW cpp">#include &lt; iostream >
+```c++
+#include &lt; iostream >
 using namespace std;
 const int granica = 100;
 bool tab[n + 1];  
@@ -43,12 +44,14 @@ int main()
     int q; cin>>q;
     return 0;
 }
-</pre>
+```
 
 Jedyne, co rzuca się w oczy to tzw. **funkcja Skowrońskiego**. Jest to jak najbardziej nieoficjalne, niewiążace określenie - po prostu lokalny protest przeciwko ludziom, którzy z nieznanych przyczyn piszą zamiast już nawet tego obrzydliwego <kbd>getch();</kbd> takiego potworka:
 
-<pre class="EnlighterJSRAW cpp">system("PAUSE");
-return EXIT_SUCCESS; </pre>
+```c++
+system("PAUSE");
+return EXIT_SUCCESS;
+```
 
 Po pierwsze kod na Linuksie się wywali (command not found), a druga linijka jest objawem posiadania sporej ilości czasu, bo EXIT_SUCCESS to tylko <kbd>#define</kbd> o wartości 0;
 
@@ -61,7 +64,8 @@ Różnym ilościom występowania czynników pierwszych w rozkładzie liczby natu
 <font color="blue">$ \sigma(n) = \sum \frac{p_i^{\alpha_i+1}-1}{p_i-1} $</font>  
 Kod funkcji bazującej na tablicy liczb pierwszych:
 
-<pre class="EnlighterJSRAW cpp">int dzielniki[sqrt(n)]; for (int i=0; i &lt; n; i++) dzielniki[i]=0;
+```c++
+int dzielniki[sqrt(n)]; for (int i=0; i &lt; n; i++) dzielniki[i]=0;
 
 for (int i=2; i*i &lt; =n; i++){
 	if (numbersTable[i]){
@@ -76,7 +80,7 @@ int suma=0;
 for (int i=2; i&lt; sqrt(n); i++){
 	suma+=( (pow(i, dzielniki[i]+1) -1) / (i - 1));
 }
-</pre>
+```
 
 Jeśli wiemy, że liczba główna jest kwadratem jakiejś liczby naturalnej to wówczas suma jest liczbą nieparzystą - wynika to z dłuższego dowodu, wynikającego po części z ich liczby w takiej sytuacji - $ 2n+1 $: dzielniki od 1 do $ sqrt{x} $ (bez) i od tejże liczby bez niej do $ x $ - jest ich po tyle samo, a poza tym dzielnikiem jest jeszcze samo $ sqrt{x} $.
 
@@ -85,9 +89,10 @@ Jeśli wiemy, że liczba główna jest kwadratem jakiejś liczby naturalnej to w
 Funkcja ta ma dość ciekawy wykres:  
 ![](http://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Divisor.svg/600px-Divisor.svg.png) 
 
-<pre class="EnlighterJSRAW cpp">int iloczyn=1;
+```c++
+int iloczyn=1;
 for (int i=2; i &lt; sqrt(n); i++){
 	if (dzielniki[i]==0) continue;//*(0+1) tylko marnuje czas
 	iloczyn*=(dzielniki[i]+1);
 }
-</pre>
+```

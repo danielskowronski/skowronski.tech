@@ -13,7 +13,8 @@ Jedyne, co warte uwagi w samym algorytmie to metoda ściągająca zawartość st
 
 Główny kod to kilka metod:
 
-<pre class="EnlighterJSRAW csharp">using System;
+```c#
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -145,7 +146,7 @@ namespace Bash.org.pl_Reader
         }
     }
 }
-</pre>
+```
 
 [Link][1] do kompletnego projektu wraz z designerem (licencja -"róbta co chceta").
 

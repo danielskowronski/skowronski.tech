@@ -1,5 +1,5 @@
 ---
-title: "Daniel Skowroński [skowronski.tech - tech blog]"
+title: "[skowronski.tech - tech blog]"
 
 baseURL: "https://skowronski.tech/"
 
@@ -17,18 +17,26 @@ theme: blowfish
 
 menu:
   main:
+    - identifier: posts
+      name: posts
+      url: /posts/
+      weight: 10
+    - identifier: old_posts
+      name: old posts [PL]
+      url: /posts/blog.dsinf.net/
+      weight: 20
     - identifier: contact
       name: contact
       url: /contact/
-      weight: 10
+      weight: 30
     - identifier: homepage
       name: homepage
       url: https://skowron.ski/
-      weight: 10
+      weight: 40
     - identifier: pro
       name: for recruiters
       url: https://skowronski.pro/
-      weight: 20
+      weight: 50
 
 deployment:
   targets:
@@ -73,9 +81,8 @@ params:
     sharingLinks: false
     showBreadcrumbs: true
     showHero: true
-    showTableOfContents: true # ??
+    showTableOfContents: true
     showTaxonomies: true
 
   taxonomy:
     showTermCount: true
-

@@ -15,27 +15,26 @@ Proste zadanie z zeszłorocznej OI - rozkład Fibonacciego. Naszym zadaniem jest
 
 Przykładowe dane:
 
-<pre class="EnlighterJSRAW bash">10=5+5
+```bash
+10=5+5
 19=21-2
 17=13+5-1
-1070=987+89-5-1</pre>
+1070=987+89-5-1
+```
 
 Liczby wejściowe to maksymalnie 1e17, więc najmniejszy większy lub równy wyraz ciągu Fibonacciego ma numer 88 i wynosi 1100087778366101931. Tą wielkosć można łatwo uzyskać z [Wikiźródeł][1] - tam jest prawie wszytsko.  
-Ale jak uzyskać takie dane podczas warunków olimpijskich? Bardzo prosto - przez Pythona. OI odbywa się na maszynach z Ubuntu, a więc interpreter Pythona tam jest. A jak Pythona nie ma to zawsze zostaje C++ i liczenie na typie 
-
-<pre class="EnlighterJSRAW cpp">unsigned long long</pre>
-
-dla pewności.  
+Ale jak uzyskać takie dane podczas warunków olimpijskich? Bardzo prosto - przez Pythona. OI odbywa się na maszynach z Ubuntu, a więc interpreter Pythona tam jest. A jak Pythona nie ma to zawsze zostaje C++ i liczenie na typie `unsigned long long` dla pewności.  
 Osobiście ztablicowałem ciąg Fibonacciego napychając strukurę statycznie do pliku przez krótki skrypcik:
 
-<pre class="EnlighterJSRAW python">wyraz1=0
+```python
+wyraz1=0
 wyraz2=1
 for i in range(1, 101):
     if (i>1):
         wyraz1, wyraz2 = wyraz2, wyraz1
         wyraz2=wyraz2+wyraz1
     print("Tfib["+str(i-1)+"]="+str(wyraz2)+";")
-</pre>
+```
 
 Wszystko działa dzięki temu, że Python domyślnie sumę/różnicę bardzo dużych liczb przedstawia precyzyjnie, a nie przybliżenie na dodatek w notacji wykładniczej (co dzieje się przy mnożeniu). Czy można inaczej uzyskać dostęp do n-tego wyrazu ciągu? Ależ oczywiście, można na przykład:
 
@@ -47,7 +46,8 @@ Jednak w tym zadaniu chyba trzeba było odkryć, że można je łatwo zrobić si
 
 Dalej mamy pętlę szukającąnajbliższego wyrazu ciągu:
 
-<pre class="EnlighterJSRAW cpp">int znajdz_najblizszy2(int liczba, int beg=0, int end=88){
+```c++
+int znajdz_najblizszy2(int liczba, int beg=0, int end=88){
 int a=0;
 	while (a&lt;50){
 		a++;
@@ -63,7 +63,7 @@ int a=0;
 		else beg=beg+(end-beg)/2;
 	}
 }
-</pre>
+```
 
 Tutaj brak komentowania linii się na mnie zemścił, bo nie mam 100% pewności, co while(a<50) robi, ale to raczej ograniczenie zagłębienia, bo maksimum wynosi log(2)(88) co się równa około 7. Tak generalnie z while'a można zrezygnować, gdyż zawsze trafimy na zadany przedział o długości 2. Ale przezorny zawsze ubezpieczony ;)  
 Sama funkcja po prostu dzieli w kółko przedział na mniejsze, podobnie jak robi to quicksort, z kilkoma różnicami:
@@ -73,7 +73,8 @@ Sama funkcja po prostu dzieli w kółko przedział na mniejsze, podobnie jak rob
 
 Ostatnim krokiem jest główna pętla programu, razem z we/wy i wczytaniem do pamięci tablicy ciągu:
 
-<pre class="EnlighterJSRAW cpp">zaladuj_fib();
+```c++
+zaladuj_fib();
 int p; int l; int k;//p - liczba liczb do obliczenia, l - liczba, k -liczba kroków
 int tmp;
 for (cin>>p;p>0;p--){
@@ -87,7 +88,7 @@ for (cin>>p;p>0;p--){
 	}
 	cout&lt;&lt;">>>"&lt;&lt;k&lt;&lt;endl;
 }
-</pre>
+```
 
 Po prostu najpierw szukamy najbliższej liczby w ciągu (ale musi to być <u>wartość bezwzgledna</u>!), a potem robimy:
 

@@ -17,7 +17,7 @@ Instrukcje wgrania do tej pory były często dość mało wiarygodne, dopiro ter
   * **zrób backup wszystkiego jak leci**</u> 
       * pobierz 2 zipy: build i Gapps ([post z XDA][2], gdzie można znaleźć aktualne wersje)
       * wrzuć je na kartę SD
-      * odpal w trybie recovery; tak, to trzeba najpierw wgrać - można za pomocą [HTC One V All-in-one toolkit][3] lub po prostu <pre class="EnlighterJSRAW bash">fastboot flash boot plik_z_CWM_recovery</pre>
+      * odpal w trybie recovery; tak, to trzeba najpierw wgrać - można za pomocą [HTC One V All-in-one toolkit][3] lub po prostu `fastboot flash boot plik_z_CWM_recovery`
     
       * wyczyść cahce Dalvik
       * wyczyść ustawienia do fabrycznych**!!**. Możesz to pominąć, ale będziesz musiał flashować raz jeszcze

@@ -10,14 +10,11 @@ tags:
   - perl
 
 ---
-Skrypt dość prosty - odczytuje aktualną temperaturę komputera, zapisuje do rotacyjnego loga i tworzy estetyczny wykres przy pomocy biblioteki GD. Oczywiście działa tylko pod Linuksem 😉 Językiem tworzenia został wybrany Perl - głównie ze względu na początki mojej przygody z tym językiem, ale także ze względu na łatwość parsowania plików. Jest to następca skryptu PHP o tej samej nazwie - ciepło, który jednak nie tworzył żadnego loga, a jedynie odczytywał wynik 
-
-<pre class="EnlighterJSRAW bash">acpi -V</pre>
-
-i odpwoiednio kolorował wynik. Źródła protoplasty cieplo.pl zaginęły.  
+Skrypt dość prosty - odczytuje aktualną temperaturę komputera, zapisuje do rotacyjnego loga i tworzy estetyczny wykres przy pomocy biblioteki GD. Oczywiście działa tylko pod Linuksem 😉 Językiem tworzenia został wybrany Perl - głównie ze względu na początki mojej przygody z tym językiem, ale także ze względu na łatwość parsowania plików. Jest to następca skryptu PHP o tej samej nazwie - ciepło, który jednak nie tworzył żadnego loga, a jedynie odczytywał wynik `acpi -V`i odpwoiednio kolorował wynik. Źródła protoplasty cieplo.pl zaginęły.  
 Poniżej źródło z sierpnia 2011:
 
-<pre class="EnlighterJSRAW perl">#!/usr/bin/perl
+```perl
+#!/usr/bin/perl
 use warnings;
 use CGI ':standard';
 use GD::Graph::bars;
@@ -106,7 +103,7 @@ close IMG;
 
 #koniec programu
 print "\n"; 
-</pre>
+```
 
 Sam plik perla można pobrać [tutaj][1], natomiast niezbędna biblioteka GD jest dostępna [tutaj][2]. Kilka słów co do wymogów pod Linuksem. Oczywistością jest pakiet acpi, który wszędzie nazywa się tak samo (nawet w ubuntu).
 

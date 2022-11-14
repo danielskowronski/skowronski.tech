@@ -14,14 +14,17 @@ Ale na początek trochę podstaw. Operujemy na dwójkowym zapisie liczb, każdy 
 
 **Podzielność przez 2**
 
-<pre class="EnlighterJSRAW cpp">bool parzysta(int liczba){
+```c++
+bool parzysta(int liczba){
 	return !(liczba&1);
 }
-</pre>
+```
 
 Kod przeraża prostotą. Równie proste, choć może bardziej czytelne jest
 
-<pre class="EnlighterJSRAW cpp">!(liczba%dzielnik) czyli (liczba%dzielnik)==0</pre>
+```c++
+!(liczba%dzielnik) czyli (liczba%dzielnik)==0
+```
 
 Podzielność przez 2 w zapisie binarnym jest trywialna: ostatnia cyfra musi być 0 - nie ma żadnych jedynek dodanych do liczby. Jeśli liczbę, którą sprawdzamy i 1 wymnożymy logicznie to cyfrą isttną będzie ostatnia - pierwotnie LSB (ang. _least significiant bit_, najmniej znaczący bit). Jeśli będzie zerem, a więc oznaczający parzystość to pomnożny logicznie przez cokolwiek da nam zero, a w przeciwnym wypadku (ostatni bit to 1) da nam jedynkę. Cała reszta liczby - aż do MSB (_most significiant bit_) się zeruje, gdyż mnożenie czegokolwiek przez 0 da 0.  
 Na koniec zostanie nam 0000000000X. Skoro dla parzystej wychodziło X=0 to trzeba jeszcze zanegować wynik i od razu uzyskamy odpowiedź co do parzystości.  
@@ -30,10 +33,11 @@ Przykład: 101010110 jest parzysta. 101010110 AND 000000001 = \[1 and 0\]\[0 and
 **Sprawdzanie czy liczba jest potęgą dwójki**  
 Ta operacja naprawdę pokazuje potencjał operacji bitowych - nie ma soejego odpowiednika z taką wydajnością.
 
-<pre class="EnlighterJSRAW cpp">bool czyPotegaDwojki(int liczba){
+```c++
+bool czyPotegaDwojki(int liczba){
 	return (!(liczba & (--liczba)) && liczba);
 }
-</pre>
+```
 
 Kod znów piękny i nic z niego nie wynika. Ale tylko pozornie.  
 && liczba zapewnia, że liczba jest dodatnia - jakoś ciężko sobie wyobrazić sqrt(-1) bez typu danych zespolonych i zabawy na U2.

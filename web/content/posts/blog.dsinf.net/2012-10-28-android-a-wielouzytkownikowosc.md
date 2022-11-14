@@ -14,26 +14,18 @@ Jest na to kilka rozwiązań. Pierwszym i najłatwiej znajdowywalnym jest zewnę
 
 **Komenda pm**  
 Z pomocą przyjdzie nam jednak sam system Android - w wersji conajmniej JellyBean 4.1.1 (tak, jest już 4.1.2 i nie jest to funkcjonalność dla niej nowa). Aby uzyskać dostęp do wbudowanego zarządzania profilami wystarczy wydać komendę su, a potem **pm** (zapewne skrót od _profile menagement_).  
-Najbardziej ekscytujące zapewne będzie od razu doanie nowego użytkownika poleceniem:
-
-<pre class="EnlighterJSRAW bash">pm create-user nazwa_użytkownika</pre>
+Najbardziej ekscytujące zapewne będzie od razu doanie nowego użytkownika poleceniem: `pm create-user nazwa_użytkownika`
 
 Aby przełączyć profil wystarczy przytrzymać przycisk zasilania i z menu wybrać nazwę użytkownika. Warto zwrócić uwagę, że użytkownik _Primary_ to podstawowe konto, któremu nazwy zmienić nie możemy. Aby uwolnić pełen potencjał tej zmiany należy zresetować telefon. Ale tylko raz. Spowoduje to, utworzenie profilu dla drugiego użytkownika - wówczas nie będzie miał dostępu do naszego Facebooka, czy poczty.
 
 Nasuwa się tu pytanie o zabezpieczenia. Otóż drugi użytkownik nie może skorzystać z naszych kont, ma zupełnie oddzielne ustawienia i dane aplikacji. Co do specyficznych aplikacji telefonu - rejestr połączeń jako powiązany z kontaktami będzie niedostępny (a konkretniej trzeba połączyć się z kontem Google), natomiast jedyne, co jest dostępne to SMSy. Tu nic poza dowolnym AppLockerem nie poradzimy. Ważna uwaga - ten AppLocker możemy uaktywnić <iu>tylko</u> dla tego konta, więc my nie będziemy musieli się bawić w żadne hasła.  
 Ale gość może także wcisnąć przycisk zasilania i się przełączyć (co nie jest takie oczywiste, ale jednak). Wystarczy ustawić blokadę wzorem, hasłem, czy PINem. Face Unlocka nie polecam - ostatnio kolega testował i nie dał rady oblokować, natomiast moja twarz podołała ;).
 
-Dodatkowo możemy prosto skasować użytkownika (pamiętając od numeracji od 0):
+Dodatkowo możemy prosto skasować użytkownika (pamiętając od numeracji od 0): `pm remove-user 1`
 
-<pre class="EnlighterJSRAW bash">pm remove-user 1</pre>
+lub z mniejszymi skutkami wylistować użytkowników wraz z ich identyfikatorami: `pm list-users`
 
-lub z mniejszymi skutkami wylistować użytkowników wraz z ich identyfikatorami:
-
-<pre class="EnlighterJSRAW bash">pm list-users</pre>
-
-Zmiana nazwy istniejącego profilu wymaga pogrzebania w plikach XML z katalogu 
-
-<pre class="EnlighterJSRAW bash" style="display: inline;">/data/system/users</pre>
+Zmiana nazwy istniejącego profilu wymaga pogrzebania w plikach XML z katalogu `/data/system/users`
 
 **Podsumowywując**
 

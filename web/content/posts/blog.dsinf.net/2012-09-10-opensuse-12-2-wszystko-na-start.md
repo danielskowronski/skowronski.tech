@@ -19,28 +19,21 @@ Po ściągnięciu i wypaleniu oraz sprawdzeniu dwa razy sumy kontrolnej przystą
 Jak zawsze zostawiłem tak długi proces sam sobie i poszedłem na zakupy. 
 
 Po przyjściu z powrotem nie oczekiwałem, że wszystko pójdzie OK. Nie działał w ogóle init piąty. Trochę eksperymentów i <u>wróciłem</u> (na razie z GRUBa) <u>do mojego ulubionego programu inicjującego z System V</u>. Jakoś <u>systemd mnie nie przekonuje</u> – głównie tym, że sporo problemów rozwiązuję wyłączając go. I jakoś nie jestem zainteresowany faktem, że "systemd replaces SysV" (~openSUSE wiki), skoro i tak na każdym forum są porady jak pozbyć się systemd. Ciekawy artykuł znajdziemy w LinuxMagazine (PL, jest także jako Community Edition) nr 2/2012 (96) na stronach 56-60.  
-Aby rozruszać kernela z init'em należy w suse'owskim grubie wybrać F5, a następnie wybrać opcję z menu, lub (na każdej dystrybucji) dopisać do parametrów jądra:
+Aby rozruszać kernela z init'em należy w suse'owskim grubie wybrać F5, a następnie wybrać opcję z menu, lub (na każdej dystrybucji) dopisać do parametrów jądra: `init=/bin/systemd`.
 
-<pre class="EnlighterJSRAW bash" style="display: inline">init=/bin/systemd</pre>
-
-Permanentnie możemy to uzyskać poprzez deznstalację pakietu 
-
-<pre class="EnlighterJSRAW bash" style="display: inline">systemd-sysvinit</pre>
+Permanentnie możemy to uzyskać poprzez deznstalację pakietu `systemd-sysvinit`
 
 Kolejną rzeczą była instalacja <u>sterowników nvidii</u>. Generalnie pracuje jak zawsze zasada, że albo sterowniki są w systemie, albo należy użyć one-click instalatorów na wiki systemu, albo wariant hardway jest dla nas. Jeśli mamy laptopa to raczej trzeba będzie przestawić BIOS do maksymalnie kompatybilnych ustawień – w tym tych dot. SATA. Własnościowe sterowniki bardzo dobrze działają również z 12.2, lecz możliwe, że będziemy potrzebować najnowsze wersji. Jeśli nie startuje nam X to posiadając już jakąkolwiek wersję instalki możemy wywołać ją z parametrem -update, która dociągnie odpowiedni plik. Wersja 304 beta powinna działać. Ale nie od razu moduł kernela skopilowano... Wpierw należy dokonać:
 
-<pre class="EnlighterJSRAW bash">cd /usr/src/linux
+```bash
+cd /usr/src/linux
 make cloneconfig
 make prepare
 cd /lib/modules/`uname -r`/source/arch/x86/include/
 cp -v generated/asm/unistd*.h ./asm/
-</pre>
+```
 
-Oczywiście o tym, że pakiet 
-
-<pre class="EnlighterJSRAW bash" style="display: inline">kernel-source</pre>
-
-musi być zainstalowany nie warto nawet pisać 😉  
+Oczywiście o tym, że pakiet `kernel-source` musi być zainstalowany nie warto nawet pisać 😉  
 To już prawie wszystko. Jeśli działa to OK, a jak nie - wówczas należy dodać do opcji jądra nomodeset. Co mnie bardzo zaskoczyło – czcionka na tty, która do tej pory dopasywała się do rozdzielczości bodaj 800x600, co nijak nie licowało z realną rozdzelczością, czy zdroworozsądkowym wyglądem, a wręcz osmieszała: w tym momencie pracuje normalnie – ciężko powiedzieć, czy to zasługa sterowników, czy poprawienia się dystrybucji, ale ważne, że pracuje "normalnie", czyli 1366x768. 
 
 <u>Vmware</u>. Dziewiąta wersja działa bez pytań o nic, podczas gdy ósma przy rekompilacji (instalacja dla 12.1 i świeżo zaktualizowanym 12.2) utknęła. Jest to ogólnie zaskakujące, gdyż VMware z suse jakoś nie współpracował za dobrze. Plus dla nich.

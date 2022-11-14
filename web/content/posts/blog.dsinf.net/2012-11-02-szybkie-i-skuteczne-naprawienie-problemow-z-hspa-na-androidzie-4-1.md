@@ -16,6 +16,3 @@ Ale zapewne można lepiej i _permanentniej_.
 Przejdźmy do Ustawień do menu _Aplikacje_ do karty _Wszystkie_. Tam należy znaleźć _**Google Services Framework**_. Teraz tylko przycisk _<u>Wyczyść dane</u>_ dzieli nas od cudownej prędkości - HSPA włącza się i łączy nas realnie z siecią w mgnieniu oka po zniknięciu ikonki WiFi z obszaru powiadomień. I to niezależnie jak długo WiFi było aktywne.  
   
 Zdaje się, że coś nie tak jest z wybudzaniem z uśpienia karty sieciowej. Na szczęście proste wyczyszczenie danych (nie powodujące utraty niczego, ani rozłączenia kont) pomaga.
-
-  
-<g:plusone></g:plusone>

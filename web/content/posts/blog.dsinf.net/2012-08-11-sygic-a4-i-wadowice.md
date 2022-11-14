@@ -32,7 +32,3 @@ Dopiero po zorientowaniu się którym zjazdem do Krakowa zauważyłem drogowskaz
 Chociaż autostrada A4 ma ręce i nogi, ładne, widoczne znaki i wyświetlacze, ale jak każda autostrada jest nudna. No poza Wielkim Bratem czającym się za monitorem kamer rozstawionych co jakiś czas. Nie znając Sygica można zgłupieć, bo obok drogi o oznaczeniu 4 jest A4. Przy odpowiednim zoomie nie widać A4 i można pojechać złą trasą.  
   
 ![a4-vs-4](/wp-content/uploads/2012/08/a4-vs-4.png)
-
- [1]: /wp-content/uploads/2012/08/rondo1.png
- [2]: /wp-content/uploads/2012/08/rondo2.png
- [3]: /wp-content/uploads/2012/08/a4-vs-4.png

@@ -37,7 +37,7 @@ There has been an error while running make. Halting the installation.
 ```
 
 
-**Illegal instruction** to najpoważniejszy problem. Jedyne dostępne obejście to instalacja wersji **2.1.<span style="text-decoration: underline;">`**. Nic innego nie działa 🙁
+**Illegal instruction** to najpoważniejszy problem. Jedyne dostępne obejście to instalacja wersji **2.1.**. Nic innego nie działa 🙁
 
 Błąd już zgłoszony: [https://github.com/wayneeseguin/rvm/issues/2850][1]
 

@@ -75,6 +75,4 @@ Całość do pobrania poniżej.
 
 
 
-<div id="zrodlo">
-  pytanko pojawiło się na: http://www.chip.pl/konkursy/konkurs-wygraj-201edzika-karte201d-na-net-masters-cup
-</div>
+pytanko pojawiło się na: [http://www.chip.pl/konkursy/konkurs-wygraj-201edzika-karte201d-na-net-masters-cup](http://www.chip.pl/konkursy/konkurs-wygraj-201edzika-karte201d-na-net-masters-cup)

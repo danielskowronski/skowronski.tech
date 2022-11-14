@@ -18,6 +18,4 @@ Rozwiązaniem jest uruchomienie usługi **Windows Image Acquisition (WIA)**. W k
 
 
 
-<div id="zrodlo">
-  źródło: http://www.404techsupport.com/2008/01/installing-a-scanner-on-windows-server-2003/
-</div>
+źródło: [http://www.404techsupport.com/2008/01/installing-a-scanner-on-windows-server-2003/](http://www.404techsupport.com/2008/01/installing-a-scanner-on-windows-server-2003/)

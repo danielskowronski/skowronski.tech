@@ -32,10 +32,6 @@ vmware-modconfig --console --install-all
 
 
 
-<div id="zrodlo">
-  źródło: http://pavlinux.ru/vmware/8.0.3/
-</div>
+źródło: [http://pavlinux.ru/vmware/8.0.3/](http://pavlinux.ru/vmware/8.0.3/)
 
-<div id="zrodlo">
-  źródło: http://communities.vmware.com/message/2188131
-</div>
+źródło: [http://communities.vmware.com/message/2188131](http://communities.vmware.com/message/2188131)

@@ -292,7 +292,8 @@ end sub
 ```
 
 
-Żeby móc łatwo wywołać świeżo stworzone makra można je dodać jako przyciski do interfejsu Writera. Jak się okazuje sam dokument ODT może zawierać customowe menu. <figure class="wp-block-image size-large is-resized">
+Żeby móc łatwo wywołać świeżo stworzone makra można je dodać jako przyciski do interfejsu Writera. Jak się okazuje sam dokument ODT może zawierać customowe menu.
+
 
 ![Aby dodać przycisk menu dostępny w konkretnym dokumencie (zapisany w pliku) wystarczy wybrać _Tools/Customize_, a następnie zmienić _Scope_ na dokument.](/wp-content/uploads/2020/05/libreoffice-customize.jpg) 
 

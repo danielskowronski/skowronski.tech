@@ -26,9 +26,6 @@ Dużym zaskoczeniem jest fakt, że pliki PDF o rozmiarze rzędu 20-30MB cięte s
 Następna sprawa to ustawienie metadanych w PDFach - Kindle będzie wyświetlał tytuł i autora. W tych polach dość często pozostaje nazwa programu skanującego lub tworzącego PDFa. Można to zmienić. Co ciekawe - znowu aplet Javy. Mały i szybki, ale z dość banalną nazwą **PDF Metadata Editor** dostępny na <http://zaro.github.io/pdf-metadata-editor/>.  
 ![PDF Metadata Editor](/wp-content/uploads/2014/11/pdf_metadata_editor.png)
 
-<div id="JavaWylaczanieBezpieczenstwa">
-</div>
-
 Ważna uwaga - te aplety Javy są podpisane cyfrowo jedynie przez autorów - nowa Java będzie się drzeć, że uruchamianie ich może być niebezpieczne. Owszem - może, jak każdego innego pliku binarnego. W razie paranoi kod źródłowy jest dostępny 😉  
 W pewnych wypadkach aplety w ogóle się nie uruchomią. Wówczas szukamy "Java settings" - w Windowsie ścieżka do exe to `c:\Program Files (x86)\Java\jre7\bin\javacpl.exe` (ale jest też w menu Start) i w zakładce _Security_ obniżamy poziom do _Medium_.  
 ![](/wp-content/uploads/2014/11/java_security0.png)

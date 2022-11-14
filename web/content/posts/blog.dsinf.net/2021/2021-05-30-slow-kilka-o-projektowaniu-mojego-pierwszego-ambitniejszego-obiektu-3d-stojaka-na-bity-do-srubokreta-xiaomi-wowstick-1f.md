@@ -5,10 +5,6 @@ type: post
 date: 2021-05-29T22:03:02+00:00
 url: /2021/05/slow-kilka-o-projektowaniu-mojego-pierwszego-ambitniejszego-obiektu-3d-stojaka-na-bity-do-srubokreta-xiaomi-wowstick-1f/
 featured_image: /wp-content/uploads/2021/05/XWH_0-scaled.jpg
-xyz_twap_future_to_publish:
-  - 'a:3:{s:26:"xyz_twap_twpost_permission";s:1:"1";s:32:"xyz_twap_twpost_image_permission";s:1:"1";s:18:"xyz_twap_twmessage";s:26:"{POST_TITLE} - {PERMALINK}";}'
-xyz_twap:
-  - 1
 tags:
   - 3d
   - hardware

@@ -4,10 +4,6 @@ author: Daniel Skowroński
 type: post
 date: 2021-07-05T19:59:05+00:00
 url: /2021/07/macos-i-serwery-dns-dla-pojedynczych-domen-w-szczegolnosci-prywatnych/
-xyz_twap_future_to_publish:
-  - 'a:3:{s:26:"xyz_twap_twpost_permission";s:1:"1";s:32:"xyz_twap_twpost_image_permission";s:1:"1";s:18:"xyz_twap_twmessage";s:26:"{POST_TITLE} - {PERMALINK}";}'
-xyz_twap:
-  - 1
 tags:
   - dns
   - intranet

@@ -54,7 +54,7 @@ Ale można lepiej. Urbackup (https://www.urbackup.org/) jest właśnie tą lepsz
 
 Serwer posiada webgui na defaultowym porcie 55414 (bezproblemowo stawia się za zwykłym proxy) z którego wyklikamy dodanie nowego klienta zdalnego (za NATem) lub zaakceptujemy lokalnego, przejrzymy logi i wykresy oraz zmodyfikujemy konfigurację. Jest jeszcze komenda `urbackupsrv` która służy do cięższych zadań administracyjnych jak usuwanie starych plików kopii. Warto od razu zaznaczyć że jeśli jakiś backup oznaczymy jako "archived" to nigdy nie zostanie usunięty automatycznie. Ważny z punktu widzenia firewalla jest jeszcze jeden port - 55415 służący do komunikacji klienta z serwerem. Klienci zdalni wymagają hasła ale tu ujawnia się praktyczna funkcja urbackup - po wyklikaniu zdalnego klienta dostajemy command-line do wklejenia w terminal z gotowymi opcjami.
 
-Przechodząc do klienta - generalnie na windowsa i macOS są typowe binarki. Na Linuksa zalecane jest typowe w dzisiejszych czasach podejście <span class="lang:default EnlighterJSRAW crayon-inline">curl | sudo bash`. Choć tutaj z użyciem `mktemp` . Klient składa się z usługi `urbackupclientbackend` <span class="s1"> oraz programu kontrolującego - <span class="lang:default EnlighterJSRAW crayon-inline">urbackupclientctl` `<span class="s1"> za pomocą którego można zarządzać folderami do backupowania, wystartować backup, zarządać przywrócenia plików i najważniejsze na początek - sprawdzić status. Na Windowsie oczywiście jest ponadto GUI które poza ikonką w trayu niewiele wnosi.`
+Przechodząc do klienta - generalnie na windowsa i macOS są typowe binarki. Na Linuksa zalecane jest typowe w dzisiejszych czasach podejście `curl | sudo bash`. Choć tutaj z użyciem `mktemp` . Klient składa się z usługi `urbackupclientbackend` oraz programu kontrolującego - `urbackupclientctl` za pomocą którego można zarządzać folderami do backupowania, wystartować backup, zarządać przywrócenia plików i najważniejsze na początek - sprawdzić status. Na Windowsie oczywiście jest ponadto GUI które poza ikonką w trayu niewiele wnosi.
 
 `urbackupclientctl --help`:
 
@@ -148,13 +148,13 @@ Po dodaniu klienta zdalnego czasem trzeba chwilę odczekać (szczególnie trudny
 
 &nbsp;
 
-Klient linuksowy ma kilka niestandardowych założeń. Po pierwsze lokalizacja plików - są one trochę po BSDowemu w `/usr/local/{share,var,etc,sbin}/urbackup` . Główny konfig to `/usr/local/var/urbackup/data/settings.cfg` , to co jest w etc określa sposób backupowania m.in. mariadb. Do manipulacji konfigiem najlepszy jest <span class="lang:default EnlighterJSRAW crayon-inline">urbackupclientctl set-settings` gdyż zapewnia integralność plików.
+Klient linuksowy ma kilka niestandardowych założeń. Po pierwsze lokalizacja plików - są one trochę po BSDowemu w `/usr/local/{share,var,etc,sbin}/urbackup` . Główny konfig to `/usr/local/var/urbackup/data/settings.cfg` , to co jest w etc określa sposób backupowania m.in. mariadb. Do manipulacji konfigiem najlepszy jest `urbackupclientctl set-settings` gdyż zapewnia integralność plików.
 
 Po stronie serwera warto zauważyć że w zakładce logs poza logami konkretnych sesji backupowania na dole można obejrzeć "live log" dla "all clients" który jest logiem w trybie debug całego serwera - otwiera się w nowej karcie i na bieżąco asynchronicznie ładuje kolejne linijki loga - nie trzeba zmieniać trybu logowania do /var/log i restartować usługi żeby podejrzeć co się dzieje.
 
-<p class="p2">
-  Dwa sprawdzone przeze mnie scenariusze użycia - lokalny storage server i "cloud storage" na dedyku działają i mają się dobrze. Pierwszy przypadek to postawiony w LANie <strong>OpenMediaVault</strong>, czyli dystrybucja Debiana z GUI do storage'u (warte polecenia ze względu na metodykę "wyklikaj i zostaw") wraz z zainstalowanym rozszerzeniem do urbackup który zrzuca migawki po zbondowanym 2x gigabit ethernet na macierz raid5. Klienci to mix Windowsów Server i Linuksa. I działa.
-</p>
+
+Dwa sprawdzone przeze mnie scenariusze użycia - lokalny storage server i "cloud storage" na dedyku działają i mają się dobrze. Pierwszy przypadek to postawiony w LANie **OpenMediaVault**, czyli dystrybucja Debiana z GUI do storage'u (warte polecenia ze względu na metodykę "wyklikaj i zostaw") wraz z zainstalowanym rozszerzeniem do urbackup który zrzuca migawki po zbondowanym 2x gigabit ethernet na macierz raid5. Klienci to mix Windowsów Server i Linuksa. I działa.
+
 
 ![](/wp-content/uploads/2017/07/Screenshot-at-13-38-07.png) 
 

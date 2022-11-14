@@ -6,10 +6,6 @@ date: 2022-02-13T14:20:06+00:00
 summary: "Chcąc połączyć ze sobą dwa data-center lub dwa serwery hostujące kontenery potrzebujemy łączności site-to-site. Można to osiągnąć zwykłym VPNem w rodzaju OpenVPN i ręcznym ustawianiem routingu, jednak nie jest to zbyt wydajne, ani eleganckie. Zaprezentuję jak zestawić takie połączenie dzięki strongSwan sterującym zaimplementowanym w jądrze stosem IPsec - XFRM. Dodatkowo pokażę jak się do takiej sieci podłączyć z zewnątrz i podam kilka wskazówek dotyczących zestawienia tego u Hetznera - łącząc dedykowany serwer używający vSwitch'a z serwerem w Hetzner Cloud. Na koniec kilka słów o podłączaniu się do takiego VPNa z zewnątrz."
 url: /2022/02/vpn-site-to-site-oparty-o-strongswan-ipsec-i-xfrm/
 featured_image: /wp-content/uploads/2022/02/strongswan_square_large.png
-xyz_twap_future_to_publish:
-  - 'a:3:{s:26:"xyz_twap_twpost_permission";s:1:"1";s:32:"xyz_twap_twpost_image_permission";s:1:"1";s:18:"xyz_twap_twmessage";s:26:"{POST_TITLE} - {PERMALINK}";}'
-xyz_twap:
-  - 1
 tags:
   - ipsec
   - lxc
@@ -284,11 +280,13 @@ client_b : EAP plaintext-password-for-client_b
 ```
 
 
-Przykładowa konfiguracja zaufania certyfikatu i klienta VPN na macOS:<figure class="is-layout-flex wp-block-gallery-53 wp-block-gallery has-nested-images columns-default is-cropped"> <figure class="wp-block-image size-large">
+Przykładowa konfiguracja zaufania certyfikatu i klienta VPN na macOS:
 
-![](/wp-content/uploads/2022/02/macos_vpn_3.png)</figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2022/02/macos_vpn_1.png)</figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2022/02/macos_vpn_2.png)</figure> </figure> 
+![](/wp-content/uploads/2022/02/macos_vpn_3.png)
+![](/wp-content/uploads/2022/02/macos_vpn_1.png)
+![](/wp-content/uploads/2022/02/macos_vpn_2.png)
 
-## Podsumowanie {#podsumowanie}
+## Podsumowanie
 
 Konfiguracja strongSwan jest w miarę prosta, lecz można wpaść na wiele pułapek sieciowych i kryptograficznych. Dodatkowo XFRM nie jest tak oczywisty, jak klasyczny routing w Linuksie i wymaga trochę nauki, lecz jest dalece wydajniejszy i bardziej elastyczny od starych rozwiązań.
 

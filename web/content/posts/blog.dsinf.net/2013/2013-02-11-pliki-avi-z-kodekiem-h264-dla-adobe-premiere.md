@@ -25,6 +25,4 @@ Prawda, jakie pokrętne?
 
 
 
-<div id="zrodlo">
-  źródło: http://forums.adobe.com/thread/854115
-</div>
+źródło: [http://forums.adobe.com/thread/854115](http://forums.adobe.com/thread/854115)

@@ -27,9 +27,9 @@ Po przeklikaniu się przez tragiczne menu webowe (które swoją drogą odcina do
 **Czas na hackowanie arpspoofem!**  
 
 
-Drobna uwaga: [windowsowy build][1] wymaga DLLa winpcap'a - jeśli instalowaliśmy wiresharka przez chocolatey trzeba osobno doinstalować globalnie dostępną bibliotekę.<figure class="wp-block-image">
+Drobna uwaga: [windowsowy build][1] wymaga DLLa winpcap'a - jeśli instalowaliśmy wiresharka przez chocolatey trzeba osobno doinstalować globalnie dostępną bibliotekę.
 
-![](/wp-content/uploads/2019/04/wireshark.png) </figure> 
+![](/wp-content/uploads/2019/04/wireshark.png)
 
 Co się okazuje? Że drukarka zawsze wysyła nazwę hosta w komendzie EHLO jako **DIGITAL_MFP**, a EXIM nie lubi "podłogi" w nazwie hosta. W odpowiedzi rzuca **501 syntactically invalid ehlo argument(s).** 
 
@@ -39,9 +39,9 @@ Na współdzielonym hostingu nie za bardzo mogę zmieniać konfig więc **czemu 
 
 Po chwili, albo i kilku godzinach researchu połączonego z eksperymentowaniem oraz śledzeniem tcpdumpa podczas skanowania mamy działające wysyłanie maili.
 
-Konfiguracja w webpanelu wymaga ustawienia adresu email "od" w trzech polach (E-mail Address, Login Name, User Name), adresu serwera w dwóch (SMTP Server Address, POP3 Server Address) oraz hasła (Password). POP3 nie trzeba ustawiać ale pole musi być wypełnione. Z moich obserwacji wynika że mój model nie umie rozwiązywać DNSów przy wysyłaniu maili więc osobiście podałem po prostu adres IP.<figure class="wp-block-image">
+Konfiguracja w webpanelu wymaga ustawienia adresu email "od" w trzech polach (E-mail Address, Login Name, User Name), adresu serwera w dwóch (SMTP Server Address, POP3 Server Address) oraz hasła (Password). POP3 nie trzeba ustawiać ale pole musi być wypełnione. Z moich obserwacji wynika że mój model nie umie rozwiązywać DNSów przy wysyłaniu maili więc osobiście podałem po prostu adres IP.
 
-![](/wp-content/uploads/2019/04/config.png) </figure>
+![](/wp-content/uploads/2019/04/config.png)
 
  [1]: https://github.com/alandau/arpspoof
  [2]: https://heapdump.wordpress.com/2010/07/07/exim4-helo-config-in-debian/

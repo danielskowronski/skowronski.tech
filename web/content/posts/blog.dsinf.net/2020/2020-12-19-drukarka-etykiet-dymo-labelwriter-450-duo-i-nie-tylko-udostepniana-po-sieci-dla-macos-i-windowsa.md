@@ -86,9 +86,9 @@ Po dodaniu drukarki warto potwierdzić, że wybraliśmy odpowiedni sterownik - j
 
 ![](/wp-content/uploads/2020/12/04.png)
 
-Po zakończeniu instalacji drukarki musimy koniecznie zrestartować _DYMO Connect_. Po uruchomieniu będziemy widzieć drukarkę/drukarki nazwaną zgodnie ze ścieżką udziału sieciowego - nie mamy na to wpływu.<figure class="wp-block-image size-large">
+Po zakończeniu instalacji drukarki musimy koniecznie zrestartować _DYMO Connect_. Po uruchomieniu będziemy widzieć drukarkę/drukarki nazwaną zgodnie ze ścieżką udziału sieciowego - nie mamy na to wpływu.
 
-![](/wp-content/uploads/2020/12/01.png)</figure> 
+![](/wp-content/uploads/2020/12/01.png)
 
 ## Ustawianie drukarki na macOS
 

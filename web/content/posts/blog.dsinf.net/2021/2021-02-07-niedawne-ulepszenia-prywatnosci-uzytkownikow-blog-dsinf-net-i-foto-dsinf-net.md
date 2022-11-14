@@ -6,10 +6,6 @@ date: 2021-02-07T14:19:39+00:00
 summary: Od jakiegoś czasu moje osobiste celowanie w prywatność stało się jeszcze większym priorytetem i uznałem, że czas zająć się także moim blogiem. Efektem tych działań było między innymi pozbycie się usług Google oraz WordPressa.
 url: /2021/02/niedawne-ulepszenia-prywatnosci-uzytkownikow-blog-dsinf-net-i-foto-dsinf-net/
 featured_image: /wp-content/uploads/2021/02/Screenshot-2021-02-07-at-14.57.48.jpg
-xyz_twap_future_to_publish:
-  - 'a:3:{s:26:"xyz_twap_twpost_permission";s:1:"1";s:32:"xyz_twap_twpost_image_permission";s:1:"1";s:18:"xyz_twap_twmessage";s:26:"{POST_TITLE} - {PERMALINK}";}'
-xyz_twap:
-  - 1
 
 ---
 Od jakiegoś czasu moje osobiste celowanie w prywatność stało się jeszcze większym priorytetem i uznałem, że czas zająć się także moim blogiem. Efektem tych działań było między innymi pozbycie się usług Google oraz WordPressa.
@@ -42,10 +38,10 @@ Dlatego też na moich stronach wszystkie skrypty i multimedia są hostowane raze
 
 Problem, z którym borykałem się najdłużej to usługa Google Fonts. Jest uzależniająco łatwa do użycia - wystarczy dodać jedną linijkę z importem ich kodu CSS i można już przypisywać fonty do elementów HTMLowych - bez żadnego wgrywania wielu plików na serwer (zwłaszcza, w czasach braku jednego formatu czcionek internetowych). Kiedy zająłem się spisywaniem polityki prywatności, odkryłem, że Google nie ma żadnej polityki prywatności dotykającej obszaru Google Fonts i innych treści z gstatic.com. Nie dziwi to, jeśli śledzi się temat unikania przez nich aktualizowania aplikacji na iOS - tak, żeby nie użyć _privacy labels_ wymaganych a App Store jasno deklarujących jakich danych użytkowników używają w swoich celach (patrz - https://www.theverge.com/2021/1/26/22250648/google-apple-app-store-privacy-label). 
 
-Ponieważ (prawdopodobnie za bardzo) lubię fonty Ubuntu i Ubuntu Mono to jakiś hosting tychże jest mi potrzebny. Dlaczego jednak nie trzymać po prostu dwóch plików `woff2` na swoim własnym serwerze i zamiast używania specjalizowanych plug-inów do WordPressa (np. WP Google Fonts), skorzystać z takiego, którego i tak wykorzystuję do wstawek HTML/CSS/JS (który pozwala dodawać treść z UI WordPressa, bez edycji kodu motywu) - <https://pl.wordpress.org/plugins/custom-css-js/> <figure class="wp-block-image size-large is-resized">
+Ponieważ (prawdopodobnie za bardzo) lubię fonty Ubuntu i Ubuntu Mono to jakiś hosting tychże jest mi potrzebny. Dlaczego jednak nie trzymać po prostu dwóch plików `woff2` na swoim własnym serwerze i zamiast używania specjalizowanych plug-inów do WordPressa (np. WP Google Fonts), skorzystać z takiego, którego i tak wykorzystuję do wstawek HTML/CSS/JS (który pozwala dodawać treść z UI WordPressa, bez edycji kodu motywu) - <https://pl.wordpress.org/plugins/custom-css-js/> 
 
-![](/wp-content/uploads/2021/02/Screenshot-2021-02-07-at-15.01.21.png)<figcaption>Rozwiązanie może i nieco mniej eleganckie (zwłaszcza, jeśli motyw nie daje możliwości wyboru własnego fonta),  
-ale dające dużo więcej władzy nad ustawieniami.</figcaption></figure> 
+
+![Rozwiązanie może i nieco mniej eleganckie (zwłaszcza, jeśli motyw nie daje możliwości wyboru własnego fonta), ale dające dużo więcej władzy nad ustawieniami.](/wp-content/uploads/2021/02/Screenshot-2021-02-07-at-15.01.21.png)
 
 ## Standardowe logi na serwerze
 

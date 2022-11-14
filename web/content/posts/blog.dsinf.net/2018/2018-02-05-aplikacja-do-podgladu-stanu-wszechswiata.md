@@ -245,7 +245,7 @@ Nadzwyczaj satysfakcjonujące okazało się stworzenie takiej prostej strony w H
 
 &nbsp;
 
- [1]: https://blog.dsinf.net/2018/02/jeszcze-raz-o-linuksie-na-typowym-tablecie-z-win8-1/
+ [1]: /2018/02/jeszcze-raz-o-linuksie-na-typowym-tablecie-z-win8-1/
  [2]: http://flipclockjs.com/
  [3]: https://developer.akamai.com/learn/Akamai_Time_Reference/AkamaiTimeReference.html
  [4]: https://github.com/danielskowronski/sauron3

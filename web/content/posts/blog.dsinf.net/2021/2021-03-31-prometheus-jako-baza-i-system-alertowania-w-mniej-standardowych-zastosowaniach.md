@@ -9,10 +9,6 @@ summary: |
   Posiadam w kolekcji jednak dwa małe projekty, wykorzystujące przydatną funkcję podstawowego agenta Prometheusa - node exportera - collector.textfile do dość prymitywnego, ale skutecznego publikowania własnych danych.
 url: /2021/03/prometheus-jako-baza-i-system-alertowania-w-mniej-standardowych-zastosowaniach/
 featured_image: /wp-content/uploads/2021/03/prometheus.png
-xyz_twap_future_to_publish:
-  - 'a:3:{s:26:"xyz_twap_twpost_permission";s:1:"1";s:32:"xyz_twap_twpost_image_permission";s:1:"1";s:18:"xyz_twap_twmessage";s:26:"{POST_TITLE} - {PERMALINK}";}'
-xyz_twap:
-  - 1
 
 ---
 Prometheus to TSDB (_TimeSeries DataBase_, czyli po polsku mogłoby to być coś w rodzaju _bazy danych szeregów czasowych_) i zestaw lekkich agentów raportujących do niej, między innymi metryki zasobów systemu operacyjnego. Po więcej opisu systemu odsyłam do dokumentacji - <https://prometheus.io/docs/introduction/overview/> 
@@ -23,11 +19,11 @@ Osobiście używam go najwięcej do kolekcjonowania zasobów kontenerów i maszy
 
 Posiadam w kolekcji jednak dwa małe projekty, wykorzystujące przydatną funkcję podstawowego agenta Prometheusa - node exportera - `collector.textfile` do dość prymitywnego, ale skutecznego publikowania własnych danych. Są to **Duplicati Dropbox Checker** (<https://github.com/danielskowronski/DuplicatiDropboxChecker>) oraz **Archer Connected Hosts Exporter** (<https://github.com/danielskowronski/ArcherConnectedHostsExporter>). 
 
-Pierwszy z nich służy do monitorowania backupów tworzonych przez program Duplicati po przesłaniu ich przez agenta na Dropboxie (będąc dodatkowym zabezpieczeniem względem opisanych podstawowych testów wykonania samej binarki opisanego w innych artykule - <https://blog.dsinf.net/2020/10/kopie-zapasowe-linuksowej-infrastruktury-i-nie-tylko-duplicati-oraz-jego-monitorowanie-za-pomoca-prometheusa/>). Każda monitorowana ścieżka generuje jeden rekord - timestamp najnowszego pliku w danym folderze.
+Pierwszy z nich służy do monitorowania backupów tworzonych przez program Duplicati po przesłaniu ich przez agenta na Dropboxie (będąc dodatkowym zabezpieczeniem względem opisanych podstawowych testów wykonania samej binarki [opisanego w innych artykule](/2020/10/kopie-zapasowe-linuksowej-infrastruktury-i-nie-tylko-duplicati-oraz-jego-monitorowanie-za-pomoca-prometheusa/)). Każda monitorowana ścieżka generuje jeden rekord - timestamp najnowszego pliku w danym folderze.
 
 ![](/wp-content/uploads/2021/03/Screenshot-2021-03-31-at-23.03.05.png)
 
-Drugi, Archer Connected Hosts Exporter, to narzędzie, dla którego wykonałem research zabezpieczeń mojego routera (opisany tu - <https://blog.dsinf.net/2021/02/hacking-into-tp-link-archer-c6-shell-access-without-physical-disassembly/>). Bada ono znane routerowi hosty i zwraca każdy znaleziony adres MAC jako osobny rekord Prometheusa z wartością binarną, na podstawie pliku z listą znanych adresów - 1 dla znanych i 0 dla nierozpoznanych urządzeń.
+Drugi, Archer Connected Hosts Exporter, to narzędzie, dla którego wykonałem research zabezpieczeń mojego routera ([opisany tu](/2021/02/hacking-into-tp-link-archer-c6-shell-access-without-physical-disassembly/)). Bada ono znane routerowi hosty i zwraca każdy znaleziony adres MAC jako osobny rekord Prometheusa z wartością binarną, na podstawie pliku z listą znanych adresów - 1 dla znanych i 0 dla nierozpoznanych urządzeń.
 
 ![](/wp-content/uploads/2021/03/Screenshot-2021-03-31-at-23.03.40-1.png)
 

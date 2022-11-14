@@ -27,11 +27,13 @@ Co było potrzeba? Po pierwsze kit (~200zł) składający się z całej elektron
 
 Ja do zestawu standardowego dołożyłem czujnik [Bosch BME280][3]. Dodaje to odczyt temperatury, wilgotności i ciśnienia z rozsądną precyzją. Do płytki od Nettigo można podłączyć urządzenia I2C na 3.3V oraz 5V i moduł GPS. Obsługiwana jest większość popularnych wśród hobbystów czujników i kilka wyświetlaczy.
 
-Lista narzędzi opisana na stronie jest nieco nadmiarowa jeśli ma się trochę fantazji. Poza wkręcaniem śrubek potrzeba zasadniczo przepiłować rurkę 25mm i wykonać 4 otwory - 2 po 6mm, jeden 8mm oraz ostatni - 25mm. W około 2-3h zależnie od stopnia zaangażowania można te manipulacje wykonać Leathermanem (nóż, szydło, pilnik) i nożem do chleba. Poza tym rzecz jasna lutownica (jakakolwiek, bo mamy tylko elementy przewlekane).<figure class="wp-block-image">
+Lista narzędzi opisana na stronie jest nieco nadmiarowa jeśli ma się trochę fantazji. Poza wkręcaniem śrubek potrzeba zasadniczo przepiłować rurkę 25mm i wykonać 4 otwory - 2 po 6mm, jeden 8mm oraz ostatni - 25mm. W około 2-3h zależnie od stopnia zaangażowania można te manipulacje wykonać Leathermanem (nóż, szydło, pilnik) i nożem do chleba. Poza tym rzecz jasna lutownica (jakakolwiek, bo mamy tylko elementy przewlekane).
+
 
 ![Elektronika złożona, czas na testy](/wp-content/uploads/2019/01/smog0.png)
 
-Montaż elektroniki wraz z wgraniem oprogramowania i testami przed złożeniem obudowy trwa około godziny-półtorej. Potrzeba komputera (macOS/Windows/Linuks) którym wgramy firmware oraz ustawimy parametry WiFi. Zasada działania jak większość urządzeń IoT WiFi - bez konfigu wystawia swój AP, wpisujemy dane do naszej domowej sieci i działa.<figure class="wp-block-image">
+Montaż elektroniki wraz z wgraniem oprogramowania i testami przed złożeniem obudowy trwa około godziny-półtorej. Potrzeba komputera (macOS/Windows/Linuks) którym wgramy firmware oraz ustawimy parametry WiFi. Zasada działania jak większość urządzeń IoT WiFi - bez konfigu wystawia swój AP, wpisujemy dane do naszej domowej sieci i działa.
+
 
 ![Strona domowa czujnika](/wp-content/uploads/2019/01/smog3.png)
 
@@ -71,7 +73,7 @@ W grafanie wystarczy dodać influxa jako źródło danych a potem wyklikać pane
 ![Konfiguracja wykresu z przykładem zapytania do Influxa](/wp-content/uploads/2019/01/smog6.png)
 
 
-I to wszystko! Całość u mnie zamknęła się w 6 godzinach - z aktualizacją mojego serwera i zmodyfikowaniem istniejącej aplikacji żeby korzystała z danych na żywo tuż za oknem.<figure class="wp-block-image">
+I to wszystko! Całość u mnie zamknęła się w 6 godzinach - z aktualizacją mojego serwera i zmodyfikowaniem istniejącej aplikacji żeby korzystała z danych na żywo tuż za oknem.
 
 ![Panel pomiarów z Grafany](/wp-content/uploads/2019/01/smog2.png)
 

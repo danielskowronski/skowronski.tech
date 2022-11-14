@@ -41,5 +41,5 @@ Pewnym rozwiązaniem które się u mnie sprawdziło jest range extender (np. [ta
 Jeśli mamy jakiekolwiek niestandardowe urządzenia w sieci (odkurzacze które mają hostname typu "PC120" (np. Neato), zbridgowane interfejsy wirtualek, serwery itp.) warto przydzielić wszystkiemu statyczne dzierżawy DHCP, a we własnej wiki udokumentować ich MACi i adresy - żeby kiedy przyjdzie do śledztwa albo podłączania SDNa do domowej sieci nie zwariować. No i oczywiście backup konfiguracji wszelkich urządzeń infrastruktury 😉
 
  [1]: https://en.wikipedia.org/wiki/List_of_WLAN_channels
- [2]: https://blog.dsinf.net/2018/05/hackowanie-smart-zarowek-tp-linka-lb1xx/
+ [2]: /2018/05/hackowanie-smart-zarowek-tp-linka-lb1xx/
  [3]: https://www.tp-link.com/us/products/details/cat-5508_TL-WA850RE.html

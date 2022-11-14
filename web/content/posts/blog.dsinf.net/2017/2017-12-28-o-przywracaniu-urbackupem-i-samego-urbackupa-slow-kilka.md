@@ -22,4 +22,4 @@ Permanentnie nie da się odtwarzać za NATem. Jedyne rozwiązanie bez stawiania 
 
 Kiedy już się uporamy z omijaniem NATa wystarczy podać hostname serwera, login i hasło, wskazać który klient jest odtwarzany, wybrać docelowy dysk (dysk, nie partycję!), cieszyć się z FTTH, wyciszyć alerty (bo wysycanie domowego łącza i generowanie dziwnego ruchu na zdalnym serwerze nie ujdzie żadnemu systemowi monitorującemu) i iść na obiad.
 
- [1]: https://blog.dsinf.net/2017/07/prosty-choc-nie-zawsze-trywialny-w-obsludze-system-backupowania-urbackup/
+ [1]: /2017/07/prosty-choc-nie-zawsze-trywialny-w-obsludze-system-backupowania-urbackup/

@@ -25,6 +25,4 @@ C:\Users\admin1>runas /env /user:Administrator "C:\Program Files (x86)\UltraISO\
 A sam sysadmin? Cóż, musi zdecydować, czy woli wypalanie płyt, czy sklep z aplikacjami dla 2012 i RunAs.  
 No i najważniejsze - musi być dodatek Desktop Experience - wersja Core marnuje nam napędy.
 
-<div id="zrodlo">
-  źródło: http://blogs.technet.com/b/askcore/archive/2010/02/19/windows-server-2008-r2-no-recording-tab-for-cd-dvd-burner.aspx
-</div>
+źródło: [http://blogs.technet.com/b/askcore/archive/2010/02/19/windows-server-2008-r2-no-recording-tab-for-cd-dvd-burner.aspx](http://blogs.technet.com/b/askcore/archive/2010/02/19/windows-server-2008-r2-no-recording-tab-for-cd-dvd-burner.aspx)

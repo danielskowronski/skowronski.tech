@@ -67,10 +67,7 @@ Teraz należy umieścić nasz kod w jakiejś funkcji i wywołać addJQuery(nasza
 
 
 
-<div id="zrodlo">
-  mój skrypt publicznie: http://userscripts.org/scripts/show/161408
-</div>
+mój skrypt publicznie: [http://userscripts.org/scripts/show/161408](http://userscripts.org/scripts/show/161408)
 
-<div id="zrodlo">
-  źródło: http://stackoverflow.com/questions/2246901/how-can-i-use-jquery-in-greasemonkey-scripts-in-google-chrome
-</div>
+
+źródło: [http://stackoverflow.com/questions/2246901/how-can-i-use-jquery-in-greasemonkey-scripts-in-google-chrome](http://stackoverflow.com/questions/2246901/how-can-i-use-jquery-in-greasemonkey-scripts-in-google-chrome)

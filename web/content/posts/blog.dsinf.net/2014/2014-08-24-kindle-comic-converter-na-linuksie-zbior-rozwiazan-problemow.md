@@ -6,7 +6,7 @@ date: 2014-08-24T21:24:03+00:00
 summary: |
   Kindle Comic Converter to świetne narzędzie do konwersji grafiki (w zamierzeniu zawierającej komiksy /mangę) w formatach PNG, JPG, GIF, CBZ, CBR, CB7 lub PDF na EPUB lub MOBI z zastosowaniem różnych zmian tak, żeby działały i wyglądały na wskazanym czytniku (presety dla wszystkich edycji Kindle i Kobo + własne preferencje). Lista modyfikacji, które można zaaplikować obrazkom jest długa i zawiera m.in. tryb manga (RTL), obracanie, rozciąganie, przycinanie, tryb webtoon, poprawę marginesów...
   
-  Ogromny plus dla autorów, że działa wszędzie (czyt. Windows+Linux+OS X). Jest jednak jedno ale - <strong>postawić to na Linuksie - to wyzwanie tylko dla power-userów z kilkuletnim stażem. A więc... do dzieła!</strong>
+  Ogromny plus dla autorów, że działa wszędzie (czyt. Windows+Linux+OS X). Jest jednak jedno ale - **postawić to na Linuksie - to wyzwanie tylko dla power-userów z kilkuletnim stażem. A więc... do dzieła!**
 url: /2014/08/kindle-comic-converter-na-linuksie-zbior-rozwiazan-problemow/
 tags:
   - kindle

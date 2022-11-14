@@ -40,7 +40,7 @@ xset s noblank
 ```
 
 
- [1]: https://blog.dsinf.net/2015/06/uruchamianie-czegokolwiek-poza-windowsem-na-tablecie-typu-win8-1-z-uefi/
+ [1]: /2015/06/uruchamianie-czegokolwiek-poza-windowsem-na-tablecie-typu-win8-1-z-uefi/
  [2]: https://github.com/danielskowronski/sauron3
  [3]: https://askubuntu.com/a/775507
  [4]: https://cdimage.debian.org/debian-cd/current-live/i386/iso-hybrid/

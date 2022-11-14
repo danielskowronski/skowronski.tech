@@ -117,9 +117,9 @@ Jeśli chodzi o terminal to cóż - jak używam SSH to wbudowana aplikacja jest 
  [18]: /wp-content/uploads/2017/09/6.png
  [19]: /wp-content/uploads/2017/09/2.png
  [20]: /wp-content/uploads/2017/09/1.png
- [21]: https://blog.dsinf.net/2014/01/edytor-uniwersalny/
+ [21]: /2014/01/edytor-uniwersalny/
  [22]: https://www.sublimetext.com/3
  [23]: https://packagecontrol.io/
  [24]: /wp-content/uploads/2017/09/11.png
- [25]: https://blog.dsinf.net/2017/02/zerotier-czyli-software-defined-network-czyli-alternatywa-dla-klasycznego-vpna/
+ [25]: /2017/02/zerotier-czyli-software-defined-network-czyli-alternatywa-dla-klasycznego-vpna/
  [26]: https://brew.sh/index_pl.html

@@ -50,9 +50,10 @@ Mój dashboard grafany aktualizuję na bieżąco jak pojawią się tylko drobne 
 
 Na koniec jeszcze kilka słów o kliencie mobilnym. Otóż Grafana na telefonie działa wybitnie beznadziejnie i co prawda można by tworzyć osobny dashboard z ograniczoną liczbą wykresów ale czasem lekki klient też jest przydatny.
 
-Jedyne co nam potrzebne poza plikiem HTML to plik JSON wysyłany przez czujnik na wskazany serwer - dokładnie to co zbiera [collect.php z poprzedniego wpisu][1]. Tutaj umieszczony w tym samym folderze serwera www pod nazwą smog.json (dla ułatwienia i obejścia problemów z CORS jeśli stosujemy różne domeny można na serwerze stworzyć symlink).<figure class="wp-block-image is-resized">
+Jedyne co nam potrzebne poza plikiem HTML to plik JSON wysyłany przez czujnik na wskazany serwer - dokładnie to co zbiera [collect.php z poprzedniego wpisu][1]. Tutaj umieszczony w tym samym folderze serwera www pod nazwą smog.json (dla ułatwienia i obejścia problemów z CORS jeśli stosujemy różne domeny można na serwerze stworzyć symlink).
 
-![](/wp-content/uploads/2019/02/nam5.jpg)</figure> 
+
+![](/wp-content/uploads/2019/02/nam5.jpg)
 
 ```html
 <!DOCTYPE html>
@@ -133,7 +134,7 @@ Jedyne co nam potrzebne poza plikiem HTML to plik JSON wysyłany przez czujnik n
 ```
 
 
- [1]: https://blog.dsinf.net/2019/01/budowa-stacji-pogody-z-czujnikiem-smogu-i-prezentacja-danych/
+ [1]: /2019/01/budowa-stacji-pogody-z-czujnikiem-smogu-i-prezentacja-danych/
  [2]: https://commons.wikimedia.org/wiki/File:20150114_1555_008_radzyn_stacja_hydrologiczna_imgw_a.jpg
  [3]: /wp-content/uploads/2019/02/nam1.png
  [4]: /wp-content/uploads/2019/02/nam6.jpg

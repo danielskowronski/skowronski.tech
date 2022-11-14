@@ -44,10 +44,6 @@ Powinno zadziałać, ewentualny restart powłoki się zawsze przyda.
 
 
 
-<div id="zrodlo">
-  źródło: http://forum.kde.org/viewtopic.php?f=16&t=10667
-</div>
+źródło: [http://forum.kde.org/viewtopic.php?f=16&t=10667](http://forum.kde.org/viewtopic.php?f=16&t=10667)
 
-<div id="zrodlo">
-  źródło: http://techthrob.com/2009/03/02/howto-add-items-to-the-right-click-menu-in-nautilus/
-</div>
+źródło: [http://techthrob.com/2009/03/02/howto-add-items-to-the-right-click-menu-in-nautilus/](http://techthrob.com/2009/03/02/howto-add-items-to-the-right-click-menu-in-nautilus/)

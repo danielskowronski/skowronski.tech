@@ -19,11 +19,11 @@ Skrypt, którego użyjemy to: <http://davidjbradshaw.github.io/iframe-resizer/>.
 &nbsp;  
 Strona "host":
 
-<pre class="lang:default EnlighterJSRAW " ><script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+```html
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 <iframe id="nazwa" width="500px" scrolling="no" src="plik.html"></iframe>
 <script src="https://raw2.github.com/davidjbradshaw/iframe-resizer/master/js/iframeResizer.min.js"></script>
 <script>$("#nazwa").iFrameResize({});</script>
-
 ```
 
 
@@ -35,7 +35,8 @@ L4: podpięcie funkcji pod obiekt
 &nbsp;  
 Strona "gość":
 
-<pre class="lang:default EnlighterJSRAW " ><script src="https://raw.githubusercontent.com/davidjbradshaw/iframe-resizer/master/js/iframeResizer.contentWindow.min.js"></script>
+```html
+<script src="https://raw.githubusercontent.com/davidjbradshaw/iframe-resizer/master/js/iframeResizer.contentWindow.min.js"></script>
 treść lalala-trolololo; lorem ipsum
 ```
 

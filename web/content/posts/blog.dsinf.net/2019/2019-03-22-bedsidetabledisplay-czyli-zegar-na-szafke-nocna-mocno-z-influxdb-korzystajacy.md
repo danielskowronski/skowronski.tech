@@ -39,11 +39,12 @@ Kod w C++ oczywiście trafił [na Githuba][8]. Ale co ze schematem? Szukałem d�
 
 ![Schemat stworzony w CircuitMakerze](https://raw.githubusercontent.com/danielskowronski/btd/master/hw/schematics.png)
 
-Co z tytułowym [InfluxDB][10]? Otóż dane z NettigoAirMonitor pobierane są właśnie z tej bazy danych. Otrzymuje ona też aktualne wartości temperatury i natężenia światła. Stąd tylko krok do wrzucenia pomiarów w Grafanę. Tu jeszcze jedna uwaga - Grafana wymaga zrobienia jednego _Data Source_ na każdą bazę danych Influxa.<figure class="wp-block-image">
+Co z tytułowym [InfluxDB][10]? Otóż dane z NettigoAirMonitor pobierane są właśnie z tej bazy danych. Otrzymuje ona też aktualne wartości temperatury i natężenia światła. Stąd tylko krok do wrzucenia pomiarów w Grafanę. Tu jeszcze jedna uwaga - Grafana wymaga zrobienia jednego _Data Source_ na każdą bazę danych Influxa.
+
 
 ![Jak InfluxDB to i Grafana](/wp-content/uploads/2019/03/Screenshot_2.png)
 
- [1]: https://blog.dsinf.net/2019/01/budowa-stacji-pogody-z-czujnikiem-smogu-i-prezentacja-danych/
+ [1]: /2019/01/budowa-stacji-pogody-z-czujnikiem-smogu-i-prezentacja-danych/
  [2]: https://github.com/danielskowronski/zegar-beta
  [3]: https://github.com/danielskowronski/zegar-delta
  [4]: https://github.com/danielskowronski/zegar-gamma

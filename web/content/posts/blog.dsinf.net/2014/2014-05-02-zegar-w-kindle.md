@@ -17,7 +17,7 @@ Oczywiście - napisałem na to skrypt 🙂
 
 ![Kindle - zegarek](/wp-content/uploads/2014/05/WP_20140502_001-300x225.jpg)
 
-Po pierwsze - **potrzebny nam będzie Launchpad**. LP to program pozwalający odpalać komendy za pomocą skrótów klawiaturowych. Rzecz jasna - "<span style="text-decoration: underline;">it may void your varranty`", ale kto by się przejmował. Szansa, że coś wybuchnie jest znikoma. Instrukcje - [tutaj][2] (minimum to LP). W skrócie instalacja polega na wgraniu na główną pamięć (tą dostępną po wpięciu do komputera przez USB) pliku .bin i wykonanie aktualizacji systemu.
+Po pierwsze - **potrzebny nam będzie Launchpad**. LP to program pozwalający odpalać komendy za pomocą skrótów klawiaturowych. Rzecz jasna - "`it may void your varranty`", ale kto by się przejmował. Szansa, że coś wybuchnie jest znikoma. Instrukcje - [tutaj][2] (minimum to LP). W skrócie instalacja polega na wgraniu na główną pamięć (tą dostępną po wpięciu do komputera przez USB) pliku .bin i wykonanie aktualizacji systemu.
 
 Teraz możemy zacząć tworzyć skrypty.
 

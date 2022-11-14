@@ -6,10 +6,6 @@ date: 2021-04-07T21:00:51+00:00
 summary: Kończąc opisane dwa miesiące temu zmiany w polityce prywatności, skończyłem projekt usuwania zbędnych danych z logów dostępu nginxa. Opiszę pokrótce gotowy fragment pliku konfiguracyjnego serwera i pokażę, jak skonfigurować Promtaila, żeby przetwarzał logi w nowym formacie.
 url: /2021/04/serwer-nginx-minimalizowanie-zbieranych-danych-w-logach-dostepu/
 featured_image: /wp-content/uploads/2021/04/nginx.jpg
-xyz_twap_future_to_publish:
-  - 'a:3:{s:26:"xyz_twap_twpost_permission";s:1:"1";s:32:"xyz_twap_twpost_image_permission";s:1:"1";s:18:"xyz_twap_twmessage";s:26:"{POST_TITLE} - {PERMALINK}";}'
-xyz_twap:
-  - 1
 tags:
   - logi
   - loki

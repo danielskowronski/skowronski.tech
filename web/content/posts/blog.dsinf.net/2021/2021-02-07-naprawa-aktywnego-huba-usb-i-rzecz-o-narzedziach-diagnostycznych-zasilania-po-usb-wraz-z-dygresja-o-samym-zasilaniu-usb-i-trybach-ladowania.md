@@ -6,10 +6,6 @@ date: 2021-02-07T20:09:16+00:00
 summary: 'Aktywny hub USB od D-linka model DUB-H7 to leciwa, ale bardzo mocna konstrukcja - zwłaszcza, jeśli chodzi o wykorzystanie jej w roli aż 7-portowej ładowarki. Niestety obydwa porty oznaczone symbolem pioruna, a więc te, które powinny dostarczać większy prąd jakiś czas temu przestały działać. Chcąc przywrócić sprzęt do świetności, musiałem zanurkować trochę w odmętach rosyjskojęzycznych forów internetowych i dość długo czekać na elementy zastępcze z Chin. Jednakże dzięki temu może powstać ten artykuł, który dodatkowo opowie o wykorzystywanych przeze mnie narzędziach diagnostycznych zasilania po USB, a także o samym zasilaniu USB i trybach ładowania.'
 url: /2021/02/naprawa-aktywnego-huba-usb-i-rzecz-o-narzedziach-diagnostycznych-zasilania-po-usb-wraz-z-dygresja-o-samym-zasilaniu-usb-i-trybach-ladowania/
 featured_image: /wp-content/uploads/2021/02/05_pomiary.jpg
-xyz_twap_future_to_publish:
-  - 'a:3:{s:26:"xyz_twap_twpost_permission";s:1:"1";s:32:"xyz_twap_twpost_image_permission";s:1:"1";s:18:"xyz_twap_twmessage";s:26:"{POST_TITLE} - {PERMALINK}";}'
-xyz_twap:
-  - 1
 
 ---
 Aktywny hub USB od D-linka model `DUB-H7` to leciwa, ale bardzo mocna konstrukcja - zwłaszcza, jeśli chodzi o wykorzystanie jej w roli aż 7-portowej ładowarki. Niestety obydwa porty oznaczone symbolem pioruna, a więc te, które powinny dostarczać większy prąd jakiś czas temu przestały działać. Chcąc przywrócić sprzęt do świetności, musiałem zanurkować trochę w odmętach rosyjskojęzycznych forów internetowych i dość długo czekać na elementy zastępcze z Chin. Jednakże dzięki temu może powstać ten artykuł, który dodatkowo opowie o wykorzystywanych przeze mnie narzędziach diagnostycznych zasilania po USB, a także o samym zasilaniu USB i trybach ładowania.

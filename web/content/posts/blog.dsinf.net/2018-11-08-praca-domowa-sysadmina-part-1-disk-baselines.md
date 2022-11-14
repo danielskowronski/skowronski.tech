@@ -78,7 +78,10 @@ Pierwsze polegało na przeprowadzeniu testów obciążeniowych dysku i zebranie 
 
 ### Environment
 
-<pre class="lang:default EnlighterJSRAW">apt install bonnie++ sysstat</pre>
+```
+apt install bonnie++ sysstat
+```
+
 
 ### First iteration - iostat-csv + R/GSheet
 
@@ -86,12 +89,17 @@ Pierwsze polegało na przeprowadzeniu testów obciążeniowych dysku i zebranie 
 
 Simple wrapper from internet
 
-<pre class="lang:default EnlighterJSRAW ">root@sah:/home/sah# cd /var/sah/bin; git clone https://github.com/ymdysk/iostat-csv.git
-root@sah:/home/sah#</pre>
+```bash
+root@sah:/home/sah# cd /var/sah/bin; git clone https://github.com/ymdysk/iostat-csv.git
+root@sah:/home/sah#
+```
+
 
 Simple test - \`bonnie++\` simple test (2x RAM size) on data disk, simple wrapper over \`iostat -x\` that ouputs csv run in parallel.
 
-<pre class="lang:default EnlighterJSRAW " title="# terminal 1">root@sah:/home/sah# time bonnie++ -d /home/sah/tests/ -r 16192 -u daniel
+terminal 1:
+```bash
+root@sah:/home/sah# time bonnie++ -d /home/sah/tests/ -r 16192 -u daniel
 Using uid:1000, gid:1000.
 Writing a byte at a time...done
 Writing intelligently...done
@@ -120,20 +128,26 @@ Latency 867us 680us 1587us 566us 112us 1260us
 real 34m24.300s
 user 0m10.288s
 sys 4m34.876s
-root@sah:/home/sah#</pre>
+root@sah:/home/sah#
+```
 
-<pre class="lang:default EnlighterJSRAW " title="#terminal 2">root@sah:/home/daniel# /var/sah/bin/iostat-csv/iostat-csv.sh | tee -a /var/sah/task1_iter1.csv
+terminal 2:
+```bash
+root@sah:/home/daniel# /var/sah/bin/iostat-csv/iostat-csv.sh | tee -a /var/sah/task1_iter1.csv
 Date,Time,%user,%nice,%system,%iowait,%steal,%idle,Device,r/s,w/s,rkB/s,wkB/s,rrqm/s,wrqm/s,%rrqm,%wrqm,r_await,w_await,aqu-sz,rareq-sz,wareq-sz,svctm,%util,Device,r/s,w/s,rkB/s,wkB/s,rrqm/s,wrqm/s,%rrqm,%wrqm,r_await,w_await,aqu-sz,rareq-sz,wareq-sz,svctm,%util,Device,r/s,w/s,rkB/s,wkB/s,rrqm/s,wrqm/s,%rrqm,%wrqm,r_await,w_await,aqu-sz,rareq-sz,wareq-sz,svctm,%util,Device,r/s,w/s,rkB/s,wkB/s,rrqm/s,wrqm/s,%rrqm,%wrqm,r_await,w_await,aqu-sz,rareq-sz,wareq-sz,svctm,%util
 09/24/18,02:24:56,0.10,0.00,0.62,2.39,0.00,96.89,loop0,0.01,0.00,0.07,0.00,0.00,0.00,0.00,0.00,1.36,0.00,0.00,10.79,0.00,0.11,0.00,loop1,0.00,0.00,0.02,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,6.60,0.00,0.00,0.00,sda,1.18,1.03,34.43,32.15,0.09,2.44,7.07,70.40,15.24,181.59,0.20,29.16,31.35,8.08,1.78,sdb,31.94,4.30,4067.23,4259.74,0.11,0.70,0.34,14.02,2.39,3352.68,14.48,127.34,990.63,3.65,13.23
 09/24/18,02:24:57,0.00,0.00,0.00,0.00,0.00,100.00,loop0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,loop1,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,sda,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,sdb,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
-###...</pre>
+###...
+```
+
 
 Data parsing
 
-<pre class="lang:default EnlighterJSRAW ">root@sah:/var/sah# tail -n2300 task1_iter1.csv &gt; task1_iter1_stripped.csv
+```bash
+root@sah:/var/sah# tail -n2300 task1_iter1.csv > task1_iter1_stripped.csv
 root@sah:/var/sah# cat task1_iter1.csv | head -n1 | tr ',' '\n' | cat -n
 ## column numbers for awk
-root@sah:/var/sah# cat task1_iter1.csv | head -n 2300 | awk 'BEGIN {FS=",";OFS=","}{print $1,$2,$3,$5,$58,$59,$60,$61,$66,$67,$68}' &gt; task1_iter1_stripped.csv
+root@sah:/var/sah# cat task1_iter1.csv | head -n 2300 | awk 'BEGIN {FS=",";OFS=","}{print $1,$2,$3,$5,$58,$59,$60,$61,$66,$67,$68}' > task1_iter1_stripped.csv
 Date,Time,%user,%system,r/s,w/s,rkB/s,wkB/s,r_await,w_await,aqu-sz
 09/24/18,02:24:56,0.10,0.62,31.94,4.30,4067.23,4259.74,2.39,3352.68,14.48
 09/24/18,02:24:57,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
@@ -155,29 +169,35 @@ Date,Time,%user,%system,r/s,w/s,rkB/s,wkB/s,r_await,w_await,aqu-sz
 09/24/18,02:25:02,1.25,11.61,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 09/24/18,02:25:03,1.25,11.25,0.00,1.98,0.00,23.76,0.00,8.00,0.02
 09/24/18,02:25:04,1.25,11.36,0.00,0.00,0.00,0.00,0.00,0.00,0.00
-root@sah:/var/sah#</pre>
+root@sah:/var/sah#
+```
+
 
 #### Data visualization
 
 First iteration in R
 
-<pre class="lang:r EnlighterJSRAW ">#!/usr/bin/env Rscript
+```r
+#!/usr/bin/env Rscript
 library(lattice)
 d = read.csv("d:/sah/task1_iter1_stripped.csv", header = TRUE)
 
 # crude all-in-one
-f &lt;- paste(paste(names(d[,-1,drop=FALSE]), collapse="+"), names(d[,2,drop=FALSE]), sep=" ~ ")
-xyplot(as.formula(f), data=d, type='l', auto.key=list(space='right'))</pre>
+f <- paste(paste(names(d[,-1,drop=FALSE]), collapse="+"), names(d[,2,drop=FALSE]), sep=" ~ ")
+xyplot(as.formula(f), data=d, type='l', auto.key=list(space='right'))
+```
+
 
 R is not suitable for interactive analysis or any easy analysis at all with huge datasets that need every point to be shown.
 
-Second iteration in GSheet, kind of disappointing - https://docs.google.com/spreadsheets/d/13QFwxlwpk5QKAj-fj3VX\_o49nSNUIYdHEL54ijR\_DiQ/edit?usp=sharing
+Second iteration in GSheet, kind of disappointing - https://docs.google.com/spreadsheets/d/13QFwxlwpk5QKAj-fj3VX\_o49nSNUIYdHEL54ijR\_DiQ/edit?usp=sharing
 
 ### Second iteration - custom watcher script and plotly.js
 
 #### Custom script \`statsWatcher.sh\`
 
-<pre class="lang:default EnlighterJSRAW ">#!/bin/bash
+```bash
+#!/bin/bash
 dev=$1
 out=$2
 if [[ -z $dev || -z $out ]]; then
@@ -185,7 +205,7 @@ echo "usage: $0 diskToMonitor outputLogFilename"
 exit 1
 fi
 
-echo "timestamp,mem_free,mem_buff,mem_cache,cpu_user,cpu_sys,cpu_iowait,r_s,w_s,rkB_s,wkB_s,r_await,w_await,avg_q,util_perc" &gt;&gt; $out
+echo "timestamp,mem_free,mem_buff,mem_cache,cpu_user,cpu_sys,cpu_iowait,r_s,w_s,rkB_s,wkB_s,r_await,w_await,avg_q,util_perc" >> $out
 
 while [[ true ]]; do
 date=`date +%s`
@@ -193,10 +213,12 @@ diskStats=`iostat -t -x $dev -y 1 1 | tail -n 2| head -n1 | awk '{print $2","$3"
 #r/s,w/s,rkB/s,wkB/s,r_await,w_await,aqu-sz,%util
 sysStats=`vmstat -w 1 2 | tail -n1 | awk '{print $4","$5","$6","$13","$14","$16}'`
 #mem_free,mem_buff,mem_cache,cpu_user,cpu_sys,cpu_iowait
-echo $date","$sysStats","$diskStats &gt;&gt; $out
+echo $date","$sysStats","$diskStats >> $out
 
 #sleep 1
-done</pre>
+done
+```
+
 
 \`sleep 1\` is commented out since \`iostat\` and \`vmstat\` need to run for one second to collect current statistics. First output line is average value from boot time until now so it’s not valuable.
 
@@ -204,7 +226,8 @@ done</pre>
 
 Simple test was performed to see how data is displayed on graphs. It consisted of following commands executed on another machine:
 
-<pre class="lang:default EnlighterJSRAW ">thor:/# dd if=/dev/urandom of=/home/xxxx bs=1M count=1k
+```bash
+thor:/# dd if=/dev/urandom of=/home/xxxx bs=1M count=1k
 1024+0 records in
 1024+0 records out
 1073741824 bytes (1.1 GB, 1.0 GiB) copied, 8.30361 s, 129 MB/s
@@ -225,11 +248,14 @@ thor:/# dd of=/home/xxxx2 if=/home/xxxx bs=1M count=100k
 7252+0 records out
 7604273152 bytes (7.6 GB, 7.1 GiB) copied, 147.806 s, 51.4 MB/s
 thor:/# rm /home/xxxx2 /home/xxxx
-thor:/#</pre>
+thor:/#
+```
+
 
 Result of running \`./statsWatcher.sh /dev/sdb testLog.csv\` (first 20 lines):
 
-<pre class="lang:default EnlighterJSRAW ">timestamp,mem_free,mem_buff,mem_cache,cpu_user,cpu_sys,cpu_iowait,r_s,w_s,rkB_s,wkB_s,r_await,w_await,avg_q,util_perc
+```csv
+timestamp,mem_free,mem_buff,mem_cache,cpu_user,cpu_sys,cpu_iowait,r_s,w_s,rkB_s,wkB_s,r_await,w_await,avg_q,util_perc
 1538404489,9254124,206608,1590424,0,0,0,0.00,1.00,0.00,0.50,0.00,4.00,0.00,0.40
 1538404491,9257000,206608,1590452,0,0,0,0.00,52.00,0.00,712.50,0.00,2.08,0.14,14.00
 1538404493,9256604,206608,1590452,0,0,0,0.00,15.00,0.00,57.00,0.00,2.93,0.04,2.00
@@ -248,7 +274,9 @@ Result of running \`./statsWatcher.sh /dev/sdb testLog.csv\` (first 20 lines):
 1538404519,9263400,206608,1590444,0,0,0,0.00,3.00,0.00,5.00,0.00,12.00,0.04,3.60
 1538404521,9264192,206608,1590420,0,0,0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 1538404523,9264472,206608,1590416,0,0,0,0.00,3.00,0.00,5.00,0.00,9.33,0.03,2.80
-1538404525,9265104,206608,1590416,0,0,0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00</pre>
+1538404525,9265104,206608,1590416,0,0,0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+```
+
 
 #### Graphs
 
@@ -273,8 +301,11 @@ Here’s setup of it under VMware:
 
 It’ll run baselines collector for 15 seconds without load, then perform 3 tests of bonnie++ (-x3 on 15G output data sizew) and again collect 15 minutes of idle stats. 3 files are created - bonnie.csv with raw results, bonnie.html with html formatted data and baseline.csv with IO and CPU stats.
 
-<pre class="lang:default EnlighterJSRAW ">logname=filesystem_ext4journal; 
-./statsWatcher.sh /dev/sdc $logname.baseline.csv & sleep 15; bonnie++ -u root -d /test/ -s15G -r7.5G -x3 -q &gt; $logname.bonnie.csv; sleep 15; kill -9 `jobs -p`; bon_csv2html $logname.bonnie.csv &gt; $logname.bonnie.html</pre>
+```bash
+logname=filesystem_ext4journal; 
+./statsWatcher.sh /dev/sdc $logname.baseline.csv & sleep 15; bonnie++ -u root -d /test/ -s15G -r7.5G -x3 -q > $logname.bonnie.csv; sleep 15; kill -9 `jobs -p`; bon_csv2html $logname.bonnie.csv > $logname.bonnie.html
+```
+
 
 #### Testing various filesystems
 
@@ -282,7 +313,8 @@ I’ve chosen same filesystems as in Task2 for database storage selection.
 
 **ext4 journalled**
 
-<pre class="lang:default EnlighterJSRAW ">root@sah:/# mkfs.ext4 /dev/sdc1
+```bash
+root@sah:/# mkfs.ext4 /dev/sdc1
 mke2fs 1.44.1 (24-Mar-2018)
 Creating filesystem with 4194048 4k blocks and 1048576 inodes
 Filesystem UUID: 68d9ad29-e5ad-4040-b5a8-648b3d686da5
@@ -297,14 +329,17 @@ Writing superblocks and filesystem accounting information: done
 root@sah:/# mount /dev/sdc1 /test/
 root@sah:/#
 
-root@sah:~/task1# logname=filesystem_ext4journal; ./statsWatcher.sh /dev/sdc $logname.baseline.csv & sleep 15; bonnie++ -u root -d /test/ -s15G -r7.5G -x3 -q &gt; $logname.bonnie.csv; sleep 15; kill -9 `jobs -p`; bon_csv2html $logname.bonnie.csv &gt; $logname.bonnie.html
+root@sah:~/task1# logname=filesystem_ext4journal; ./statsWatcher.sh /dev/sdc $logname.baseline.csv & sleep 15; bonnie++ -u root -d /test/ -s15G -r7.5G -x3 -q > $logname.bonnie.csv; sleep 15; kill -9 `jobs -p`; bon_csv2html $logname.bonnie.csv > $logname.bonnie.html
 [1] 9200
 [1]+ Killed ./statsWatcher.sh /dev/sdc $logname.baseline.csv
-root@sah:~/task1#</pre>
+root@sah:~/task1#
+```
+
 
 **ext4 no journall**
 
-<pre class="lang:default EnlighterJSRAW ">root@sah:~/task1# mkfs.ext4 -O ^has_journal /dev/sdc1
+```bash
+root@sah:~/task1# mkfs.ext4 -O ^has_journal /dev/sdc1
 mke2fs 1.44.1 (24-Mar-2018)
 /dev/sdc1 contains a ext4 file system
 last mounted on /test on Mon Oct 1 16:14:47 2018
@@ -320,14 +355,17 @@ Writing inode tables: done
 Writing superblocks and filesystem accounting information: done
 
 root@sah:~/task1# mount /dev/sdc1 /test
-root@sah:~/task1# logname=filesystem_ext4nojournal; ./statsWatcher.sh /dev/sdc $logname.baseline.csv & sleep 15; bonnie++ -u root -d /test/ -s15G -r7.5G -x3 -q &gt; $logname.bonnie.csv; sleep 15; kill -9 `jobs -p`; bon_csv2html $logname.bonnie.csv &gt; $logname.bonnie.html
+root@sah:~/task1# logname=filesystem_ext4nojournal; ./statsWatcher.sh /dev/sdc $logname.baseline.csv & sleep 15; bonnie++ -u root -d /test/ -s15G -r7.5G -x3 -q > $logname.bonnie.csv; sleep 15; kill -9 `jobs -p`; bon_csv2html $logname.bonnie.csv > $logname.bonnie.html
 [1] 15939
 [1]+ Killed ./statsWatcher.sh /dev/sdc $logname.baseline.csv
-root@sah:~/task1#</pre>
+root@sah:~/task1#
+```
+
 
 **JFS**
 
-<pre class="lang:default EnlighterJSRAW ">root@sah:~/task1# umount /test/
+```bash
+root@sah:~/task1# umount /test/
 root@sah:~/task1# mkfs.jfs /dev/sdc1
 mkfs.jfs version 1.1.15, 04-Mar-2011
 Warning! All data on device /dev/sdc1 will be lost!
@@ -339,14 +377,17 @@ Format completed successfully.
 
 16776192 kilobytes total disk space.
 root@sah:~/task1# mount /dev/sdc1 /test/
-root@sah:~/task1# logname=filesystem_jfs; ./statsWatcher.sh /dev/sdc $logname.baseline.csv & sleep 15; bonnie++ -u root -d /test/ -s15G -r7.5G -x3 -q &gt; $logname.bonnie.csv; sleep 15; kill -9 `jobs -p`; bon_csv2html $logname.bonnie.csv &gt; $logname.bonnie.html
+root@sah:~/task1# logname=filesystem_jfs; ./statsWatcher.sh /dev/sdc $logname.baseline.csv & sleep 15; bonnie++ -u root -d /test/ -s15G -r7.5G -x3 -q > $logname.bonnie.csv; sleep 15; kill -9 `jobs -p`; bon_csv2html $logname.bonnie.csv > $logname.bonnie.html
 [1] 22842
 [1]+ Killed ./statsWatcher.sh /dev/sdc $logname.baseline.csv
-root@sah:~/task1#</pre>
+root@sah:~/task1#
+```
+
 
 **XFS**
 
-<pre class="lang:default EnlighterJSRAW ">root@sah:~/task1# umount /test/
+```bash
+root@sah:~/task1# umount /test/
 root@sah:~/task1# mkfs.xfs /dev/sdc1
 mkfs.xfs: /dev/sdc1 appears to contain an existing filesystem (jfs).
 mkfs.xfs: Use the -f option to force overwrite.
@@ -361,10 +402,12 @@ log =internal log bsize=4096 blocks=2560, version=2
 = sectsz=512 sunit=0 blks, lazy-count=1
 realtime =none extsz=4096 blocks=0, rtextents=0
 root@sah:~/task1# mount /dev/sdc1 /test/
-root@sah:~/task1# logname=filesystem_xfs; ./statsWatcher.sh /dev/sdc $logname.baseline.csv & sleep 15; bonnie++ -u root -d /test/ -s15G -r7.5G -x3 -q &gt; $logname.bonnie.csv; sleep 15; kill -9 `jobs -p`; bon_csv2html $logname.bonnie.csv &gt; $logname.bonnie.html
+root@sah:~/task1# logname=filesystem_xfs; ./statsWatcher.sh /dev/sdc $logname.baseline.csv & sleep 15; bonnie++ -u root -d /test/ -s15G -r7.5G -x3 -q > $logname.bonnie.csv; sleep 15; kill -9 `jobs -p`; bon_csv2html $logname.bonnie.csv > $logname.bonnie.html
 [1] 30026
 [1]+ Killed ./statsWatcher.sh /dev/sdc $logname.baseline.csv
-root@sah:~/task1#</pre>
+root@sah:~/task1#
+```
+
 
 #### Testing various physical disks
 
@@ -393,7 +436,8 @@ Those are only valid block sizes for ext4
 
 **1024**
 
-<pre class="lang:default EnlighterJSRAW ">root@sah:~/task1# umount /test/
+```bash
+root@sah:~/task1# umount /test/
 root@sah:~/task1# mkfs.ext4 -b 1024 /dev/sdc1
 mke2fs 1.44.1 (24-Mar-2018)
 /dev/sdc1 contains a ext4 file system
@@ -411,14 +455,17 @@ Creating journal (65536 blocks): done
 Writing superblocks and filesystem accounting information: done
 
 root@sah:~/task1# mount /dev/sdc1 /test
-root@sah:~/task1# logname=ext4blocksize1024; ./statsWatcher.sh /dev/sdc $logname.baseline.csv & sleep 15; bonnie++ -u root -d /test/ -s15G -r7.5G -x3 -q &gt; $logname.bonnie.csv; sleep 15; kill -9 `jobs -p`; bon_csv2html $logname.bonnie.csv &gt; $logname.bonnie.html
+root@sah:~/task1# logname=ext4blocksize1024; ./statsWatcher.sh /dev/sdc $logname.baseline.csv & sleep 15; bonnie++ -u root -d /test/ -s15G -r7.5G -x3 -q > $logname.bonnie.csv; sleep 15; kill -9 `jobs -p`; bon_csv2html $logname.bonnie.csv > $logname.bonnie.html
 [1] 51212
 [1]+ Killed ./statsWatcher.sh /dev/sdc $logname.baseline.csv
-root@sah:~/task1#</pre>
+root@sah:~/task1#
+```
+
 
 **2048**
 
-<pre class="lang:default EnlighterJSRAW ">root@sah:~/task1# umount /test/
+```bash
+root@sah:~/task1# umount /test/
 root@sah:~/task1# mkfs.ext4 -b 2048 /dev/sdc1
 mke2fs 1.44.1 (24-Mar-2018)
 /dev/sdc1 contains a ext4 file system
@@ -436,22 +483,28 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 
 root@sah:~/task1# mount /dev/sdc1 /test
-root@sah:~/task1# logname=ext4blocksize2048; ./statsWatcher.sh /dev/sdc $logname.baseline.csv & sleep 15; bonnie++ -u root -d /test/ -s15G -r7.5G -x3 -q &gt; $logname.bonnie.csv; sleep 15; kill -9 `jobs -p`; bon_csv2html $logname.bonnie.csv &gt; $logname.bonnie.html
+root@sah:~/task1# logname=ext4blocksize2048; ./statsWatcher.sh /dev/sdc $logname.baseline.csv & sleep 15; bonnie++ -u root -d /test/ -s15G -r7.5G -x3 -q > $logname.bonnie.csv; sleep 15; kill -9 `jobs -p`; bon_csv2html $logname.bonnie.csv > $logname.bonnie.html
 [1] 44356
 [1]+ Killed ./statsWatcher.sh /dev/sdc $logname.baseline.csv
-root@sah:~/task1#</pre>
+root@sah:~/task1#
+```
+
 
 **4096**
 
-<pre class="lang:default EnlighterJSRAW ">root@sah:~/task1# tune2fs -l /dev/sdc1 | grep -i block\ size
+```bash
+root@sah:~/task1# tune2fs -l /dev/sdc1 | grep -i block\ size
 Block size: 4096
 root@sah:~/task1# cp filesystem_ext4journal.baseline.csv ext4blocksize4096.baseline.csv
 root@sah:~/task1# cp filesystem_ext4journal.bonnie.csv ext4blocksize4096.bonnie.csv
-root@sah:~/task1# cp filesystem_ext4journal.bonnie.html ext4blocksize4096.bonnie.html</pre>
+root@sah:~/task1# cp filesystem_ext4journal.bonnie.html ext4blocksize4096.bonnie.html
+```
+
 
 **8192**
 
-<pre class="lang:default EnlighterJSRAW ">root@sah:~/task1# umount /test/
+```bash
+root@sah:~/task1# umount /test/
 root@sah:~/task1# mkfs.ext4 -b 8129 /dev/sdc1
 Warning: blocksize 8129 not usable on most systems.
 mke2fs 1.44.1 (24-Mar-2018)
@@ -470,21 +523,26 @@ Creating journal (16384 blocks): done
 Writing superblocks and filesystem accounting information: done
 
 root@sah:~/task1# mount /dev/sdc1 /test/
-root@sah:~/task1# logname=ext4blocksize8192; ./statsWatcher.sh /dev/sdc $logname.baseline.csv & sleep 15; bonnie++ -u root -d /test/ -s15G -r7.5G -x3 -q &gt; $logname.bonnie.csv; sleep 15; kill -9 `jobs -p`; bon_csv2html $logname.bonnie.csv &gt; $logname.bonnie.html
+root@sah:~/task1# logname=ext4blocksize8192; ./statsWatcher.sh /dev/sdc $logname.baseline.csv & sleep 15; bonnie++ -u root -d /test/ -s15G -r7.5G -x3 -q > $logname.bonnie.csv; sleep 15; kill -9 `jobs -p`; bon_csv2html $logname.bonnie.csv > $logname.bonnie.html
 [1] 37635
 [1]+ Killed ./statsWatcher.sh /dev/sdc $logname.baseline.csv
-root@sah:~/task1#</pre>
+root@sah:~/task1#
+```
+
 
 #### Testing various thread count
 
 Tested 2 threads of bonnie++
 
-<pre class="lang:default EnlighterJSRAW ">root@sah:~/task1# logname=threads_2; ./statsWatcher.sh /dev/sdc $logname.baseline.csv & sleep 15; bonnie++ -u root -d /test/ -s7G -r3.5G -x3 -q &gt; $logname.1.bonnie.csv & bonnie++ -u root -d /test/ -s7G -r3.5G -x3 -q &gt; $logname.2.bonnie.csv; sleep 1m; kill -9 `jobs -p`; bon_csv2html $logname.1.bonnie.csv &gt; $logname.bonnie.html; bon_csv2html $logname.2.bonnie.csv &gt;&gt; $logname.bonnie.html
+```bash
+root@sah:~/task1# logname=threads_2; ./statsWatcher.sh /dev/sdc $logname.baseline.csv & sleep 15; bonnie++ -u root -d /test/ -s7G -r3.5G -x3 -q > $logname.1.bonnie.csv & bonnie++ -u root -d /test/ -s7G -r3.5G -x3 -q > $logname.2.bonnie.csv; sleep 1m; kill -9 `jobs -p`; bon_csv2html $logname.1.bonnie.csv > $logname.bonnie.html; bon_csv2html $logname.2.bonnie.csv >> $logname.bonnie.html
 [1] 90591
 [2] 90669
-[2]+ Done bonnie++ -u root -d /test/ -s7G -r3.5G -x3 -q &gt; $logname.1.bonnie.csv
+[2]+ Done bonnie++ -u root -d /test/ -s7G -r3.5G -x3 -q > $logname.1.bonnie.csv
 [1]+ Killed ./statsWatcher.sh /dev/sdc $logname.baseline.csv
-root@sah:~/task1#</pre>
+root@sah:~/task1#
+```
+
 
 ### Baselines of ETL (task2)
 
@@ -492,36 +550,46 @@ root@sah:~/task1#</pre>
 
 **data download & unpacking it - etl_dataload**
 
-<pre class="lang:default EnlighterJSRAW">root@sah:/home/csv# ./statsWatcher.sh /dev/sdb etl_dataload.csv & sleep 15; for i in `seq -f "%05g" 0 29`; do wget https://XXXXXXXX.s3.amazonaws.com/hive_csv_altus_gz/part-$i.gz; done; sleep 30; for i in `seq -f "%05g" 0 29`; do gzip -d part-$i.gz; done; sleep 15; kill -9 `jobs -p`; ntfy -b telegram send "done"
+```bash
+root@sah:/home/csv# ./statsWatcher.sh /dev/sdb etl_dataload.csv & sleep 15; for i in `seq -f "%05g" 0 29`; do wget https://XXXXXXXX.s3.amazonaws.com/hive_csv_altus_gz/part-$i.gz; done; sleep 30; for i in `seq -f "%05g" 0 29`; do gzip -d part-$i.gz; done; sleep 15; kill -9 `jobs -p`; ntfy -b telegram send "done"
 [1] 97612
 [1]+ Killed ./statsWatcher.sh /dev/sdb etl_dataload.csv
-root@sah:/home/csv#</pre>
+root@sah:/home/csv#
+```
+
 
 **1.2GB chunks with 1 threads - etl\_1\_1**
 
-<pre class="lang:default EnlighterJSRAW ">root@sah:/home/csv# timepse "truncate table extract"
+```bash
+root@sah:/home/csv# timepse "truncate table extract"
 TRUNCATE TABLE
 4.88
 root@sah:/home/csv# logname=etl_1_1; ./statsWatcher.sh /dev/sdb $logname.baseline.csv & sleep 15; ./multipleFilesLoader 1 $logname.log.csv; sleep 15; kill -9 `jobs -p`
 [2] 126089
 [1]- Killed ./statsWatcher.sh /dev/sdc $logname.baseline.csv
 [2]+ Killed ./statsWatcher.sh /dev/sdb $logname.baseline.csv
-root@sah:/home/csv#</pre>
+root@sah:/home/csv#
+```
+
 
 **1.2GB chunks with 4 threads- etl\_1\_4**
 
-<pre class="lang:default EnlighterJSRAW ">root@sah:/home/csv# timepse "truncate table extract"
+```bash
+root@sah:/home/csv# timepse "truncate table extract"
 TRUNCATE TABLE
 3.12
 root@sah:/home/csv# logname=etl_1_4; ./statsWatcher.sh /dev/sdb $logname.baseline.csv & sleep 15; ./multipleFilesLoader 4 $logname.log.csv; sleep 15; kill -9 `jobs -p`
 [2] 17749
 [1]- Killed ./statsWatcher.sh /dev/sdb $logname.baseline.csv
 [2]+ Killed ./statsWatcher.sh /dev/sdb $logname.baseline.csv
-root@sah:/home/csv#</pre>
+root@sah:/home/csv#
+```
+
 
 **2.4GB chunks with 8 threads - etl\_2\_8**
 
-<pre class="lang:default EnlighterJSRAW ">root@sah:/home/csv# ls -alh part-*
+```bash
+root@sah:/home/csv# ls -alh part-*
 -rw-r--r-- 1 root root 2.4G Oct 2 18:28 part-0_2
 -rw-r--r-- 1 root root 2.4G Oct 2 18:32 part-10_2
 -rw-r--r-- 1 root root 2.4G Oct 2 18:32 part-12_2
@@ -543,33 +611,33 @@ TRUNCATE TABLE
 root@sah:/home/csv# logname=etl_2_8; ./statsWatcher.sh /dev/sdb $logname.baseline.csv & sleep 15; ./multipleFilesLoader 4 $logname.log.csv; sleep 15; kill -9 `jobs -p`
 [1] 39851
 [1]+ Killed ./statsWatcher.sh /dev/sdb $logname.baseline.csv
-root@sah:/home/csv#</pre>
+root@sah:/home/csv#
+```
+
 
 **pg\_bulkload parallel - etl\_pgbulkload**
 
-<pre class="lang:default EnlighterJSRAW ">root@sah:/home/csv# timepse "truncate table extract"
+```bash
+root@sah:/home/csv# timepse "truncate table extract"
 TRUNCATE TABLE
 1.21
-root@sah:/home/csv# logname=etl_pgbulkload; ./statsWatcher.sh /dev/sdb $logname.baseline.csv & sleep 15; for f in part-*; do /home/pg_bulkload/bin/pg_bulkload -d sah -o</pre>
+root@sah:/home/csv# logname=etl_pgbulkload; ./statsWatcher.sh /dev/sdb $logname.baseline.csv & sleep 15; for f in part-*; do /home/pg_bulkload/bin/pg_bulkload -d sah -o
+```
+
 
 As with bonnie++ they were run with 15 seconds overlap of idle state.
 
 ### Results {#summary}
 
-  * baselines: [https://storage.dsinf.net/sah/task1_benchmarks/baselines.html][4]
-  * binaries: /wp-content/uploads/sah/task1_benchmarks/bin/
+  * baselines and binaries: [sah_task1_benchmarks.zip](/wp-content/uploads/2018/11/sah_task1_benchmarks.zip)
 
-<pre class="lang:default EnlighterJSRAW ">DELIMITER=\t' -i $f import_alldata.ctl; done; sleep 15; kill -9 `jobs -p`
+```bash
+DELIMITER=\t' -i $f import_alldata.ctl; done; sleep 15; kill -9 `jobs -p`
 [1] 50658
 [1]+ Killed ./statsWatcher.sh /dev/sdb $logname.baseline.csv
-root@sah:/home/csv#</pre>
+root@sah:/home/csv#
+```
 
-As with bonnie++ they were run with 15 seconds overlap of idle state.
-
-### Results {#summary}
-
-  * baselines: [https://storage.dsinf.net/sah/task1_benchmarks/baselines.html][4]
-  * binaries: /wp-content/uploads/sah/task1_benchmarks/bin/
 
  [1]: #summary
  [2]: http://(https://ark.intel.com/pl/products/37104/Intel-Xeon-Processor-E5540-8M-Cache-2_53-GHz-5_86-GTs-Intel-QPI

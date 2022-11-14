@@ -19,7 +19,8 @@ Jeżeli chodzi o zegar to wykorzystałem nie tylko sam [FlipClock.js][2] - na cz
 
 W kodzie ma to następujące odzwierciedlenie - zaczynamy z czasem lokalnym żeby cokolwiek wyświetlić, a funkcja syncTime parsuje datę w formacie ISO i ustawia ją jako czas startu zegara; czas zwracany jest w UTC, ale obiekt Date by default zwraca czas w lokalnej strefie czasowej - więc wypada żeby przeglądarka posiadała dobre dane.
 
-<pre class="lang:js EnlighterJSRAW ">//starting with anything - local clock
+```js
+//starting with anything - local clock
 var clock = $('.clock').FlipClock({ 
   clockFace: 'TwentyFourHourClock'
 });
@@ -33,31 +34,37 @@ function syncTime(){
   });  
 }
 
-setInterval(function(){ syncTime();  }, 100000);</pre>
+setInterval(function(){ syncTime();  }, 100000);
+```
+
 
 ## Stan serwerów
 
-Kolejna kwestia to stan serwerów. Ponieważ frontend saurona komunikuje się z backendem po JSONowym API więc można postawić zwykłego [saurona][4] jako osobną aplikację i wykorzystać jego dane.Prawdopodobnie będziemy chcieli wystawić go za reverse proxy (co da nam chociażby możliwość dodania autoryzacji) takie jak caddy - trzeba jednak pamiętać o CORS - we wspomnianym caddym jest to jedna linijka - <span class="lang:default EnlighterJSRAW crayon-inline ">cors</span> . Kiedy mamy standardową instancję saurona czas pożyczyć kod frontendu do naszej aplikacji.
+Kolejna kwestia to stan serwerów. Ponieważ frontend saurona komunikuje się z backendem po JSONowym API więc można postawić zwykłego [saurona][4] jako osobną aplikację i wykorzystać jego dane.Prawdopodobnie będziemy chcieli wystawić go za reverse proxy (co da nam chociażby możliwość dodania autoryzacji) takie jak caddy - trzeba jednak pamiętać o CORS - we wspomnianym caddym jest to jedna linijka - `cors` . Kiedy mamy standardową instancję saurona czas pożyczyć kod frontendu do naszej aplikacji.
 
 Przykładowy statyczny HTML z listą czujek - sauron normalnie pobiera z konfigu listę serwerów i czujek renderując je w locie, ale wolałem mieć tylko kilka z nich - co pozwala na dodatkowe formatowanie
 
-<pre class="lang:default EnlighterJSRAW " title="HTML">&lt;div id="display"&gt;
-  &lt;div 
-  class="hostCheck probe" data-host="thor" data-probe="ssh"&gt;thor&lt;/div&gt;&lt;div 
-  class="hostCheck probe" data-host="vps" data-probe="ssh"&gt;vps/ssh&lt;/div&gt;&lt;div 
-  class="hostCheck probe" data-host="vps" data-probe="www"&gt;vps/www&lt;/div&gt;
-  &lt;br /&gt;&lt;div 
-  class="hostCheck NU probe" data-host="fenrir" data-probe="ssh"&gt;fenrir&lt;/div&gt;&lt;div 
-  class="hostCheck NU probe" data-host="hyrrokkin" data-probe="ssh"&gt;hyrrokkin&lt;/div&gt;
-  &lt;br /&gt;&lt;div 
-  class="hostCheck NU probe" data-host="odin" data-probe="ssh"&gt;odin&lt;/div&gt;&lt;div 
-  class="hostCheck NU probe" data-host="sleipnir" data-probe="vmware"&gt;sleipnir&lt;/div&gt;&lt;div 
-  class="hostCheck NU probe" data-host="yuggoth_vm" data-probe="ssh"&gt;yuggoth_vm&lt;/div&gt;
-&lt;/div&gt;</pre>
+```html
+<div id="display">
+  <div 
+  class="hostCheck probe" data-host="thor" data-probe="ssh">thor</div><div 
+  class="hostCheck probe" data-host="vps" data-probe="ssh">vps/ssh</div><div 
+  class="hostCheck probe" data-host="vps" data-probe="www">vps/www</div>
+  <br /><div 
+  class="hostCheck NU probe" data-host="fenrir" data-probe="ssh">fenrir</div><div 
+  class="hostCheck NU probe" data-host="hyrrokkin" data-probe="ssh">hyrrokkin</div>
+  <br /><div 
+  class="hostCheck NU probe" data-host="odin" data-probe="ssh">odin</div><div 
+  class="hostCheck NU probe" data-host="sleipnir" data-probe="vmware">sleipnir</div><div 
+  class="hostCheck NU probe" data-host="yuggoth_vm" data-probe="ssh">yuggoth_vm</div>
+</div>
+```
+
 
 Style można albo zaimportować [wprost z saurona][5], albo wyciąć tylko to co nas interesuje - co zwiększa wygodę poprawiania (w tym wypadku dodałem klasę NU - NotUrgent - czujki wówczas nie migają dla nieistotnych maszyn)
 
-<pre class="lang:css EnlighterJSRAW " title="CSS saurona">.hostCheck {
+```css
+.hostCheck {
 	display: inline-block;
 	width: 300px;
 	text-align: center;
@@ -94,13 +101,15 @@ Style można albo zaimportować [wprost z saurona][5], albo wyciąć tylko to co
 	color: green;
 	border: 5px solid green;
 	background: none;
-}</pre>
+}
+```
+
 
 I wreszcie na koniec kod JS do pobierania danych. Ten [całkowicie bez zmian][6].
 
 ## Dane pogodowe - źródło
 
-Do pobierania wykorzystałem [OpenWeatherMap][7], [sunrise-sunset.org][8] i API [aplikacji Smok Smog][9]. W kwestii dostępu do tychże było różnie. Pogoda była najtrudniejsza gdyż z wiadomych przyczyn takie API są zwykle płatne, a apki na telefony względnie zabezpieczone przed sztuczkami w stylu [mitmproxy][10] (chociaż nie Weather Underground, przynajmniej na iOS). OWM posiada wersję darmową API dostępną po rejestracji, ale z rate-limitingiem - Hourly forecast: 5 / Daily forecast: 0 / Calls 1min: 60.
+Do pobierania wykorzystałem [OpenWeatherMap][7], [sunrise-sunset.org][8] i API [aplikacji Smok Smog][9]. W kwestii dostępu do tychże było różnie. Pogoda była najtrudniejsza gdyż z wiadomych przyczyn takie API są zwykle płatne, a apki na telefony względnie zabezpieczone przed sztuczkami w stylu [mitmproxy][10] (chociaż nie Weather Underground, przynajmniej na iOS). OWM posiada wersję darmową API dostępną po rejestracji, ale z rate-limitingiem - Hourly forecast: 5 / Daily forecast: 0 / Calls 1min: 60.
 
 Jak się zabezpieczyć przed trzymaniem klucza na wierzchu aplikacji (nawet jeśli mamy autoryzację i tylko zaufanych użytkowników to nadal trzymanie klucza na froncie to nie jest najlepszy pomysł)? Można proxować zapytania przez jakiś skrypt cgi na serwerze (nawet niech będzie to PHP). Ale to dalej nie zabezpiecza przed ratelimitingiem - nawet jeśli nasza aplikacja nie odpytuje serwera za często to zostawienie jej gdzieś na drugim komputerze może wygenerować problem. Brutalnym, ale działającym rozwiązaniem jest odpalany przez crona skrypt wołający curla który ściąga wynik do pliku js w odpowiednich interwałach - w przypadku pogody i podobnych 2 razy na godzinę raczej wystarczą.
 
@@ -108,41 +117,48 @@ Idąc dalej jako że obecnie mieszkam w Krakowie przydałyby się dane o smogu. 
 
 Ostatnia kwestia to z danych okołopogodowych to wschód i zachód słońca. Tu bez niespodzianek, API jest otwarte, ale żeby go nie nadużywać także proxuję przez brutalny skrypt w cronie.
 
-<pre class="lang:default EnlighterJSRAW" title="API proxy">#!/bin/bash
-#&gt; crontab:
-#&gt; 0,30     *       *       *       *       /XXX/weather/get.sh
+```bash
+#!/bin/bash
+#> crontab:
+#> 0,30     *       *       *       *       /XXX/weather/get.sh
 
 cd /XXX/weather/
-curl 'http://api.openweathermap.org/data/2.5/weather?q=Krakow,pl&appid=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&units=metric' &gt; weather.js
-curl 'http://api.openweathermap.org/data/2.5/forecast?q=Krakow,pl&appid=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&units=metric' &gt; forecast.js
-curl 'http://api.smoksmog.jkostrz.name/api/stations/62' &gt; smog.js
-curl 'https://api.sunrise-sunset.org/json?lat=50.089243&lng=19.946331&formatted=0&date='`date +%Y-%m-%d` &gt; sun.js
-</pre>
+curl 'http://api.openweathermap.org/data/2.5/weather?q=Krakow,pl&appid=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&units=metric' > weather.js
+curl 'http://api.openweathermap.org/data/2.5/forecast?q=Krakow,pl&appid=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&units=metric' > forecast.js
+curl 'http://api.smoksmog.jkostrz.name/api/stations/62' > smog.js
+curl 'https://api.sunrise-sunset.org/json?lat=50.089243&lng=19.946331&formatted=0&date='`date +%Y-%m-%d` > sun.js
+
+```
+
 
 ## Dane pogodowe - wyświetlanie
 
-<pre class="lang:default EnlighterJSRAW " title="kontenery HTML">&lt;div id="content"&gt;
-  &lt;div id="line0"&gt;
-    &lt;div  id="weather_now"&gt;&lt;/div&gt;
-    &lt;span id="smog"&gt;&lt;/span&gt;
-  &lt;/div&gt;
-  &lt;div id="line1"&gt;
-    &lt;div  id="weather_next"&gt;&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div id="line2"&gt;
-    &lt;div  id="date_sun"&gt;&lt;/div&gt;
-  &lt;/div&gt;
+```html
+<div id="content">
+  <div id="line0">
+    <div  id="weather_now"></div>
+    <span id="smog"></span>
+  </div>
+  <div id="line1">
+    <div  id="weather_next"></div>
+  </div>
+  <div id="line2">
+    <div  id="date_sun"></div>
+  </div>
 
-  &lt;br /&gt;
-  &lt;div class="clock"&gt;&lt;/div&gt;
+  <br />
+  <div class="clock"></div>
   
-  &lt;br /&gt;
-  &lt;div id="display"&gt;
-    &lt;!--sauron--&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
+  <br />
+  <div id="display">
+    <!--sauron-->
+  </div>
+</div>
+```
 
-<pre class="lang:css EnlighterJSRAW " title="style kontenerów">#line0, #line1, #line2{
+
+```css
+#line0, #line1, #line2{
 	color: black;
 	font-size: 28px;
 }
@@ -156,16 +172,19 @@ curl 'https://api.sunrise-sunset.org/json?lat=50.089243&lng=19.946331&formatted=
 
 #weather_now, #smog, #weather_next, #date_sun{
 	display: inline-block;
-}</pre>
+}
+```
+
 
 I funkcja pobierająca i renderująca dane (tak jak syncTime dodana w setInterval):
 
-<pre class="lang:js EnlighterJSRAW ">function getWeather(){
+```js
+function getWeather(){
   $.get( "/weather/weather.js", function( data ) {
     d=jQuery.parseJSON(data);
     txt="";
     $(d.weather).each(function( index ) {
-    txt+="&lt;img src='http://openweathermap.org/img/w/"+this.icon+".png' /&gt; "+this.main+"&nbsp;"
+    txt+="<img src='http://openweathermap.org/img/w/"+this.icon+".png' /> "+this.main+"&nbsp;"
     })
     txt+="| "+d.main.temp+"&deg;C&nbsp;"
     txt+="| "+d.main.pressure+"hPa&nbsp;"
@@ -178,15 +197,15 @@ I funkcja pobierająca i renderująca dane (tak jak syncTime dodana w setInterva
     d=jQuery.parseJSON(data);
     txt="";
     cnt=6;
-    for (var i=0; i&lt;cnt; i++){
+    for (var i=0; i<cnt; i++){
     date=new Date(d.list[i].dt_txt)
     date.setHours(date.getHours() + 2);
     txt+=date.getHours()+":00"
     $(d.list[i].weather).each(function( index ) {
-      txt+="&lt;img style='height: 1em' src='https://openweathermap.org/img/w/"+this.icon+".png' /&gt;"
+      txt+="<img style='height: 1em' src='https://openweathermap.org/img/w/"+this.icon+".png' />"
     })
     txt+=parseInt(d.list[i].main.temp)+"&deg;C&nbsp;"
-    if (i&lt;cnt-1) txt+="|&nbsp;"
+    if (i<cnt-1) txt+="|&nbsp;"
     }
     
     $("#weather_next").html(txt)
@@ -212,11 +231,13 @@ I funkcja pobierająca i renderująca dane (tak jak syncTime dodana w setInterva
   $.get("/weather/smog.js", function( data ) {
     d=jQuery.parseJSON(data);
     $("#smog").html(
-    "| &lt;span class='small'&gt;"+d.particulates[0].short_name+"&lt;/span&gt;"+
+    "| <span class='small'>"+d.particulates[0].short_name+"</span>"+
     parseInt(d.particulates[0].value)+""+d.particulates[0].unit
     );
   });
-}</pre>
+}
+```
+
 
 ## Podsumowanie i dalsze pomysły
 

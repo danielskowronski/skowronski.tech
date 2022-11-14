@@ -38,23 +38,23 @@ Podstawowa checklista wyglądała tak:
   * odpięcie wszelkich urządzeń USB (poza prostą klawiaturą USB) i kart rozszerzeń PCI (włącznie z wymianą GPU na prymitywną starą nVidię) 
 
 Dalej nic. A więc uznałem że czas przetestować _tryb&nbsp;debugowania_ po starym dobrym połączeniu szeregowym. Można włączyć przez _msconfig_ albo _bcdedit_ (szczegóły na [stronie Microsoftu][1]). Zacząłem od prymitywnego odczytu gołych danych bez użycia _windbg_ (nie mam drugiej maszyny z windowsem więc liczyłem na brak konieczności stawiania wirtualki). W momencie startu windows nadaje sygnały dla debuggera - _KDTARGET: Refeshing&nbsp;KD&nbsp;connection._ Ale w krytycznym momencie crashu wysyła także jakąś sekwencję danych której nie udało mi się odcyfrować - mimo testowania wszelkich baudrate'ów.  
-Tak oto prezentuje się dump ASCII przy 115200bps (wedle ustawień z windowsa) z podziałem na linie gdzie przewiduję granice sekwencji wiadomości:<figure class="wp-block-image">
+Tak oto prezentuje się dump ASCII przy 115200bps (wedle ustawień z windowsa) z podziałem na linie gdzie przewiduję granice sekwencji wiadomości:
 
-![](/wp-content/uploads/2018/12/msg.png) </figure> 
+![](/wp-content/uploads/2018/12/msg.png)
 
 Czas więc na _windbg_. [Pobrać go można łatwo][2], w obsłudze jest nieco trudniej. No i trzeba uważać na to które windbg odpalamy. Bo do menu start dodane są wersje x86, amd64 i arm. No i jak łatwo zgadnąć armowa się na x64 nie odapli.  
-Ale zasadniczo trzeba kliknąć _File/Kernel&nbsp;debug..._, wskazać parametry połączenia (polecam wybrać _reconnect_), warto ustawić _View/Verbose&nbsp;output_ i na koniec zrebootować windowsa którego się debuguje (inaczej się nie podłączy). Przez tryb verbose będzie się bootować długo, ale zobaczymy wszelkie moduły które są ładowane do jądra. Do normalnych celów testowania np. sterownika można by dać Ctrl+Break, ale to nie jest normalne debugowanie więc o tym nie w tym wpisie. <figure class="wp-block-image">
+Ale zasadniczo trzeba kliknąć _File/Kernel&nbsp;debug..._, wskazać parametry połączenia (polecam wybrać _reconnect_), warto ustawić _View/Verbose&nbsp;output_ i na koniec zrebootować windowsa którego się debuguje (inaczej się nie podłączy). Przez tryb verbose będzie się bootować długo, ale zobaczymy wszelkie moduły które są ładowane do jądra. Do normalnych celów testowania np. sterownika można by dać Ctrl+Break, ale to nie jest normalne debugowanie więc o tym nie w tym wpisie.
 
-![](/wp-content/uploads/2018/12/VirtualBox_windbg_20_12_2018_04_35_45.png) </figure> 
+![](/wp-content/uploads/2018/12/VirtualBox_windbg_20_12_2018_04_35_45.png)
 
 Co widać powyżej? Do zaznaczonego fragmentu mamy moduły ładowane na starcie, potem 2 zaznaczone linijki to moduły ładowane w czasie przechodzenia do trybu uśpienia S3. Na samym końcu nieistotny błąd samego windbg wynikający z odłączenia adaptera RS232 na USB. Jednak wcale nie uzyskujemy żadnych informacji o najważniejszej transmisji z crashu przy próbie wznowienia S0.  
 Po zdiagnozowaniu problemu i jego ostatecznych obejściu sprawdziłem czy tajemniczy sygnał się pojawia podczas normalnego przejścia S3->S0. Otóż nie.
 
 W tym momencie uznałem że spróbuję w BIOSie wyłączyć wszystko co nie jest niezbędne do rozruchu, odepnę wszystko poza dyskiem systemowym (jednym z macierzy), zawieszę bitlockera i będę uruchamiał tryb awaryjny. 
 
-I wybudzanie z S3 zadziałało. Metodą prób i błędów włączając jedną opcję na raz doszedłem do zasadniczego problemu - **VT-d. Wystarczy go wyłączyć.**<figure class="wp-block-image">
+I wybudzanie z S3 zadziałało. Metodą prób i błędów włączając jedną opcję na raz doszedłem do zasadniczego problemu - **VT-d. Wystarczy go wyłączyć.**
 
-![](/wp-content/uploads/2018/12/bios-300x225.jpg) <figcaption>W moim BIOSie VT-d wygląda tak</figcaption></figure> 
+![W moim BIOSie VT-d wygląda tak](/wp-content/uploads/2018/12/bios.jpg)
 
 [VT-d][3] w skrócie pozwala maszynom wirtualnym na bezpośredni (bez udziału OSu) dostęp do urządzeń PCI. Szansa że zechcemy skorzystać z jego mocy na starym sprzęcie jest niska więc nie zaszkodzi żyć z wyłączonym.
 

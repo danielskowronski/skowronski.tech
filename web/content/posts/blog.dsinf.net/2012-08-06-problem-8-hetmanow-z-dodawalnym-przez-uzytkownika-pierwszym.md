@@ -33,13 +33,13 @@ bool czyMozna(int kolumna, int wiersz)
 {
     if (hetmany[wiersz] != -1) return false; //czy wiersz
 
-    for (int i =0;i&lt; ileWierszy; i++)
+    for (int i =0;i< ileWierszy; i++)
     {
         if ((hetmany[i] != -1) && (hetmany[i] == kolumna)) 
 		return false;//dwutest: kolumna 
     }
 
-   for (int i =0;i&lt; ileWierszy; i++)
+   for (int i =0;i< ileWierszy; i++)
    {
        if ((hetmany[i] != -1) &&  (((kolumna+wiersz) == (i+hetmany[i]) ))) 
 	return false;//skosy
@@ -64,7 +64,7 @@ void wstawHetmana(int wiersz)
     else
     {
          
-    for (int i=0; i &lt; ileWierszy; i++)//musi wejsc dodatkowy raz, 
+    for (int i=0; i < ileWierszy; i++)//musi wejsc dodatkowy raz, 
 				    //zeby nie zdazyl przerobic wszystkiego na -1
     {
        

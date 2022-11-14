@@ -26,7 +26,7 @@ print "\n"x30;
 #odczyt aktualnej temperatury 
 #open(PLIK, '/proc/acpi/thermal_zone/THRM/temperature') or die "Nie można otworzyć pliku: $!";#wersja dla starych kerneli, teraz trzeba tak:
 open(PLIK, '/sys/class/hwmon/hwmon0/temp1_input') or die "Nie można otworzyć pliku: $!";
-while ($record = &lt;PLIK>) 
+while ($record = <PLIK>) 
 {
  $wartosc = $record;
 }
@@ -52,7 +52,7 @@ open (LOG,'log.txt');
 $licznik=0;
 @tablica_dat;
 @tablica_wartosci;
-while ($record = &lt;LOG>) 
+while ($record = <LOG>) 
 {  
  $data[0][$licznik] = substr($record, 0, 8);
  $data[1][$licznik] = substr($record, -3, 2);
@@ -62,16 +62,16 @@ close LOG;
 
 #otworzenie pliku do nadpisania(w celu utzrymania stalej ilosci rekordow)
 open (LOG, ">", "log.txt");
-if($licznik&lt;=($ile_wpisow+2))
+if($licznik<=($ile_wpisow+2))
 {
- for ($i = 0; $i&lt;$licznik; $i++)
+ for ($i = 0; $i<$licznik; $i++)
  {
   print LOG "".$data[0][$i].": ".$data[1][$i]."\n";
  }
 }
 if ($licznik>($ile_wpisow+2))
 {
- for ($i = ($licznik-$ile_wpisow); $i&lt;$licznik; $i++)
+ for ($i = ($licznik-$ile_wpisow); $i<$licznik; $i++)
  {
   print LOG "".$data[0][$i].": ".$data[1][$i]."\n";
  }
@@ -81,7 +81,7 @@ close(LOG);
 #przygotowanie wykresu
 use GD::Graph::area;
 
-if (20*$licznik&lt;100) {$licznik = 10;}
+if (20*$licznik<100) {$licznik = 10;}
 
 my $mygraph = GD::Graph::area->new(20*$licznik, 500);
 $mygraph->set(

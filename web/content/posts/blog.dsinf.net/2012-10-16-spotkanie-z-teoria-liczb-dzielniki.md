@@ -21,25 +21,25 @@ Najpierw jakoś tablicujemy wszystkie liczby w naszym zbiorze. Może ku temu pos
 Przykładowa implementacja:
 
 ```c++
-#include &lt; iostream >
+#include < iostream >
 using namespace std;
 const int granica = 100;
 bool tab[n + 1];  
 int main()
 {
-    for (int i = 2; i*i &lt;= n; i++ ) //od 2 do sqrt(n), 0 i 1 nie są pierwsze, poza tym przez 0 nic się nie dzieli ;)
+    for (int i = 2; i*i <= n; i++ ) //od 2 do sqrt(n), 0 i 1 nie są pierwsze, poza tym przez 0 nic się nie dzieli ;)
     {
         if (!tab[i]) //jeśli już wykreśliliśmy (jako wielokrotność liczby mniejszej)
             continue; //to wszystkie wielokrotności tej liczby są już wykreślone i nie mamy co robić
-        for (int j = 2 * i ; j &lt;= n; j += i) // przejdź od liczby 2 * i do n przesuwając się o i
+        for (int j = 2 * i ; j <= n; j += i) // przejdź od liczby 2 * i do n przesuwając się o i
             numbersTable[j] = true; // i każdą z nich usuwaj ze zbioru
     }
  
-    cout &lt;&lt; "Liczby pierwsze z przedziału od 2 do " &lt;&lt; n &lt;&lt; ":" &lt;&lt; endl;
+    cout << "Liczby pierwsze z przedziału od 2 do " << n << ":" << endl;
  
-    for (int i = 2; i &lt;= n; i++) // przeszukaj liczby od 2 do n
+    for (int i = 2; i <= n; i++) // przeszukaj liczby od 2 do n
         if (numbersTable[i]) // jeśli liczba nie została usunięta ze zbioru
-            cout &lt;&lt; i &lt;&lt; endl; // to ją wypisz
+            cout << i << endl; // to ją wypisz
 //funkcja Skowrońskiego
     int q; cin>>q;
     return 0;
@@ -65,9 +65,9 @@ Różnym ilościom występowania czynników pierwszych w rozkładzie liczby natu
 Kod funkcji bazującej na tablicy liczb pierwszych:
 
 ```c++
-int dzielniki[sqrt(n)]; for (int i=0; i &lt; n; i++) dzielniki[i]=0;
+int dzielniki[sqrt(n)]; for (int i=0; i < n; i++) dzielniki[i]=0;
 
-for (int i=2; i*i &lt; =n; i++){
+for (int i=2; i*i < =n; i++){
 	if (numbersTable[i]){
 		while((n%i)==0 || n!=1){
 			n%=i;
@@ -77,7 +77,7 @@ for (int i=2; i*i &lt; =n; i++){
 }
 
 int suma=0;
-for (int i=2; i&lt; sqrt(n); i++){
+for (int i=2; i< sqrt(n); i++){
 	suma+=( (pow(i, dzielniki[i]+1) -1) / (i - 1));
 }
 ```
@@ -91,7 +91,7 @@ Funkcja ta ma dość ciekawy wykres:
 
 ```c++
 int iloczyn=1;
-for (int i=2; i &lt; sqrt(n); i++){
+for (int i=2; i < sqrt(n); i++){
 	if (dzielniki[i]==0) continue;//*(0+1) tylko marnuje czas
 	iloczyn*=(dzielniki[i]+1);
 }

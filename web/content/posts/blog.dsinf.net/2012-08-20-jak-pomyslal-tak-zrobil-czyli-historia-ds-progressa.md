@@ -78,7 +78,7 @@ namespace ds_progress
 
         private void button_minus_Click(object sender, EventArgs e)
         {
-            if (progressBar1.Value &gt; 0)
+            if (progressBar1.Value > 0)
             {
                 progressBar1.Value--;
                 refresh();
@@ -87,7 +87,7 @@ namespace ds_progress
 
         private void button_plus_Click(object sender, EventArgs e)
         {
-            if (progressBar1.Value &lt; progressBar1.Maximum)
+            if (progressBar1.Value < progressBar1.Maximum)
             {
                 progressBar1.Value++;
                 refresh();
@@ -112,7 +112,7 @@ namespace ds_progress
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MessageBox.Show(
-                "DS progress by Daniel Skowroński &lt;d.skowronski@ds.lublin.pl&gt;\n" +
+                "DS progress by Daniel Skowroński <d.skowronski@ds.lublin.pl>\n" +
                 "This software is released under \"róbta co chceta\" (\"do what you want\") so it's free and open source, I am not responsible for any destruction it may provide and you can do with it anything you want (even you as MS programmer can implement to Windows Server and sell as your software), but I appreciate adding info that I'm the original author. Thank you."
                 );
         }

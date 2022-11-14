@@ -49,14 +49,14 @@ Dalej mamy pętlę szukającąnajbliższego wyrazu ciągu:
 ```c++
 int znajdz_najblizszy2(int liczba, int beg=0, int end=88){
 int a=0;
-	while (a&lt;50){
+	while (a<50){
 		a++;
 		if (Tfib[beg]==liczba) return Tfib[beg];
 		if (Tfib[end]==liczba) return Tfib[end];
 
 
 		if ((beg-end)==1 || (beg-end)==-1)
-			if ((liczba-Tfib[beg])&lt;(Tfib[end]-liczba)) return Tfib[beg];
+			if ((liczba-Tfib[beg])<(Tfib[end]-liczba)) return Tfib[beg];
 			else return Tfib[end];	
 
 		if (Tfib[beg+(end-beg)/2]>=liczba) end=beg+(end-beg)/2;
@@ -82,11 +82,11 @@ for (cin>>p;p>0;p--){
 	k=0;
 	while (l!=0){
 		tmp=znajdz_najblizszy2(abs(l));
-		if (l&lt;0) l+=tmp;
+		if (l<0) l+=tmp;
 		else l-=tmp;
 		k++;
 	}
-	cout&lt;&lt;">>>"&lt;&lt;k&lt;&lt;endl;
+	cout<<">>>"<<k<<endl;
 }
 ```
 

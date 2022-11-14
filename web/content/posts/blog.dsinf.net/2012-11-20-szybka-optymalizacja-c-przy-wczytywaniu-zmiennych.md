@@ -41,11 +41,11 @@ long long int t1,t2;
 
 void strumieniowo(){
 	int zmienna;
-	for (int i=0; i&lt; 50000; i++) cin >> zmienna;
+	for (int i=0; i< 50000; i++) cin >> zmienna;
 }
 void skanf(){
 	int zmienna;
-	for (int i=0; i&lt; 50000; i++) scanf("%d", &zmienna);
+	for (int i=0; i< 50000; i++) scanf("%d", &zmienna);
 }
 
 long long int czas(){
@@ -57,15 +57,15 @@ long long int czas(){
 int main(){
 	srand((unsigned)time(NULL));
 	struct timeb tmb;
-	cout&lt;&lt;"STREAM:  ";
+	cout<<"STREAM:  ";
 	t1=czas();
 	strumieniowo();
 	t1=czas()-t1;
-	cout&lt;&lt; t1&lt;&lt; "ms"&lt;&lt; endl;
+	cout<< t1<< "ms"<< endl;
 	t2=czas();
 	skanf();
 	t2=czas()-t2;
-	cout&lt;&lt; "SCANF:   "&lt;&lt; t2&lt;&lt; "ms"&lt;&lt; endl;
+	cout<< "SCANF:   "<< t2<< "ms"<< endl;
 	return 0;
 }
 ```

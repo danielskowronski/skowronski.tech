@@ -90,8 +90,8 @@ namespace Bash.org.pl_Reader
 </title>"));
                 lista.Items.Add(numer);
                 numertext.Text = numer;         
-                zawartosc = zawartosc.Substring(zawartosc.IndexOf("&lt;div class=\"quote post-content post-body\">") + 45);
-                zawartosc = zawartosc.Substring(0, (zawartosc.IndexOf("&lt;/div>")));
+                zawartosc = zawartosc.Substring(zawartosc.IndexOf("<div class=\"quote post-content post-body\">") + 45);
+                zawartosc = zawartosc.Substring(0, (zawartosc.IndexOf("</div>")));
                 //podmianki
                 zawartosc = zawartosc.Replace("\n", "");
                 zawartosc = zawartosc.Replace("\r", "");
@@ -99,8 +99,8 @@ namespace Bash.org.pl_Reader
 
 <br />", "\r\n");
                 zawartosc = zawartosc.Replace("<br />", "\r\n");
-                zawartosc = zawartosc.Replace("&lt;", "&lt;");
-                zawartosc = zawartosc.Replace("&gt;", ">");
+                zawartosc = zawartosc.Replace("<", "<");
+                zawartosc = zawartosc.Replace(">", ">");
                 zawartosc = zawartosc.Replace(""", "\"");
                 zawartosc = zawartosc.Replace("&nbsp;", " ");
                 zawartosc = zawartosc.Replace("&", "&");

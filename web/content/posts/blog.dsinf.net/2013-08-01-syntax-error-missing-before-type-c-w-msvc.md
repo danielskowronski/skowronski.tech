@@ -12,19 +12,30 @@ tags:
 ---
 MS Visual C obecny w Visual Studio (_nawet_ w 2013!) jako kompilator czystego C z bliżej nieznanych powodów używa wersji języka z 1990, w której niedozwolone było definiowanie z deklaracją w jednej linii, czyli
 
-<pre class="EnlighterJSRAWcpp">int zmienna = 0;</pre>
+```c++
+int zmienna = 0;
+```
+
 
 zwróci błąd w czasie kompilacji 
 
-<pre class="EnlighterJSRAW cpp">syntax error : missing ';' before 'type'</pre>
+```c++
+syntax error : missing ';' before 'type'
+```
+
 
 To, co wydaje się normalne zostało wciągnięte w wersję C z 1999. Zatem trzeba po prostu wpisać dziwnie wyglądające dla programisty C++
 
-<pre class="EnlighterJSRAWcpp">int zmienna; zmienna = 0;</pre>
+```c++
+int zmienna; zmienna = 0;
+```
+
 
 Ponadto w C-1990 zmienne należy deklarować na początku bloku, w tym niedozwolone jest deklarowanie zmiennej w pętli for w dyrektywie początkowej - trzeba wyciągnąć deklarację poza blok:
 
-<pre class="EnlighterJSRAW cpp">int i;
-for (i=0; i&lt;100; i++){
+```c++
+int i;
+for (i=0; i<100; i++){
 ...
-}</pre>
+}
+```

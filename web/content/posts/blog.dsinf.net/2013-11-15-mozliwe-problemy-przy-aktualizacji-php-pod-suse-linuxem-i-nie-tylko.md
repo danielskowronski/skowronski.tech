@@ -16,8 +16,11 @@ Jak udało mi się wykryć pod Suse Linux Enterprise Server (a dokładniej 11 SP
 
 Podczas aktualizacji PHP 5.2 do 5.3 pod SLESem nie aktualizujemy pakietów - kasujemy stare i instalujemy ich odpowiendiki różniące sie dopiskiem _53_. W różnych dystrybucjach takie rozdrobnienie występuje w innym stopniu. Jednak po kasacji paczki apache2-mod\_php z jednego z konfigów gdzieś w /etc/apache2/ kasowana jest dyrektywa LoadModule, której nie dodaje instalacja apache2-mod\_php53. W związku z tym należy dodać w dowolnym miejscu (najlepiej do tego służy katalog sysconfig.d/ przeznaczony do zmian użytkownika) co następuje:
 
-<pre class="lang:default EnlighterJSRAW " >Include /etc/apache2/conf.d/mod_php5.conf #do upewneinia sie, że mime będą ok
+```
+Include /etc/apache2/conf.d/mod_php5.conf #do upewneinia sie, że mime będą ok
 LoadModule /usr/lib64/apache2/mod_php5.so #brakująca biblioteka
-</pre>
+
+```
+
 
 Po tym wystarczy restart Apache i już pliki PHP się nie "pobierają" bo ma je co parsować.

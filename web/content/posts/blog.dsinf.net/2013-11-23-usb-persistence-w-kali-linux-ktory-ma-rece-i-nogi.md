@@ -19,10 +19,11 @@ Jeśli skorzystamy z metody DD mamy taką sytuację:
 **Szybki sposób jednak istnieje!** A oto on:  
 &nbsp;&nbsp;Partycjonujemy nośnik USB na samym początku tak, że pierwsza partycja to FAT32 o rozmiarze pliku iso plus kilka mega (dla wersji 1.0.5, która waży ok. 2600MB dałem dla pewności wszelkiej 2700MB) i reszta (czyli do końca) to ext4 nazwany dokładnie _persistence_.  
 &nbsp;&nbsp;Używając klasycznego **Universal USB Installer**'a do popbrania np. [stąd][1] postępujemy jak dla każdej instalacji - wybieramy dystrybucję z listy, wskazujemy plik ISO, wybieramy dysk (Windows widzi jedynie pierwszą partycję więc wskazujemy tą, która ma 2,5GB) i klikamy _Create_. Metoda ta polega na wypakowaniu ISO na FATa i zaplikowaniu właściwego bootsectora.  
-&nbsp;&nbsp;Kolejny krok musimy podjąć na Linuksie - trzeba utworzyć plik persistence.conf i wpisać do niego co następuje: <span class="lang:default EnlighterJSRAW  crayon-inline " >/ union</span>.  
+&nbsp;&nbsp;Kolejny krok musimy podjąć na Linuksie - trzeba utworzyć plik persistence.conf i wpisać do niego co następuje: `/ union`.  
 &nbsp;&nbsp;_Last but not the least_ - uczynienie rozruchu z flagą _presistence_ automatycznym. Na pierwszej partycji w katalogu isolinux znajduje się plik live.cfg - najlepiej dodać w nim drugi wpis dla trybu persistence i ustawić go jako domyślny:
 
-<pre class="lang:default EnlighterJSRAW " title="isolinux/live.cfg" >#nowa sekcja
+```
+#nowa sekcja
 label persistence-686-pae #nazwa dowolna
 	menu label ^PERSISTENT (686-pae) #znowuż dowolna nazwa
 	menu default #wpis czyniący tą sekcję domyślnie wybieraną
@@ -49,6 +50,8 @@ label live-forensic
 	linux /live/vmlinuz
 	initrd /live/initrd.img
 	append boot=live noconfig=sudo username=root hostname=kali noswap noautomount
-</pre>
+
+```
+
 
  [1]: http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/

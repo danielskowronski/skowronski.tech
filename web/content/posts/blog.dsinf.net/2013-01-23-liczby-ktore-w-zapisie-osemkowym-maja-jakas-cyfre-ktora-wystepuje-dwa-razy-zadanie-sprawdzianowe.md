@@ -13,12 +13,13 @@ Ciekawe zadanie programistyczne, które umożliwia stworzenie gotowych funkcji d
 
 Po pierwsze musimy zkonwertować na inny zapis.
 
-<pre class="EnlighterJSRAW cpp">string dec2other(int x, int base){
+```c++
+string dec2other(int x, int base){
 	int l=x,t;
 	string napis="";
 	while (l){
 		t=l%base;
-		if (t&lt;10) 
+		if (t<10) 
 			napis=char(t+48)+napis;
 		else 
 			napis=char(t+55)+napis;
@@ -26,45 +27,57 @@ Po pierwsze musimy zkonwertować na inny zapis.
 	}
 	return napis;
 }
-</pre>
+
+```
+
 
 Kod opiera się na dzieleniu modulo i rzutowaniu na znak - dla cyfr większych od 9 potrzeba nam cyfry z hex'a: A,B,C... Warto zauważyć, że należałoby dołożyć jeszcze założenia podobne do tych:
 
-<pre class="EnlighterJSRAW cpp">if (base&lt;2) return "---";
-</pre>
+```c++
+if (base<2) return "---";
+
+```
+
 
 oraz w pętli (po bieżącym if /else) w celu obsługi dużych cyfr "po ludzku", a nie kolejnymi w ASCII [, \ ] itd.:
 
-<pre class="EnlighterJSRAW cpp">if (t>35) napis="["+t+"] "+napis;
-</pre>
+```c++
+if (t>35) napis="["+t+"] "+napis;
+
+```
+
 
 Liczba [54] A567 [36] nie jest zbytnio czytelna. Można zatem zglobalizować zmianę w taki sposób:
 
-<pre class="EnlighterJSRAW cpp">bool big = false;
+```c++
+bool big = false;
 if (base>35) big = true;
 
 //w pętli:
 if (big) napis="["+t+"] ";
 else 
-    if (t&lt;10) napis=char(t+48)+napis;
+    if (t<10) napis=char(t+48)+napis;
     else napis=char(t+55)+napis;
-</pre>
+
+```
+
 
 
 
 Teraz należy sprawdzić warunek z cyframi. Skoro liczba jest już w tablicy znaków (string) to można stworzyć pomocniczą tablicę ilość_występowania(cyfra), a następnie ją sprawdzić pod kątem z treści zadania. Dwie funkcje są alternatywne, ale pierwsza przyjmująca za parametr string obsługuje systemy o ograniczonej podstawie, druga wymaga tablicy kolejnych cyfr. base to podstawa systemu liczenia
 
-<pre class="EnlighterJSRAW cpp">bool czy(string napis, int base){
-	int* tab = new int [base]; for (int i=0; i&lt; base; i++) tab[i]=0;
+```c++
+bool czy(string napis, int base){
+	int* tab = new int [base]; for (int i=0; i< base; i++) tab[i]=0;
 	int tmp;
 	
-	for (int i=0; i&lt; napis.length(); i++){
+	for (int i=0; i< napis.length(); i++){
 		tmp=(int)(napis[i]-48);
 		if (tmp >10) tmp-=7;
 		tab[tmp]++;
 	}
 	
-	for (int i=0; i&lt; base; i++){
+	for (int i=0; i< base; i++){
 		//obsługa warunku
 		if (tab[i]==2){
 			return true;
@@ -76,14 +89,14 @@ Teraz należy sprawdzić warunek z cyframi. Skoro liczba jest już w tablicy zna
 
 
 bool czy(int* tab_we, int rozm, int base){
-	int* tab = new int [base]; for (int i=0; i&lt; base; i++) tab[i]=0;
+	int* tab = new int [base]; for (int i=0; i< base; i++) tab[i]=0;
 	int tmp;
 	
-	for (int i=0; i&lt; rozm; i++){
+	for (int i=0; i< rozm; i++){
 		tab[tab_we[i]]++;
 	}
 	
-	for (int i=0; i&lt; base; i++){
+	for (int i=0; i< base; i++){
 		//obsługa warunku
 		if (tab[i]==2){
 			return true;
@@ -92,7 +105,9 @@ bool czy(int* tab_we, int rozm, int base){
 	
 	return false;	
 }
-</pre>
+
+```
+
 
 Przykładową implementację dla podanego założenia można pobrać [zad5.cpp][1].
 

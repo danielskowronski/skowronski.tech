@@ -29,27 +29,31 @@ _Talk is cheap, I'll show you the code_
 Dwa kawałki są najbardziej istotne:  
 1.konwersja na dziesiętny: 
 
-<pre class="EnlighterJSRAW cpp">long long ll = 0, a; //a=tmp
+```c++
+long long ll = 0, a; //a=tmp
 char c;
 int len = x.length();
-for (int i = 0; i &lt; len; i++){
+for (int i = 0; i < len; i++){
     c = x[len - i - 1];     c = toupper(c);
 
-    if (c >= 48 && c &lt;= 57) a = c - 48;
-    else if (c >= 65 && c &lt;= 90) a = c - 55;
+    if (c >= 48 && c <= 57) a = c - 48;
+    else if (c >= 65 && c <= 90) a = c - 55;
     
     ll += a * pow(b, i);
 }
 return ll;
-</pre>
+
+```
+
 
 2.konwersja z dziesiętnego
 
-<pre class="EnlighterJSRAW cpp">string w = "                                "; //statyczna dlugosc na 32 - max cyfr w tej specyfikacji
+```c++
+string w = "                                "; //statyczna dlugosc na 32 - max cyfr w tej specyfikacji
 long long c = x; int i = 32; int t;
 while (i >= 0){
     t = c % b;
-    if (t &lt; 10) w[--i] = 48 + t;
+    if (t < 10) w[--i] = 48 + t;
     else w[--i] = 55 + t;
 
     //czy koniec dzieleń?
@@ -59,11 +63,13 @@ while (i >= 0){
 
 //utnij spacje poczatkowe
 int j;
-for (j = 0; j &lt; 32; j++) if (w[j] != ' ') break;
+for (j = 0; j < 32; j++) if (w[j] != ' ') break;
 w = w.substr(j);
 
 return w;
-</pre>
+
+```
+
 
 Całość do pobrania poniżej.
 

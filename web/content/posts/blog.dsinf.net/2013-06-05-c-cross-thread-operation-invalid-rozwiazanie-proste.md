@@ -17,7 +17,10 @@ Rozwiązać problem można na dwa sposoby.
 
 Pierwszy z nich jest dość brutalny i "niebezpieczny", ale za to skuteczny i szybki. Wystarczy przestawić jedno pole: 
 
-<pre class="EnlighterJSRAW csharp">Control.CheckForIllegalCrossThreadCalls = false;</pre>
+```c#
+Control.CheckForIllegalCrossThreadCalls = false;
+```
+
 
 Jeśli jesteśmy paranoikami bezpieczeństwa można zezwolić na wywołania międzywątkowe tylko na czas naszych operacji - żeby zły człowiek nie zepsuł interfejsu, albo w przypadku bardziej złożonych aplikacji - czegoś więcej.
 

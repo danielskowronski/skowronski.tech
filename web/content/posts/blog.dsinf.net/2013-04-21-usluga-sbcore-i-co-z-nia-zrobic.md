@@ -21,29 +21,38 @@ Pierwszy odruch - co to, SBS jest wredniejszy bez aktywacji niż Enterprise? Oka
 Po co komu kontroler AD na systemie, który ma przeżyć maks tydzień (jak się potem okazało trochę dłużej bo na Zwierciadła nie wróciłem do edycji 2008 R2)? Istotą problemu jest fakt, że usługi **SBCore Service** nie można zatrzymać. Bo nie.  
 Prostym podejściem znalezionym gdzieś w internecie jest exe'k, który co 1 sekundę wywołuje 
 
-<pre class="EnlighterJSRAW bash">taskkill /f /im sbscrexe.exe</pre>
+```bash
+taskkill /f /im sbscrexe.exe
+```
+
 
 a bardziej w moim destruktywnym stylu zamienienie binarki na cokolwiek - padło na xcopy. Skutki mojego podejścia były opłakane - system się resetował bo nie mógł się dogadać z usługą (liczne wpisy do dziennika "_The SBCore Service service failed to start due to the following error: The service did not respond to the start or control request in a timely fashion._"). I tu nadeszła pomoc z opcji rozruchu o której do tej pory myślałem, że jest, żeby tylko ładnie wyglądała **_Last known good configuration_**. pozwala uruchomić system i działa.
 
 Czas na rozwiązanie bardziej przyjazne 😉  
 Mijak w stylu MS, czyli zmieniamy rejestr i zabraniamy systemowi go zmienić (co dosyć dziwne, że system słucha się uprawnień, które może zmienić w dowolnym momencie, ale cieszmy się, że jest dziura pozwalająca doprowadzić system do ładu). Interesuje nas gałąź 
 
-<pre  class="EnlighterJSRAW bash">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SBCore</pre>
+```bash
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SBCore
+```
+
 
 Wchodzimy we właściwości, uprawnienia, zaznaczamy pozycję SYSTEM i na _Full control_ stawiamy ticka przy Deny. Trzeba jeszcze dodać grupę _Administrators_ (jedyny przycisk _Add_) i zrobic na odwrót - przecież mamy móc zobaczyć wpisy i je zmieniać. Po zatwierdzeniu być może trzeba będzie wcisnąć F5 aby przeładować podgląd gałęzi. Właściwą zmianą jest ustawienie wartości 0x04 (z 0x02) dla klucza Start (typ: DWORD), czyli disabled.  
 Teraz trzeba w zmienić uprawnienia pliku 
 
-<pre  class="EnlighterJSRAW bash">%systemroot%\system32\sbscrexe.exe</pre>
+```bash
+%systemroot%\system32\sbscrexe.exe
+```
+
 
 tak, żeby nikt nie miał do niego dostępu: Właściwości->Uparwnienia->grupa po grupie full control na Deny. I gotowe!  
 Teraz można uruchomić wspomnainego 
 
-<pre class="EnlighterJSRAW bash">taskkill /f /im sbscrexe.exe</pre>
+```bash
+taskkill /f /im sbscrexe.exe
+```
+
 
 i cieszyć się, że exe'k już się nie uruchomi.
 
 
-
-<div id="zrodlo">
-  źródło: http://social.microsoft.com/Forums/en-US/whssoftware/thread/2ba72993-ef23-437a-858e-761b5f906191
-</div>
+źródło: http://social.microsoft.com/Forums/en-US/whssoftware/thread/2ba72993-ef23-437a-858e-761b5f906191

@@ -16,19 +16,27 @@ Często chcielibyśmy, żeby użytkownik nie miał szans wysłać danych w plain
   
 Zmiany możemy wprowadzić w głównym konfigu - /etc/apache2/http.conf - wówczas docelowe linie wprowadzamy w znaczniku 
 
-<pre class="EnlighterJSRAW bash">&lt;Directory /nasz/katalog/z/witryną>
+```bash
+<Directory /nasz/katalog/z/witryną>
 jakieś  dyrektywy
-&lt;/Directory></pre>
+</Directory>
+```
+
 
 Alternatywnie konfig można wprowadzić do pliku **.htaccess** umieszczonego w interesującym nas katalogu - jedyna opcja przy hostingu.
 
 Typowo przekierowanie powinno wyglądać tak:
 
-<pre class="EnlighterJSRAW bash">RewriteEngine On
+```bash
+RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
-</pre>
+
+```
+
 
 Jednak część serwerów (np. autorski perser htaccessów dla nginxa w MyDevilu) nie rozumieją drugiej linijki prowadząc do pętli przekierowań - _ERR\_TOO\_MANY_REDIRECTS_. Rozwiązaniem jest zmiana logiki - nie protokół, a port:
 
-<pre class="EnlighterJSRAW bash">RewriteCond %{SERVER_PORT} ^80$</pre>
+```bash
+RewriteCond %{SERVER_PORT} ^80$
+```

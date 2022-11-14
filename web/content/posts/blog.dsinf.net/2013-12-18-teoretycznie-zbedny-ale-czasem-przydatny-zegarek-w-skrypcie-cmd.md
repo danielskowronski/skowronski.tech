@@ -11,14 +11,17 @@ tags:
 ---
 Dziś coś śmiesznie zbędnego, ale czasem jak się okazuje przydatnego - zegarek napisany na szybko w skrypcie CMD. Ostatnią rzeczą przed odpaleniem będzie zmiana rozmiaru fontu na maksimum, żeby było coś widać oraz zredukowanie rozmiaru okna konsoli.
 
-<pre class="lang:default EnlighterJSRAW " title="Kod zegara" >title zegarynka
+```cmd
+title zegarynka
 @echo off
 cls
 
 :petla
 time /t
-ping 1.1.1.1 -n 1 -w 1000 &gt; nul
+ping 1.1.1.1 -n 1 -w 1000 > nul
 cls
-goto petla</pre>
+goto petla
+```
+
 
 Pewna uwaga: w MS-DOS nie ma sleepa, wiec trzeba użyć mijaka w postaci pinga, który pójdzie "w kosmos" i zostanie _ztimeout'owany_ po zadanym czasie.

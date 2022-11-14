@@ -19,31 +19,38 @@ Ten skrypt wykorzystuje kilka ciekawych funkcji Pythona. Ale po kolei. Na począ
 
 Obsługa dat jest nieco pokrętna w Pythonie, toteż wolałem zrobić funkcję tworzącą timestamp, bo jest to dosyć unikalna wartość, prosta do obliczania i przechowywania:
 
-<pre class="EnlighterJSRAW python">import email.utils
+```python
+import email.utils
 
 def ts(x):
   """zwraca czas od rozpoczęcia epoki"""
   return time.mktime(email.utils.parsedate(x))
-</pre>
+
+```
+
 
 Dleczego funkcja do konwersji daty jest w bibliotece email? Nie mam pojęcia. 
 
 Więcej kodu znajdziemy w funkcji:
 
-<pre class="EnlighterJSRAW python">def starsze(co, odczego):
+```python
+def starsze(co, odczego):
   co = ts(co)
   odczego = ts(odczego)
-  if co &lt;= odczego :
+  if co <= odczego :
     return True
   else:
     return False
-</pre>
+
+```
+
 
 Pozwala ona prosto spradzić, czy data jest starsza (a właściwie nie nowsza) od wskazanej.
 
 Teraz ładujemy datę ostatnio przekazanego maila - naprostsza metoda decydowania, które maile są naprawde nowe. Wykorzystywany jest jeden plik (którego kasacja zaleje odbiorcę falą duplikatów maili), ale już sprytnie zapobiegamy brakowi pliku. Jeszcze tylko zabezpieczenie przed zbłąkanym CR/LF w pliku i możemy wydrukować na ekran datę startu.
 
-<pre class="EnlighterJSRAW python">try:
+```python
+try:
   f = open('last_mail.NIE_KASUJ', 'r')
   ostatni = f.readline()
   f.close()
@@ -52,20 +59,26 @@ except:
 ostatni.replace('\n', '')
 ostatni.replace('\r', '')
 print "Laduje ostatnia date jako:   "+ostatni
-</pre>
+
+```
+
 
 Łączymy się z serwerem POP3 i pobieramy liczbę maili
 
-<pre class="EnlighterJSRAW python">pop_conn = poplib.POP3_SSL(pop3_server)
+```python
+pop_conn = poplib.POP3_SSL(pop3_server)
 pop_conn.user(pop3_login)
 pop_conn.pass_(pop3_pass)
 
 ilosc = len(pop_conn.list()[1])
-</pre>
+
+```
+
 
 Po przygotowaniu pętli i zmiennych można przestąpić do wywołania while'a:
 
-<pre class="EnlighterJSRAW python">while (i &lt; ilosc):
+```python
+while (i < ilosc):
 	wiad = [pop_conn.retr(i)]
 	wiad = ["\n".join(a[1]) for a in wiad]
 	wiad = [parser.Parser().parsestr(a) for a in wiad]
@@ -79,29 +92,37 @@ Po przygotowaniu pętli i zmiennych można przestąpić do wywołania while'a:
 	else:
 		list(wiad)
 	i+=1
-</pre>
+
+```
+
 
 Dziwne operacje na zmiennej wiad służą po kolei pobraniu jej, zklejeniu oktetów w krotkę i przeparsowaniu w zmienną typu email. Pierwszy if w tym kodzie służy do zapisania daty pierwszej wiadomości - to ona stanie się datą graniczną (skrzynka pocztowa to kolejka LIFO). Funkcja list(wiad) przesyła wiadomość dalej. Wykorzystuje tę właściwość, że email jest jednego typu i nie trzeba ściąć wszystkich nagłówków, załączników, bawić się w MIME i kodowanie (jak początkow myślałem), tylko wskazać zmienną. Ciało funkcji:
 
-<pre class="EnlighterJSRAW python">def list(w):
+```python
+def list(w):
 	"""obrabia konkretny list i wysyła go"""
 	if verbose:
-	  print "Nowy mail (przekazuje dalej): "+w['date']+" od &lt;"+w['from']+">"
+	  print "Nowy mail (przekazuje dalej): "+w['date']+" od <"+w['from']+">"
 
 	msg = w
 	s = smtplib.SMTP('localhost')
 	s.sendmail(smtp_fromWho, smtp_toWho, msg.as_string())
 	s.quit()
-</pre>
+
+```
+
 
 Na koniec tylko zapisać plik z datą:
 
-<pre class="EnlighterJSRAW python">ostatni = pierwsza['date']
+```python
+ostatni = pierwsza['date']
 print "Zapisuje ostatnia date jako: "+ostatni
 f = open('last_mail.NIE_KASUJ', 'w')
 ostatni = f.write(ostatni)
 f.close()
-</pre>
+
+```
+
 
 i tyle. 
 

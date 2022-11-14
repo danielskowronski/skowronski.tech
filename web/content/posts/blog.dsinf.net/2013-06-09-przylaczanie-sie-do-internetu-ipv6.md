@@ -16,13 +16,14 @@ Dostawcą tej usługi jest gogo6 (http://gogo6.com). Jeśli nie mamy NATu, albo 
 
 Gogo6 dostarcza gogoCLIENT - jedną aplikację tunelującą nasz ruch automatycznie. Dostępna pod Windows jako binarka x86/x64 i na Linuksa jako kod źródłowy. Swoją drogą dostępna w repozytorium użytkowników Archa (AUR) i zapewne innych dystrybucji też. Pakiet nazywa się **gogoc**. Można podpiąć się jako anonymous i dostać dynamiczny IP lub zarejestrowawszy się wcześniej na http://www.gogo6.com/freenet6/account skorzystać ze statycznego adres. Niestety broker nie raczy nam podać jakie dokładnie dostajemy, ale wystarczy ifconfig. Dane logowania i serwer definiujemy w 
 
-<pre class="EnlighterJSRAW bash">/etc/gogoc/gogoc.conf</pre>
+```bash
+/etc/gogoc/gogoc.conf
+```
+
 
 w którym znajdziemy obszerną dokumentację.
 
 Bardzo praktyczną stroną jest http://test-ipv6.com/, gdzie możemy sprawdzić jak wygląda nasza sytuacja.  
-Warto zaznaczyć, że dostęp do stron WWW używając ich adresu IPv6 odbywa się poprzez podanie go w nawiasach kwadratowych np.
+Warto zaznaczyć, że dostęp do stron WWW używając ich adresu IPv6 odbywa się poprzez podanie go w nawiasach kwadratowych np. `http://[2001:5c0:1400:a::a00]`. 
 
-<pre style="display:inline">http://[2001:5c0:1400:a::a00]/</pre>
-
-. Warto oczywiście dodać odpowiednie rekordy AAAA w swoim DNSie, bo trochę trudniej spamiętać 128-bitowy adres 😉
+Warto oczywiście dodać odpowiednie rekordy AAAA w swoim DNSie, bo trochę trudniej spamiętać 128-bitowy adres 😉

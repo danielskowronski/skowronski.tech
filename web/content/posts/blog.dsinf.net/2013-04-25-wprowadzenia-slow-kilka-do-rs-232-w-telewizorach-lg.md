@@ -33,22 +33,31 @@ Ustawienia transmisji:
 
 Podstawowe sterowanie opisane w instrukcji nie jest zbytnio ekscytujące - ot to samo co możemy "wyklikać" pilotem. Debugowanie oferuje nam wiele możliwości. Podgląd wiadomości debugowania uzyskujemy po prostu wysyłając klawisz F9 - jest to istotne bo menu i odpowiedzi trybu debugowania staną się wówczas widoczne, ale także wszelkie informacje o błędach, takie jak dramatyczne
 
-<pre>043.509:MICOM   ] 
- ERROR I2C Read port:0x4 addr:0x90</pre>
+```
+043.509:MICOM   ] 
+ ERROR I2C Read port:0x4 addr:0x90
+```
+
 
 Ale póki wiemy co robimy to raczej nie powinniśmy tego zobaczyć.  
 Aby dostać się do samego trybu debugowania potrzebne będzie nam hasło, które nie jest specjalnie wymyślne - jest to
 
-<pre>PEŁNY_MODEL_TELEWIZORAelqjrm
-np. M2280DF-PZMelqjrm</pre>
+```
+PEŁNY_MODEL_TELEWIZORAelqjrm
+np. M2280DF-PZMelqjrm
+```
+
 
 istotne jest użycie całej nazwy (w moim wypadku PZM w odróżnieniu od PZ oznacza jedynie fakt, że mam subwoofer), elqjrm to _tajna fraza_.  
 Istnieją 4 sposoby jego wpisania:
 
-<pre>1: &lt;HASŁO&gt;dd
-2: d&lt;HASŁO&gt;
-3: d&lt;HASŁO&gt;debugd
-4:</pre>
+```
+1: <HASŁO>dd
+2: d<HASŁO>
+3: d<HASŁO>debugd
+4:
+```
+
 
 Listę poleceń można uzyskać przez komendę help lub sam znak zapytania <?>.
 
@@ -56,46 +65,58 @@ Drzwi do zepsucia telewizora zostały uchylone, czas je otworzyć i uwolnić pin
 Ogólnie platformy, czyli procesory o jakie oparto LG są trzy - Saturn 6, Saturn 7 i Broadcom. Nie spotkałem się z kompleksową listą modeli i procesorów, ale włoskie wersje instrukcji, które posiadają dodatkowe strony ze schematem logicznym telewizorów mogą pomóc. W ogólności platformy te następowały po sobie; w moim monitorze z 2010 jest Saturn 6.  
 Oto kilka metod jak dostać się do shella (a konkretniej busyboxa):
 
-<pre>Saturn6: call debug_os_shell+0xac
+```
+Saturn6: call debug_os_shell+0xac
 Saturn7: call debug_os_shell+0xb0
-Broadcom: call debug_os_shell+0x90</pre>
+Broadcom: call debug_os_shell+0x90
+```
+
 
 Inne metody i dokładne wskazówki na http://openlgtv.org.ru/wiki/index.php/Debug\_mode\_connection#Busybox\_shell\_access  
 Najwaniejszą rzeczą będzie **wykonanie backupu** za pomocą skryptu powloki i podpiętego nośnika USB <u>zformatowanego jako FAT32!</u> do pierwszego (ewentualnie jedynego) złącza z tyłu:
 
-<pre class="EnlighterJSRAW bash">#najpierw sprawdź, czy dysk zamontował się w /mnt/usb1/Drive1, np.
+```bash
+#najpierw sprawdź, czy dysk zamontował się w /mnt/usb1/Drive1, np.
 ls -al  /mnt/usb1/Drive1
 #jeśli nie to powinien być urządzeniem /dev/sda1, wówczas
 mount /dev/sda1 /mnt/usb1/Drive1
 
 #backup
 for i in `cat /proc/mtd | grep -v erasesize | awk '{gsub(/[":]/,"");print $1 "_" $4}'`; do echo \
-Backup of $i ...; cat /dev/`echo $i | awk '{gsub(/_/," ");print $1}'` &gt; /mnt/usb1/Drive1/$i; done
+Backup of $i ...; cat /dev/`echo $i | awk '{gsub(/_/," ");print $1}'` > /mnt/usb1/Drive1/$i; done
 
 #odpmontowanie - sync bardzo ważny
 sync
 umount /dev/sda1
-</pre>
+
+```
+
 
 Powstałe pliki razem z odnalezionym w czeluściach internetu oprogramowaniem w formie pliku EPK (a najlepiej dodatkowo narzędziami na Linuksa pozwalającymi skonwertować je do obrazu dysku w postaci raw - mirror najnowszej wersji pod artykułem lub na http://openlgtv.org.ru/wiki/index.php/Firmware\_unpack\_tools) wypada wypalić na płytę i trzymać w bezpiecznym miejscu, ażeby nie mieć potem problemu.
 
 Drzwi otwarte - chyba czas je wyważyć razem z futryną i kawałkiem muru 😉 Bootloader we wszystych modelach poza SmartTV nie powinien być zaszyfrowany.  
 Pierwsza zmiana to inny baudrate - 115200bps. Wyłączamy telewizor, wpinamy kabel, odpalamy program i w czasie gdy włącza się urządzenie (po wciśnięciu włącznika rzecz jasna) przesyłamy po terminalu jedno z poniższych aż do uzyskania
 
-<pre>mstar #
-lub saturn7 #</pre>
+```
+mstar #
+lub saturn7 #
+```
+
 
 &nbsp;
 
   * przytrzymanie klawisza Escape
   * wciśnięcie Ctrl+C
-  * umieszczenie losowych danych - najpraktyczniej z /dev/urandom <pre class="EnlighterJSRAWbash">cat /dev/urandom &gt; /dev/ttyUSB0</pre>
+  * umieszczenie losowych danych - najpraktyczniej z /dev/urandom
+  `cat /dev/urandom > /dev/ttyUSB0`
+
 
 &nbsp;
 
 Wszystkie bootloadery Saturn mają taki sam rozkład komend:
 
-<pre>mstar # help
+```
+mstar # help
 ?       - alias for 'help'
 appxip  - copy to ram for appxip
 base    - print or set address offset
@@ -140,7 +161,9 @@ tftpboot- boot image via network using TFTP protocol
 usb     - USB sub-system
 version - print monitor version
 xip     - copy to ram for xip
-</pre>
+
+```
+
 
 Jak widać mimo, że model nie ma Ethernetu to ma pinga w menedżerze rozruchu... Ale jeśli nasz model łapie się pod LGMOD (lista na http://openlgtv.org.ru/wiki/index.php/Achievements, warto zapoznać się z uwagami - http://openlgtv.org.ru/wiki/index.php/LGMOD) to na USB można podpiąć adapter i ze starego, taniego telewizorka wystawiać FTP 😉
 

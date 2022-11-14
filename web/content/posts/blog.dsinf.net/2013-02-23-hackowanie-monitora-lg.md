@@ -28,4 +28,4 @@ Nie mam pojęcia dlaczego projektant uznał, że na wejściu z PC nie można zmi
 
 
 
-Instrukcja do Flatron'a M2280DF: http://www.lg.com/lgecs.downloadFile.ldwf?DOC\_ID=KROWM000318205&ORIGINAL\_NAME\_b1\_a1=POL.pdf&FILE_NAME=KROWM000318205.pdf&TC=DwnCmd
+Instrukcja do Flatron'a M2280DF: [http://www.lg.com/lgecs.downloadFile.ldwf?DOC\_ID=KROWM000318205&ORIGINAL\_NAME\_b1\_a1=POL.pdf&FILE_NAME=KROWM000318205.pdf&TC=DwnCmd](http://www.lg.com/lgecs.downloadFile.ldwf?DOC\_ID=KROWM000318205&ORIGINAL\_NAME\_b1\_a1=POL.pdf&FILE_NAME=KROWM000318205.pdf&TC=DwnCmd)

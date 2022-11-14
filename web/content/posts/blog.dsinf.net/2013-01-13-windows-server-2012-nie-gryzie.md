@@ -52,7 +52,10 @@ Skąd ta Vista? Okazuje się, że Vista miała mniejsze restrykcje co do sterown
 Teraz następny etap (oczywiście warto spróbować, czy pliki setup.exe nie pomogą, bo czasem podobno się udaje), czyli wyłączenia wymuszania podpisywania sterowników. Domyślnie Windows nawet nie raczy zasygnalizować faktu, że mu się nie chce wgrywać sterowników. Zwróci co mu się podoba, najczęściej błąd 39.  
 Aktywacja trybu testowego jest dość pokrętna. Należy się dostać najpierw do bootloadera Windowsa. O ile mamy multiboot to wystarczy zrestartować, wybrać pozycję 2012, kliknąć F8 i przejść do następnego etapu. Jeśli za każdym rozruchem wita nas od razu logo systemu to należy wydać w terminalu komendę 
 
-<pre>shutdown /r /o /t 0</pre>
+```
+shutdown /r /o /t 0
+```
+
 
 System się zrestartuje i pojawi się bsod-style menu. Wybieramy tam Troubleshoot, Advanced Startup Options i zatwierdzamy kolejny restart.  
 Teraz należy wybrać Disable Drivers Signing Enforcement. Voila. 
@@ -64,10 +67,13 @@ Gdy odkryjemy o które urządzenie chodzi wchodzimy do Properties, zakładka Dri
 
 Nie da się? Tego można się spodziewać. Trzeba dokonać kilku modyfikacji w pliku, w którym znajduje się definicja naszego PID, albo i się nie znajduje. Po pierwsze należy zlokalizować wpisu podobnego do 
 
-<pre>[Manufacturer]
+```
+[Manufacturer]
 ...
 %NVIDIA_A% = NVIDIA_SetA_Devices,NTamd64.6.1
-...</pre>
+...
+```
+
 
 Generalnie trick polega na zamienieniu wszystkich nazw NTamd64.coś na NTamd64. Wprawdzie inne strony zalecają wpis w rodzaju NTamd64.6.2.2 lub tylko NTamd64.6.2 ale nie zamierzamy publikować nigdzie tych sterowników więc nic nie wybuchnie.  
 Na czym polega ta zmiana? NTamd64 definiuje każdy system NT dla 64 bitowców w standardzie AMD – Intele też się łapią, po prostu 64 bitowy standard Intela to nie używane w desktopach Itanium. Oznaczenia Itanium to intel64 lub ia64. Na pewno nie mamy Itanium bo byśmy o tym wiedzieli i system musiałby być specjalnie oznaczony – "for Itanium". Amd64 to Microsoftowy ekwiwalent dla popularnego, choć lekko niepoprawnego x64 – właściwe oznaczenie to x86_64 (wskazuje przezroczystą kompatybilność z kodem 32 bitowym).  
@@ -76,8 +82,11 @@ Kolejne cyferki to numery wersji Windows. I tak kolejno XP ma 5.1, Vista 6.0, Si
 Wciąż się nie da? U mnie problem polegał na tym, że urządzenie miało inny SUBSYSTEM niż którykolwiek z wpisów w pliku inf.  
 Od razu mówię: dopisanie tej zmiennej do któregoś z istniejących wpisów nie pomoże – trzeba zdefiniować jeszcze poprawny moduł sterownika. I tu potrzebne będą sterowniki producenta komputera. Znów szukanie pliku – tym razem można po SUBSYSTEM. Wpis, który nas interesuje wygląda mniej więcej tak (nagłówek, parę wpisów, i dopiero właściwa linijka):
 
-<pre>[NVIDIA_SetA_Devices.NTamd64]
-%NVIDIA_DEV.0A74.01% = Section010, PCI\VEN_10DE&DEV_0A74&SUBSYS_1AF21043 </pre>
+```
+[NVIDIA_SetA_Devices.NTamd64]
+%NVIDIA_DEV.0A74.01% = Section010, PCI\VEN_10DE&DEV_0A74&SUBSYS_1AF21043 
+```
+
 
 Teraz skopiować tą linijkę i dokleić do analogicznej strefy w docelowym katalogu, przerobionej na zgodność z Win2012. 
 

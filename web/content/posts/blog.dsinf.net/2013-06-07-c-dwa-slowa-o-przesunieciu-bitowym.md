@@ -15,20 +15,23 @@ Ten artykuł w ogóle nie zasługuje na miano artykułu. Powiedzmy o nim bardzo 
   
 Przesunięcie bitowe jak wiadomo przesuwa bity: 00001011<<2 = 00101100, 11110100 >>3 00011110 itd. Problem polega na tym, że to niby operator jednoargumentowy, ale nie działa jak inkrementacja/dekrementacja - sama na samą siebie, zatem 
 
-<pre class="EnlighterJSRAW cpp">int a=123; c&lt;&lt;4;</pre>
+```c++
+int a=123; c<<4;
+```
+
 
 nie zrobi nic (tak jak a+2;). Potrzeba ją podstawić na przykład tak:
 
-<pre class="EnlighterJSRAW cpp">a= a&lt;&lt;4;</pre>
+```c++
+a= a<<4;
+```
+
 
 lub skrótowo:
 
-<pre class="EnlighterJSRAW cpp">a &lt;&lt;= 4</pre>
+```c++
+a <<= 4
+```
+
 
 To drugie jest dużo ładniejsze - piękny potworek wychodzi - **<<=, >>=** ;-).
-
-
-
-<div id="zrodlo">
-  źródło: http://
-</div>

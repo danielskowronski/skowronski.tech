@@ -12,13 +12,19 @@ tags:
 Kod krótki, ale jakże niezbędny.  
 <!--break--> Podstawowa wersja podmienia wszystkie zmienne przekazane przez GET i POST: 
 
-<pre class="EnlighterJSRAW php">foreach ($_GET as &$z)  $z = preg_replace('/[^a-zA-Z0-9_ \[\]\.\(\)\{\}\^\@\#\?\!.,&]/s', '', $z);
-foreach ($_POST as &$z)  $z = preg_replace('/[^a-zA-Z0-9_ \[\]\.\(\)\{\}\^\@\#\?\!.,&-]/s', '', $z);
-</pre>
+```php
+foreach ($_GET as &$z)
+  $z = preg_replace('/[^a-zA-Z0-9_ \[\]\.\(\)\{\}\^\@\#\?\!.,&]/s', '', $z);
+foreach ($_POST as &$z)  
+  $z = preg_replace('/[^a-zA-Z0-9_ \[\]\.\(\)\{\}\^\@\#\?\!.,&-]/s', '', $z);
+
+```
+
 
 Regexa (pomiędzy ukośnikami) można dostroić do naszych potrzeb i pokusić się o ładną funkcję, która będzie zależna od typu danych - coś w rodzaju 
 
-<pre class="EnlighterJSRAW php">function make_string_safe($string, $type){
+```php
+function make_string_safe($string, $type){
   $regex_inters = array ( 
     'unsigned_int' => '0-9', 
     'float' => '0-9-,.', 
@@ -28,22 +34,8 @@ Regexa (pomiędzy ukośnikami) można dostroić do naszych potrzeb i pokusić si
   $used_regex_inter = $regex_inters[$type];
   return preg_replace('/[^'.$used_regex_inter.']/s', '', $string);
 }
-</pre>
 
-Pewną modyfikacją byłoby zmienienie parametru 
+```
 
-<pre style="display: inline !important;">$string</pre>
 
-na 
-
-<pre style="display: inline !important;">&$string</pre>
-
-i w ostatniej linii funkcji zmiana z 
-
-<pre style="display: inline !important;">return...</pre>
-
-na 
-
-<pre style="display: inline !important;">$string=...</pre>
-
-(przekazanie przez referencję).
+Pewną modyfikacją byłoby zmienienie parametru `$string` na `&$string` i w ostatniej linii funkcji zmiana z `return...` na `$string=...` (przekazanie przez referencję).

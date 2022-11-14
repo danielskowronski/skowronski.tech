@@ -17,23 +17,34 @@ Wszystko za sprawą przyjęcia nowego modelu obsługi zgodności (http://msdn.mi
 
 Po długim śledztwie w systemie znalazłem kilka usług, które są odpowiedzialne za zgodność aplikacji, ale ich dezaktywacja nic nie zmienia (a czasem unieruchamia system). W końcu jednak doszukałem się plików, które mają coś wspólnego tymi usługami - 
 
-<pre class="EnlighterJSRAWbash">c:\Windows\AppPatch\sysmain.sdb
-c:\Windows\AppPatch\apppatch64\sysmain.sdb</pre>
+```cmd
+c:\Windows\AppPatch\sysmain.sdb
+c:\Windows\AppPatch\apppatch64\sysmain.sdb
+```
+
 
 Pliki te trzeba usunąć, przesunąć lub zmienić ich nazwy. Ponieważ Windows jakkolwiek jest zabezpieczony to należy zalogować się na konto SYSTEM - coś jak root na Linuksie, jednak na ten profil nie można się normalnie zalogować. Można natomiast wykorzystać sztuczki by uruchomić proces z jego uprawnieniami. Rzecz jasna my musimy mieć konto administratorskie. Po starem można wywołać
 
-<pre class="EnlighterJSRAWbash">at 17:24 /interactive cmd.exe</pre>
+```cmd
+at 17:24 /interactive cmd.exe
+```
+
 
 gdzie 17:24 to godzina, kiedy chcemy odpalić zadanie (zazwyczaj następna minuta). Jeśli chcemy być zgodni z nowymi trendami i zdobyć praktyczne narzędzie Sysinternals to warto pobrać ze strony http://technet.microsoft.com/en-us/sysinternals/bb545027 PSexec i wywołać
 
-<pre class="EnlighterJSRAWbash">psexec -s cmed.exe</pre>
+```cmd
+psexec -s cmed.exe
+```
+
 
 Alternatywą do rozwiązań "systemowych" są wszelkie aplikacje nazwane **runassystem**. Teraz pozostaje przejąć uprawnienia do samych plików - nie zawsze tak po prostu można modyfikować plik będąc superużytkownikiem. Ja użyłem FAR Manager'a, który sam przejmuje uprawnienia kiedy trzeba, ale wystarczy <u>icacls</u> oraz <u>takeown</u>. 
 
 Przypomnę to, co oczywiste na moim blogu - to rozwiązanie jest dość niebezpieczne, ponadto wiersz poleceń tak wyglądający jest furtką do zagrożenia stabilności i integralności okienek 
 
-<pre>Microsoft Windows [Version 6.3.9431]
+```
+Microsoft Windows [Version 6.3.9431]
 (c) 2013 Microsoft Corporation. All rights reserved.
 
-C:\Windows>whoami
-<b>nt authority\system</b></pre>
+C:\Windows> whoami
+nt authority\system
+```

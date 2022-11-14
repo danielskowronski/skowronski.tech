@@ -11,18 +11,24 @@ tags:
 ---
 <!--break-->Jak zawsze niezbędna jest instalacje kernel-devel i/lub kernel-source oraz aktualizacja bieżącego jądra (bowiem często oże sie zdarzyć, że mamy źródła nowsze niż jądro). Potem reset, żeby kompilować ze źródeł do odpalonego kernela. Meritum, czyli przesunięcie version.h:
 
-<pre class="EnlighterJSRAW bash">cp /usr/src/linux-3.7.10-1.1-obj/x86_64/desktop/include/generated/uapi/linux/version.h /lib/modules/$(uname -r)/build/include/linux
-</pre>
+```bash
+cp /usr/src/linux-3.7.10-1.1-obj/x86_64/desktop/include/generated/uapi/linux/version.h /lib/modules/$(uname -r)/build/include/linux
+
+```
+
 
 Komenda powinna działać po zmodyfikowaniu źródła dla wszystkich kerneli rodziny 3.7.
 
 Jeszcze tylko instalacja modułów:
 
-<pre class="EnlighterJSRAW bash">cd /usr/lib/vmware/modules
+```bash
+cd /usr/lib/vmware/modules
 wget http:// pavlinux.ru/vmware/8.0.3/source.tar.lzma #md5 =  e37e41a818a47ec868bdb493197aaf63
 tar -xf source.tar.lzma
 vmware-modconfig --console --install-all
-</pre>
+
+```
+
 
 
 

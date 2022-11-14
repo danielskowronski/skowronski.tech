@@ -13,27 +13,38 @@ Microsoft zawsze raczył nas dziwnymi rozwiązaniami prostych spraw. Problem cz�
 
 _Property_ kontrolki _WindowsForm_:
 
-<pre class="EnlighterJSRAW csharp">this.TopForm = true;
-</pre>
+```c#
+this.TopForm = true;
+
+```
+
 
 Jednak jak można doczytać od Windowsa 2000 ta zmiana dotyczy zakresu danej aplikacji - znaczy to, że jeśli pracujemy z wielookienkowym narzędziem to możemy podpiąć jakiś toolbar, żeby nie zniknął. Ale utrata przez proces focusa na okno przerzuci je w tło.  
 Rozwiązanie skuteczne wymaga załadowania biblioteki <k>user32.dll<k> odpowiedzialnej za obsługę UI i przejęcie funkcji zmieniającej pozycję okna. Brzmi skomplikowanie. Ale implementacja jest prosta, bezbolesna i nie wymaga SafeMode:  
 W nagłówku dopisujemy
 
-<pre class="EnlighterJSRAW csharp">using System.Runtime.InteropServices;</pre>
+```c#
+using System.Runtime.InteropServices;
+```
+
 
 W klasie naszego projektu
 
-<pre class="EnlighterJSRAW csharp">private IntPtr HWND_TOPMOST = new IntPtr(-1);
+```c#
+private IntPtr HWND_TOPMOST = new IntPtr(-1);
 private const uint SWP_NOSIZE = 0x0001;
 private const uint SWP_NOMOVE = 0x0002;
 private const uint TOPMOST_FLAGS = SWP_NOMOVE | SWP_NOSIZE;
 [DllImport("user32.dll")]
 public static extern bool SetWindowPos(IntPtr hWnd,
     IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
-</pre>
+
+```
+
 
 I samo wywołanie w dowolnym miejscu, np. podczas ładowania w konstruktorze (np. public form1(){} ):
 
-<pre class="EnlighterJSRAW csharp">SetWindowPos(this.Handle, HWND_TOPMOST, 0, 0, 0, 0, TOPMOST_FLAGS);
-</pre>
+```c#
+SetWindowPos(this.Handle, HWND_TOPMOST, 0, 0, 0, 0, TOPMOST_FLAGS);
+
+```

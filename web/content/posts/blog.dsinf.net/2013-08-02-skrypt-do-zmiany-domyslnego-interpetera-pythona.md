@@ -12,15 +12,19 @@ tags:
 ---
 Python w 2008 roku doczekał się kamienia milowego - wersji 3.0 (Py3K), która jest kompletnie wstecznie-niezgodna z 2.x. Obecnie w użyciu stabilnym jest 3.3. Warty przeczytania dokument znajduje się na oficjlalnej Wiki - http://wiki.python.org/moin/Python2orPython3. Najprościej wskazać różnicę w echo - w 2.7 była to niemal dyrektywa, teraz echo stał się funkcją<!--break--> - stąd:
 
-<pre class="EnlighterJSRAW python">echo "witaj świecie w Pythonie 2.7 - działam bez nawiasów";
+```python
+echo "witaj świecie w Pythonie 2.7 - działam bez nawiasów";
 echo("witaj świecie w Pythonie 3.0 - potrzebuję nawiasów");
-</pre>
+
+```
+
 
 Dwa lata temu deweloperzy Arch Linuxa postanowilicalowicie przejść na v3 (https://www.archlinux.org/news/python-is-now-python-3/). Skutkuje to pewnymi problemami z niekatualizowanymi skryptami. Ponieważ trzymane są obie binarki (python3.3 i python2.7) wszystko można ładnie zorganizować symlinkami.
 
 Kiedy pojawia się poblem najlepiej byłoby wykonać jakieś polecenie, które samo zmieni symlinka. I oto jest skrypt, nawet nieźle zabezpieczony:
 
-<pre class="EnlighterJSRAW bash">#!/bin/bash
+```bash
+#!/bin/bash
 help(){
   echo "**Toggle Python version by DS**"
   echo "  Switches used interpreter by changing links in /usr/bin - needs root"
@@ -73,4 +77,5 @@ then
 else
   help
 fi
-</pre>
+
+```

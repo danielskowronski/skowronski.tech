@@ -17,19 +17,28 @@ Niektóre serwisy nie lubią jak ktoś im nie płaci, ale, że ich polityka daje
   
 Czasami wystarczy jedynie przestawić jedną zmienną by ładować stronę docelową (kiedy developer postarał się i są jakieś tokeny, czy coś takiego), czasem wystarczy zmniejszyć time, albo po prostu wywołać funkcję, która po upływie czasu się aktywuje, lub... zmienić atrybut z
 
-<pre class="EnlighterJSRAW css">display: none;
-</pre>
+```css
+display: none;
+
+```
+
 
 na
 
-<pre class="EnlighterJSRAW css">display: block;
-</pre>
+```css
+display: block;
+
+```
+
 
 Przykładowa implementacja tego śmiesznie prostego skryptu używająca jQuery to:
 
-<pre class="EnlighterJSRAW jscript">$('#landing').attr('style', 'display: none');
+```js
+$('#landing').attr('style', 'display: none');
 $('#container').attr('style', 'display: block');
-</pre>
+
+```
+
 
 O tym jak tworzyć userscripty jest wiele publikacji, np. http://greasemonkey.mozdev.org/authoring.html. Jest jednak jedno ale, dotyczące paranoicznego podejścia do bezpieczeństwa przez Google Chrome. O ile na Firefoxie wystarczy zainstalować Grease Monkey (https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) to niby w Chrome USy działają od razu. Z jednym problemem - importowanie zewnętrznych skryptów przez @require nie działa. Dlaczego? Bo nie.  
 Stąd można zrobić dwie rzeczy:
@@ -39,7 +48,8 @@ Stąd można zrobić dwie rzeczy:
 
 Rzeczona funkcja:
 
-<pre class="EnlighterJSRAW jscript">function addJQuery(callback) {
+```js
+function addJQuery(callback) {
   var script = document.createElement("script");
   script.setAttribute("src", "//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js");
   script.addEventListener('load', function() {
@@ -49,7 +59,9 @@ Rzeczona funkcja:
   }, false);
   document.body.appendChild(script);
 }
-</pre>
+
+```
+
 
 Teraz należy umieścić nasz kod w jakiejś funkcji i wywołać addJQuery(nasza_funkcja). Jedyna zmiana to zamiana dolara na "jQ", ażeby uniknąć konfliktów (np. ktoś już ładował jQuery'ego w innej wersji i się będą gryzły).
 

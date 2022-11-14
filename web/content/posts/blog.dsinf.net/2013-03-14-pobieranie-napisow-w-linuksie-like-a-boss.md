@@ -20,19 +20,25 @@ Kilka słów wyjaśnienia bo jest to narzędzie lekko nastawione na niepowodzeni
 Poza skonfigurowaniem wpisu trzeba jeszcze wyświetlić menu kontekstowe. Wchodzimy w tym celu w _Edit/Preferences_ i w kartę _Runtime Preferences_. Należy tutaj rozważyć dwie ostatnie pozycje dotyczące tworzenia gałęzi zbiorczej dla naszych wpisów i dodawanie pozycji _About..._ do niego.  
 Jeśli w Nautilusie nie widać nic ubijmy wszystko
 
-<pre class="EnlighterJSRAW bash">killall nautilus</pre>
+```bash
+killall nautilus
+```
+
 
 i uruchommy od nowa menedżer plików.
 
 Nie zapomniałem rzecz jasna o KDE. Tu sprawa jest inna - nie ma edytorka - tylko pliki. Dla lokalnego menu (bieżący użytkownik) będzie to katalog w rodzaju ~/.kde/share/kde4/services/ServiceMenus, a globalny - /usr/share/kde4/services/ServiceMenus.  
 W pliku należy dopisać coś w rodzaju:
 
-<pre class="EnlighterJSRAW bash">[Desktop Action qnapi_napisy]
+```bash
+[Desktop Action qnapi_napisy]
 Exec=qnapi "%F"
 Name=Pobierz napisy z QNapi
 MimeType=video/.*;
 Icon=/usr/share/icons/qnapi-48.png
-</pre>
+
+```
+
 
 Powinno zadziałać, ewentualny restart powłoki się zawsze przyda.
 

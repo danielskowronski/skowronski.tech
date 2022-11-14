@@ -39,7 +39,8 @@ Wnioski:
     ze zgodnością sprzętu), kolejna była instalacja Win 3.11 (przez konieczność przekładania 13 dyskietek) i moją pierszą  
     trójkę zamyka Windows 2.0 - wybieranie karty graficznej dla wirtualki zajęło kilka godzin.
   * Najprzyjemniej przebiegło umieszczenie i odpalenie Win 1.01 - razem z MS-DOS 3.30: 
-    <pre>#dyskietka MS-DOS
+```cmd
+#dyskietka MS-DOS
 A> format c:
 A> sys c:
 A> c:
@@ -48,7 +49,9 @@ C> mkdir windows
 C> cp a:\*.* c:\windows
 C> cd windows
 C> win
-</pre>
+
+```
+
 
   * Windows 8 wygląda jak 2.0 - brak menu start, kwadratowe krawędzie okien, uproszczone ikonki, nawet logo MS jakieś podobne...
   * Aktualizacja do Win 8 na komputerze z 1987 byłaby możliwa o ile miałby na pokładzie i386 i 1GB RAMu. Co ciekawe żaden system, który  

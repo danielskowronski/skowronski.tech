@@ -14,7 +14,10 @@ Jak "zhackować" napęd CD w laptopie (typu tacka, slot-in'y odpadają)?
 Bierzemy płytę RW. Dlaczego RW? Bo zwykłej szkoda tak marnować, a chodzi o to, żeby napęd zaczął coś wypalać. Odpalamy jakikolwiek program do wypalnia płyt np. Brasero, tworzymy jakikolwiek projekt lub otwierami ISO z Linuksem, czy Windowsem (nie pirackim rzecz jasna). W okienku obok powinna znaleźć się konsolka.  
 Odpalamy wypalanie, pozwalamy napędowy się nieco rozpędzić i wydajemy polecenie
 
-<pre class="EnlighterJSRAW bash">killall brasero</pre>
+```bash
+killall brasero
+```
+
 
 albo nazwę procesu innego programu, którą łatwo znaleźć w programie za pomocą funkcji wyszukiwania - F3.  
 Po zabiciu brasero w odpowiednim momencie naped powinien ciągle wirować bo nie miało co przejąć /dev/sr0. 

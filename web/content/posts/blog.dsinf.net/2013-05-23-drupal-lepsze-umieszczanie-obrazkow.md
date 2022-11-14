@@ -19,6 +19,9 @@ FileField Sources to wyższy poziom umieszczania zdjęć - można je klasycznie 
 
 Problemy jakich wiele przy wielu zależnościach wymaganych przez te pakiety są zbyt duże by je tu opisać - rozwiązania opisane są głównie na stronie Drupala. W gruncie rzeczy należy pamiętać o umieszczeniu rozszerzeń i ich bibliotek w 
 
-<pre>/sites/all/libraries</pre>
+```
+/sites/all/libraries
+```
+
 
 (niezbędny moduł Libraries API - http://drupal.org/project/libraries) - są zawsze do pobrania od developera /producenta ze strony zlinkowanej w opisie modułu ładującego je (na stronie drupal.org).

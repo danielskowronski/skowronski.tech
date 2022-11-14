@@ -16,8 +16,11 @@ Microsoft ma dziwne zasady co do uprawnień - konto Administrator może więcej 
 Zabezpieczenie przed wykradaniem danych? Złośliwość? A może zabezpieczenie przed błędami wynikającymi z nieobsłużenia wypalania płyty na raz przez dwóch userów? To bez znaczenia, nic się na to nie poradzi.  
 Reasumując: jeśli ktoś chce wypalić płytę a nie jest Administratorem z wielkiej litery to pozostaje mu łaska sysadmina i RunAs.
 
-<pre class="EnlighterJSRAWbash">C:\Users\admin1>runas /env /user:Administrator "C:\Program Files (x86)\UltraISO\UltraISO.exe"
-</pre>
+```bash
+C:\Users\admin1>runas /env /user:Administrator "C:\Program Files (x86)\UltraISO\UltraISO.exe"
+
+```
+
 
 A sam sysadmin? Cóż, musi zdecydować, czy woli wypalanie płyt, czy sklep z aplikacjami dla 2012 i RunAs.  
 No i najważniejsze - musi być dodatek Desktop Experience - wersja Core marnuje nam napędy.

@@ -19,10 +19,7 @@ Brzmi jak wstęp do starożytnej szkoły HTMLa (no dobra - średniowiecznej, bo 
 
 Jak wygląda kod wycentrowania napisu na całą stronę (np. komunikat błędu, strona zastępcza itp.)? A tak:
 
-<pre class="EnlighterJSRAWphp">
-
-
-
+```php
 <table height="100%" width="100%">
   <tr>
     <td align="center">
@@ -31,7 +28,6 @@ Jak wygląda kod wycentrowania napisu na całą stronę (np. komunikat błędu, 
     </td></table>
     </body>
     </html>
-    </pre>
     
     
     <p>
@@ -46,3 +42,4 @@ Jak wygląda kod wycentrowania napisu na całą stronę (np. komunikat błędu, 
           
         </td>
         </table>
+```

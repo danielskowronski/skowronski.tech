@@ -22,7 +22,10 @@ Można albo ręcznie klepać w cmd poleceniem bcdedit.exe, albo... wyklikać. I 
 
 Niby wszystko jak być powinno - do szyfrowania wybrałem Serpenta (żeby nie nadszarpnąć wydajności i tak niezbyt mocarnego Atoma D450 - 1c/2t @1.66GHz), funkcja skrótu Whirpool, hasło rzecz jasna takie, jak trzeba - około 30 znaków - w końcu nie trzymam tam super tajnych dokumentów. Zanim zaczął się kilkugodzinny proces mielenia dysku bit po bicie musiałem ominiąć pewne błędne założenia w postaci wymuszenia sprawdzenia płyty ratunkowej. Cóż - netbook _nie_ ma napędu, a mój napęd DVD przełożyłem do stacjonarki. Rzecz jasna ISO zgrałem sobie na bootowalnego pendrive'a i po sprawie. Ale, żeby formater nas puścił dalej trzeba uruchomić go z opcją /noisocheck, np.:
 
-<pre class="EnlighterJSRAW php">"C:\Program Files\TrueCrypt\TrueCrypt Format.exe" /noisocheck</pre>
+```cmd
+"C:\Program Files\TrueCrypt\TrueCrypt Format.exe" /noisocheck
+```
+
 
 Dysk zaszyfrowany - bezpieczeństwo podniesione, wydajność obniżona. Znacznie.  
 Obsługa zaszyfrowanego nośnika w locie nie wpływa specjalnie na wydajność procesora, ale kiedy nie ma wsparcia sprzętowego dla AESa to dysk staje się mocno powolny. Najprostszy test - kopiowanie pliku w obrębie dysku: z 20-30MB/s spadek do 10-15MB/s. W trakcei zwykłej pracy na netbooku wszystko działa w miarę, jak powinno, ale tak jest do czasu pierwszego rozładowania - maszyna się hibernuje, hibernuje, hibernuje... Z wznawianiem jeszcze gorzej - o ile przedtem 2GB RAMu ładowało się góra 3/4 minuty, teraz trwa to co najmniej 2-3 razy dłużej.

@@ -14,4 +14,4 @@ Jak się okazuje webowa wersja Office z której możemy korzystać na Skydrive (
 Objawy: sam Skydrive działa, ale otwarcie dokumentu powoduje załadowanie strony, jednak jeden z serwerów z którego ładowany jest interfejs ma _timeout_  
 Rozwiązanie: wyłączyć IPv6 😉
 
-Ten post jest pierwszym z serii **&quotshort;"**, czyli zawierających maksimum 1 akapit prostej porady, czy spostrzeżenia.
+Ten post jest pierwszym z serii **"short;"**, czyli zawierających maksimum 1 akapit prostej porady, czy spostrzeżenia.

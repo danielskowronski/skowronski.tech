@@ -11,7 +11,8 @@ tags:
   - smog
 
 ---
- 
+
+## Błędnie wysokie pomiary
 
 Mieszkając w Krakowie nagłe pojawienie się 350μg/m³ PM10 i więcej na domowym czujniku smogu nie powinno mnie dziwić. Ale niemal pionowy skok z kilku mikrogramów i brak potwierdzeń pomiarów na innych stacjach był mocno podejrzany.
 
@@ -27,10 +28,10 @@ Oryginalnie Nettigo Air Monitor był zasilany z 1A ładowarki USB od Apple po 2 
 
 Reasumując: tak jak w większości takich urządzeń czym krótszy kabel i czym lepsze zasilanie tym lepiej.
 
-#### Kondensatorowa aktualizacja
+## Kondensatorowa aktualizacja
 
-W komentarzu odezwał się twórca projektu z Nettigo i okazuje się że faktycznie SDS011 jest niestety czuły na jakość zasilania. Rozwiązanie w postaci kondensatora 470uF wpiętego w gniazdo zasilania rozwiązało problem w wypadku huba USB, który zidentyfikowałem jako głównego winowajcę. 
+W komentarzu odezwał się twórca projektu z Nettigo i okazuje się że faktycznie SDS011 jest niestety czuły na jakość zasilania. Rozwiązanie w postaci kondensatora 470uF wpiętego w gniazdo zasilania rozwiązało problem w wypadku huba USB, który zidentyfikowałem jako głównego winowajcę. 
 
-Przedłużacz USB który oryginalnie działał, a podczas pierwszych testów też okazał się podejrzany i wypadł ostatecznie z całości dalej ubija jakość pomiarów. Ale wpięcie wolto- i amperomierza USB przy pewnym wygięciu kabla pokazało 3.5V...<figure class="wp-block-image">
+Przedłużacz USB który oryginalnie działał, a podczas pierwszych testów też okazał się podejrzany i wypadł ostatecznie z całości dalej ubija jakość pomiarów. Ale wpięcie wolto- i amperomierza USB przy pewnym wygięciu kabla pokazało 3.5V...
 
-![](/wp-content/uploads/2019/05/29l193-1.png) </figure>
+![](/wp-content/uploads/2019/05/29l193-1.png)

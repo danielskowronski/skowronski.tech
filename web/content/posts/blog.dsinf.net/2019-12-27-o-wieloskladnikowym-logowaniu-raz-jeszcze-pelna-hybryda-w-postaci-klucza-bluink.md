@@ -13,35 +13,24 @@ tags:
   - zabezpieczenia
 
 ---
-Podejść do U2F jest wiele i [jak pokazuje Krypton][1] - mogą być one ciekawsze od noszenia wielu Yubikeyów. Dziś krótka prezentacja klucza sprzętowego Bluink Key będącego w zasadzie najpełniejszą hybrydą sprzętowego klucza z aplikacją w zaufanym urządzeniu mobilnym.<figure class="wp-block-image size-large">
+Podejść do U2F jest wiele i [jak pokazuje Krypton][1] - mogą być one ciekawsze od noszenia wielu Yubikeyów. Dziś krótka prezentacja klucza sprzętowego Bluink Key będącego w zasadzie najpełniejszą hybrydą sprzętowego klucza z aplikacją w zaufanym urządzeniu mobilnym.
 
-![](/wp-content/uploads/2019/12/1-1-300x225.jpg)<figcaption>Dwie instancje bohatera artykułu. Jeden z nich na skipassie z kartą dostępu.</figcaption></figure> 
 
-Rozwiązanie Bluink Key (<https://bluink.ca/key>) składa się z dwóch składników: aplikacji w smartfonie (iOS/Android) i dongla USB (korzystającego z Bluetooch 4.0) kosztującego $30 i dostarczanego przez kandayjską firmę Bluink Inc.
+![Dwie instancje bohatera artykułu. Jeden z nich na skipassie z kartą dostępu.](/wp-content/uploads/2019/12/1-1.jpg)
+
+Rozwiązanie Bluink Key ([https://bluink.ca/key](https://bluink.ca/key)) składa się z dwóch składników: aplikacji w smartfonie (iOS/Android) i dongla USB (korzystającego z Bluetooch 4.0) kosztującego $30 i dostarczanego przez kandayjską firmę Bluink Inc.
 
 Sam dongle jest _injectorem_ i pełni dwie funkcje: zwykłego klucza zabezpieczeń U2F oraz wirtualnej klawiatury i myszki co pozwala na wpisywanie tekstowych haseł. Ponieważ urządzenie nie wymaga sterowników działa z każdym systemem, w dowolnym etapie jego działania - także podczas podawania hasła do LUKSa czy Bitlockera. 
 
 Trochę przypomina to znane od jakiegoś czasu ["wpisywacze" exploitów][3] (dongle wyglądające jak pendrive, a wpisujące kod powershella ściągający exploita), więc trzeba pilnować kontroli nad kluczem. Ale Bluink to przewidział i tylko pierwszy smartfon połączy się z kluczem ot tak, kolejne muszą zdobyć wcześniej klucz autoryzacji (gdybyśmy chcieli mieć współdzielony klucz) lub się wyrejestrować z używania klucza.
 
-Zdecydowanie **ogromny jest zysk z minimalizacji ekspozycji sekretu na ekranie** (TOTP czy hasła) - zarówno komputera jak i smartfona. O [atakach na podsłuchiwanie klawiatury po dźwięku jaki wydają konkretne klawisze,][4] czy **o prostym zaglądaniu przez ramię na klawiaturę nie wspominając**. <figure class="is-layout-flex wp-block-gallery-9 wp-block-gallery columns-2 is-cropped">
+Zdecydowanie **ogromny jest zysk z minimalizacji ekspozycji sekretu na ekranie** (TOTP czy hasła) - zarówno komputera jak i smartfona. O [atakach na podsłuchiwanie klawiatury po dźwięku jaki wydają konkretne klawisze,][4] czy **o prostym zaglądaniu przez ramię na klawiaturę nie wspominając**.
 
-<ul class="blocks-gallery-grid">
-  <li class="blocks-gallery-item">
-    <figure>![](/wp-content/uploads/2019/12/4-1.jpg)</figure>
-  </li>
-  <li class="blocks-gallery-item">
-    <figure>![](/wp-content/uploads/2019/12/2.jpg)</figure>
-  </li>
-</ul><figcaption class="blocks-gallery-caption">Ekrany aplikacji - parowanie używanego klucza i lista sekretów tekstowych z listą kluczy.</figcaption></figure> <figure class="is-layout-flex wp-block-gallery-11 wp-block-gallery columns-2 is-cropped">
+![parowanie używanego klucza](/wp-content/uploads/2019/12/4-1.jpg)
+![lista sekretów tekstowych z listą kluczy](/wp-content/uploads/2019/12/2.jpg)
 
-<ul class="blocks-gallery-grid">
-  <li class="blocks-gallery-item">
-    <figure>![](/wp-content/uploads/2019/12/5-1.jpg)</figure>
-  </li>
-  <li class="blocks-gallery-item">
-    <figure>![](/wp-content/uploads/2019/12/3-1.jpg)</figure>
-  </li>
-</ul><figcaption class="blocks-gallery-caption"> Prompt U2F z listą tekstowych sekretów w tle oraz tryb zdalnego sterowania klawiatury i myszki.</figcaption></figure> 
+![Prompt U2F z listą tekstowych sekretów w tle oraz tryb zdalnego sterowania klawiatury](/wp-content/uploads/2019/12/5-1.jpg)
+![tryb zdalnego sterowania myszki](/wp-content/uploads/2019/12/3-1.jpg)
 
 Same sekrety zapisane są w aplikacji (na iPhonach wykorzystywany jest oczywiście moduł _Secure Enclave_ oraz FaceID/TouchID). Ponieważ smartfon ma jednak ogromną pojemność w kontekście przechowywania po kilkadziesiąt-kilkaset bajtów na sekret to możliwości przechowywania haseł deklasują tryb _static password_ dostępny w niektórych Yubikeyach - także w wygodzie ich wprowadzania. Zamiast wciskania przycisku na kluczu sprzętowym wybieramy hasło z listy w aplikacji, jeśli trzeba klikamy pomocniczo klawisz typu _Enter_ czy _Tab_ i wszystko zostaje wysłane do odbiornika. Producent przewidział też możliwość sterowania myszką 🙂 
 
@@ -53,9 +42,9 @@ Fakt, że sekrety przechowywane są w telefonie ułatwia skalowanie rozwiązania
 
 Reasumując jest to dość ciekawa alternatywa, a na pewno praktyczny dodatek do kompletu klasycznych kluczy sprzętowych o ile ufamy swojemu smartfonowi. Sam posiadam dwa dongle - jeden na stałe wpięty w domową stację roboczą i drugi, który noszę ze sobą (najczęściej razem z kartą dostępu do pracy) tak by mieć dostęp do chronionych zasobów także poza domem.
 
-Na koniec ważna uwaga - ostatnio klucze przestały być dostępne na Amazonie i wygląda na to że Bluink przerzucił się na sprzedaż na swojej stronie (<https://bluink.ca/buy>). Jeśli jednak byłyby ponownie dostępne na Amazonie to możliwe że wysyłka do Polski będzie dostępna tak jak poprzednio tylko z kanadyjskiej wersji serwisu (dostawa zajęła 5-6 tygodni).
+Na koniec ważna uwaga - ostatnio klucze przestały być dostępne na Amazonie i wygląda na to że Bluink przerzucił się na sprzedaż na swojej stronie ([https://bluink.ca/buy](https://bluink.ca/buy)). Jeśli jednak byłyby ponownie dostępne na Amazonie to możliwe że wysyłka do Polski będzie dostępna tak jak poprzednio tylko z kanadyjskiej wersji serwisu (dostawa zajęła 5-6 tygodni).
 
- [1]: https://blog.dsinf.net/2019/08/mfa-dzieki-smartfonowi-oraz-garsc-dygresji-o-bezpieczenstwie/
+ [1]: /2019/08/mfa-dzieki-smartfonowi-oraz-garsc-dygresji-o-bezpieczenstwie/
  [2]: /wp-content/uploads/2019/12/1-1-scaled.jpg
  [3]: https://sekurak.pl/pendrive-przejmujacy-komputer-za-30-zlotych/
  [4]: https://www.schneier.com/blog/archives/2005/09/snooping_on_tex.html

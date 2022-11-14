@@ -22,7 +22,8 @@ Podczas tworzenia strony z metrykami w Grafanie którą chciałem wyświetlać w
 
 **Caddyfile** potrzebuje zatem takiej sekcji:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">grafana.intranet.example.com:80 {
+```caddyfile
+grafana.intranet.example.com:80 {
   proxy / http://localhost:3333 {
     transparent
     header_upstream X-GrafanaUser readonly
@@ -31,16 +32,19 @@ Podczas tworzenia strony z metrykami w Grafanie którą chciałem wyświetlać w
     rule allow
     ip 192.168.88.1/24
   }
-}</pre>
+}
+```
+
 
   * Niestety certyfikatu z Let's Encrypt nie uzyskamy - domena musi być routowalna z całego internetu
   * Port _3333_ to port na którym słucha serwer Grafany
   * _192.168.88.1/24_ to nasz prywatny subnet
   * _X-GrafanaUser_ to header autoryzacyjny, który musi matchować z grafana.ini; w najprostszej wersji może tam być zahardkodowany nasz użytkownik z rolą _viewer_
 
-Natomiast w pliku **grafana.ini **potrzeba takiej modyfikacji sekcji:
+Natomiast w pliku **grafana.ini **potrzeba takiej modyfikacji sekcji:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">grafana.intranet.example.com:80 {
+```caddyfile
+grafana.intranet.example.com:80 {
   proxy / http://localhost:3333 {
     transparent
     header_upstream X-GrafanaUser readonly
@@ -49,11 +53,13 @@ Natomiast w pliku **grafana.ini **potrzeba takiej modyfikacji sekcji:
     rule allow
     ip 192.168.88.1/24
   }
-}</pre>
+}
+```
+
 
 Gdzie _header_name_ musi matchować z _header_upstream_ z Caddyfile, a whitelist pozwalać tylko na adres IP serwera Caddy który łączy się z Grafaną (a więc loopback).
 
 Przy założeniu że nasza sieć prywatna jest naprawdę prywatna, jej użytkownicy naprawdę zaufani (możemy to być na przykład tylko my jako jej właściciele) oraz że Grafana nie zawiera naprawdę poufnych danych setup można uznać za względnie bezpieczny.
 
  [1]: http://docs.grafana.org/auth/overview/#anonymous-authentication
- [2]: https://blog.dsinf.net/2017/02/zerotier-czyli-software-defined-network-czyli-alternatywa-dla-klasycznego-vpna/
+ [2]: /2017/02/zerotier-czyli-software-defined-network-czyli-alternatywa-dla-klasycznego-vpna/

@@ -41,7 +41,8 @@ Po instalacji trzeba wprowadzić kilka zmian w domyślnych plikach konfiguracyjn
 
 Poza trzeba stworzyć jeden symlink który rozwiąże problem wynikający z tego że saslauthd działa jako root a postfix jest jailrootowany. Całość warto opakować zatrzymaniem i wznowieniem usług żeby na pewno sockety się utworzyły i były dostępne.
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">systemctl stop saslauthd postfix
+```bash
+systemctl stop saslauthd postfix
 rm -fr /var/run/saslauthd
 mkdir -p /var/spool/postfix/var/run/saslauthd
 ln -s /var/spool/postfix/var/run/saslauthd /var/run
@@ -49,15 +50,21 @@ chgrp sasl /var/spool/postfix/var/run/saslauthd
 adduser postfix sasl
 systemctl start saslauthd postfix
 systemctl enable saslauthd postfix
-systemctl status saslauthd postfix</pre>
+systemctl status saslauthd postfix
+```
+
 
 Kolejny etap to dodanie lokalnego użytkownika i przetestowanie czy wszystko działa. Tu warto pokazać jak działa _auth plain_ bo jednak nie podajemy tam loginu i hasła gołym tekstem.
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">perl -MMIME::Base64 -e 'print encode_base64("\0$USERNAME\0$PASSWORD");'</pre>
+```bash
+perl -MMIME::Base64 -e 'print encode_base64("\0$USERNAME\0$PASSWORD");'
+```
+
 
 Ciąg autoryzacyjny jak widać wyżej to base64 z ciągu null, użykownik, null i hasło. Jeśli użytkownik ma w nazwie małpę to należy ją wyeacapować. Poniżej przykładowa sesja odpalana "z palca":
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">zsh % perl -MMIME::Base64 -e 'print encode_base64("\0uzytkownik\@host\0haslo12345");'
+```bash
+zsh % perl -MMIME::Base64 -e 'print encode_base64("\0uzytkownik\@host\0haslo12345");'
 AHV6eXRrb3duaWtAaG9zdABoYXNsbzEyMzQ1
 zsh % perl -MMIME::Base64 -e 'print encode_base64("\0uzytkownik\0haslo12345");'
 AHV6eXRrb3duaWsAaGFzbG8xMjM0NQ==
@@ -88,8 +95,8 @@ mail from: uzytkownik@example.org
 rcpt to: uzytkownik@example.com
 250 2.1.5 Ok
 data
-354 End data with &lt;CR>&lt;LF>.&lt;CR>&lt;LF>
-From: test &lt;uzytkownik@example.org>
+354 End data with <CR><LF>.<CR><LF>
+From: test <uzytkownik@example.org>
 Subject: test session
 
 test test test
@@ -98,16 +105,22 @@ test test test
 quit
 221 2.0.0 Bye
 Connection closed by foreign host.
-zsh % </pre>
+zsh % 
+```
+
 
 Pokazana tu sesja jest absolutnie minimalna poza linijką _Subject_. RFC jednak go wymaga. Gmail będzie maile bez niego odrzucał rzucając w mail.log coś takiego:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">Apr 30 12:18:21 XXXX postfix/smtp[26482]: C57FC1C004E: to=XXXXX@dsinf.net, relay=aspmx.l.google.com[64.233.166.27]:25, delay=28, delays=27/0.01/0.09/0.61, dsn=5.7.1, status=bounced (host aspmx.l.google.com[64.233.166.27] said: 550-5.7.1 [5.9.88.142      11] Our system has detected that this message is not
- 550-5.7.1 RFC 5322 compliant: 550-5.7.1 'From' header is missing. 550-5.7.1 To reduce the amount of spam sent to Gmail, this message has been 550-5.7.1 blocked. Please visit 550-5.7.1  https://support.google.com/mail/?p=RfcMessageNonCompliant 550 5.7.1 and review RFC 5322 specifications for more information. j192si1309453wmb.131 - gsmtp (in reply to end of DATA command))</pre>
+```bash
+Apr 30 12:18:21 XXXX postfix/smtp[26482]: C57FC1C004E: to=XXXXX@dsinf.net, relay=aspmx.l.google.com[64.233.166.27]:25, delay=28, delays=27/0.01/0.09/0.61, dsn=5.7.1, status=bounced (host aspmx.l.google.com[64.233.166.27] said: 550-5.7.1 [5.9.88.142      11] Our system has detected that this message is not
+ 550-5.7.1 RFC 5322 compliant: 550-5.7.1 'From' header is missing. 550-5.7.1 To reduce the amount of spam sent to Gmail, this message has been 550-5.7.1 blocked. Please visit 550-5.7.1  https://support.google.com/mail/?p=RfcMessageNonCompliant 550 5.7.1 and review RFC 5322 specifications for more information. j192si1309453wmb.131 - gsmtp (in reply to end of DATA command))
+```
+
 
 Na koniec warto sprawdzić czy bez zalogowania się serwer odrzuci maile wysyłane poza jego domenę podczas połączenia spoza localhosta:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">daniel@MJOLNIR:/mnt/c/Users/Daniel$ telnet example.org 25
+```bash
+daniel@MJOLNIR:/mnt/c/Users/Daniel$ telnet example.org 25
 Trying XXXXXXXXXXXXXXXXXXXXXXXXX...
 Connected to example.org.
 Escape character is '^]'.
@@ -118,9 +131,11 @@ ehlo dupa
 mail from: test@example.org
 250 2.1.0 Ok
 rcpt to: root@example.com
-454 4.7.1 &lt;root@example.com>: Relay access denied
+454 4.7.1 <root@example.com>: Relay access denied
 rcpt to: root@example.org
 250 2.1.5 Ok
-//...</pre>
+//...
+```
+
 
  [1]: https://wiki.archlinux.org/index.php/OpenSMTPD

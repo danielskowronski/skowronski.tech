@@ -13,9 +13,7 @@ tags:
 ---
 Dymo LabelManager PnP to dość zgrabna i tania drukarka etykiet na taśmach o szerokości do pół cala, a więc znalazła się i na moim biurku do etykietowania pojemników z elektroniką, podpisywania kabli czy puszek z herbatą (stworzyłem nawet generator etykiet na puszki - [DymoTeaLabel][1]). Jest z nią jednak pewien problem - akumulator. W tym artykule opiszę diagnozę problemu, próbę naprawy, odkrycie powszechności problemu i jego hackerskie obejście.
 
-<div class="wp-block-image">
-  <figure class="aligncenter size-large is-resized"><a href="/wp-content/uploads/2019/12/2019-11-22-18.49.26_2-1.jpg">![](/wp-content/uploads/2019/12/2019-11-22-18.49.26_2-1.jpg)</a><figcaption>Bohater artykułu wraz z lekkim spoilerem</figcaption></figure>
-</div>
+![Bohater artykułu wraz z lekkim spoilerem](/wp-content/uploads/2019/12/2019-11-22-18.49.26_2-1.jpg)
 
 #### Diagnoza i plan reanimacji
 
@@ -41,9 +39,9 @@ Reanimacja zakładała naładowanie "ręczne" akumulatora które powinno spowodo
       * banan-banan z dodatkowymi gniazdami na wtykach ([UNI-T UT-L10][4]) - łączące zasilacz z multimetrem
       * banany-aligatorki łączące multimetr ze złączami drukarki etykiet 
       * banany-aligatorki łączące zasilacz z akumulatorem
-      * przydały się jeszcze tymczasowo dolutowane kable do samego akumulatora gdyż żadne aligatorki nie były w stanie stabilnie złapać jego złączy<figure class="wp-block-image size-large">
+      * przydały się jeszcze tymczasowo dolutowane kable do samego akumulatora gdyż żadne aligatorki nie były w stanie stabilnie złapać jego złączy
 
-![](/wp-content/uploads/2019/12/2019-11-16-23.48.02-300x225.jpg)</figure> 
+![](/wp-content/uploads/2019/12/2019-11-16-23.48.02.jpg)
 
 #### Wstępne ładowanie
 
@@ -61,26 +59,22 @@ Następnie podłączyłem akumulator do drukarki etykiet i monitorowałem co wsk
   4. Przez kilkanaście minut: Spadek poboru prądu do około 50mA utrzymujący się przy zwiększeniu napięcia 8.7V
   5. Na dwóch różnych komputerach "ładowanie nie odbywa się" 
 
-Przy okazji zbadałem napięcia wedle których software zwraca ilość "kresek" baterii.<figure class="wp-block-table">
+Przy okazji zbadałem napięcia wedle których software zwraca ilość "kresek" baterii.
 
 <table class="">
   <tr>
     <td>
       Napięcie
     </td>
-    
     <td>
       <5.2V
     </td>
-    
     <td>
       5.2V-6.1V
     </td>
-    
     <td>
       6.1V-8.6V
     </td>
-    
     <td>
       >8.6V
     </td>
@@ -90,23 +84,19 @@ Przy okazji zbadałem napięcia wedle których software zwraca ilość "kresek" 
     <td>
       Ilość "kresek"
     </td>
-    
     <td>
     </td>
-    
     <td>
       1
     </td>
-    
     <td>
       2
     </td>
-    
     <td>
       3
     </td>
   </tr>
-</table></figure> 
+</table>
 
 #### Review na amazonie
 
@@ -119,9 +109,15 @@ Po eweidentnym braku sukcesu postanowiłem sprawdzić czy tylko ja mam taki prob
 
 #### Co kryje wnętrze akumulatora i celowe postarzanie
 
-Może nieco w tonie teorii spiskowej o celowym postarzaniu sprzętu postanowiłem sprawdzić co znajduje się w akumulatorze - może jakiś podejrzanie wyglądający kondensator...<figure class="wp-block-image size-large">
+Może nieco w tonie teorii spiskowej o celowym postarzaniu sprzętu postanowiłem sprawdzić co znajduje się w akumulatorze - może jakiś podejrzanie wyglądający kondensator...
 
-![](/wp-content/uploads/2019/12/2019-11-18-22.04.06-300x209.jpg)<figcaption>Całość trzeba było zacząć od rozładowania baterii żeby uniknąć przypadkowego wybuchu</figcaption></figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2019/12/2019-11-18-21.54.25-300x225.jpg)<figcaption>Tuż po otwarciu plastikowej obudowy</figcaption></figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2019/12/2019-11-18-21.56.25-300x115.jpg)<figcaption>Wewnątrz pakietu ogniw owiniętego limonkową taśmą znajduje się tylko ta płytka</figcaption></figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2019/12/2019-11-18-21.57.31-300x120.jpg)<figcaption>Druga strona poprzedniej płytki z terminalami ogniw i całego pakietu</figcaption></figure> 
+![Całość trzeba było zacząć od rozładowania baterii żeby uniknąć przypadkowego wybuchu](/wp-content/uploads/2019/12/2019-11-18-22.04.06.jpg)
+
+![Tuż po otwarciu plastikowej obudowy](/wp-content/uploads/2019/12/2019-11-18-21.54.25.jpg)
+
+![Wewnątrz pakietu ogniw owiniętego limonkową taśmą znajduje się tylko ta płytka](/wp-content/uploads/2019/12/2019-11-18-21.56.25.jpg)
+
+![Druga strona poprzedniej płytki z terminalami ogniw i całego pakietu](/wp-content/uploads/2019/12/2019-11-18-21.57.31.jpg)
 
 Płytka podłączona do ogniw 3.7V jest opisana jako **SP-PCM-0025** to wedle tego co udało mi się znaleźć na [starej aukcji z allegro][13] - układ zabezpieczający i balansujący ładowanie/rozładowanie ogniw, czyli coś czego by się można było spodziewać.
 

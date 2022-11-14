@@ -19,14 +19,10 @@ Od jakiegoś czasu mam u siebie wielofunkcyjne urządzenie KonicaMinolta magicol
 
 Po przeklikaniu się przez tragiczne menu webowe (które swoją drogą odcina dostęp do panelu na urządzeniu) udało mi się wprowadzić parametry serwera SMTP. Wybrałem gotowy serwer który mam dostępny razem z hostingiem na mydevilu. Wszystko pięknie a tam: "CANNOT CONNECT - SMTP Server".
 
-<ul class="is-layout-flex wp-block-gallery-5 wp-block-gallery columns-2 is-cropped">
-  <li class="blocks-gallery-item">
-    <figure>![](/wp-content/uploads/2019/04/error_device.png)</figure>
-  </li>
-  <li class="blocks-gallery-item">
-    <figure>![](/wp-content/uploads/2019/04/error_web-1.png)</figure>
-  </li>
-</ul>
+![](/wp-content/uploads/2019/04/error_device.png)
+
+![](/wp-content/uploads/2019/04/error_web-1.png)
+
 
 **Czas na hackowanie arpspoofem!**  
 
@@ -49,4 +45,4 @@ Konfiguracja w webpanelu wymaga ustawienia adresu email "od" w trzech polach (E-
 
  [1]: https://github.com/alandau/arpspoof
  [2]: https://heapdump.wordpress.com/2010/07/07/exim4-helo-config-in-debian/
- [3]: https://blog.dsinf.net/2019/04/najbardziej-minimalistyczny-setup-mta-z-plaintextowym-serwerem-smtp/
+ [3]: /2019/04/najbardziej-minimalistyczny-setup-mta-z-plaintextowym-serwerem-smtp/

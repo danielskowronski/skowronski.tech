@@ -26,25 +26,24 @@ Posiłkując się [dokumentacją cmdletu Restore-SqlDatabase][1] można by zatem
 
 Żeby zdebugować tą sytuację pomocna jest [pewna odpowiedź na StackOverflow][2], która rozbija dostęp do zasobu sieciowego na mapowanie. Jeśli dostaniemy `System error 53 has occurred. The network path was not found.` to najprawdopodbniej znaczy iż polityki grupowe windowsa są rozsądnie restrykcyjne (pewnym hintemjest pozycja z gpedita `Network Security: Restrict NTLM: Outgoing NTLM traffic to remote servers`, do której odniesienie znalazłem [na technecie][3]). 
 
-<div class="wp-block-image">
-  <figure class="aligncenter size-large"><a href="/wp-content/uploads/2019/12/sql.png">![](/wp-content/uploads/2019/12/sql.png)</a><figcaption>Error 53 podczas debugowania niedostępności ścieżki</figcaption></figure>
-</div>
+![Error 53 podczas debugowania niedostępności ścieżki](/wp-content/uploads/2019/12/sql.png)
 
 Jednak istnieje obejście problemu - ticket kerberosowy i samo montowanie można obsłużyć z poziomu uzytkownika SYSTEM. Brzmi groźnie, ale jest nawet bezpieczne.
 
 Potrzebny do tego jest **psexec** z pakietu PsTools od Microsoft Sysinternals (https://docs.microsoft.com/en-us/sysinternals/downloads/psexec). Jeśli zamapujemy dysk sieciowy z poziomu SYSTEMu to będzie on widoczny dla każdego użytkownika - także specjalnych kont serwisowych, które nie mają uprawnień do logowania, ale w kontekście tychże użytkowników. Zatem wystarczy zapewnić uprawnienia do udziału sieciowego dla silnika bazy danych i można samo wywołanie Restore-SqlDatabase opakować mapowaniem, jednocześnie nie martwiąc się że inny użytkownik będzie miał dostęp do czegoś czego nie powinien. Każdy użytkownik zobaczy "Disconnected Network Drive" na liście "Network Locations", ale będzie on dostępny dla posiadających uprawnienia do oczytu zdalnej ścieżki, reszta dostanie "permission denied". 
 
-<div class="wp-block-image">
-  <figure class="aligncenter size-large"><a href="/wp-content/uploads/2019/12/drive_s.png">![](/wp-content/uploads/2019/12/drive_s.png)</a><figcaption>Dysk S jest dyskiem zamontowany z konta SYSTEM, widok z konta lokalnego administratora</figcaption></figure>
-</div>
+![Dysk S jest dyskiem zamontowany z konta SYSTEM, widok z konta lokalnego administratora](/wp-content/uploads/2019/12/drive_s.png)
 
 Przykładowo restore dancyh ze wstępu można to zrobić tak (przekierowanie do nulla jest potrzebne bo psexec nie za bardzo umie komunikować sukces):
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">C:\pstools\psexec.exe -s cmd /c "net use S: \\OTHER_DB_SERVER\d$\backups"  | out-null 
+```ps1
+C:\pstools\psexec.exe -s cmd /c "net use S: \\OTHER_DB_SERVER\d$\backups"  | out-null 
 
 Restore-SqlDatabase -ReplaceDatabase -BackupFile S:\SOME_BACKUP_FILE.BAK -Database SOME_DB -ServerInstance SOME_DB_SERVER -RestoreAction Database
 
-C:\pstools\psexec.exe -s cmd /c "net use s: /delete"  | out-null</pre>
+C:\pstools\psexec.exe -s cmd /c "net use s: /delete"  | out-null
+```
+
 
  [1]: https://docs.microsoft.com/en-us/powershell/module/sqlserver/restore-sqldatabase?view=sqlserver-ps
  [2]: https://stackoverflow.com/a/20465401/12297075

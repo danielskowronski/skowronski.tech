@@ -14,26 +14,21 @@ tags:
 ---
 Kolejny artykuł o zabawie z moją stacją roboczą (Dell T5500) - tym razem w roli głównej kontroler RAID firmy LSI - MegaRAID SAS6IR (Windowsy driver widzi to jako _Karta&nbsp;LSI,&nbsp;seria&nbsp;SAS&nbsp;3000,&nbsp;8&nbsp;portów&nbsp;z&nbsp;1068E_). A konkretniej podejrzenie awarii jednego z dysków w macierzy.
 
-Ale po kolei. Mój setup wykorzystujący sprzętowy RAID to proste mirrorowanie dwóch dysków SAS od Seagate'a (były w zestawie z komputerem i o dziwo jeszcze żyją) o przyjemnej prędkości obrotowej 15.7k RPM. Dla windowsa jest prezentowany wirtualny dysk i tyle. Nie pamiętam dokładnie setupu ale widziałem maszynę Della na której WinServer widział składniki macierzy i dyski logiczne - tu nie ma to miejsca. Podczas któregoś polowania na sterowniki doinstalowałem sobie _MegaRAID Storage Manager_a czyli konsolę administracyjną karty PCI która zarządza dyskami - dość wygodna żeby nie rebootować maszyny do BIOSu kontrolera. 
+Ale po kolei. Mój setup wykorzystujący sprzętowy RAID to proste mirrorowanie dwóch dysków SAS od Seagate'a (były w zestawie z komputerem i o dziwo jeszcze żyją) o przyjemnej prędkości obrotowej 15.7k RPM. Dla windowsa jest prezentowany wirtualny dysk i tyle. Nie pamiętam dokładnie setupu ale widziałem maszynę Della na której WinServer widział składniki macierzy i dyski logiczne - tu nie ma to miejsca. Podczas któregoś polowania na sterowniki doinstalowałem sobie _MegaRAID Storage Manager_a czyli konsolę administracyjną karty PCI która zarządza dyskami - dość wygodna żeby nie rebootować maszyny do BIOSu kontrolera. 
 
-<ul class="is-layout-flex wp-block-gallery-1 wp-block-gallery columns-2 is-cropped">
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2019/01/megaraid0a-1024x620.png">![](/wp-content/uploads/2019/01/megaraid0a.png)</a></figure>
-  </li>
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2019/01/megaraid0-1024x768.png">![](/wp-content/uploads/2019/01/megaraid0.png)</a></figure>
-  </li>
-</ul>
+![](/wp-content/uploads/2019/01/megaraid0a.png)
+![](/wp-content/uploads/2019/01/megaraid0.png)
 
-Aż pewnego pięknego dnia zaczął wyskakiwać komunikat o wypadnięciu dysku z macierzy. W logach pojawiał się z datą "2000-01-01 12:00:00". Co ciekawe eventy o pomyślnym logowaniu do konsoli mają poprawną datę. W każdym razie okazało się że leci rebuild. Po czym drugi raz. I trzeci.<figure class="wp-block-image">
+Aż pewnego pięknego dnia zaczął wyskakiwać komunikat o wypadnięciu dysku z macierzy. W logach pojawiał się z datą "2000-01-01 12:00:00". Co ciekawe eventy o pomyślnym logowaniu do konsoli mają poprawną datę. W każdym razie okazało się że leci rebuild. Po czym drugi raz. I trzeci.
 
-![](/wp-content/uploads/2019/01/megaraid1.png) </figure> 
+![](/wp-content/uploads/2019/01/megaraid1.png)
 
 Wtedy postanowiłem zbadać stan SMARTa dysków (niektórzy mogą się domyślić że nie ma to sensu, ale o tym potem). Czas pobrać pakiet _smarrtmontools_. Bash na Windowsa był pierwszym strzałem. Pudło bo to kontener który nie ma bindowań do devfs (w sumie nie ma za bardzo jak mieć). Kolejna próba to build smartctl na Windowsa. Nawet [wiki projektu][1] potwierdza że się powinno dać - przez CSMI. Znowu pudło bo support megaraida wyparował z wersji windowsowej. Próby enumerowania ukrytych urządzeń przez cygwina też upadły (_smartctl -scan_). 
 
 Czas zatem na najlepszego przyjaciela użytkownika Gentoo i nie tylko - _SystemRescueCD_. I tu kolejna porażka - driver megaraida w smartctl wymaga podania ID kontrolera (ale nie SCSI tylko samego megaraida). [Wiki Thomas-Krenn][2]a daje sporo informacji ale nie mogę się natknąć na szukane ID (bruteforcowy for-loop sugeruje że może jednak go tam nie ma...) Jedyne co mam to zlistowane LUNy fizycznych urządzeń od _lsscsi_:
 
-<pre class="lang:default EnlighterJSRAW  ">[1:0:0:0]    disk    ATA      INTEL SSDSA2BW16 0365  /dev/sda 
+```
+[1:0:0:0]    disk    ATA      INTEL SSDSA2BW16 0365  /dev/sda 
 [3:0:0:0]    disk    ATA      WDC WD1002FBYS-0 NA01  /dev/sdb 
 [4:0:0:0]    disk    ATA      KINGSTON SA400S3 71E0  /dev/sdc 
 [6:0:0:0]    disk    Generic  STORAGE DEVICE   1532  /dev/sdd 
@@ -42,11 +37,14 @@ Czas zatem na najlepszego przyjaciela użytkownika Gentoo i nie tylko - _SystemR
 [9:0:0:0]    disk    SEAGATE  ST3300657SS      ES02  -        
 [9:0:1:0]    disk    SEAGATE  ST3300657SS      ES02  -        
 [9:1:0:0]    disk    Dell     VIRTUAL DISK     1028  /dev/sdg 
-</pre>
+
+```
+
 
 Wtedy dotarło do mnie że może brakuje mi jakiegoś modułu jądra. Znalazłem też wzmiankę o narzędziu _megacli_. Które teraz nazywa się _[StorCLI][3]_. Tym sposobem na gentoo odpaliłem [stronę z Wiki Debiana][4]. Po potwierdzeniu przez lspci okazało się że szukam _mptsas_. Kilka modprobów później mpt-status ożył.
 
-<pre class="lang:default EnlighterJSRAW  ">root@sysresccd % lspci | grep SAS
+```
+root@sysresccd % lspci | grep SAS
 23:00.0 SCSI storage controller: LSI Logic / Symbios Logic SAS1068E PCI-Express Fusion-MPT SAS (rev 08)
 root@sysresccd % modprobe mptsas
 root@sysresccd % storcli show | grep Number
@@ -76,15 +74,18 @@ root@sysresccd % mpt-status
 ioc0 vol_id 0 type IM, 2 phy, 278 GB, state DEGRADED, flags ENABLED RESYNC_IN_PROGRESS
 ioc0 phy 0 scsi_id 8 SEAGATE  ST3300657SS      ES02, 279 GB, state ONLINE, flags NONE
 ioc0 phy 1 scsi_id 1 SEAGATE  ST3300657SS      ES02, 279 GB, state ONLINE, flags OUT_OF_SYNC
-root@sysresccd % </pre>
+root@sysresccd % 
+```
+
 
 
 
 Czas na narzędzie do zarządzania - _lsiutil_. Ciężkie do znalezienia ale są [dobrzy ludzie którzy mirrorują][5] na blogach. Okazuje się że to narzędzie to koszmarek podobny do fdiska z milionem menu, ale chociaż działa.
 
-Szczęśliwy człowiek wraca do smartctla a tam... przypomina sobie że dyski SAS nie mają SMARTa z dysków [S]ATA. <facepalm />
+Szczęśliwy człowiek wraca do smartctla a tam... przypomina sobie że dyski SAS nie mają SMARTa z dysków [S]ATA. `<facepalm />`
 
-<pre class="lang:default EnlighterJSRAW ">LSI Logic MPT Configuration Utility, Version 1.57, April 28, 2008
+```
+LSI Logic MPT Configuration Utility, Version 1.57, April 28, 2008
 
 1 MPT Port found
 
@@ -130,7 +131,9 @@ Main menu, select an option:  [1-99 or e/p/w or 0 to quit] l
  e   Enable expert mode in menus
  p   Enable paged mode
  w   Enable logging
-</pre>
+
+```
+
 
 
 

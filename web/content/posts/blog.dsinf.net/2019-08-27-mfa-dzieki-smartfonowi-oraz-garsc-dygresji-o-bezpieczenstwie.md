@@ -19,13 +19,13 @@ tags:
 
 Zabezpieczenie cyfrowej tożsamości przy pomocy samego loginu i hasła to jak wiadomo od dawna za mało. MFA (czyli Multi Factor Authentication) dodaje drugi składnik potrzebny do weryfikacji autentyczności - poza znajomością sekretów które wprost podajemy na przykład stronie internetowej potrzebne jest coś, co posiadamy, czyli klucz bezpieczeństwa lub coś co pozwoli nam odebrać token od miejsca, do którego się logujemy.
 
-#### Dwie dygresje o weryfikacji autentyczności
+## Dwie dygresje o weryfikacji autentyczności
 
 Od razu dygresja - na początek językowa. Weryfikacja autentyczności to nie autoryzacja. Wiele osób używa określenia _autentykacja_ które jest dość wygodną kalką językową, będącą analogią autoryzacji. Ale niektórzy dostają szału słysząc to słowo, więc postaram się go nie używać.
 
 Dygresja do dygresji - tym razem techniczna. _Weryfikacja autentyczności_ to sprawdzenie czy jesteśmy tym za kogo się podajemy, na przykład upewnienie się, że logując się do banku wchodzimy na swoje konto. A autoryzacja zapewni, że przelejemy pieniądze tylko ze swojego rachunku. Te dwa aspekty bezpieczeństwa łączą się, ale zawsze trzeba weryfikować je osobno o czym często developerzy zapominają.
 
-### "Coś co posiadamy"
+## "Coś co posiadamy"
 
 Idąc za ciosem wyjaśnię kwestię tego słynnego "czegoś co posiadamy". Tak naprawdę w przypadku chyba wszystkich form wieloskładnikowego logowania sprowadza się to jednak do znajomości kolejnego sekretu - najczęściej albo klucza prywatnego w przypadku typowych kluczy bezpieczeństwa jak Yubikey gdzie podpisujemy request i odsyłamy go do systemu logowania lub seedu jak w TOTP. 
 
@@ -35,7 +35,7 @@ Kwestia bezpieczeństwa drugiego składnika zależy od zabezpieczenia owego sekr
 
 Są różne poziomy zabezpieczania samego sekretu w MFA. Dedykowane tokeny sprzętowe (takie jak RSA SecurID) często chronione są przed otwarciem w taki sposób, że każde manipulowanie przy nich które umożliwiłoby zrzucenie zawartości pamięci powoduje wymazanie jej zawartości. W kwestii _tamperproofnessu_ polecam [film z kanału EEVblog w którym otwierany jest POS-owy terminal kart płatniczych][1].
 
-#### MFA na czymś co każdy posiada, czyli smartfonie
+### MFA na czymś co każdy posiada, czyli smartfonie
 
 Znaczna większość ludzi używa smartfonów i nosi je wszędzie. Zatem chociaż w kwestii współczynnika zagubień jest najlepiej - mało kto chodzi wszędzie z tokenem RSA wszędzie, ale telefon zabieramy zwykle do toalety. 
 
@@ -57,17 +57,16 @@ Zabawię się w Niebezpiecznika i przypomnę, żeby CZYTAĆ OPIS OPERACJI PRZED 
 
 Opcją zabezpieczenia się przed przynajmniej częścią przypadków (póki nie trafimy na przestępców mających swoich ludzi głęboko w strukturach operatora) jest korzystanie z usług operatorów wirtualnych, do których dostępu nie ma przez kanały ich "rodziców". Dobrym przykładem jest nju mobile - mimo że nawet rachunki płaci się na rzecz Orange to tak rozgraniczone są usługi, że jedyna opcja kontaktu to własny portal WWW i telefon. Żeby zamówić duplikat karty należy uzyskać dostęp do portalu klienta, zamówić kartę na adres tam podany (jego zmiana wymaga rzecz jasna kodu SMS) i aktywacji telefonicznej wymagającej znajomości kodu abonenckiego. A z mojego doświadczenia operator dzwoni do klienta w sprawie aktywacji nowej karty (co pozwala uniknąć opłaty za kontakt z BOKiem).
 
-#### TOTP czyli kody jednorazowe
+### TOTP czyli kody jednorazowe
 
 Generalnie zabezpieczenie to polega na odczytaniu sześciocyfrowego kodu z urządzenia (fizycznego tokenu lub aplikacji w telefonie) i wpisaniu go w aplikacji po podaniu zwykłego hasła - jako potwierdzenie, że posiadamy dostęp do tego urządzenia, czyli jest większa szansa, że my to my. Oraz że wycieknięte jakkolwiek hasło nie wystarczy do logowania.
 
-<p class="has-text-align-left">
-  Kody TOTP nie są do końca jednorazowe - są to zwykle liczby od 0 do 999999 generowane (zwykle) raz na 30 sekund na podstawie daty i seedu, czyli sekretu, który udostępnia strona w trakcie parowania aplikacji. Zazwyczaj w formie kodu QR.
-</p>
+
+Kody TOTP nie są do końca jednorazowe - są to zwykle liczby od 0 do 999999 generowane (zwykle) raz na 30 sekund na podstawie daty i seedu, czyli sekretu, który udostępnia strona w trakcie parowania aplikacji. Zazwyczaj w formie kodu QR.
 
 Jeśli wstrzelimy się w 30 sekundowe okno to przechwytując transmisję jako Man-In-The-Middle możemy wykorzystać ten sam kod raz jeszcze - bez konieczności na przykład spoofowania użytkownikowi strony gmaila samemu w międzyczasie wykonując niecne operacje.
 
-#### U2F czyli nowe możliwości
+### U2F czyli nowe możliwości
 
 U2F, czyli Universal 2nd Factor to opensourcowy standard za który obecnie odpowiedzialne jest FIDO. W skrócie jest to sposób na komunikację różnych urządzeń trzymających sekrety z komputerem za pomocą USB lub NFC. Eliminuje to potrzebę przepisywania kodów TOTP i daje możliwość stosowania mocniejszych metod ochrony sekretów czy negocjacji ich przekazywania.
 
@@ -105,21 +104,13 @@ A co z macOS, póki GoTrust ID nie ogarnia Apple'a? Pozostaje podobna aplikacja 
 
 ## Krypton
 
-
-
-<div class="wp-block-media-text alignwide is-vertically-aligned-top" style="grid-template-columns:18% auto">
-  <figure class="wp-block-media-text__media">![Znalezione obrazy dla zapytania krypt.co](https://pbs.twimg.com/profile_images/783749088730841091/oc7J3mVX.jpg)</figure>
+![Znalezione obrazy dla zapytania krypt.co](https://pbs.twimg.com/profile_images/783749088730841091/oc7J3mVX.jpg)
   
-  <div class="wp-block-media-text__content">
-    <p>
-      Aplikacja, której używanie przeze mnie spowodowało napisanie tego artykułu to <a href="https://krypt.co/">Krypton</a>. <strong>Jest to połączenie aplikacji obsługującej U2F dla aplikacji webowych, agenta SSH umożliwiającego autoryzację pojedynczych logowań oraz agenta GPG służącego do podpisywania commitów gitowych.</strong>
-    </p>
+
+Aplikacja, której używanie przeze mnie spowodowało napisanie tego artykułu to [Krypton](https://krypt.co/). **Jest to połączenie aplikacji obsługującej U2F dla aplikacji webowych, agenta SSH umożliwiającego autoryzację pojedynczych logowań oraz agenta GPG służącego do podpisywania commitów gitowych.**
     
-    <p>
-      Od jakiegoś czasu aplikacja dostała także klasyczną funkcjonalność <strong>"aplikacji do TOTP"</strong> czyli alternatywę dla Google Authenticatora do generowania kodów jednorazowych.
-    </p>
-  </div>
-</div>
+Od jakiegoś czasu aplikacja dostała także klasyczną funkcjonalność **"aplikacji do TOTP"** czyli alternatywę dla Google Authenticatora do generowania kodów 
+
 
 #### Jak to działa
 

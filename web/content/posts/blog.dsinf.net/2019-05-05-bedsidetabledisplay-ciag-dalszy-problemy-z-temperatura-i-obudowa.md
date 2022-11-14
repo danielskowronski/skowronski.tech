@@ -16,14 +16,13 @@ Dalsze badanie zacząłem od pilnowania termometru w BTD i referencyjnego ze sta
 
 Na początku w lodówce - tu brak odchyłów, choć można było zauważyć że niemal luzem ułożony chip DS28B20 bardzo szybko się ogrzewa od powietrza po otwarciu lodówki. Ciekawostka - ESP8266 w małą powierzchniowo lutowaną antenką Rainsun nie stracił sygnału WiFi.
 
-Kolej na ułożenie w temperaturze lekko wyższej od pokojowej czyli na biurku. Tu znudzony czekaniem na wyrównanie temperatury schładzałem oba termometry sprężonym powietrzem odwróconym do góry nogami. Znowu BTD nagrzewał się dużo szybciej, ale tym razem różnica w pomiarze ustabilizowanym wynosiła 2-3 stopnie. Dużo.<figure class="wp-block-image">
+Kolej na ułożenie w temperaturze lekko wyższej od pokojowej czyli na biurku. Tu znudzony czekaniem na wyrównanie temperatury schładzałem oba termometry sprężonym powietrzem odwróconym do góry nogami. Znowu BTD nagrzewał się dużo szybciej, ale tym razem różnica w pomiarze ustabilizowanym wynosiła 2-3 stopnie. Dużo.
 
-![](/wp-content/uploads/2019/05/1-300x291.jpg) <figcaption>_Zdjęcie późniejsze, radiatory będą dołożone w dalszej fazie eksperymentowania  
-DS18B20 ukrywa się między nóżkami fotorezystora._</figcaption></figure> 
+![Zdjęcie późniejsze, radiatory będą dołożone w dalszej fazie eksperymentowania; DS18B20 ukrywa się między nóżkami fotorezystora.](/wp-content/uploads/2019/05/1.jpg)
 
-Po zweryfikowaniu że jak każdy chip tak DS28B20 może mieć pewne odchyły spróbowałem go wymienić na zapasowy - dalej to samo. Wtedy dotarło do mnie że może któryś ze scalaków grzeje się nadmiernie i powoduje zwiększenie temperatury całego BTD. Pomiar "z palca" wydawał się potwierdzać teorię więc wyposażyłem się w pirometr - zakup kamery termowizyjnej do tego projektu byłby lekką przesadą 😉 <figure class="wp-block-image">
+Po zweryfikowaniu że jak każdy chip tak DS28B20 może mieć pewne odchyły spróbowałem go wymienić na zapasowy - dalej to samo. Wtedy dotarło do mnie że może któryś ze scalaków grzeje się nadmiernie i powoduje zwiększenie temperatury całego BTD. Pomiar "z palca" wydawał się potwierdzać teorię więc wyposażyłem się w pirometr - zakup kamery termowizyjnej do tego projektu byłby lekką przesadą 😉 
 
-![](/wp-content/uploads/2019/05/2-300x225.jpg) </figure> 
+![](/wp-content/uploads/2019/05/2.jpg)
 
 Pomiary w izolowanej szafce w chłodnym pomieszczeniu potwierdziły że scalaki na Wemos D1 Mini Pro istotnie wpływają na temperaturę całości.
 
@@ -162,24 +161,18 @@ Jedyne co mogłem zrobić z grzejącymi się scalakami to zamontować aluminiowe
 
 Rozwiązanie problemu było w zasadzie oczywiste, ale unikałem go trochę by zachować zwartą konstrukcję BTD - wyprowadzić chip termometru na zewnątrz. Efekt natychmiastowy w postaci zrównania pomiarów z termometrem referencyjnym do pół stopnia i mniej więcej ćwierć stopnia z pomiarem powierzchni DS18B20 z pirometru.
 
-<ul class="is-layout-flex wp-block-gallery-7 wp-block-gallery columns-2 is-cropped">
-  <li class="blocks-gallery-item">
-    <figure>![](/wp-content/uploads/2019/05/4-225x300.jpg)</figure>
-  </li>
-  <li class="blocks-gallery-item">
-    <figure>![](/wp-content/uploads/2019/05/5-225x300.jpg)</figure>
-  </li>
-</ul>
+![](/wp-content/uploads/2019/05/4.jpg)
+
+![](/wp-content/uploads/2019/05/5.jpg)
 
 Prowizorka jak zwykle okazała się najtrwalsza, więc sonda temperatury to teraz 2x 3 żyły przewodów połączeniowych (bo akurat nie miałem u siebie o odpowiednich końcówkach) połączone między sobą i DS18B20 rurką termokurczliwą.
 
 Skoro termometr miał wrócić do sypialni to czas najwyższy zająć się jasnością OLEDowego wyświetlacza. [Klasyczny model od Adafruit][4] sterowanie podświetleniem teoretycznie ma dzięki [driverowi SSD1306][5]. Jednak zakres jasności jest tak beznadziejny że prawie zwątpiłem w swoją umiejętność sterowania układem przez I2C póki nie stworzyłem testowej pętli zwiększającej jasność krok po kroku, a potem migając wartościami MAX-MIN. Sterowanie napięciem wejściowym niewiele daje - póki jesteśmy w zakresie napięć SSD1306 to nie zmienia się nic - układ ma regulator napięcia. Schodząc poniżej ekran zaczyna zauważalnie migotać. 
 
-Jako że maksymalna jasność potrzebna jest i tak rzadko to dołożyłem mocno hardware'owe rozwiązanie - przyciemnioną plexi. Przy okazji całość trafiła do jakiegoś luźnego pudełka kuchennego - trochę jako stelaż dla plexi (odziedziczonego po innym projekcie więc nieco za dużego), trochę jako stabilizacja, bowiem BTD był tak mały że sztywny kabel zasilający powodował że ciężko było utrzymać go w pożądanym miejscu<figure class="wp-block-image">
+Jako że maksymalna jasność potrzebna jest i tak rzadko to dołożyłem mocno hardware'owe rozwiązanie - przyciemnioną plexi. Przy okazji całość trafiła do jakiegoś luźnego pudełka kuchennego - trochę jako stelaż dla plexi (odziedziczonego po innym projekcie więc nieco za dużego), trochę jako stabilizacja, bowiem BTD był tak mały że sztywny kabel zasilający powodował że ciężko było utrzymać go w pożądanym miejscu.
 
-![](/wp-content/uploads/2019/05/3-300x237.jpg) </figure>
+![](/wp-content/uploads/2019/05/3.jpg)
 
- [1]: http://BedsideTableDisplay czyli zegar na szafkę nocną mocno z InfluxDB korzystający
  [2]: https://wiki.wemos.cc/products:retired:d1_mini_pro_v1.1.0
  [3]: https://github.com/danielskowronski/btd/commit/56494c2207eb1bf56aa0e57c7c3ea6bc4db41e0b
  [4]: https://www.adafruit.com/product/326

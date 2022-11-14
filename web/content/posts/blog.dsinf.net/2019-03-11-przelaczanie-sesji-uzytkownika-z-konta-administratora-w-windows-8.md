@@ -9,24 +9,30 @@ tags:
   - windows
 
 ---
-Czasem w domowym Windowsie trzeba przełączyć sesję na innego użytkownika, np. żeby upewnić się że ściąganie czy instalacja uruchomiona nie u nas poszła gładko, albo żeby podmienić komuś ustawienia np. usypiania komputera. Albo wykonać całą masę innych operacji bez wiedzy tego drugiego użytkownika, a przynajmniej bez resetowania mu hasła. Oczywiście zakładamy że posiadamy uprawnienia lokalnego administratora.<figure class="wp-block-image">
+Czasem w domowym Windowsie trzeba przełączyć sesję na innego użytkownika, np. żeby upewnić się że ściąganie czy instalacja uruchomiona nie u nas poszła gładko, albo żeby podmienić komuś ustawienia np. usypiania komputera. Albo wykonać całą masę innych operacji bez wiedzy tego drugiego użytkownika, a przynajmniej bez resetowania mu hasła. Oczywiście zakładamy że posiadamy uprawnienia lokalnego administratora.
 
-![](/wp-content/uploads/2019/03/windows.png) </figure> 
+![](/wp-content/uploads/2019/03/windows.png)
 
 Windows Server z usługami terminalowymi problem rozwiązuje dosyć prosto:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">C:\Users\Daniel>query user
+```cmd
+C:\Users\Daniel>query user
  USERNAME              SESSIONNAME        ID  STATE   IDLE TIME  LOGON TIME
 >daniel                console             1  Active         16  10.03.2019 12:53
  otheruser                                 2  Disc           16  10.03.2019 21:44
 
 C:\Users\Daniel>Mstsc.exe /shadow:2
 
-C:\Users\Daniel></pre>
+C:\Users\Daniel>
+```
+
 
 Na desktopowej wersji dostaniemy komunikat o tym że sasja numer 2 jest niepodłączona. Ale jest na to sposób wymagający jedynie [narzędzi SysInternals][1] od Microsoftu (można wypakować pobranego zipa do c:\windows\system32). Z prompta administratora uruchamiamy:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">PsExec.exe -i -s taskmgr</pre>
+```cmd
+PsExec.exe -i -s taskmgr
+```
+
 
 i w nowo odpalonym Menedżerze Zadań przechodzimy do karty _Użytkownicy_, prawoklik na docelowym użytkowniku i _Połącz_.
 

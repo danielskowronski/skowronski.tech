@@ -23,37 +23,24 @@ Osobiście używam go najwięcej do kolekcjonowania zasobów kontenerów i maszy
 
 Posiadam w kolekcji jednak dwa małe projekty, wykorzystujące przydatną funkcję podstawowego agenta Prometheusa - node exportera - `collector.textfile` do dość prymitywnego, ale skutecznego publikowania własnych danych. Są to **Duplicati Dropbox Checker** (<https://github.com/danielskowronski/DuplicatiDropboxChecker>) oraz **Archer Connected Hosts Exporter** (<https://github.com/danielskowronski/ArcherConnectedHostsExporter>). 
 
-Pierwszy z nich służy do monitorowania backupów tworzonych przez program Duplicati po przesłaniu ich przez agenta na Dropboxie (będąc dodatkowym zabezpieczeniem względem opisanych podstawowych testów wykonania samej binarki opisanego w innych artykule - <https://blog.dsinf.net/2020/10/kopie-zapasowe-linuksowej-infrastruktury-i-nie-tylko-duplicati-oraz-jego-monitorowanie-za-pomoca-prometheusa/>). Każda monitorowana ścieżka generuje jeden rekord - timestamp najnowszego pliku w danym folderze.<figure class="wp-block-image size-large">
+Pierwszy z nich służy do monitorowania backupów tworzonych przez program Duplicati po przesłaniu ich przez agenta na Dropboxie (będąc dodatkowym zabezpieczeniem względem opisanych podstawowych testów wykonania samej binarki opisanego w innych artykule - <https://blog.dsinf.net/2020/10/kopie-zapasowe-linuksowej-infrastruktury-i-nie-tylko-duplicati-oraz-jego-monitorowanie-za-pomoca-prometheusa/>). Każda monitorowana ścieżka generuje jeden rekord - timestamp najnowszego pliku w danym folderze.
 
-![](/wp-content/uploads/2021/03/Screenshot-2021-03-31-at-23.03.05.png)</figure> 
+![](/wp-content/uploads/2021/03/Screenshot-2021-03-31-at-23.03.05.png)
 
-Drugi, Archer Connected Hosts Exporter, to narzędzie, dla którego wykonałem research zabezpieczeń mojego routera (opisany tu - <https://blog.dsinf.net/2021/02/hacking-into-tp-link-archer-c6-shell-access-without-physical-disassembly/>). Bada ono znane routerowi hosty i zwraca każdy znaleziony adres MAC jako osobny rekord Prometheusa z wartością binarną, na podstawie pliku z listą znanych adresów - 1 dla znanych i 0 dla nierozpoznanych urządzeń.<figure class="wp-block-image size-large">
+Drugi, Archer Connected Hosts Exporter, to narzędzie, dla którego wykonałem research zabezpieczeń mojego routera (opisany tu - <https://blog.dsinf.net/2021/02/hacking-into-tp-link-archer-c6-shell-access-without-physical-disassembly/>). Bada ono znane routerowi hosty i zwraca każdy znaleziony adres MAC jako osobny rekord Prometheusa z wartością binarną, na podstawie pliku z listą znanych adresów - 1 dla znanych i 0 dla nierozpoznanych urządzeń.
 
-![](/wp-content/uploads/2021/03/Screenshot-2021-03-31-at-23.03.40-1-300x233.png)</figure> 
+![](/wp-content/uploads/2021/03/Screenshot-2021-03-31-at-23.03.40-1.png)
 
 Oba narzędzia topornie, lecz pewnie uruchamia cron. W przypadku monitora routera co minutę zaś dla monitora Duplicati - raz dziennie, w momencie, kiedy backup powinien już dawno być zakończony.
 
 ### Alertowanie
 
-Oto jak prosto wyglądają definicje alertów w Prometheusie i przykładowe ich instancje w SquadCast:<figure class="is-layout-flex wp-block-gallery-39 wp-block-gallery columns-2 is-cropped">
+Oto jak prosto wyglądają definicje alertów w Prometheusie i przykładowe ich instancje w SquadCast:
 
-<ul class="blocks-gallery-grid">
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2021/03/Screenshot-2021-03-31-at-22.29.13.png">![](/wp-content/uploads/2021/03/Screenshot-2021-03-31-at-22.29.13.png)</a></figure>
-  </li>
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2021/03/Screenshot-2021-03-31-at-22.30.41.png">![](/wp-content/uploads/2021/03/Screenshot-2021-03-31-at-22.30.41-300x253.png)</a></figure>
-  </li>
-</ul></figure> <figure class="is-layout-flex wp-block-gallery-41 wp-block-gallery columns-2 is-cropped">
-
-<ul class="blocks-gallery-grid">
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2021/03/Screenshot-2021-03-31-at-22.24.11.png">![](/wp-content/uploads/2021/03/Screenshot-2021-03-31-at-22.24.11-300x179.png)</a></figure>
-  </li>
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2021/03/Screenshot-2021-03-31-at-22.23.46.png">![](/wp-content/uploads/2021/03/Screenshot-2021-03-31-at-22.23.46-300x169.png)</a></figure>
-  </li>
-</ul></figure> 
+![](/wp-content/uploads/2021/03/Screenshot-2021-03-31-at-22.29.13.png)
+![](/wp-content/uploads/2021/03/Screenshot-2021-03-31-at-22.30.41.png)
+![](/wp-content/uploads/2021/03/Screenshot-2021-03-31-at-22.24.11.png)
+![](/wp-content/uploads/2021/03/Screenshot-2021-03-31-at-22.23.46.png)
 
 ### Dlaczeni nie InfluxDB + Grafana?
 
@@ -61,7 +48,8 @@ Zamiast Prometheusa mógłbym używać na przykład wypychania danych do InfluxD
 
 Tak wygląda fragment szablonu Jinja2 dla pliku rules.yml dla alert managera opisujący generowanie trójek alertów dla jednego backupowanego przez Duplicati miejsca:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="yaml" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">- name: Duplicati
+```yaml
+- name: Duplicati
   rules:
 {% for dj in duplicati_monitored_jobs %}
   - alert: DUPLICATI JOB {{dj.metric}} DIDNT START IN 36hrs
@@ -95,11 +83,10 @@ Tak wygląda fragment szablonu Jinja2 dla pliku rules.yml dla alert managera opi
     for: 5m
     labels:
       severity: error
-{% endfor %}</pre>
+{% endfor %}
+```
+
 
 ### Podsumowanie
 
 Także jak widać dołożenie nietypowych, skrojonych na konkretne potrzeby skryptów raportujących stan systemu lub inne metryki do Prometheusa, tak by wykorzystać jego system alertowania, jest banalnie proste skoro wystarczy zapisać do pliku tekstowego linijkę w rodzaju `archer_connected_host{mac="12:34:56:78:90:ab",alias="friendly_alias"} 1`, dodać prostą kwerendę do alert managera i mamy powiadomienia gotowe. Oczywiście, nie mając Prometheusa, pewnie prościej byłoby wykorzystać API komunikatora internetowego bezpośrednio, lecz jeśli już monitorujemy (a powinniśmy!) infrastrukturę, to jest to podejście prostsze i zgrabniejsze, a późniejsze korelowanie danych z kilku źródeł może być przydatne.
-
- [1]: /wp-content/uploads/2021/03/Screenshot-2021-03-31-at-23.03.05.png
- [2]: /wp-content/uploads/2021/03/Screenshot-2021-03-31-at-23.03.40-1.png

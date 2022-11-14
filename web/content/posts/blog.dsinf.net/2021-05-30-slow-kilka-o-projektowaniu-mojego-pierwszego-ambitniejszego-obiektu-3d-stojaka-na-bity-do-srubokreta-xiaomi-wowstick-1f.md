@@ -21,21 +21,16 @@ Moja przygoda z drukiem 3D zaczęła się jeszcze na studiach, kiedy to w Kole S
 
 ## Idea ogólna i planowanie
 
-Pierwszym etapem projektowania była ogólna idea, którą od samego początku miałem w głowie - kształt schodkowy z przeznaczeniem do postawienia na biurku. Z mojego doświadczenia stojaki, czy bardziej etui, gdzie wszystkie bity są na tym samym poziomie, a ich końcówki widoczne jedynie z góry są mało praktyczne do wyjmowania. <figure class="is-layout-flex wp-block-gallery-43 wp-block-gallery columns-2 is-cropped">
+Pierwszym etapem projektowania była ogólna idea, którą od samego początku miałem w głowie - kształt schodkowy z przeznaczeniem do postawienia na biurku. Z mojego doświadczenia stojaki, czy bardziej etui, gdzie wszystkie bity są na tym samym poziomie, a ich końcówki widoczne jedynie z góry są mało praktyczne do wyjmowania. 
 
-<ul class="blocks-gallery-grid">
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2021/05/bit_holder_flat.jpg">![](/wp-content/uploads/2021/05/bit_holder_flat.jpg)</a><figcaption class="blocks-gallery-item__caption">Dość popularny generyczny zestaw bitów, <br />w niepraktycznym dla mnie etui</figcaption></figure>
-  </li>
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2021/05/Screenshot-2021-05-19-at-22.40.09.png">![](/wp-content/uploads/2021/05/Screenshot-2021-05-19-at-22.40.09.png)</a><figcaption class="blocks-gallery-item__caption">Inspiracja formy, jaką chciałem osiągnąć</figcaption></figure>
-  </li>
-</ul></figure> 
+![Dość popularny generyczny zestaw bitów, w niepraktycznym dla mnie etui](/wp-content/uploads/2021/05/bit_holder_flat.jpg)
+
+![Inspiracja formy, jaką chciałem osiągnąć](/wp-content/uploads/2021/05/Screenshot-2021-05-19-at-22.40.09.png)
 
 Kolejny etap to zbadanie potrzeb szczegółowych, czyli posortowanie bitów wedle typów, opisanie ich oraz zaprojektowanie ich przestrzennego ułożenia. Mało ambitnie użyłem w tym celu MS Excela, ale zadziałało.  
-Przy okazji spędziłem nieco za dużo czasu, wędrując po stronach Wikipedii o śrubokrętach...<figure class="wp-block-image size-large">
+Przy okazji spędziłem nieco za dużo czasu, wędrując po stronach Wikipedii o śrubokrętach...
 
-![](/wp-content/uploads/2021/05/Screenshot-2021-05-19-at-05.56.34-300x231.png)</figure> 
+![](/wp-content/uploads/2021/05/Screenshot-2021-05-19-at-05.56.34.png)
 
 Wiedząc już, co chciałbym osiągnąć, nadszedł czas, żeby znaleźć narzędzie do realizacji. Wybór padł na otwartoźródłowy program OpenSCAD (<https://openscad.org/>), który zdaje się dość popularny w środowisku hobbystycznych projektantów 3D, a także jest używany przez portal ThingVerse do personalizowania projektów poprzez ich narzędzie Customizer. Nauka podstaw nie jest trudna - wystarczy jakikolwiek zmysł geometryczny i można już szukać w internecie jak budować konkretne bloki składowe naszego projektu - za pomocą kodu. Poza tym jest cała masa tutoriali, więc szybko można poznać bardziej zaawansowane sposoby opisywania naszego obiektu 3D.
 
@@ -45,9 +40,9 @@ Po oswojeniu się z narzędziem wydzieliłem trzy elementy składowe obiektu wym
 
   * Prostopadłościan z wgłębieniem na bit od góry, najlepiej z miejscem na dwie litery identyfikujące rodzaj bitu od przodu (wedle planu w Excelu); stałe rozmiary; kolor żółty
   * Pełny prostopadłościan bez wgłębienia na bit umożliwiający tworzenie odstępów między różnymi typami bitów; również stałe rozmiary; kolor różowy
-  * Prostopadłościan o szerokości i głębokości segmentu na bit, ale o wysokości będącej wielokrotnością wysokości segmentu na bit - znajdującego się pomiędzy segmentem na bit a podłożem; kolor zielony<figure class="wp-block-image size-large">
+  * Prostopadłościan o szerokości i głębokości segmentu na bit, ale o wysokości będącej wielokrotnością wysokości segmentu na bit - znajdującego się pomiędzy segmentem na bit a podłożem; kolor zielony
 
-![](/wp-content/uploads/2021/05/xwh_elements.jpg)</figure> 
+![](/wp-content/uploads/2021/05/xwh_elements.jpg)
 
 Ze względu na naturę obiektów 3D nie widać wszystkich granic między elementami składowymi. Żółtych jest co widać 10, różowych 2, a zielonych 8 (lub licząc także elementy o zerowej wysokości - 12). Te ostatnie występują w czwórkach: dwu-, jedno- i zerowo- krotnie wysokich względem obiektów żółtych i różowych.
 
@@ -57,7 +52,8 @@ Zasadnicze wyzwanie to elementy żółte, czyli te, które mają trzymać pojedy
 
 Wgłębienie na bit to graniastosłup o podstawie sześciokąta foremnego - tak jak sam bit. _Hexagon_ nie jest kształtem podstawowym, do jego generowania pozwoliłem sobie pożyczyć kod z <https://www.youtube.com/watch?v=KAKEk1falNg>, choć później znalazłem nieco inne podejście do tego tematu.
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">module fhex(wid,height){
+```openscad
+module fhex(wid,height){
   hull(){
     cube([wid/1.7,wid,height],center = true);
 
@@ -67,13 +63,16 @@ Wgłębienie na bit to graniastosłup o podstawie sześciokąta foremnego - tak 
     rotate([0,0,240])
       cube([wid/1.7,wid,height],center = true);
   }
-}</pre>
+}
+```
+
 
 Same napisy to połączenie generowanych z fontów dostępnych w systemie obiektów dwuwymiarowych przy pomocy `text()`, uwypuklania takich obiektów przez nadanie im wysokości używając `linear_extrude()`, obrotów powstałym obiektem by znajdował się na ścianie prostopadłościanu przy pomocy `rotate()` oraz finalnie pozycjonowania w przestrzeni poprzez `translate()`. 
 
 Kod segmentu poniżej:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">module segment(txt=""){
+```openscad
+module segment(txt=""){
   difference(){
     cube([$segment_width,$segment_width,$segment_height]);
 
@@ -90,7 +89,9 @@ Kod segmentu poniżej:
       }
     }
   }
-}</pre>
+}
+```
+
 
 ## Składanie w całość
 
@@ -98,7 +99,8 @@ Cały taki element można upakować jeszcze w `module`, czyli coś na kształt f
 
 Za rozmieszczenie przestrzenne odpowiada tablica tablic zawierających etykiety segmentów (bądź puste stringi gdzie element ma być bez otworu) - przeniesiona 1:1 z planu w Excelu.
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">$plan=[
+```openscad
+$plan=[
   ["PH","PH",""  ,""  ,""  ,"PH","PH","PH","PH","PH","PH"],
   ["SL",""  ,""  ,""  ,"SL","SL","SL","SL","SL","SL","SL"],  
   ["H" ,""  ,""  ,"H" ,"H" ,"H" ,"H" ,"H" ,"H" ,"H" ,"H" ],
@@ -106,11 +108,14 @@ Za rozmieszczenie przestrzenne odpowiada tablica tablic zawierających etykiety 
   ["TR","TR","TR","TR",""  ,""  ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ],
   ["S" ,"S" ,"S" ,""  ,""  ,""  ,""  ,""  ,"P" ,"P" ,"P" ],
   ["U" ,"U" ,"U" ,""  ,""  ,""  ,""  ,""  ,"W" ,""  ,"C" ],
-];</pre>
+];
+```
+
 
 Po całości możemy przemieszczać się pętlą `for` zagnieżdżoną w pętli `for`. Kod takiego przebiegu wraz z wyodrębnioną dla czytelności funkcją `segment_in_grid` zamieszczam poniżej, a całość oczywiście znajduje się w zalinkowanym na końcu artykułu repozytorium Githuba i na Thingverse.
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">module segment_in_grid(x,y,txt=""){
+```openscad
+module segment_in_grid(x,y,txt=""){
   translate([x*$segment_width, y*$segment_width, y*$segment_height]){
     if (len(txt)>0) segment(txt);                               //segment żółty
     else cube([$segment_width,$segment_width,$segment_height]); //segment różowy
@@ -125,7 +130,9 @@ for (y=[0:yl]){
   for (x=[0:len($plan[yl-y])-1]){
     segment_in_grid(x,y,txt=$plan[yl-y][x]);
   }
-}</pre>
+}
+```
+
 
 Zachowanie `segment_in_grid` jest takie samo w każdym wierszu, a więc na najniższym "schodku" tworzy segment zielony o wysokości 0.
 
@@ -135,48 +142,25 @@ Zachowanie `segment_in_grid` jest takie samo w każdym wierszu, a więc na najni
 
 Dzięki opracowanemu systemowi znakowania slotów na bity przy okazji udało mi się dość łatwo otrzymać system znakowania prototypów, by nie pogubić się, jakie mają parametry zadane (rzeczywiste jednak mogą się różnić). 
 
-Prototypy na zdjęciach poniżej nie mają docelowej czytelności znakowania - nie zostały idealnie utwardzone ani oczyszczone, a kąpiel zaliczyły w izopropanolu wymagającym filtracji lub wręcz wymiany. Finalna wersja jest dużo ładniejsza.<figure class="is-layout-flex wp-block-gallery-45 wp-block-gallery columns-2 is-cropped">
+Prototypy na zdjęciach poniżej nie mają docelowej czytelności znakowania - nie zostały idealnie utwardzone ani oczyszczone, a kąpiel zaliczyły w izopropanolu wymagającym filtracji lub wręcz wymiany. Finalna wersja jest dużo ładniejsza.
 
-<ul class="blocks-gallery-grid">
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2021/05/IMG_3418.jpeg">![](/wp-content/uploads/2021/05/IMG_3418-300x225.jpeg)</a><figcaption class="blocks-gallery-item__caption">testowanie średnicy slotu - <code>$hole_width</code></figcaption></figure>
-  </li>
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2021/05/IMG_3413-scaled.jpeg">![](/wp-content/uploads/2021/05/IMG_3413-300x225.jpeg)</a><figcaption class="blocks-gallery-item__caption">testowanie głębokości slotu - <code>$hole_height</code></figcaption></figure>
-  </li>
-</ul></figure> <figure class="is-layout-flex wp-block-gallery-47 wp-block-gallery columns-2 is-cropped">
+![testowanie średnicy slotu - `$hole_width`](/wp-content/uploads/2021/05/IMG_3418.jpeg)
+![testowanie głębokości slotu - `$hole_height`](/wp-content/uploads/2021/05/IMG_3413.jpeg)
 
-<ul class="blocks-gallery-grid">
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2021/05/IMG_3420.jpeg">![](/wp-content/uploads/2021/05/IMG_3420-300x225.jpeg)</a><figcaption class="blocks-gallery-item__caption">różne warianty rozmiaru segmentu - <code>$segment_width</code></figcaption></figure>
-  </li>
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2021/05/IMG_3426.jpeg">![](/wp-content/uploads/2021/05/IMG_3426-300x225.jpeg)</a><figcaption class="blocks-gallery-item__caption">jeden z ostatnich testów - orientacja na drukarce</figcaption></figure>
-  </li>
-</ul></figure> 
+![różne warianty rozmiaru segmentu - `$segment_width`](/wp-content/uploads/2021/05/IMG_3420.jpeg)
+![jeden z ostatnich testów - orientacja na drukarce](/wp-content/uploads/2021/05/IMG_3426.jpeg)
 
 ## Zakończenie
 
-Na sam koniec należy już tylko złożyć kod w całość, wygenerować obiekt STL i wrzucić do slicera. Do mojej drukarki DLP używam płatnej wersji LycheeSlicer (<https://mango3d.io/lychee-slicer-for-sla-3d-printers/>).<figure class="is-layout-flex wp-block-gallery-49 wp-block-gallery columns-2 is-cropped">
+Na sam koniec należy już tylko złożyć kod w całość, wygenerować obiekt STL i wrzucić do slicera. Do mojej drukarki DLP używam płatnej wersji LycheeSlicer (<https://mango3d.io/lychee-slicer-for-sla-3d-printers/>).
 
-<ul class="blocks-gallery-grid">
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2021/05/XWH_0-scaled.jpg">![](/wp-content/uploads/2021/05/XWH_0-scaled.jpg)</a></figure>
-  </li>
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2021/05/XWH_1-scaled.jpg">![](/wp-content/uploads/2021/05/XWH_1-scaled.jpg)</a></figure>
-  </li>
-</ul></figure> 
+![](/wp-content/uploads/2021/05/XWH_0.jpg)
+![](/wp-content/uploads/2021/05/XWH_1.jpg)
 
-Obiekt, wraz z kodem źródłowym opublikowałem na Thingversie - [**https://www.thingiverse.com/thing:4859145**][3] i Githubie.
+Obiekt, wraz z kodem źródłowym opublikowałem na [Thingversie](https://www.thingiverse.com/thing:4859145) i Githubie.
 
-Obiekt został pozbawiony wnętrza _(hollow)_ z wypełnieniem w trybie _lattice 20%_, dodałem dwa kwadratowe otwory odpływowe na nieutwardzoną żywicę z wnętrza _(drain holes)_ z tyłu: kilka milimetrów od dołu i boków, po jednym z każdej strony. Żadne supporty nie były wymagane.<figure class="wp-block-image size-large">
+Obiekt został pozbawiony wnętrza _(hollow)_ z wypełnieniem w trybie _lattice 20%_, dodałem dwa kwadratowe otwory odpływowe na nieutwardzoną żywicę z wnętrza _(drain holes)_ z tyłu: kilka milimetrów od dołu i boków, po jednym z każdej strony. Żadne supporty nie były wymagane.
 
-![](/wp-content/uploads/2021/05/IMG_3560.jpg)<figcaption>wypełnienie i jeden z _drain holes_ widoczne pod silnym światłem (całkiem porządnej latarki Nitecore Tup)</figcaption></figure> 
+![wypełnienie i jeden z _drain holes_ widoczne pod silnym światłem (całkiem porządnej latarki Nitecore Tup)](/wp-content/uploads/2021/05/IMG_3560.jpg)
 
 Od rozpoczęcia prac do gotowego wydruku minęło kilka wieczorów kodowania, cięcia i testowania wydruków, a efekt bardzo mnie cieszy, bo stojak w 100% odpowiada moim oczekiwaniom i jeśli kiedyś będę potrzebował podobnego, ale dla innego zestawu bitów - wystarczy kilka zmian w parametrach kodu, render i obiekt będzie gotowy do wydruku. Zabawę polecam każdemu.
-
- [1]: /wp-content/uploads/2021/05/Screenshot-2021-05-19-at-05.56.34.png
- [2]: /wp-content/uploads/2021/05/xwh_elements.jpg
- [3]: https://www.thingiverse.com/thing:4859145
- [4]: /wp-content/uploads/2021/05/IMG_3560.jpg

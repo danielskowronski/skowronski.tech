@@ -24,9 +24,9 @@ Aby urządzenie mogło pobierać większy prąd, musi wynegocjować z hostem mak
 
 Wyższe prądy, a także czasem inne niż 5 V napięcia dostępne są przy pomocy innych protokołów szybkiego ładowania. Najpopularniejsze z nich to stworzony przez Apple 2.1 A (zwany czasem "ładowarką do iPada", gdyż dostarczane z iPadami korzystają z tego trybu w przeciwieństwie do jednoamperowych ładowarek, które można znaleźć w pudełkach iPhonów, mimo iż iPhony chętnie korzystają z trybu Apple 2.1 A), Samsung Adaptive Fast Charging (AFP) i seria QuickCharge od firmy Qualcomm. 
 
-W większości wypadków deklaracja dostępnego trybu zasilania ze strony ładowarki, czy urządzenia hosta polega na ustawieniu odpowiednich napięć na liniach danych. Przykładowo poniżej schemat potrzebny do uzyskania trybu Apple 2.1 A - napięcia to odpowiednio `D-: 2.0V` i `D+: 2.75V`<figure class="wp-block-image size-large is-resized">
+W większości wypadków deklaracja dostępnego trybu zasilania ze strony ładowarki, czy urządzenia hosta polega na ustawieniu odpowiednich napięć na liniach danych. Przykładowo poniżej schemat potrzebny do uzyskania trybu Apple 2.1 A - napięcia to odpowiednio `D-: 2.0V` i `D+: 2.75V`
 
-![](/wp-content/uploads/2021/02/x5tSD.gif)<figcaption>Źródło: https://electronics.stackexchange.com/a/177792</figcaption></figure> 
+![Źródło: https://electronics.stackexchange.com/a/177792](/wp-content/uploads/2021/02/x5tSD.gif)
 
 Jak widać - temat jest dość szeroki. Zazwyczaj, jeśli ładowarka ma dwa lub więcej portów USB z różnymi oznaczeniami, np. "1 A" i "2 A" to oba porty mogą dostarczyć 2 A, często są one wręcz połączone równolegle - jedynie konfiguracja linii danych jest różna. Czemu zatem nie oznaczyć obu portów jako "2 A"? Otóż nie wszystkie urządzenia "zrozumieją" inne tryby zasilania i mogą uznać, że port dostarczy maksymalnie 500 mA, co znacznie ograniczy czas ładowania. Rzecz jasna co nowocześniejsze ładowarki, czy power banki nie mają dyskretnych zworek lub dzielników napięć, lecz dedykowane układy scalone dokonujące negocjacji z ładowanym urządzeniem ustalając najwyższy możliwy prąd ładowania. 
 
@@ -40,17 +40,19 @@ Obciążeniem dla portu może być dowolne urządzenie, ale te zwykle bywają ka
 
 ### Regulowane obciążenie elektroniczne
 
-Mój wybór padł na HD35 - na AliExpress można znaleźć za około $10-$12. Sprzęt generuje maksymalnie 35 W obciążenia, prąd 5 A i współpracuje ze znaczną większością popularnych trybów szybkiego ładowania. Ponadto ma aktywnie sterowany wentylator, regulację prądu co 10 mA, zestaw ustawień (chociażby tak ważne, jak automatyczne załączanie obciążenia po pojawieniu się zasilania) i ręczne wyzwalanie negocjacji trybów QuickCharge. Podłączymy go do złącza USB-A, USB-C i microUSB. Instrukcja wraz ze specyfikacją jest dostępna między innymi na <https://needful.co.ua/image/catalog/product/rd-hd35/HD25-35-USB-load-user-manual.pdf><figure class="wp-block-image size-large">
+Mój wybór padł na HD35 - na AliExpress można znaleźć za około $10-$12. Sprzęt generuje maksymalnie 35 W obciążenia, prąd 5 A i współpracuje ze znaczną większością popularnych trybów szybkiego ładowania. Ponadto ma aktywnie sterowany wentylator, regulację prądu co 10 mA, zestaw ustawień (chociażby tak ważne, jak automatyczne załączanie obciążenia po pojawieniu się zasilania) i ręczne wyzwalanie negocjacji trybów QuickCharge. Podłączymy go do złącza USB-A, USB-C i microUSB. Instrukcja wraz ze specyfikacją jest dostępna między innymi na https://needful.co.ua/image/catalog/product/rd-hd35/HD25-35-USB-load-user-manual.pdf>
 
-![](/wp-content/uploads/2021/02/Screenshot-2021-02-07-at-20.06.00.png)</figure> 
+
+![](/wp-content/uploads/2021/02/Screenshot-2021-02-07-at-20.06.00.png)
 
 
 
 ### Miernik USB
 
-Mając na wyposażeniu dość prosty miernik "CHARGER Doctor", a kupiwszy solidne obciążenie elektroniczne, uznałem, że czas na upgrade - również do wysokiego poziomu i kupiłem UM34C. Poza pomiarem napięcia pomiędzy 4 V a 24 V i prądu do 4 A wyróżnia go też pomiar napięcia na liniach danych oraz oczywiście detekcja trybów ładowania na tej podstawie. Posiada też możliwość pomiaru temperatury oraz zliczania energii - np. by zbadać pojemność ładowanej baterii. Wszystkie pomiary można transmitować po Bluetooth do telefonu z Androidem lub iOS, a następnie eksportować do Excela, by później przeanalizować charakterystykę ładowania. Cena - około $18 na AliExpress. Instrukcja wraz ze specyfikacją - <https://supereyes.ru/img/instructions/Instruction_UM34(C).pdf> <figure class="wp-block-image size-large">
+Mając na wyposażeniu dość prosty miernik "CHARGER Doctor", a kupiwszy solidne obciążenie elektroniczne, uznałem, że czas na upgrade - również do wysokiego poziomu i kupiłem UM34C. Poza pomiarem napięcia pomiędzy 4 V a 24 V i prądu do 4 A wyróżnia go też pomiar napięcia na liniach danych oraz oczywiście detekcja trybów ładowania na tej podstawie. Posiada też możliwość pomiaru temperatury oraz zliczania energii - np. by zbadać pojemność ładowanej baterii. Wszystkie pomiary można transmitować po Bluetooth do telefonu z Androidem lub iOS, a następnie eksportować do Excela, by później przeanalizować charakterystykę ładowania. Cena - około $18 na AliExpress. Instrukcja wraz ze specyfikacją - https://supereyes.ru/img/instructions/Instruction_UM34(C).pdf
 
-![](/wp-content/uploads/2021/02/Screenshot-2021-02-07-at-20.20.51.png)</figure> 
+
+![](/wp-content/uploads/2021/02/Screenshot-2021-02-07-at-20.20.51.png) 
 
 ## Naprawa huba USB
 
@@ -58,20 +60,14 @@ Objawem awarii huba był całkowity brak napięcia na obydwu portach o wyższym 
 
 ### Co kryje wnętrze
 
-Czas było więc odkryć, jak mawia pewien Szary Jeleń - "co kryje wnętrze".<figure class="is-layout-flex wp-block-gallery-37 wp-block-gallery columns-2 is-cropped">
+Czas było więc odkryć, jak mawia pewien Szary Jeleń - "co kryje wnętrze".
 
-<ul class="blocks-gallery-grid">
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2021/02/01_obudowa.jpg">![](/wp-content/uploads/2021/02/01_obudowa-300x225.jpg)</a></figure>
-  </li>
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2021/02/02_plytka.jpg">![](/wp-content/uploads/2021/02/02_plytka-300x224.jpg)</a></figure>
-  </li>
-</ul></figure> 
+![](/wp-content/uploads/2021/02/01_obudowa.jpg)
+![](/wp-content/uploads/2021/02/02_plytka.jpg)
 
-Problem okazał się dość szybki do zlokalizowania po naocznym przejrzeniu płytki komponent po komponencie - dwa tranzystory `Q31` i `Q32` eksplodowały.<figure class="wp-block-image size-large">
+Problem okazał się dość szybki do zlokalizowania po naocznym przejrzeniu płytki komponent po komponencie - dwa tranzystory `Q31` i `Q32` eksplodowały.
 
-![](/wp-content/uploads/2021/02/03_uszkodzone_tranzystory-300x225.jpg)</figure> 
+![](/wp-content/uploads/2021/02/03_uszkodzone_tranzystory.jpg)
 
 Można zaryzykować zatem twierdzenie, że wystarczy je wymienić i sprzęt powinien działać. Problem polegał na tym, że eksplozja zniszczyła oznaczenia komponentów, a dość prawdopodobne jest, że to jedyne takie dwa tranzystory przełączające porty wysokoprądowe.
 
@@ -79,21 +75,22 @@ Można zaryzykować zatem twierdzenie, że wystarczy je wymienić i sprzęt powi
 
 Rzecz jasna D-Link nie udostępnia schematów swoich płytek drukowanych wraz z listą materiałów. Nie warto też było ryzykować używania komponentów z bardzo odległych rewizji tego samego modelu, D-Link bowiem ma zwyczaj korzystania z różnych konstrukcji pod tym samym modelem, różniącym się jedynie jedną literką wersji.
 
-Po długich poszukiwaniach udało mi się zlokalizować identyczny problem pewnego użytkownika rosyjskojęzycznego forum elektronicznego - <https://www.rlocman.ru/forum/showthread.php?t=15481>, a znalazł się tam też inny posiadacz tego samego huba, ale bez zniszczonych nadruków i po dziwnym oznaczeniu `S0120` udało się dojść do właściwego modelu - `SI2023`. 
+Po długich poszukiwaniach udało mi się zlokalizować identyczny problem pewnego użytkownika rosyjskojęzycznego forum elektronicznego - https://www.rlocman.ru/forum/showthread.php?t=15481, a znalazł się tam też inny posiadacz tego samego huba, ale bez zniszczonych nadruków i po dziwnym oznaczeniu `S0120` udało się dojść do właściwego modelu - `SI2023`. 
 
 Chcąc uniknąć eksperymentów oraz inżynierii wstecznej postanowiłem poszukać dokładnie tego komponentu, nie zaś zamienników o nieco innych parametrach. W Polsce nie udało mi się nigdzie znaleźć wspomnianego tranzystora (także na TME), nie słyszał o nim DigiKey, na pomoc przyszły dopiero Chiny pod postacią AliExpressu. Oczywiście nikt nie oferował akurat sensownej wysyłki, czekałem więc 3 miesiące, zamówiłem dwie paczki znudziwszy się czekaniem na pierwszą... Finalnie za pierwsze dwa dolary mam 100 sztuk, a za kolejne dwa dolary - cztery sztuki od innego sprzedawcy. 
 
 ### Naprawa i weryfikacja
 
-Zdjęcie poniżej jest dość drastyczne dla elektroników z doświadczeniem - kompletnie nie umiem lutować elementów SDM ;\___;
+Zdjęcie poniżej jest dość drastyczne dla elektroników z doświadczeniem - kompletnie nie umiem lutować elementów SMD ;\___;
 
-Najważniejszy jednak jest fakt, że mimo urwania padu udało mi się wlutować oba tranzystory oraz naprawić uszkodzoną ścieżkę od `Q32` do `Q34` solidnym kawałkiem cyny. <figure class="wp-block-image size-large">
+Najważniejszy jednak jest fakt, że mimo urwania padu udało mi się wlutować oba tranzystory oraz naprawić uszkodzoną ścieżkę od `Q32` do `Q34` solidnym kawałkiem cyny. 
 
-![](/wp-content/uploads/2021/02/04_lutowanie-300x225.jpg)</figure> 
 
-Weryfikacja pobiegała pomyślnie - wszystkie porty działają, a te "szybsze" używają trybu Apple 2.1 A<figure class="wp-block-image size-large">
+![](/wp-content/uploads/2021/02/04_lutowanie.jpg)
 
-![](/wp-content/uploads/2021/02/05_pomiary-300x251.jpg)</figure> 
+Weryfikacja pobiegała pomyślnie - wszystkie porty działają, a te "szybsze" używają trybu Apple 2.1 A
+
+![](/wp-content/uploads/2021/02/05_pomiary.jpg)
 
 ## Podsumowanie
 
@@ -102,10 +99,3 @@ Naprawa udana, pacjent nie zmarł, pożaru nie było.
 Koszt (poza zapleczem elektronika-bardzo-amatora lubiącego kupować sprzęt nieco na wyrost) - $6 z wysyłką obu paczek tranzystorów i kilka miesięcy przeleżenia na stercie projektów do realizacji.
 
 Lekcje wyniesione: nie umiem lutować elementów powierzchniowych i muszę to poprawić, ładowanie po USB jest ciekawe, a cyrylica przydaje się inżynierom wielu dziedzin.
-
- [1]: /wp-content/uploads/2021/02/x5tSD.gif
- [2]: /wp-content/uploads/2021/02/Screenshot-2021-02-07-at-20.06.00.png
- [3]: /wp-content/uploads/2021/02/Screenshot-2021-02-07-at-20.20.51.png
- [4]: /wp-content/uploads/2021/02/03_uszkodzone_tranzystory.jpg
- [5]: /wp-content/uploads/2021/02/04_lutowanie.jpg
- [6]: /wp-content/uploads/2021/02/05_pomiary.jpg

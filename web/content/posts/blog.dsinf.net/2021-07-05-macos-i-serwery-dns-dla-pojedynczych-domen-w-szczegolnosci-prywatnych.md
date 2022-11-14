@@ -18,11 +18,14 @@ Problem dość częsty w intranetach dostępnych jedynie po VPN - jak wstrzykną
 
 Na macOS jest to dość nietrywialne, jeśli używamy systemowego klienta VPN, niekoniecznie bowiem system będzie przestrzegał podanych po IPsec-u DNSów. Można jednak ustawić specyficzne serwery dla konkretnych domen w sposób następujący: w folderze `/private/etc/resolver/` należy stworzyć plik (nazwa z grubsza dowolna) dla każdej domeny, która ma być rozwiązywana inaczej niż używając systemowych resolverów, takiej treści:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">domain SOME_DOMAIN
+```bash
+domain SOME_DOMAIN
 nameserver SERVER_1
 nameserver SERVER_2
 search_order 1
-timeout 5</pre>
+timeout 5
+```
+
 
 `SOME_DOMAIN` to może być `private` aby zająć się dowolnymi domenami `*.private`, lub `abcd.example.com` by zająć się wszystkim z puli `*.abcd.example.com`. Rzecz jasna `*` może zawierać dowolną ilość subdomen. Linii `nameserver SERVER_1` może być dowolna ilość.
 

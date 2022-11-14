@@ -14,7 +14,7 @@ xyz_twap:
 ---
 Od jakiegoś czasu moje osobiste celowanie w prywatność stało się jeszcze większym priorytetem i uznałem, że czas zająć się także moim blogiem. Efektem tych działań było między innymi pozbycie się usług Google oraz WordPressa.
 
-Jeśli w życiu prywatnym przesiada się człowiek na DuckDuckGo, to utrzymywanie na blogu Google Analytics czy Google Fonts nie jest do końca uczciwe. Dlatego też na moich platformach blog.dsinf.net, foto.dsinf.net (i w najmniejszym stopniu, ale zawsze - na www.skowron.ski) dokonałem prac mających zredukować liczbę zbędnych usług śledzących odwiedzających wspomniane strony WWW. Podsumowaniem tego jest polityka prywatności dostępna na <https://skowron.ski/privacy_policy.html>, którą można podsumować następująco: Plausible Analytics, Cloudflare, logi diagnostyczne na serwerze i brak zewnętrznych dostawców fontów, skryptów itp.
+Jeśli w życiu prywatnym przesiada się człowiek na DuckDuckGo, to utrzymywanie na blogu Google Analytics czy Google Fonts nie jest do końca uczciwe. Dlatego też na moich platformach blog.dsinf.net, foto.dsinf.net (i w najmniejszym stopniu, ale zawsze - na www.skowron.ski) dokonałem prac mających zredukować liczbę zbędnych usług śledzących odwiedzających wspomniane strony WWW. Podsumowaniem tego jest polityka prywatności dostępna na https://skowron.ski/privacy_policy.html, którą można podsumować następująco: Plausible Analytics, Cloudflare, logi diagnostyczne na serwerze i brak zewnętrznych dostawców fontów, skryptów itp.
 
 ## Plausible Analytics
 
@@ -32,7 +32,7 @@ Wówczas odkryłem Plausible Analytics ([plausible.io][1]) - skupioną na prywat
 
 W kwestii prywatności można mieć wątpliwości, czy dodatkowy pośrednik w ruchu między użytkownikiem końcowym a serwerem WWW to coś niezbędnego. Z jednej strony są tylko jak kolejny ISP po drodze, z drugiej odpowiadają oni za ruch już rozszyfrowany. 
 
-Technicznie jest to zło konieczne dla stabilności bloga i jego dostępności w sensownym czasie dla użytkowników końcowych. Pomijając ilość funkcji dostępnych za darmo dla dobra internetu, Cloudflare jest mocno zaangażowany w prywatność internetu i (na razie) nie idzie w kierunku Google. Dla sceptyków dość interesujący może okazać się ten artykuł: <https://blog.cloudflare.com/privacy-and-compliance-reading-list/>
+Technicznie jest to zło konieczne dla stabilności bloga i jego dostępności w sensownym czasie dla użytkowników końcowych. Pomijając ilość funkcji dostępnych za darmo dla dobra internetu, Cloudflare jest mocno zaangażowany w prywatność internetu i (na razie) nie idzie w kierunku Google. Dla sceptyków dość interesujący może okazać się ten artykuł: https://blog.cloudflare.com/privacy-and-compliance-reading-list/
 
 ## Zewnętrzni dostawcy treści osadzonych
 
@@ -40,7 +40,7 @@ Umieszczanie na swojej stronie, czy webowej aplikacji odnośnika do jQuery, czy 
 
 Dlatego też na moich stronach wszystkie skrypty i multimedia są hostowane razem z resztą treści - dostarczane są i tak za pośrednictwem Cloudflare. 
 
-Problem, z którym borykałem się najdłużej to usługa Google Fonts. Jest uzależniająco łatwa do użycia - wystarczy dodać jedną linijkę z importem ich kodu CSS i można już przypisywać fonty do elementów HTMLowych - bez żadnego wgrywania wielu plików na serwer (zwłaszcza, w czasach braku jednego formatu czcionek internetowych). Kiedy zająłem się spisywaniem polityki prywatności, odkryłem, że Google nie ma żadnej polityki prywatności dotykającej obszaru Google Fonts i innych treści z gstatic.com. Nie dziwi to, jeśli śledzi się temat unikania przez nich aktualizowania aplikacji na iOS - tak, żeby nie użyć _privacy labels_ wymaganych a App Store jasno deklarujących jakich danych użytkowników używają w swoich celach (patrz - <https://www.theverge.com/2021/1/26/22250648/google-apple-app-store-privacy-label>). 
+Problem, z którym borykałem się najdłużej to usługa Google Fonts. Jest uzależniająco łatwa do użycia - wystarczy dodać jedną linijkę z importem ich kodu CSS i można już przypisywać fonty do elementów HTMLowych - bez żadnego wgrywania wielu plików na serwer (zwłaszcza, w czasach braku jednego formatu czcionek internetowych). Kiedy zająłem się spisywaniem polityki prywatności, odkryłem, że Google nie ma żadnej polityki prywatności dotykającej obszaru Google Fonts i innych treści z gstatic.com. Nie dziwi to, jeśli śledzi się temat unikania przez nich aktualizowania aplikacji na iOS - tak, żeby nie użyć _privacy labels_ wymaganych a App Store jasno deklarujących jakich danych użytkowników używają w swoich celach (patrz - https://www.theverge.com/2021/1/26/22250648/google-apple-app-store-privacy-label). 
 
 Ponieważ (prawdopodobnie za bardzo) lubię fonty Ubuntu i Ubuntu Mono to jakiś hosting tychże jest mi potrzebny. Dlaczego jednak nie trzymać po prostu dwóch plików `woff2` na swoim własnym serwerze i zamiast używania specjalizowanych plug-inów do WordPressa (np. WP Google Fonts), skorzystać z takiego, którego i tak wykorzystuję do wstawek HTML/CSS/JS (który pozwala dodawać treść z UI WordPressa, bez edycji kodu motywu) - <https://pl.wordpress.org/plugins/custom-css-js/> <figure class="wp-block-image size-large is-resized">
 

@@ -18,21 +18,22 @@ tags:
   - promtail
 
 ---
-Kończąc opisane dwa miesiące temu zmiany w polityce prywatności (<https://blog.dsinf.net/2021/02/niedawne-ulepszenia-prywatnosci-uzytkownikow-blog-dsinf-net-i-foto-dsinf-net/>), skończyłem projekt usuwania zbędnych danych z logów dostępu nginxa. Opiszę pokrótce gotowy fragment pliku konfiguracyjnego serwera i pokażę, jak skonfigurować Promtaila, żeby przetwarzał logi w nowym formacie.
+Kończąc [opisane dwa miesiące temu zmiany w polityce prywatności](/2021/02/niedawne-ulepszenia-prywatnosci-uzytkownikow-blog-dsinf-net-i-foto-dsinf-net/), skończyłem projekt usuwania zbędnych danych z logów dostępu nginxa. Opiszę pokrótce gotowy fragment pliku konfiguracyjnego serwera i pokażę, jak skonfigurować Promtaila, żeby przetwarzał logi w nowym formacie.
 
 W nginxie dyrektywa `access_log` (i często towarzysząca `log_format`) mogą być zdefiniowane na poziomie bloku `http` lub `server`. W moim wypadku są to globalne ustawienia dla wszystkich wirtualnych hostów i wygląda następująco:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">map $remote_addr $remote_addr_anon {
-  ~(?P&lt;ip>\d+\.\d+\.\d+)\.    $ip.0;
-  ~(?P&lt;ip>[^:]+:[^:]+):       $ip::;
+```nginx
+map $remote_addr $remote_addr_anon {
+  ~(?P<ip>\d+\.\d+\.\d+)\.    $ip.0;
+  ~(?P<ip>[^:]+:[^:]+):       $ip::;
   127.0.0.1                   $remote_addr;
   ::1                         $remote_addr;
   default                     0.0.0.0;
 }
 
 map $http_x_forwarded_for $http_x_forwarded_for_anon {
-  ~(?P&lt;ip>\d+\.\d+\.\d+)\.    $ip.0;
-  ~(?P&lt;ip>[^:]+:[^:]+):       $ip::;
+  ~(?P<ip>\d+\.\d+\.\d+)\.    $ip.0;
+  ~(?P<ip>[^:]+:[^:]+):       $ip::;
   127.0.0.1                   $http_x_forwarded_for;
   ::1                         $http_x_forwarded_for;
   default                     0.0.0.0;
@@ -43,7 +44,9 @@ log_format main
   '$remote_addr_anon $http_x_forwarded_for_anon'
   '"$request" $status $body_bytes_sent';
 
-access_log /var/log/nginx/access.log  main;</pre>
+access_log /var/log/nginx/access.log  main;
+```
+
 
 Format `main` zawiera absolutne minimum informacji przydatnych dla utrzymania serwera. Są to kolejno:
 
@@ -66,7 +69,8 @@ Warto zwrócić uwagę, że względem standardowego formatu logów nginxa nie ko
 
 Jeśli używamy Promtaila do przekazywania logów do centralnego serwera przyda nam się zaktualizowany plik konfiguracyjny do parsowania linii logów:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="yaml" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">scrape_configs:
+```yaml
+scrape_configs:
 - job_name: nginx_access
   static_configs:
   - targets:
@@ -81,16 +85,15 @@ Jeśli używamy Promtaila do przekazywania logów do centralnego serwera przyda 
       selector: '{job="nginx_access"}'
       stages:
       - regex:
-          expression: '^\[(?P&lt;time_local>.*)\] (?P&lt;http_host>[^ ]*) (?P&lt;remote_addr_anon>[^ ]*) (?P&lt;http_x_forwarded_for_anon>[^ ]*) "(?P&lt;method>[^ ]*) (?P&lt;request>[^ ]*) (?P&lt;proto>[^ ]*)" (?P&lt;status>[\d]+) (?P&lt;body_bytes_sent>[\d]+)'
+          expression: '^\[(?P<time_local>.*)\] (?P<http_host>[^ ]*) (?P<remote_addr_anon>[^ ]*) (?P<http_x_forwarded_for_anon>[^ ]*) "(?P<method>[^ ]*) (?P<request>[^ ]*) (?P<proto>[^ ]*)" (?P<status>[\d]+) (?P<body_bytes_sent>[\d]+)'
       - labels:
           http_host: 
           method:
-          status:</pre>
+          status:
+```
 
 
+Efektem zbierania logów przez Promtaila są takie oto dane widoczne w Loki:
 
-Efektem zbierania logów przez Promtaila są takie oto dane widoczne w Loki:<figure class="wp-block-image size-large">
 
-![](/wp-content/uploads/2021/04/Screenshot-2021-04-07-at-22.55.53-300x190.jpg)</figure>
-
- [1]: /wp-content/uploads/2021/04/Screenshot-2021-04-07-at-22.55.53-scaled.jpg
+![](/wp-content/uploads/2021/04/Screenshot-2021-04-07-at-22.55.53.jpg)

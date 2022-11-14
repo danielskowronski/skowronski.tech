@@ -12,7 +12,7 @@ Tematem tego wpisu jest praktyka, którą zauważyłem zwłaszcza u młodszych p
 
 Pokusa, by poprawić literówkę w komentarzu, czy zrobić typową poprawkę w rodzaju `+1` za pomocą `git commit --ammend`, a następnie wypchnąć zmiany do centralnego repozytorium, nadpisując historię zdalnego repozytorium, jest szczególnie duża, kiedy w użyciu jest jakiś system budowania lub pipeline CI/CD, którego nie można uruchomić lokalnie. Przykładowo może to być kod Puppeta, który można przetestować jedynie z danymi na puppet-masterze, czy kickstart dla maszyny wirtualnej - taki kod musi znaleźć się w repozytorium, aby narzędzia budujące mogły go pobrać - to zaś jest niezbędne, żeby przetestować zmianę.
 
-Najczęściej na jednym commicie poprawiającym "drobną rzecz" się nie kończy i niekiedy w całym feature branchu jest jeden commit, a praca trwała cały dzień i kilkadziesiąt buildów. 
+Najczęściej na jednym commicie poprawiającym "drobną rzecz" się nie kończy i niekiedy w całym feature branchu jest jeden commit, a praca trwała cały dzień i kilkadziesiąt buildów. 
 
 Moim zdaniem takie nadpisywanie historii jest bardzo problematyczne - poza ukrywaniem historii pracy przed samym sobą i innymi może tworzyć niebezpieczny nawyk nadpisywanie historii poza branchem, nad którym pracuje tylko jedna osoba.
 

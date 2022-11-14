@@ -14,9 +14,9 @@ tags:
 ---
 Ostatnio na Linuksie (openSUSE dokładniej) napotkałem na problem z podpięciem niestandardowego urządzenia USB (Lumii w trybie bootloadera).
 
-Pierwszym problemem okazał się być brak wsparcia dla USB 2.0 (EHCI) _out of the box_ - jest to kwestia licencyjna. Dlatego trzeba doinstalować _VirtualBox Extension Pack_ ze strony [Oracle][1]. Plik *.vbox-extpack powinien się otworzyć zwykłym kliknięciem ale jeśli nie ma podpiętych skojarzeń - odpowiednią binarką będzie sam VirtualBox. Trzeba ubić wszystkie instancje vboxa i odpalić je ponownie żeby wszystko działało.
+Pierwszym problemem okazał się być brak wsparcia dla USB 2.0 (EHCI) _out of the box_ - jest to kwestia licencyjna. Dlatego trzeba doinstalować _VirtualBox Extension Pack_ ze strony [Oracle][1]. Plik *.vbox-extpack powinien się otworzyć zwykłym kliknięciem ale jeśli nie ma podpiętych skojarzeń - odpowiednią binarką będzie sam VirtualBox. Trzeba ubić wszystkie instancje vboxa i odpalić je ponownie żeby wszystko działało.
 
-Kolejna sprawa to brak auto dostępu do urządzeń USB - enumerowanie odbywa się tylko na starcie głównego programu co mocno ubija zwłaszcza flashowanie telefonów. To z kolei związane jest z potencjalną luką bezpieczeństwa opisaną szerzej na [bugzilli Novela][2]. Generalnie aby obejść zabezpieczenia należy dodać odpowiednie reguły udeva. Należy skopiować plik <span class="lang:default EnlighterJSRAW  crayon-inline ">/usr/lib/udev/rules.d/60-vboxdrv.rules</span>  do katalogu <span class="lang:default EnlighterJSRAW  crayon-inline ">/etc/udev/rules.d/</span>  i odkomentować cztery ostatnie linijki. Teraz reboot i gotowe.
+Kolejna sprawa to brak auto dostępu do urządzeń USB - enumerowanie odbywa się tylko na starcie głównego programu co mocno ubija zwłaszcza flashowanie telefonów. To z kolei związane jest z potencjalną luką bezpieczeństwa opisaną szerzej na [bugzilli Novela][2]. Generalnie aby obejść zabezpieczenia należy dodać odpowiednie reguły udeva. Należy skopiować plik `/usr/lib/udev/rules.d/60-vboxdrv.rules`  do katalogu `/etc/udev/rules.d/`  i odkomentować cztery ostatnie linijki. Teraz reboot i gotowe.
 
  [1]: https://www.virtualbox.org/wiki/Downloads
  [2]: https://bugzilla.novell.com/show_bug.cgi?id=664520

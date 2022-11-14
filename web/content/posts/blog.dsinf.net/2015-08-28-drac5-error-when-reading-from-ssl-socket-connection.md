@@ -21,7 +21,7 @@ Sprawę, że ten aplet w ogóle się nie uruchomi na nowej Javie rozwiązuje [pa
 W związku z ubiegłoroczną dziurą w SSLv3 Oracle postanowił po jakimś czasie wyłączyć ten protokół - patrz [komunikat na ich stronie][2]. Niestety nawet najnowsza wersja firmware'u DRACa piątki - 1.65 A00 nie przewiduje innego protokołu komunikacji. [Bez znaczenia jest też jeśli używamy wbudowanego certyfikatu ważnego na okres 2005-2010 - klient nie sprawdza tego!]
 
 Jedyną opcją jest globalne włączenie protokołu - mało bezpieczne, ale innej opcji nie ma.  
-Szukamy pod Linuksem pliku <span class="lang:default EnlighterJSRAW  crayon-inline " >/usr/lib/jvm/*/jre/lib/security/java.security</span> lub pod Windowsem <span class="lang:default EnlighterJSRAW  crayon-inline " >C:\Program Files (x86)\Java\jre1.8.0_60\lib\security\java.security</span> i tamże linijki <span class="lang:default EnlighterJSRAW  crayon-inline " >jdk.tls.disabledAlgorithms=</span> - nie wystarczy skasować zapisu SSLv3, ale także trzeba zaniżyć _DH Key Size_ i usunąć RC4 - słowem zakomentować całą linijkę. 
+Szukamy pod Linuksem pliku `/usr/lib/jvm/*/jre/lib/security/java.security` lub pod Windowsem `C:\Program Files (x86)\Java\jre1.8.0_60\lib\security\java.security` i tamże linijki `jdk.tls.disabledAlgorithms=` - nie wystarczy skasować zapisu SSLv3, ale także trzeba zaniżyć _DH Key Size_ i usunąć RC4 - słowem zakomentować całą linijkę. 
 
 Kiedyś dało się to zrobić przez GUI. Liczmy na to, że i z konfiga plikowego tego nie usuną.
 

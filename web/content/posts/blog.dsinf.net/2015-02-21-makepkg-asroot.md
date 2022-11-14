@@ -17,7 +17,10 @@ Pewien nieodpowiedzialny maintainer Arch Linuxa popenił commit [61ba5c961e4a353
 
 Efekt? 
 
-<pre class="lang:default EnlighterJSRAW " >makepkg: invalid option ‘--asroot’</pre>
+```
+makepkg: invalid option ‘--asroot’
+```
+
 
 Administratorzy mogli to zauważyć przy aktualizacji pakietów z AURa, że nagle nie mogą dokończyć operacji. Zwykłym użytkownikom niektóre programy przestały działać (dyskusja [tutaj][2]). 
 
@@ -25,8 +28,11 @@ Kwestia używania Linuksa z konta superużytkownika to osobna sprawa, ale powinn
 
 A więc czas na poprawkę - na szczęście istnieje pakiet AUR [makepkg-asroot][3], ale tu problem bo rzecz jasna aktualnie nie możemy kompiliwać pakietów z AURa. Coby zautomatyzować to zadanie można użyć takiego oto skryptu:
 
-<pre class="lang:sh EnlighterJSRAW " >pacman --noconfirm -S fakeroot &&
-sudo -u nobody yaourt --noconfirm -S makepkg-asroot</pre>
+```bash
+pacman --noconfirm -S fakeroot &&
+sudo -u nobody yaourt --noconfirm -S makepkg-asroot
+```
+
 
 zważając na potrzebę wpisania hasła roota (yaourt użyje sudo) i możliwość zignotowania błędu yaourta na koniec (tego o problemie z /root).
 

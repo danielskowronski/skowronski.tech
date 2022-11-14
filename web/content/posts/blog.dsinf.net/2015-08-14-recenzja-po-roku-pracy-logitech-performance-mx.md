@@ -46,7 +46,7 @@ Kwestia oprogramowania dla hackera jest istotna. Na windowsie po zainstalowaniu 
 
 W kwestii zasilania jest bardzo ciekawie. Dołączony akumulatorek jest bardzo dobry. Dołączony kabelek jest przemyślany – ma sprytne plastiki na wtyczkach ułatwiające poruszanie podłączoną myszą po biurku i jej odpinanie. Po jego podłączeniu mysz wygląda jak zwykła przewodowa (niestety tylko wygląda- kabel nie transferuje danych), co najważniejsze – w przeciwieństwie do stacji dokujących ładowanie nawet zajechanej baterii możliwe jest w trakcie pracy (ciekawostka: nawet bez baterii można podłączyć ją po kablu i pracować – będzie tylko migać czerwona dioda). O ładowaniu w sumie się nie pamięta. A jak już się zapomni to nawet nie fabryczny kabelek micor usb do telefonu w torbie z laptopem zawsze się ma. Na spodzie oczywiście fizyczny wyłącznik zasilania.
 
-![WP_20150811_08_50_11_Pro](/wp-content/uploads/2015/08/WP_20150811_08_50_11_Pro.jpg) ![WP_20150811_08_49_46_Pro](/wp-content/uploads/2015/08/WP_20150811_08_49_46_Pro.jpg) ![WP_20150811_08_49_32_Pro](/wp-content/uploads/2015/08/WP_20150811_08_49_32_Pro.jpg)
+![WP_20150811_08_50_11_Pro](/wp-content/uploads/2015/08/WP_20150811_08_50_11_Pro.jpg) ![WP_20150811_08_49_46_Pro](/wp-content/uploads/2015/08/WP_20150811_08_49_46_Pro.jpg) ![WP_20150811_08_49_32_Pro](/wp-content/uploads/2015/08/WP_20150811_08_49_32_Pro.jpg)
 
 Cena to chyba jedyna bolączka dla kogoś, kto nie jest regularnym graczem i nie ma w zwyczaju przepłacania. Zwłaszcza, że pracować się też da na touchpadzie czy myszy za kilkanaście złotych. Jednak 200zł za powystawową, a 300zł za nową z gwarancją na 3 lata to nie jest tragiczna cena jak za sprzęt na którym można polegać.
 

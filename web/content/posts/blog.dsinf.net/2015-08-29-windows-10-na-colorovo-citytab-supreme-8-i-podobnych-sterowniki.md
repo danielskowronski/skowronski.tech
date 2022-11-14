@@ -23,18 +23,17 @@ Instalacja wymaga wejścia do menadżera urządzeń (devmgmt.msc), do właściwo
 
 Jeżeli wystąpi problem z rotacją może być wymagane załadowanie wpisu rejestru.
 
-<pre class="lang:default EnlighterJSRAW ">Windows Registry Editor Version 5.00
+```reg
+Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\ROOT\SENSOR\0000\Device Parameters\kxfusion]
 "ACPI\SMO8500\1-0"="{DBCFFCEA-38C5-4386-9945-92F183AA5700}"
-"Orientation"=hex:01,00,00,00,01,01,02</pre>
+"Orientation"=hex:01,00,00,00,01,01,02
+```
+
 
 To wymusi prawidłowy obrót - a przynajmniej na Colorovo CityTab Supreme 8 H. Na inne urządzenia trzeba poeksperymentować z wartościami w hexie lub pogooglać podobnych wpisów dla konkretnych urządzeń. Klucz zaczynajacy się od ACPI zależy takze od urządzenia. Teoretycznie bez niego Windows załapie o co chodzi. W razie problemów można znowu posiłkować się googlem.
 
-Jeśli jednak mamy backup windowsa to można odzyskać klucze rejestru. Jeśli obraz dysku mamy robiony dd-kiem pod linuksem to montujemy <span class="lang:default EnlighterJSRAW crayon-inline ">mount -o ro,loop,offset=<początek partycji w bajtach, odczytane z parted> plik.img /mountpoint</span>, kopiujemy plik
-
-<pre class="lang:default EnlighterJSRAW crayon-inline ">Windows/System32/config/DEFAULT</pre>
-
-i na Windowsie (koniecznie prawdziwym windowsie - wine nie pomoże) odpalamy edytor rejestru, stajemy na HKEY\_LOCAL\_MACHINE, plik->załaduj gałąź rejestru i nawigujemy się gdzie trzeba. Uwaga: zamiast CurrentControlSet trzeba użyć ControlSet00X (np. 001) - inny windows nie wie co było obecnym zestawem dla gałęzi załadowanej z pliku więc nie utworzy nam wirtualnego dowiązania.
+Jeśli jednak mamy backup windowsa to można odzyskać klucze rejestru. Jeśli obraz dysku mamy robiony dd-kiem pod linuksem to montujemy `mount -o ro,loop,offset=<początek partycji w bajtach, odczytane z parted> plik.img /mountpoint`, kopiujemy plik `Windows/System32/config/DEFAULT` i na Windowsie (koniecznie prawdziwym windowsie - wine nie pomoże) odpalamy edytor rejestru, stajemy na HKEY\_LOCAL\_MACHINE, plik->załaduj gałąź rejestru i nawigujemy się gdzie trzeba. Uwaga: zamiast CurrentControlSet trzeba użyć ControlSet00X (np. 001) - inny windows nie wie co było obecnym zestawem dla gałęzi załadowanej z pliku więc nie utworzy nam wirtualnego dowiązania.
 
  [1]: https://www.microsoft.com/en-us/download/details.aspx?id=48231
  [2]: http://przeklej.org/file/download/6XKd9wxfRsV7lWPFoejk

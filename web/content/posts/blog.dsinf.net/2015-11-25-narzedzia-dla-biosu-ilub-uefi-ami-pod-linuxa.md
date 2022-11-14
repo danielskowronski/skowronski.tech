@@ -24,8 +24,8 @@ Linki:
 
 Jako ciekawostkę mogę podać fakt, że po przejechaniu pliku komendą strings odnajdziemy sprytny sposób budowania modułu jądra do rozmawiania bezpośrednio z hardwarem - zahardkodowany kod źródłowy :O
 
- [1]: http://blog.dsinf.net/2015/08/biosuefi-ami-aptio-np-na-tabletach-z-win8-przywracanie-do-ustawien-fabrycznych/
- [2]: http://blog.dsinf.net/2015/11/klaster-prowizorka-w-kole-studentow-informatyki-uj-czesc-1/
+ [1]: /2015/08/biosuefi-ami-aptio-np-na-tabletach-z-win8-przywracanie-do-ustawien-fabrycznych/
+ [2]: /2015/11/klaster-prowizorka-w-kole-studentow-informatyki-uj-czesc-1/
  [3]: http://support.lenovo.com/pl/pl/downloads/ds030953
  [4]: https://mega.nz/#!SkdGSR6S!lwAWW2d3Q3JrYpePFeOv1jOKSWLRXsJSJ-Zqj9EyYxM
  [5]: https://mega.nz/#!r1dHFBSa!YyBZqUhWqawiuvzuhZIWgXtf8EDV2cCcf8T6NlAx4as

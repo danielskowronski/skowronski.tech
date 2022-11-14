@@ -18,46 +18,47 @@ Ponadto na małych dyskach (netbooki itp.) przy typowym podziale partycji deksto
 Operacja nie jest typu "jedno kliknięcie", ale ujawnia wiele ciekawych opcji Windowsa.
 
   1. Najpierw odpalamy (z uprawnieniami administratora) w wierszu poleceń  
-    <span class="lang:default EnlighterJSRAW  crayon-inline ">C:\Windows\System32\Sysprep\Sysprep.exe /audit /reboot</span>  
+    `C:\Windows\System32\Sysprep\Sysprep.exe /audit /reboot`  
     - zlecając start w trybie audytu, gdzie można między innymi przystosować system do kopiowania na różne maszyny (nieocenione przy deploymencie dziesiątek maszyn). Uwaga: wchodzenie w ten tryb może chwilę zająć. Więcej informacji na technecie: [http://technet.microsoft.com/en-us/library/cc722413(WS.10).aspx][1]
   2. W zrestartowanym systemie nowootwarte okno _System Preparation Tool_ zamykamy
-  3. Przygotowywujemy skrypt modyfikacji: <pre class="lang:xhtml EnlighterJSRAW ">&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;unattend xmlns="urn:schemas-microsoft-com:unattend"&gt;
-&lt;settings pass="oobeSystem"&gt;
-&lt;!-- processorArchitecture to amd64 (wszystkie 64-bitowe&lt; [1]) albo x86 --&gt;
-&lt;component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64"
- publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS"
- xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-&lt;FolderLocations&gt;
-&lt;!-- ProfilesDirectory to oczywiście ścieżka docelowa [2] --&gt;
-&lt;ProfilesDirectory&gt;d:\Users&lt;/ProfilesDirectory&gt;
-&lt;/FolderLocations&gt;
-&lt;/component&gt;
-&lt;/settings&gt;
-&lt;!-- cpi:source to ścieżka do install.wim na nośniku instalacyjnym [3] --&gt;
-&lt;!-- w cpi:source wartość po # to nazwa systemu: "Windows 8", "Windows 8.1", 
-"Windows 8.1 Pro"; [4]--&gt;
-&lt;cpi:offlineImage cpi:source="wim:F:/sources/install.wim#Windows 8" 
-xmlns:cpi="urn:schemas-microsoft-com:cpi" /&gt;
-&lt;/unattend&gt;</pre>
-    
-    [1]: amd64 to w uproszczeniu wszystkie 64-bitowe procesory w desktopach/laptopach (ia64 to bardzo stare Intel Xeon serwerowe)  
-    [2]: warto w diskmgmt.msc przestawić literę dysku jeśli jakimś sposobem w czasie instalacji d: to cd-rom albo pendrive z którego była uruchamiana instalacja, a e: to pierwsza partycja na dane  
-    [3]: pełna ścieżka  
-    [4]: prawdopodobnie "Windows 7" też zadziała, ale jeszcze nie testowałem; ważne jest rozróżnienie na wersję Pro</li> 
-    
-      * Plik zapisać najlepiej na katalogu głównym jakiegoś dysku (polecam c:\ albo pendrive instalacyjny) jako .xml
-      * W wierszu poleceń administratora: 
-        <pre>net stop WMPNetworkSvc
-cd c:\Windows\System32\Sysprep
-Sysprep.exe /audit /reboot /unattend:c:\ścieżka_do_pliku.xml</pre>
-        
-        nic nie ruszamy i czekamy do restartu</li> 
-        
-          * Po restarcie (znowu do trybu audytu) w oknie _System Cleanup Action_ dajemy _Enter System Out-of-Box Experience (OOBE)_ i _Reboot_
-          * System restartuje się do normalnego trybu i działa 😉</ol> 
-        
-        Proces mimo pozornej reinstalacji systemu można bez strat przeprowadzić na istniejącym systemie chociaż (tak jak nawet na Linuksach) zalecam kopię zapasową plików ;).
+  3. Przygotowywujemy skrypt modyfikacji: 
+     ```xml
+     <?xml version="1.0" encoding="utf-8"?>
+     <unattend xmlns="urn:schemas-microsoft-com:unattend">
+     <settings pass="oobeSystem">
+     <!-- processorArchitecture to amd64 (wszystkie 64-bitowe< [1]) albo x86 -->
+     <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64"
+      publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS"
+      xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+     <FolderLocations>
+     <!-- ProfilesDirectory to oczywiście ścieżka docelowa [2] -->
+     <ProfilesDirectory>d:\Users</ProfilesDirectory>
+     </FolderLocations>
+     </component>
+     </settings>
+     <!-- cpi:source to ścieżka do install.wim na nośniku instalacyjnym [3] -->
+     <!-- w cpi:source wartość po # to nazwa systemu: "Windows 8", "Windows 8.1", 
+     "Windows 8.1 Pro"; [4]-->
+     <cpi:offlineImage cpi:source="wim:F:/sources/install.wim#Windows 8" 
+     xmlns:cpi="urn:schemas-microsoft-com:cpi" />
+     </unattend>
+     ```
+     * amd64 to w uproszczeniu wszystkie 64-bitowe procesory w desktopach/laptopach (ia64  to bardzo stare Intel Xeon serwerowe)  
+     * warto w diskmgmt.msc przestawić literę dysku jeśli jakimś sposobem w czasie  instalacji d: to cd-rom albo pendrive z którego była uruchamiana instalacja, a e: to  pierwsza partycja na dane  
+     * pełna ścieżka  
+     * prawdopodobnie "Windows 7" też zadziała, ale jeszcze nie testowałem; ważne jest rozróżnienie na wersję Pro
+  1. Plik zapisać najlepiej na katalogu głównym jakiegoś dysku (polecam c:\ albo pendrive instalacyjny) jako .xml
+  1. W wierszu poleceń administratora: 
+     ```cmd
+     net stop WMPNetworkSvc
+     cd c:\Windows\System32\Sysprep
+     Sysprep.exe /audit /reboot /unattend:c:\ścieżka_do_pliku.xml
+     ```
+  1. nic nie ruszamy i czekamy do restartu
+  1. Po restarcie (znowu do trybu audytu) w oknie _System Cleanup Action_ dajemy _Enter System Out-of-Box Experience (OOBE)_ i _Reboot_
+  1. System restartuje się do normalnego trybu i działa 😉
+      
+Proces mimo pozornej reinstalacji systemu można bez strat przeprowadzić na istniejącym systemie chociaż (tak jak nawet na Linuksach) zalecam kopię zapasową plików ;).
 
  [1]: http://technet.microsoft.com/en-us/library/cc722413(WS.10).aspx "http://technet.microsoft.com/en-us/library/cc722413(WS.10).aspx"

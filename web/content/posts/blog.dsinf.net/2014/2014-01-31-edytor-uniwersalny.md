@@ -4,7 +4,7 @@ author: Daniel Skowroński
 type: post
 date: 2014-01-30T23:04:50+00:00
 summary: |
-  Edytor to najważniejsze narzędzie każdego informatyka niezależnie od jego specjalności. Od wyboru głównego edytora zależy komfort codziennej pracy.<br />
+  Edytor to najważniejsze narzędzie każdego informatyka niezależnie od jego specjalności. Od wyboru głównego edytora zależy komfort codziennej pracy.
   Artykuł jak najbardziej subiektywny :)
 url: /2014/01/edytor-uniwersalny/
 tags:
@@ -16,15 +16,20 @@ tags:
 Edytor to najważniejsze narzędzie każdego informatyka niezależnie od jego specjalności. Od wyboru głównego edytora zależy komfort codziennej pracy. Artykuł jak najbardziej subiektywny 🙂
 
 ![n++](http://www.zoneas.com/images/icons/notepad.png "Notepad++") Na Windowsie wybór jest oczywisty - **Notepad++**. Ma system pluginów, zaznaczanie kolumnowe, szukanie i zamienianie przez wyrażenia regularne, całkiem przyzwoite motywy, dobrze radzi sobie z dużymi plikami w dużej ilości, zapamiętuje niezapisane pliki, posiada zakładki oraz umie otworzyć dwa pliki obok siebie w podzielonym widoku (jak Terminator pod Linuksem) [itp.][1]  
-<br clear="all" />  
+
+
 Na Linuksie powstaje problem.
 
 ![gedit](http://osx.wdfiles.com/local--files/icon:gedit/gedit.png "gedit") Początkujący i średniozaawansowany użytkownik nie-KDE powie: **Gedit**. Funkcje są tylko podstawowe (rzecz jasna sporo więcej od notatnika z MS Windows), ale solidny i wystarczający. Cóż... po tym co wyczynia zespół Gnome'a można tkwić w Gnome 2, albo nie używać gedita. Wariactwo zwane Gnome 3 ma w taki oto sposób okaleczyć jeden z najważniejszych edytorów tekstowych z GUI:  
 ![Gedit z nowym interfejsem](http://www.omgubuntu.co.uk/wp-content/uploads/2014/01/gedit2.jpg "Gedit z nowym interfejsem")  
-Aż patrzeć smutno.<br clear="all" />  
+
+
 ![leafpad](http://svgicons.o7a.net/official/leafpad.png "leafpad") Jako szybka alternatywa jest **Leafpad** - ma interfejs i funkcje z dawnych wersji; popularny zasadniczo w XFCE.  
-<br clear="all" />  
-![kate](https://cdn1.iconfinder.com/data/icons/nuvola2/128x128/apps/kate.png "kate") Użytkownik KDE powie: **Kate**.<br clear="all" /> Ale kochana Kate ma trzy wady: 
+
+
+![kate](https://cdn1.iconfinder.com/data/icons/nuvola2/128x128/apps/kate.png "kate") Użytkownik KDE powie: **Kate**.
+
+Ale kochana Kate ma trzy wady: 
 
   1. wymaga całego dyskożernego KDE
   2. jest w stylu nowego KDE
@@ -53,9 +58,9 @@ Z konsolowych jest jeszcze mój ulubieniec - **mcedit** będący częścią Midn
 ![komodo edit](http://rocketdock.com/images/screenshots/komodo_edit.png "komodo edit") **Komodo Edit** jest doskonały dla tych, którzy programują w językach mających swoje wersje wydane przez ActiveState - Perl, Python, Tcl. Poza tym wyposażony w developerskie opcje dla WWW - np. przeglądarkę drzewa DOM, czy narzędzia do walidacji. 
 
 ![geany](http://upload.wikimedia.org/wikipedia/commons/a/a0/Geany_logo.svg "geany") Idąc dalej spotkamy **Geany** - przyjemny edytor, ale znowu - zbyt bardzo zintegrowane środowisko programistyczne zamiast edytora!  
-<br clear="all" />  
+
 ![ultraedit](http://www.iconhot.com/icon/png/quiet/256/ultra-edit.png "ultraedit") **UltraEdit** to komercyjne wszystko-w-jednym-na-wszystkie-platformy. Przerost formy nad treścią - spójrz na screen obrazujący przerost emacsa - to właśnie UltraEdit. Okropna cena $80 za sam edytor - inne komponenty (np. odpowiednik diffa) to osobne produkty. Trial ograniczony czasowo.  
-<br clear="all" />  
+
 ![sublime text](http://c758482.r82.cf2.rackcdn.com/sublime_text_icon_2181.png "sublime text") I na sam koniec mój ulubiony edytor. Niestety własnościowy. Niestety $70. Ale trial polega na tym, że co kilkanaście zapisów pokazuje dodatkowe okienko zachęcające do zakupu licencji (nieoficjalnie: jest [crack][3]). **Sublime Text**. Lista funkcji jest tak duża, że aż twórca na swojej stronie pominął niektóre. Poza tym co jest wszędzie znajdziemy w nim: 
 
   * skok do dowolnego miejsca - _goto anything_ (linii, funkcji, elementu DOM...)
@@ -71,7 +76,6 @@ Pewną dziwnostką, a zarazem wyjątkowością jest brak graficznego edytora ust
 
 ![sublime text](http://www.sublimetext.com/screenshots/alpha_goto_anything2_large.png "sublime text")  
 Lista przydatnych linków do subl'a:  
-<ui>
 
   * [Strona domowa][4]
   * [Dokumentacja producencka][5]
@@ -82,8 +86,7 @@ Lista przydatnych linków do subl'a:
   * [Druga strona z motywami][10]
   * [Subiektywny zbiór ładnych motywów][11]</li> 
 
-&nbsp;  
-&nbsp;  
+
 Reasumując: moje ulubione edytory to graficzny Sublime Text (za potęgę funkcji i nie targetujący w żadne konkretne zastosowanie interfejs) i konsolowy mcedit (za elementy GUI i łatwość sterowania). A zawsze znać trzeba vi.
 
  [1]: http://notepad-plus-plus.org/features/

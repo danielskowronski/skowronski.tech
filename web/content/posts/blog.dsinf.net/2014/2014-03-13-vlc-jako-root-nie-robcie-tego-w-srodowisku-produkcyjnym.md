@@ -4,7 +4,7 @@ author: Daniel Skowroński
 type: post
 date: 2014-03-13T17:48:55+00:00
 summary: |
-  Tak, są ludzie tak leniwi, że pracują na koncie roota.<br />
+  Tak, są ludzie tak leniwi, że pracują na koncie roota.
   Ale są też tak wredni deweloperzy, że zmuszają użytkownikó do rekompilacji całego ogromnego pakietu jakim jest m.in. VLC ze specjalną flagą by dało się wystartować jako root...
 url: /2014/03/vlc-jako-root-nie-robcie-tego-w-srodowisku-produkcyjnym/
 tags:

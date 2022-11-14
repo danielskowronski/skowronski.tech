@@ -4,7 +4,7 @@ author: Daniel Skowroński
 type: post
 date: 2016-03-25T21:10:13+00:00
 summary: |
-  Może to i niestandardowe wymaganie, ale czasem i na Windowsie potrzeba SFTP - czyli transferu plików po SSH - pewniejsze, bardziej niezawodne i bezpieczne od FTP. No i autoryzacja po kluczu zamiast hasła...<br />
+  Może to i niestandardowe wymaganie, ale czasem i na Windowsie potrzeba SFTP - czyli transferu plików po SSH - pewniejsze, bardziej niezawodne i bezpieczne od FTP. No i autoryzacja po kluczu zamiast hasła...
   Porównanie Micorosftowego forka OpenSSH i Cerberusa.
 url: /2016/03/sftp-na-windows/
 tags:

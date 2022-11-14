@@ -4,7 +4,7 @@ author: Daniel Skowroński
 type: post
 date: 2015-01-23T12:13:34+00:00
 summary: |
-  Konferencja z 21 stycznia zapowiedziała bardzo dużo ilościowo i jakościowo odnośnie Windowsa 10. Dla mnie najważniejszą ideą było ogłoszenie pełnej przenośności (<em>experience mobility</em>) i ciągłości pracy niezależnid od urządzenia oraz dodawanie nowych platform.<br />
+  Konferencja z 21 stycznia zapowiedziała bardzo dużo ilościowo i jakościowo odnośnie Windowsa 10. Dla mnie najważniejszą ideą było ogłoszenie pełnej przenośności (<em>experience mobility</em>) i ciągłości pracy niezależnid od urządzenia oraz dodawanie nowych platform.
   Ale po kolei...
 url: /2015/01/podsumowanie-styczniowej-zapowiedzi-windows-10/
 featured_image: /wp-content/uploads/2015/01/win101.png

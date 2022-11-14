@@ -4,7 +4,7 @@ author: Daniel Skowroński
 type: post
 date: 2014-11-22T19:10:19+00:00
 summary: |
-  Python jest językiem wyjątkowym. Jednym z reprezentantów tej wyjątkowości jest sposób przechowywania liczb.<br />
+  Python jest językiem wyjątkowym. Jednym z reprezentantów tej wyjątkowości jest sposób przechowywania liczb.
   Badanie "dokładności", zakresu
 url: /2014/11/duze-liczby-w-pythonie/
 tags:

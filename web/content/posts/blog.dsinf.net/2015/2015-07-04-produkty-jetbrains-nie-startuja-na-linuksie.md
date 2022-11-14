@@ -4,7 +4,7 @@ author: Daniel Skowroński
 type: post
 date: 2015-07-04T21:29:31+00:00
 summary: |
-  Produkty JetBrains nie na każdym Linuksie startują od razu.<br />
+  Produkty JetBrains nie na każdym Linuksie startują od razu.
   Rozwiązania problemów "libgcj: Error opening agent library. libgcj: couldn't create virtual machine" na Linuksach i "/usr/sbin/alternatives is needed by jdk1.8.0" na openSuse.
 url: /2015/07/produkty-jetbrains-nie-startuja-na-linuksie/
 tags:

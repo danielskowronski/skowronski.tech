@@ -25,18 +25,14 @@ menu:
       name: old posts [PL]
       url: /posts/blog.dsinf.net/
       weight: 20
-    - identifier: contact
-      name: contact
-      url: /contact/
-      weight: 30
     - identifier: homepage
       name: homepage
       url: https://skowron.ski/
+      weight: 30
+    - identifier: contact
+      name: contact
+      url: /contact/
       weight: 40
-    - identifier: pro
-      name: for recruiters
-      url: https://skowronski.pro/
-      weight: 50
 
 deployment:
   targets:
@@ -55,6 +51,8 @@ author:
     - keybase: "https://keybase.io/dskowronski"
     - email: "mailto:daniel@skowron.ski"
 
+# https://nunocoracao.github.io/blowfish/docs/configuration/
+
 params:
   colorScheme: "blue"
   defaultAppearance: "dark"
@@ -70,6 +68,7 @@ params:
 
   list:
     showSummary: true
+    showHero: true
 
   article:
     showEdit: false

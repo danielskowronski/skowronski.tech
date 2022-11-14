@@ -15,6 +15,8 @@ tags:
 ---
 This story begins with simple need - ability to programmatically obtain all devices connected to my Wi-Fi router - TP-Link Archer C6. None of the existing libraries support this version of Web UI. The issue with the simplest solution (just flashing OpenWRT) - I rely on proprietary OneMesh technology, which enables better home mesh-networking. So, some hacking needed to be done.
 
+<!--more-->
+
 ## First SSH attempt
 
 If you try to SSH to Archer C6 using standard port 22 you'll be surprised to see port open and even accepting admin's password (the same as for Web UI). But the only thing you can do is set up of port forwarding. All other channels are disabled.

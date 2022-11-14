@@ -12,13 +12,13 @@ tags:
   - linux
 
 ---
-Od jakieś czasu jestem szczęśliwym posiadaczem drukarki etykiet Dymo - LabelWriter 450 Duo. A od niedawna w końcu wróciłem do Linuksa jako głównego systemu na stacji roboczej. Mój sukces z tym podwójnym urządzeniem - potrafi ono bowiem drukować zarówno etykiety prostokątne, jak i na taśmie - był połowiczny: etykiety o stałych wymiarach nie stanowią problemu dla programu gLabels. Natomiast te drukowane na taśmie typu D1 (a więc o stałej wysokości, ale zmiennej długości) nijak nie chcą współpracować z żadnym znanym mi programem. <figure class="wp-block-image size-large is-resized">
+Od jakieś czasu jestem szczęśliwym posiadaczem drukarki etykiet Dymo - LabelWriter 450 Duo. A od niedawna w końcu wróciłem do Linuksa jako głównego systemu na stacji roboczej. Mój sukces z tym podwójnym urządzeniem - potrafi ono bowiem drukować zarówno etykiety prostokątne, jak i na taśmie - był połowiczny: etykiety o stałych wymiarach nie stanowią problemu dla programu gLabels. Natomiast te drukowane na taśmie typu D1 (a więc o stałej wysokości, ale zmiennej długości) nijak nie chcą współpracować z żadnym znanym mi programem. 
 
-![](/wp-content/uploads/2020/05/dymo450.jpeg) </figure> 
+![](/wp-content/uploads/2020/05/dymo450.jpeg)
 
-Na Windowsie i macOS sprawa wygląda prosto - dostarczone narzędzie _**DYMO** **Label**_, które niedawno zostało przebrandowane na _**DYMO Connect**_, bardzo sprawnie daje sobie radę. Ba, wystawia nawet webowe API dostępne na localhoście które pozwala na generowanie etykiet na przykład w przeglądarce. Ten ostatni fakt wykorzystuję w moim generatorze etykiet do puszek herbaty - _**DymoTeaLabel**_, który jest dostępny [na githubie][1].<figure class="wp-block-image size-large">
+Na Windowsie i macOS sprawa wygląda prosto - dostarczone narzędzie _**DYMO** **Label**_, które niedawno zostało przebrandowane na _**DYMO Connect**_, bardzo sprawnie daje sobie radę. Ba, wystawia nawet webowe API dostępne na localhoście które pozwala na generowanie etykiet na przykład w przeglądarce. Ten ostatni fakt wykorzystuję w moim generatorze etykiet do puszek herbaty - _**DymoTeaLabel**_, który jest dostępny [na githubie][1].
 
-![](/wp-content/uploads/2020/05/dymo_connect.jpg) <figcaption>Tak prezentuje się DYMO Connect</figcaption></figure> 
+![Tak prezentuje się DYMO Connect](/wp-content/uploads/2020/05/dymo_connect.jpg)
 
 Oczywiście artykułu by nie było, gdyby któreś z oficjalnych narzędzi odpalało się na Wine. Odpala się za to w VirtualBoxie, no ale bez przesady - na pewno da się pominąć Windowsa.
 
@@ -30,7 +30,8 @@ Zastanawiając się jak przekonać na przykład LibreOffice Writera do drukowani
 
 Poniżej plik PPD dostarczany przez Dymo z wyciętymi tłumaczeniami i ograniczony do półcalowych formatów. Spostrzegawczy zauważą, że firma korzysta z Perforce do kontroli wersji.
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">*PPD-Adobe: "4.3"
+```ppd
+*PPD-Adobe: "4.3"
 
 *% $Id: lwduot.ppd 16401 2011-10-31 18:51:16Z pineichen $
 
@@ -98,7 +99,7 @@ Poniżej plik PPD dostarczany przez Dymo z wyciętymi tłumaczeniami i ograniczo
 *OrderDependency: 9 AnySetup *MediaType
 *DefaultMediaType: 24mm
 *% ...
-*MediaType 12mm/12 mm (1/2"): "&lt;&lt;/cupsMediaType 2>>setpagedevice"
+*MediaType 12mm/12 mm (1/2"): "<</cupsMediaType 2>>setpagedevice"
 *% ...
 
 *% ...
@@ -109,10 +110,10 @@ Poniżej plik PPD dostarczany przez Dymo z wyciętymi tłumaczeniami i ograniczo
 *OrderDependency: 10 AnySetup *PageSize
 *DefaultPageSize: w68h252.2
 *% ...
-*PageSize w35h252/1/3 File: "&lt;&lt;/PageSize[35 252]/ImagingBBox null/cupsMediaType 2/cupsInteger0 0>>setpagedevice"
-*PageSize w35h144/1/5 File: "&lt;&lt;/PageSize[35 144]/ImagingBBox null/cupsMediaType 2/cupsInteger0 0>>setpagedevice"
-*PageSize w35h252.1/12 mm (1/2") Label: "&lt;&lt;/PageSize[35 252]/ImagingBBox null/cupsMediaType 2/cupsInteger0 0>>setpagedevice"
-*PageSize w35h4000/12 mm (1/2") Continuous: "&lt;&lt;/PageSize[35 4000]/ImagingBBox null/cupsMediaType 258/cupsInteger0 0>>setpagedevice"
+*PageSize w35h252/1/3 File: "<</PageSize[35 252]/ImagingBBox null/cupsMediaType 2/cupsInteger0 0>>setpagedevice"
+*PageSize w35h144/1/5 File: "<</PageSize[35 144]/ImagingBBox null/cupsMediaType 2/cupsInteger0 0>>setpagedevice"
+*PageSize w35h252.1/12 mm (1/2") Label: "<</PageSize[35 252]/ImagingBBox null/cupsMediaType 2/cupsInteger0 0>>setpagedevice"
+*PageSize w35h4000/12 mm (1/2") Continuous: "<</PageSize[35 4000]/ImagingBBox null/cupsMediaType 258/cupsInteger0 0>>setpagedevice"
 *% ...
 
 *CloseUI: *PageSize
@@ -121,10 +122,10 @@ Poniżej plik PPD dostarczany przez Dymo z wyciętymi tłumaczeniami i ograniczo
 *OrderDependency: 10 AnySetup *PageRegion
 *DefaultPageRegion: w68h252.2
 *% ...
-*PageRegion w35h252/1/3 File: "&lt;&lt;/PageSize[35 252]/ImagingBBox null/cupsMediaType 2/cupsInteger0 0>>setpagedevice"
-*PageRegion w35h144/1/5 File: "&lt;&lt;/PageSize[35 144]/ImagingBBox null/cupsMediaType 2/cupsInteger0 0>>setpagedevice"
-*PageRegion w35h252.1/12 mm (1/2") Label: "&lt;&lt;/PageSize[35 252]/ImagingBBox null/cupsMediaType 2/cupsInteger0 0>>setpagedevice"
-*PageRegion w35h4000/12 mm (1/2") Continuous: "&lt;&lt;/PageSize[35 4000]/ImagingBBox null/cupsMediaType 258/cupsInteger0 0>>setpagedevice"
+*PageRegion w35h252/1/3 File: "<</PageSize[35 252]/ImagingBBox null/cupsMediaType 2/cupsInteger0 0>>setpagedevice"
+*PageRegion w35h144/1/5 File: "<</PageSize[35 144]/ImagingBBox null/cupsMediaType 2/cupsInteger0 0>>setpagedevice"
+*PageRegion w35h252.1/12 mm (1/2") Label: "<</PageSize[35 252]/ImagingBBox null/cupsMediaType 2/cupsInteger0 0>>setpagedevice"
+*PageRegion w35h4000/12 mm (1/2") Continuous: "<</PageSize[35 4000]/ImagingBBox null/cupsMediaType 258/cupsInteger0 0>>setpagedevice"
 *% ...
 
 *DefaultImageableArea: w68h252.2
@@ -146,7 +147,7 @@ Poniżej plik PPD dostarczany przez Dymo z wyciętymi tłumaczeniami i ograniczo
 *MaxMediaWidth:  "38.4"
 *MaxMediaHeight: "4000"
 *HWMargins:      0 0 0 0
-*CustomPageSize True: "pop pop pop &lt;&lt;/PageSize[5 -2 roll]/ImagingBBox null/cupsInteger0 0>>setpagedevice"
+*CustomPageSize True: "pop pop pop <</PageSize[5 -2 roll]/ImagingBBox null/cupsInteger0 0>>setpagedevice"
 *ParamCustomPageSize Width:        1 points 4 38.4
 *ParamCustomPageSize Height:       2 points 16 4000
 *ParamCustomPageSize WidthOffset:  3 points 0 0
@@ -156,15 +157,15 @@ Poniżej plik PPD dostarczany przez Dymo z wyciętymi tłumaczeniami i ograniczo
 *OpenUI *Resolution/Output Resolution: PickOne
 *OrderDependency: 20 AnySetup *Resolution
 *DefaultResolution: 180dpi
-*Resolution 180dpi/180 DPI: "&lt;&lt;/HWResolution[180 180]>>setpagedevice"
+*Resolution 180dpi/180 DPI: "<</HWResolution[180 180]>>setpagedevice"
 *CloseUI: *Resolution
 
 *OpenUI *DymoHalftoning/Halftoning: PickOne
 *OrderDependency: 20 AnySetup *DymoHalftoning
 *DefaultDymoHalftoning: ErrorDiffusion
-*DymoHalftoning Default/Default: "&lt;&lt;/cupsColorOrder 0/cupsColorSpace 3/cupsBitsPerColor 1/cupsBitsPerPixel 1>>setpagedevice"
-*DymoHalftoning ErrorDiffusion/Error Diffusion: "&lt;&lt;/cupsColorOrder 0/cupsColorSpace 1/cupsBitsPerColor 8>>setpagedevice"
-*DymoHalftoning NLL/Nonlinear Dithering: "&lt;&lt;/cupsColorOrder 0/cupsColorSpace 1/cupsBitsPerColor 8>>setpagedevice"
+*DymoHalftoning Default/Default: "<</cupsColorOrder 0/cupsColorSpace 3/cupsBitsPerColor 1/cupsBitsPerPixel 1>>setpagedevice"
+*DymoHalftoning ErrorDiffusion/Error Diffusion: "<</cupsColorOrder 0/cupsColorSpace 1/cupsBitsPerColor 8>>setpagedevice"
+*DymoHalftoning NLL/Nonlinear Dithering: "<</cupsColorOrder 0/cupsColorSpace 1/cupsBitsPerColor 8>>setpagedevice"
 
 *% ...
 
@@ -228,7 +229,9 @@ Poniżej plik PPD dostarczany przez Dymo z wyciętymi tłumaczeniami i ograniczo
 *%
 *%  End of "$Id: lwduot.ppd 16401 2011-10-31 18:51:16Z pineichen $"
 *%
-</pre>
+
+```
+
 
 To na co warto zwrócić uwagę to dwa formaty medium - **w35h252.1/12 mm** i **w35h4000/12 mm**. Wygląda, jakby wartość 4000 była jakimś sygnałem do drukarki by wykryć pustą przestrzeń (zakładając, że zawartość wyrównana jest do lewej krawędzi), aby w odpowiednim miejscu uciąć etykietę i zakończyć drukowanie. Niestety moje eksperymenty z oboma formatami kończyły się wydrukiem etykiety o długości 2.5cm lub... 40cm - niezbyt to ekologiczne ani ekonomiczne testować obsługę drukowania z ryzykiem wyplucia wspaniałych zabawek dla kota. Także po dwóch popołudniach się poddałem.
 
@@ -240,7 +243,8 @@ Po chwili wahania uznałem, że skoro w życiu napisałem trochę kodu w PHP to 
 
 Pierwsze makro ustawia wysokość etykiety jako input od użytkownika:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">sub SetHeight
+```vbs
+sub SetHeight
 
 Dim oViewCursor as object
 Dim s as string
@@ -254,11 +258,14 @@ Dim InputVal
 InputVal = InputBox("Please set label height in mm:", "SetHeight", "12")
 oStyle.Height = CByte(InputVal)*100+150
 
-end sub</pre>
+end sub
+```
+
 
 I drugie, które ustawia szerokość dokumentu tak by zmieścił się na jednej stronie. Myślenie o stronach w kontekście etykiet na taśmie nieco pokrętne, ale cóż zrobić drukując na tak nietypowym medium.
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">sub SetWidth
+```vbs
+sub SetWidth
 
 Dim Doc As Object
 x = ThisComponent.CurrentController.PageCount
@@ -281,24 +288,26 @@ For I=1 To 20000 Step 20
   End If
 Next
 
-end sub</pre>
+end sub
+```
+
 
 Żeby móc łatwo wywołać świeżo stworzone makra można je dodać jako przyciski do interfejsu Writera. Jak się okazuje sam dokument ODT może zawierać customowe menu. <figure class="wp-block-image size-large is-resized">
 
-![](/wp-content/uploads/2020/05/libreoffice-customize.jpg) <figcaption>Aby dodać przycisk menu dostępny w konkretnym dokumencie (zapisany w pliku) wystarczy wybrać _Tools/Customize_, a następnie zmienić _Scope_ na dokument.</figcaption></figure> 
+![Aby dodać przycisk menu dostępny w konkretnym dokumencie (zapisany w pliku) wystarczy wybrać _Tools/Customize_, a następnie zmienić _Scope_ na dokument.](/wp-content/uploads/2020/05/libreoffice-customize.jpg) 
 
 Pozostaje jedynie podpisać cyfrowo dokument tak, żeby LibreOffice nie krzyczał na nas, że w dokumencie są makra, a makra to jak wiadomo w 99% wirusy.
 
   
-Aby to osiągnąć, skorzystałem z cert stora z Firefoxa gdzie mam załadowany certyfikat osobisty do podpisywania emaili.<figure class="wp-block-image size-large is-resized">
+Aby to osiągnąć, skorzystałem z cert stora z Firefoxa gdzie mam załadowany certyfikat osobisty do podpisywania emaili.<
 
-![](/wp-content/uploads/2020/05/libreoffice-certpath.jpg) <figcaption>Aby wybrać skąd LibreOffice będzie brał certyfikaty, należy wybrać _Tools/Options_ a następnie otworzyć widok _Security_ a w nim _Certificate..._</figcaption></figure> 
+![Aby wybrać skąd LibreOffice będzie brał certyfikaty, należy wybrać _Tools/Options_ a następnie otworzyć widok _Security_ a w nim _Certificate..._](/wp-content/uploads/2020/05/libreoffice-certpath.jpg)
 
 Ważna uwaga szczególnie dla ubuntowców - LibreOffice musi być zainstalowany z pakietu deb, a nie ze snapa - w przeciwnym wypadku wystąpi spory problem z uprawnieniami.
 
 Teraz w menu _File/Digital Signatures_ należy już tylko podpisać dokument certyfikatem mającym flagę _sign_ i gotowe! Przy pierwszym uruchomieniu dokumentu zostaniemy zapytani czy zaufać podpisowi i włączyć makra.
 
-Jeśli należysz do osób leniwych, ale ufających ludziom z internetu, którzy sugerują pobranie dokumentu worda z makrami to zapraszam - [**DymoTape.odt**][3]. Żeby nie było - jest podpisany - jak pewnie wiele wirusów. Ale dla ludzi leniwych, ale trochę udających bezpiecznych lub bezgranicznie ufających właścicielom domen dsinf.net i skowron.ski zamieszczam ścieżkę do mojego certyfikuatu do podpisywania maila - <https://skowron.ski/cert.pem> 
+Jeśli należysz do osób leniwych, ale ufających ludziom z internetu, którzy sugerują pobranie dokumentu worda z makrami to zapraszam - [**DymoTape.odt**][3]. Żeby nie było - jest podpisany - jak pewnie wiele wirusów. Ale dla ludzi leniwych, ale trochę udających bezpiecznych lub bezgranicznie ufających właścicielom domen dsinf.net i skowron.ski zamieszczam ścieżkę do mojego certyfikuatu do podpisywania maila - https://skowron.ski/cert.pem
 
 Ludziom przejmującym się bezpieczeństwem pozostaje zbudowanie własnego dokumentu ODT w oparciu o wskazówki 😉
 

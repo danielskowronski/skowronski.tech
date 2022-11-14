@@ -32,57 +32,31 @@ Pierwszym krokiem jest instalacja - strona https://www.duplicati.com/download za
 
 **duplicati-cli** to narzędzie do wykonywania zadań, nas oczywiście na tym etapie najbardziej interesuje `backup`
 
-<blockquote class="wp-block-quote">
-  <p>
-    See duplicati.commandline.exe help <topic> for more information.
-  </p>
-  
-  <p>
-     General: example, changelog
-  </p>
-  
-  <p>
-     Commands: backup, find, restore, delete, compact, test, compare, purge, vacuum
-  </p>
-  
-  <p>
-     Repair: repair, affected, list-broken-files, purge-broken-files
-  </p>
-  
-  <p>
-     Debug: debug, logging, create-report, test-filters, system-info, send-mail
-  </p>
-  
-  <p>
-     Targets: rclone, ftp, msgroup, onedrivev2, sharepoint, googledrive, gcs, cloudfiles, mega, s3, ssh, jottacloud, webdav, hubic, tahoe, b2, aftp, azure, file, od4b, mssp, openstack, box, sia, dropbox
-  </p>
-  
-  <p>
-     Modules: aes, gpg, zip, 7z, console-password-input, mssql-options, hyperv-options, http-options, sendhttp, sendmail, runscript, sendxmpp, check-mono-ssl
-  </p>
-  
-  <p>
-     Formats: date, time, size, encryption, compression
-  </p>
-  
-  <p>
-     Advanced: mail, advanced, returncodes, filter, filter-groups, <option>
-  </p>
-  
-  <cite>duplicati-cli</cite>
-</blockquote>
+duplicati-cli:
+```
+See duplicati.commandline.exe help topic for more information.
+ General: example, changelog
+ Commands: backup, find, restore, delete, compact, test, compare, purge, vacuum
+ Repair: repair, affected, list-broken-files, purge-broken-files
+ Debug: debug, logging, create-report, test-filters, system-info, send-mail
+ Targets: rclone, ftp, msgroup, onedrivev2, sharepoint, googledrive, gcs, cloudfiles, mega, s3, ssh, jottacloud, webdav, hubic, tahoe, b2, aftp, azure, file, od4b, mssp, openstack, box, sia, dropbox
+ Modules: aes, gpg, zip, 7z, console-password-input, mssql-options, hyperv-options, http-options, sendhttp, sendmail, runscript, sendxmpp, check-mono-ssl
+ Formats: date, time, size, encryption, compression
+ Advanced: mail, advanced, returncodes, filter, filter-groups, option
+```
 
 ## Wrapper i dygresja o autoryzacji do storage backendów
 
 Jeśli zamierzamy wykorzystać duplicati-cli w więcej niż jednym miejscu warto pokusić się o napisanie drobnego wrappera. Mój dostosowany jest do wysyłania danych na dropboxa, więc jednym z parametrów jest auth_id - token aplikacji. 
 
-Warto w tym miejscu zrobić dygresję - Duplicati ogarnia to, co jest największą bolączką tego typu rozwiązań, które integrują się z dostawcami powierzchni dyskowej jak OneDrive, czy Dropbox. Twórcy hostują serwer (rozwiązanie opensource, które można postawić samodzelnie jeśli im nie ufamy) służący do pobierania tokenów od providerów. Dostęp do niego jest wbudowany w web-ui, można też osiągnąć go spoza aplikacji, co przydatne jest do instalacji na serwerach. Można go znaleźć na <a href="https://duplicati-oauth-handler.appspot.com/" target="_blank" rel="noreferrer noopener">https://duplicati-oauth-handler.appspot.com/</a> 
+Warto w tym miejscu zrobić dygresję - Duplicati ogarnia to, co jest największą bolączką tego typu rozwiązań, które integrują się z dostawcami powierzchni dyskowej jak OneDrive, czy Dropbox. Twórcy hostują serwer (rozwiązanie opensource, które można postawić samodzelnie jeśli im nie ufamy) służący do pobierania tokenów od providerów. Dostęp do niego jest wbudowany w web-ui, można też osiągnąć go spoza aplikacji, co przydatne jest do instalacji na serwerach. Można go znaleźć na [https://duplicati-oauth-handler.appspot.com/](https://duplicati-oauth-handler.appspot.com/)
 
 Poza auth_id lub generalnie jakąś formą adresu naszego storage backendu warto sparametryzować ścieżkę, którą backupujemy oraz hasło szyfrujące pliki i politykę retencji. 
 
 Mając na uwadze powyższe zapisy można pokusić się o napisanie takiego, oto skryptu:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="shell" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">#!/bin/bash
+```bash
+#!/bin/bash
 
 path=$1
 authid=$2
@@ -110,42 +84,41 @@ do
 done
 
 
-END="$(date +%s)"</pre>
+END="$(date +%s)"
+```
+
 
 Dzieje się w nim kilka nie do końca intuicyjnych rzeczy, czas więc na wyjaśnienia.
 
 Pierwsza sprawa to docelowa lokalizacja backupów: umieszczane są tak jak typowe dane zewnętrznej aplikacji dropboksowej w folderze _Applications_ na Dropboxie w podfolderze _Duplicati backups_ - warto więc od razu usunąć go z synchronizacji na desktopie - no chyba że mamy dużo miejsca na dysku 🙂 
 
-Dalsze elementy ścieżki to prefiks (na screenshocie poniżej jest to _amaterasu_ - tak nazywa się mój serwer), nazwa hosta wyciągana dynamicznie przez skrypt, oraz pełna ścieżka do backupowanego foldero - bardzo ułatwia to lokalizację konkretnych danych.<figure class="wp-block-image size-large">
+Dalsze elementy ścieżki to prefiks (na screenshocie poniżej jest to _amaterasu_ - tak nazywa się mój serwer), nazwa hosta wyciągana dynamicznie przez skrypt, oraz pełna ścieżka do backupowanego foldero - bardzo ułatwia to lokalizację konkretnych danych.
 
-![](/wp-content/uploads/2020/10/Selection_039.png)</figure> 
+![](/wp-content/uploads/2020/10/Selection_039.png)
 
 Kolejny element to _dbpath_, który odpowiada za lokalną bazę danych pomagającą Duplicati utrzymać stan plików. Bashowy potworek `echo ${path} | base32 | tr '=' '_'`, który tworzy jego wartość enkoduje ścieżkę tak by mogła być nazwą pliku bazy SQLite. Nie może to być stała wartość, gdyż wtedy nie można by uruchomić dwóch różnych procesów backupowania na jednym hoście. Natomiast odwracalne base32 z podmianą znaku równości (który sprawia kłopot w niektórych miejscach w bashu) ma tę przewagę nad funkcją skrótu w rodzaju MD5, że późniejsze debugowanie sytuacji w rodzaju przepełniającej się bazy danych jest łatwiejsze.
 
 _Retention policy_ określa, ile backupów z danego okresu ma być przechowywane. Moja domyślna wartość to `"1W:1D,4W:1W,12M:1M"`. Poniżej wklejam to, co można znaleźć w helpie duplicati-cli, ale generalnie dość pomocne jest web-ui zawierające kilka często używanych wartości. 
 
-<blockquote class="wp-block-quote">
-  <p>
-     -retention-policy (String): Reduce number of versions by deleting old intermediate backups
-  </p>
-  
-  <p>
-       Use this option to reduce the number of versions that are kept with increasing version age by deleting most of the old backups. The expected format is a comma separated list of colon separated time frame and interval pairs. For example the value "7D:0s,3M:1D,10Y:2M" means "For 7 day keep all backups, for 3 months keep one backup every day, for 10 years one backup every 2nd month and delete every backup older than this.". This option also supports using the specifier "U" to indicate an unlimited time interval.
-  </p>
-  
-  <cite>duplicati-cli help retention-policy</cite>
-</blockquote>
+duplicati-cli help retention-policy:
+```
+  -retention-policy (String): Reduce number of versions by deleting old intermediate backups
 
-  
+    Use this option to reduce the number of versions that are kept with increasing version age by deleting most of the old backups. The expected format is a comma separated list of colon separated time frame and interval pairs. For example the value "7D:0s,3M:1D,10Y:2M" means "For 7 day keep all backups, for 3 months keep one backup every day, for 10 years one backup every 2nd month and delete every backup older than this.". This option also supports using the specifier "U" to indicate an unlimited time interval.
+```
+
 Całe wywołanie duplicati-cli w moim wrapperze opakowane jest pętlą próbującą wykonać backup 10 razy, a po każdym niepowodzeniu czekając losową liczbę sekund od 1 do 60 (linijka ze `sleep`). Istotną pułapką jest tutaj exitcode - duplicati-cli nie do końca przestrzega standardu POSIX i nie zawsze kod wyjścia różny od zera oznacz błąd - stąd `[ $EXITCODE -lt 10 ]` w ifie, który sprawdza, czy można opuścić pętlę for po udanym backupie.
 
-<blockquote class="wp-block-quote">
-  <p>
-    Duplicati reports the following return/exit codes:<br /> 0 - Success<br /> 1 - Successful operation, but no files were changed<br /> 2 - Successful operation, but with warnings<br /> 50 - Backup uploaded some files, but did not finish<br /> 100 - An error occurred<br /> 200 - Invalid commandline arguments found
-  </p>
-  
-  <cite><code>duplicati-cli help returncodes</code></cite>
-</blockquote>
+duplicati-cli help returncodes:
+```
+  Duplicati reports the following return/exit codes:
+    0 - Success
+    1 - Successful operation, but no files were changed
+    2 - Successful operation, but with warnings
+    50 - Backup uploaded some files, but did not finish
+    100 - An error occurred
+    200 - Invalid commandline arguments found
+```
 
 ## Monitorowanie za pomocą Prometheusa
 
@@ -153,19 +126,22 @@ Idąc za regułą Torvaldsa _talk is cheap - show me the code!_ znowu zacznę od
 
 Pierwszym elementem jest lekka modyfikcja wrappera z poprzedniej sekcji tak, by zapisywał metryki.
 
-<pre class="EnlighterJSRAW" data-enlighter-language="shell" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group=""># put this before $START variable declaration
+```bash
+# put this before $START variable declaration
 metrics_name="duplicati_${hostname}_`echo $path | tr '/' '_'`"
 metrics_dir="/var/lib/prometheus/node-exporter/"
 mkdir -p $metrics_dir
 chown prometheus $metrics_dir
 
 # put this at the end of script - after $END variable
-cat &lt;&lt; EOF > "$metrics_dir/${metrics_name}.prom.$$"
+cat << EOF > "$metrics_dir/${metrics_name}.prom.$$"
 ${metrics_name}_last_run_start $START
 ${metrics_name}_last_run_seconds $(($END - $START))
 ${metrics_name}_last_exitcode $EXITCODE
 EOF
-mv "$metrics_dir/${metrics_name}.prom.$$" "$metrics_dir/${metrics_name}.prom"</pre>
+mv "$metrics_dir/${metrics_name}.prom.$$" "$metrics_dir/${metrics_name}.prom"
+```
+
 
 Dlaczego najpierw zapisuję tekst do pliku z nazwą kończącą się na PID procesu (`$$`)? Otóż jeśli prometheusowy eksporter wstrzeliłby się w moment zapisu do pliku, mógłby odczytać uszkodzone metryki. Stąd na koniec atomowa operacja _mv_, która zapewnia integralność danych.
 
@@ -185,7 +161,8 @@ Minimalna zawartość `/etc/default/prometheus` to `ARGS="--web.listen-address=E
 
 Kolej na `prometheus.yml`. Potrzebujemy czegoś w rodzaju:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="yaml" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">global:
+```yaml
+global:
   evaluation_interval: 15s
   scrape_interval: 15s
   scrape_timeout: 10s
@@ -203,11 +180,14 @@ scrape_configs:
   - job_name: 'MONITORED_HOST2'
     static_configs:
     - targets: ['MONITORED_HOST2_IP:9100']
-...</pre>
+...
+```
+
 
 I na koniec plik z regułkami. Pozwolę sobie, zamiast konkretnej wartości, wskazać Jinjowy template, którego używam w Ansiblu by go wygerować:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">---
+```yaml
+---
 groups:
 - name: Amaterasu
   rules:
@@ -233,29 +213,36 @@ groups:
     for: 1m
     labels:
       severity: error
-{% endfor %}</pre>
+{% endfor %}
+```
+
 
 Praktyczny foreach stworzy automatycznie dwa alerty na każdy monitorowany job duplicati - jeden sprawdzający, czy backup się uruchomił w ciągu ostatniej doby, a drugi czy exitcode oznacza sukces kopii zapasowej. Warto zwrócić uwagę na `or absent(...)` - pozwala to złapać także przypadki kiedy metryka w ogóle wyparowała z systemu - PromQL (czyli SQL używany przez Prometheusa) nie uznaje `null` jako wektora danych.
 
 Natomiast przechowywana w ansiblowym `host_vars` tablica `duplicati_monitored_jobs` wyglądać może tak jak w poniższym wycinku. Godne uwagi jest to, że wartości pola `metric` są zgodne z wartością `$metrics_name` stworzoną we wrapperze.
 
-<pre class="EnlighterJSRAW" data-enlighter-language="yaml" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">---
+```yaml
+---
 duplicati_monitored_jobs:
   - metric: influx01__var_lib_influxdb
   - metric: psql01__var_lib_postgresql
-  - metric: mysql01__var_lib_mysql</pre>
+  - metric: mysql01__var_lib_mysql
+```
+
 
 Teraz warto zainstalować i skonfigurować _prometheus_nodexporter_ na monitorowanych boksach. Paczka na większości systemów nazywa się tak jak binarka. Konfiguracja odbywa się poprzez plik `/etc/default/prometheus`. Na pewno musimy w nim zawrzeć przynajmniej `ARGS="--web.listen-address=EXTERNAL_IP:9090 --collector.textfile.directory=/var/lib/prometheus/node-exporter"`. IP jest tu z tego samego powodu co w serwerze, zaś `--collector.textfile.directory` znany jest nam już jako `$metrics_dir` z wrappera.
 
-Efekt naszych starań powinien przypominać coś takiego w Prometheusowym WebUI:<figure class="wp-block-image size-large">
+Efekt naszych starań powinien przypominać coś takiego w Prometheusowym WebUI:
 
-![](/wp-content/uploads/2020/10/Selection_040-300x277.png)</figure> 
+
+![](/wp-content/uploads/2020/10/Selection_040.png)
 
 ## Deployment jobów
 
 Ostatnim krokiem jest zdeployowanie naszych jobów, czyli zasadniczo wpisów w crontab z wywołaniem skryptu wrappera. Poniżej ansiblowy playbook, który dodatkowo zajmie się zainstalowaniem dependencji.
 
-<pre class="EnlighterJSRAW" data-enlighter-language="yaml" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">---
+```yaml
+---
 - name: 'install duplicati'
   apt:
     deb: 'https://updates.duplicati.com/beta/duplicati_{{duplicati_ver}}_all.deb'
@@ -285,7 +272,9 @@ Ostatnim krokiem jest zdeployowanie naszych jobów, czyli zasadniczo wpisów w c
 - name: 'make sure prometheus_nodexporter is set up - service'
   systemd:
     name: 'prometheus-node-exporter'
-    state: restarted</pre>
+    state: restarted
+```
+
 
 Żeby ten playbook działał potrzeba nam `duplicati_wrapper.sh` czyli skryptu wrappera, który napisaliśmy w dwóch poprzednich sekcjach oraz kilku zmiennych:
 
@@ -294,12 +283,15 @@ Ostatnim krokiem jest zdeployowanie naszych jobów, czyli zasadniczo wpisów w c
   * `duplicati_passphrase` - hasło do szyfrowania AES256 - najlepiej, jeśli będzie ustawione na poziomie hosta
   * `duplicati_jobs` - tablica z opisem jobów - musi być ustawiona per host, przykład poniżej
 
-<pre class="EnlighterJSRAW" data-enlighter-language="yaml" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">---
+```yaml
+---
 duplicati_jobs:
   - path: /var/lib/influxdb/
     retention: "1W:1D,4W:1W,12M:1M"
     hour: 2
-    minute: 0</pre>
+    minute: 0
+```
+
 
 Całość najlepiej upakować do ansiblowej roli, którą można dodać do playbooka tworzącego maszyny lub osobnego deployującego nowe konfiguracje do wszystkich monitorowanych hostów.
 
@@ -309,6 +301,6 @@ Duplicati jest bardzo przyjemnym w używaniu systemem backupów, a właściwie t
 
 W artykule opisałem jak w szybki sposób zintegrować Duplicati na serwerach przy użyciu crontaba i prostego wrappera oraz monitorować stan używają Prometheusa.
 
- [1]: https://blog.dsinf.net/2017/07/prosty-choc-nie-zawsze-trywialny-w-obsludze-system-backupowania-urbackup/
+ [1]: /2017/07/prosty-choc-nie-zawsze-trywialny-w-obsludze-system-backupowania-urbackup/
  [2]: /wp-content/uploads/2020/10/Selection_039.png
  [3]: /wp-content/uploads/2020/10/Selection_040.png

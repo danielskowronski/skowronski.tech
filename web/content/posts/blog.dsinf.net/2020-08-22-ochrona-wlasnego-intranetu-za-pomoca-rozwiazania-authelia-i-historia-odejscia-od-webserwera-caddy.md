@@ -18,11 +18,11 @@ Jak większość osób mających małą sieć hostującą laba z eksperymentami 
 
 #### Pierwsze podejście z Caddy'm i ucieczka od niego
 
-Moje pierwsze podejście do tego tematu zaczęło się ze zgłębianiem dostępnych plug-inów do web serwera Caddy - wówczas w wersji pierwszej. Natknąłem się na sprytny plugin _http.login_, który za pomocą innego pluginu - _jwt_ umożliwiał integrację z dostawcami tożsamości takimi jak Google, czy GitHub. Wystarczyło utworzyć w panelu własną aplikację OAuth, przekopiować tokeny do konfiguracji plug-inu i wylistować użytkowników mogących się zalogować do zasobów intranetu. Jak to rozwiązanie wygląda w praktyce, można zobaczyć na innym blogu - <https://etherarp.net/github-login-on-caddy/index.html>
+Moje pierwsze podejście do tego tematu zaczęło się ze zgłębianiem dostępnych plug-inów do web serwera Caddy - wówczas w wersji pierwszej. Natknąłem się na sprytny plugin _http.login_, który za pomocą innego pluginu - _jwt_ umożliwiał integrację z dostawcami tożsamości takimi jak Google, czy GitHub. Wystarczyło utworzyć w panelu własną aplikację OAuth, przekopiować tokeny do konfiguracji plug-inu i wylistować użytkowników mogących się zalogować do zasobów intranetu. Jak to rozwiązanie wygląda w praktyce, można zobaczyć na innym blogu - [https://etherarp.net/github-login-on-caddy/index.html](https://etherarp.net/github-login-on-caddy/index.html)
 
 _Umożliwiał_, bowiem twórcy Caddy'ego postanowili wydać wersję drugą, całkowicie niszcząc system plug-inów. Stara dokumentacja nie jest dostępna - [na Web Archive można zobaczyć][1] jak prosto wyglądała konfiguracja - całkowicie zgodna z duchem tego ekosystemu. Wiele miesięcy od otworzenia [issue dotyczącego przyszłości plug-inów autoryzacyjnych][2] twórcy dalej nie mają planów na oddanie użytkownikom dość istotnej funkcjonalności.
 
-Dodatkowo od jakiegoś czasu dostawałem maile od Githuba, zatytułowanych _[<mark>GitHubAPI</mark>] <mark>Deprecation notice for authentication via URL query parameters</mark>_, a prowadzących do <https://developer.github.com/changes/2020-02-10-deprecating-auth-through-query-param/>. Przy okazji planowanej jeszcze wówczas migracji do nowej wersji Caddy'ego (nie spodziewając się takich problemów z kompatybilnością) miałem zamiar poprawić ów plugin, żeby GitHub nie narzekał, a sam kod nie przestał działać.
+Dodatkowo od jakiegoś czasu dostawałem maile od Githuba, zatytułowanych _`[GitHubAPI] Deprecation notice for authentication via URL query parameters`_, a prowadzących do [https://developer.github.com/changes/2020-02-10-deprecating-auth-through-query-param/](https://developer.github.com/changes/2020-02-10-deprecating-auth-through-query-param/). Przy okazji planowanej jeszcze wówczas migracji do nowej wersji Caddy'ego (nie spodziewając się takich problemów z kompatybilnością) miałem zamiar poprawić ów plugin, żeby GitHub nie narzekał, a sam kod nie przestał działać.
 
 Dlatego też postanowiłem poszukać alternatyw, nawet jeśli miały uwzględniać używanie Nginxa, którego porzuciłem w mojej domowej sieci z wielu względów - między innymi przewagi Caddy'ego na polu współpracy z Let's Encryptem i pogmatwanych konfigów w małych i niezbyt wymagających projektach.
 
@@ -40,9 +40,10 @@ Na serwer obsługujący ruch HTTP wybrałem znanego sobie nginxa. W tym setupie 
 
 Do kompletu potrzeba będzie także Redisa do przechowywania tokenów sesyjnych - przydaje się to bardziej przy skalowani Authelii, ale pomaga także rozdzielić storage od samego proxy.
 
-Sama instalacja jest dość prosta - nie ma jeszcze co prawda paczek, ale poniższy playbook ansibla rozwiązuje sprawę. Zmienna `authelia_ver` ma wartość taga z githuba (na przykład v4.21.0) - <https://github.com/authelia/authelia/releases> 
+Sama instalacja jest dość prosta - nie ma jeszcze co prawda paczek, ale poniższy playbook ansibla rozwiązuje sprawę. Zmienna `authelia_ver` ma wartość taga z githuba (na przykład v4.21.0) - [https://github.com/authelia/authelia/releases](https://github.com/authelia/authelia/releases)
 
-<pre class="EnlighterJSRAW" data-enlighter-language="yaml" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">- name: install software
+```yaml
+- name: install software
   apt:
     name:
       - nginx
@@ -79,11 +80,14 @@ Sama instalacja jest dość prosta - nie ma jeszcze co prawda paczek, ale poniż
     - redis
     - nginx
     - authelia
-</pre>
+
+```
+
 
 Użyty template serwisu systemd wygląda następująco:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">[Unit]
+```ini
+[Unit]
 Description=Authelia authentication and authorization server
 After=network.target
 
@@ -92,7 +96,9 @@ ExecStart=/srv/authelia/authelia-linux-amd64 --config /srv/authelia/configuratio
 SyslogIdentifier=authelia
 
 [Install]
-WantedBy=multi-user.target</pre>
+WantedBy=multi-user.target
+```
+
 
 #### Konfigurowanie nginxa
 
@@ -101,7 +107,8 @@ Czas skonfigurować nginxa tak, żeby coś prostego nam proxował, a Authelia br
   * `/etc/nginx/sites-enabled/default` usunięty
   * `/etc/nginx/authelia.conf` definiujący endoint `/authelia` do obsługi autoryzacji:
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">location /authelia {
+```nginx
+location /authelia {
     internal;
     set $upstream_authelia http://127.0.0.1:9091/api/verify;
     proxy_pass_request_body off;
@@ -133,29 +140,38 @@ Czas skonfigurować nginxa tak, żeby coś prostego nam proxował, a Authelia br
     proxy_read_timeout 240;
     proxy_send_timeout 240;
     proxy_connect_timeout 240;
-}</pre>
+}
+```
+
 
   * `/etc/nginx/auth.conf` konfigurujący użycie middleware'u autoryzacji i odpowiedni redirect do strony logowania (którego konfig opisany jest nieco dalej - tutaj jest to domena `auth.example.com`): 
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">auth_request /authelia;
+```nginx
+auth_request /authelia;
 auth_request_set $target_url $scheme://$http_host$request_uri;
 auth_request_set $user $upstream_http_remote_user;
 auth_request_set $groups $upstream_http_remote_groups;
 proxy_set_header Remote-User $user;
 proxy_set_header Remote-Groups $groups;
-error_page 401 =302 https://auth.example.com/?rd=$target_url;</pre>
+error_page 401 =302 https://auth.example.com/?rd=$target_url;
+```
+
 
   * `/etc/nginx/ssl.conf` opisujący gdzie szukać certyfikatów SSL - bardziej przydatne kiedy używamy certyfikatu wildcard; oczywiście potrzeba także `/etc/nginx/intranet.*` 
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">listen              443 ssl;
+```nginx
+listen              443 ssl;
 ssl_certificate     /etc/nginx/intranet.crt;
 ssl_certificate_key /etc/nginx/intranet.key;
 ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
-ssl_ciphers         HIGH:!aNULL:!MD5;</pre>
+ssl_ciphers         HIGH:!aNULL:!MD5;
+```
+
 
   * `/etc/nginx/sites-enabled/proxy.conf` zawierający konfigurację przezroczystego proxy - to jest coś, co w Caddym można by zapisać jako, `proxy / { transparent }`, jednak nginx jest bardziej jak Debian w tej kwestii 😉
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">client_body_buffer_size 128k;
+```nginx
+client_body_buffer_size 128k;
 
 proxy_next_upstream error timeout invalid_header http_500 http_502 http_503;
 
@@ -183,11 +199,14 @@ set_real_ip_from 172.0.0.0/8;
 set_real_ip_from 192.168.0.0/16;
 set_real_ip_from fc00::/7;
 real_ip_header X-Forwarded-For;
-real_ip_recursive on;</pre>
+real_ip_recursive on;
+```
+
 
   * `/etc/nginx/sites-enabled/auth_portal.conf` definiujący domenę odpowiedzialną za panel logowania; `http://127.0.0.1:9091` to standardowy endpoint Authelii
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">server {
+```nginx
+server {
     listen 80;
     server_name auth.example.com;
 
@@ -207,11 +226,14 @@ server {
         proxy_pass $upstream_authelia;
         include proxy.conf;
     }
-}</pre>
+}
+```
+
 
   * odpowiednie `/etc/nginx/sites-enabled/domena.conf` wyglądające na przykład tak (oczywiście `http://{{ips.grafana}}:{{ports.grafana}}` to jinjowa templatka wykorzystująca ansiblowe zmienne)
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">server {
+```nginx
+server {
         server_name grafana.example.com;
         listen 80;
         return 301 https://$server_name$request_uri;
@@ -228,7 +250,9 @@ server {
                 include auth.conf;
                 include proxy.conf;
         }
-}</pre>
+}
+```
+
 
 #### Konfigurowanie authelii
 
@@ -238,7 +262,8 @@ Tu powinna pojawić się także konfiguracja serwera SMTP, ale twórcy Authelii 
 
 Ścieżka do pliku podana jest w commandline, w tym przykładzie zdefiniowana jest w konfiguracji usługi w systemd (`/srv/authelia/configuration.yml`).
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">host: 127.0.0.1
+```yaml
+host: 127.0.0.1
 port: 9091
 
 server:
@@ -304,7 +329,9 @@ storage:
 notifier:
   disable_startup_check: false
   filesystem:
-    filename: /tmp/notification.txt</pre>
+    filename: /tmp/notification.txt
+```
+
 
 Zmienne związane z Duo opiszę w następnej części. Poza tym podmienić należy oczywiście losowy sekret JWT, domenę, hasło do Redisa i zdefiniować odpowiednie reguły chronienia domen. Przykładowe zapewniają dostęp bez logowania do domeny głównej i chroniony MFA dla wszelkich subdomen. Więcej opcji opisanych jest w bardzo dobrej dokumentacji - <https://www.authelia.com/docs/configuration/access-control.html>
 
@@ -312,55 +339,65 @@ Ostatnim klockiem w układance jest plik `/srv/authelia/users_database.yml`. O t
 
 Coś, co jest warte uwagi przy deploymencie na lekkich kontenerach (mój ma 128 MB RAMu i 1 vCPU) to fakt, że domyślnie używany algorytm hashujący argon2id jest wybitnie ciężki - użyłem zamiast niego sha512.
 
-<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">users:
+```yaml
+users:
   daniel:
     displayname: "Daniel Skowroński"
     password: "{{HASHED}}"
     email: daniel@example.com
     groups:
-      - admins</pre>
+      - admins
+```
+
 
 #### Konfigurowanie Duo
 
-Na koniec konfiguracji potrzebujemy ustawionego Duo. Wystarczy konto _Duo Free_, które na stronie opisane jest jako trial, ale nim nie jest - jest darmowe (<https://duo.com/pricing/duo-free>). W procesie rejestracji potrzebujemy aplikacji Duo na telefonie, bowiem _Admin Login_ chroniony jest przez Duo 😉
+Na koniec konfiguracji potrzebujemy ustawionego Duo. Wystarczy konto _Duo Free_, które na stronie opisane jest jako trial, ale nim nie jest - jest darmowe ([https://duo.com/pricing/duo-free](https://duo.com/pricing/duo-free)). W procesie rejestracji potrzebujemy aplikacji Duo na telefonie, bowiem _Admin Login_ chroniony jest przez Duo 😉
 
-Po zalogowaniu się w domenie admin.duosecurity.com należy wybrać _Protect new application_ i odnaleźć pozycję _Partner Auth API_. Powstanie nowa aplikacja, którą możemy przemianować scrollując jej stronę niżej do _Settings._ To, co na pewno trzeba zrobić to zapisać w konfiguracji Authelii wartości _integration key, secret key_ oraz _domain_. <figure class="wp-block-image size-large">
+Po zalogowaniu się w domenie admin.duosecurity.com należy wybrać _Protect new application_ i odnaleźć pozycję _Partner Auth API_. Powstanie nowa aplikacja, którą możemy przemianować scrollując jej stronę niżej do _Settings._ To, co na pewno trzeba zrobić to zapisać w konfiguracji Authelii wartości _integration key, secret key_ oraz _domain_. 
 
-![](/wp-content/uploads/2020/08/1.png)</figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2020/08/2.png)</figure> 
+![](/wp-content/uploads/2020/08/1.png)
+![](/wp-content/uploads/2020/08/2.png)
 
 #### Logowanie do systemu
 
-Po zrestartowaniu nginxa oraz Authelii czas na logowanie. <figure class="wp-block-image size-large is-resized">
+Po zrestartowaniu nginxa oraz Authelii czas na logowanie. 
 
-![](/wp-content/uploads/2020/08/5.png)</figure> <figure class="wp-block-image size-large is-resized">![](/wp-content/uploads/2020/08/9.png)</figure> 
+![](/wp-content/uploads/2020/08/5.png)
+![](/wp-content/uploads/2020/08/9.png)
 
 #### Enrollowanie użytkownika do Duo
 
-Proces enrolowania wykonujemy całkowicie po stronie panelu administracyjnego Duo. Aby dodać użytkownika należy wybrać _Users -> Add user_. Trzeba pamiętać, żeby dodać mu odpowiednie aliasy i adres e-mailowy pasujące do tych z bazy danych Authelii. Nie można wykorzystać użytkownika panelu administracyjnego Duo, ale nic nie stoi na przeszkodzie, by używać tego samego maila czy loginu.<figure class="wp-block-image size-large">
+Proces enrolowania wykonujemy całkowicie po stronie panelu administracyjnego Duo. Aby dodać użytkownika należy wybrać _Users -> Add user_. Trzeba pamiętać, żeby dodać mu odpowiednie aliasy i adres e-mailowy pasujące do tych z bazy danych Authelii. Nie można wykorzystać użytkownika panelu administracyjnego Duo, ale nic nie stoi na przeszkodzie, by używać tego samego maila czy loginu.
 
-![](/wp-content/uploads/2020/08/3.png)</figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2020/08/4a.png)</figure> 
+![](/wp-content/uploads/2020/08/3.png)
+![](/wp-content/uploads/2020/08/4a.png)
 
-Kolejny krok to dodanie urządzenia autoryzującego, w naszym wypadku telefonu z aplikacją Duo do obsługi powiadomień push. Po przewinięciu strony użytkownika do dołu znajdziemy link _Add phone_<figure class="wp-block-image size-large">
+Kolejny krok to dodanie urządzenia autoryzującego, w naszym wypadku telefonu z aplikacją Duo do obsługi powiadomień push. Po przewinięciu strony użytkownika do dołu znajdziemy link _Add phone_
 
-![](/wp-content/uploads/2020/08/10aa.png)</figure> 
+![](/wp-content/uploads/2020/08/10aa.png)
 
-Następnie wybieramy typ urządzenia. _Phone_ jest przydatne przy enrollmencie po numerze telefonu - kod przychodzi SMSem, _Tablet_ to wybór dla urządzeń bez numeru telefonu - wiadomość przyjdzie mailem.<figure class="wp-block-image size-large">
+Następnie wybieramy typ urządzenia. _Phone_ jest przydatne przy enrollmencie po numerze telefonu - kod przychodzi SMSem, _Tablet_ to wybór dla urządzeń bez numeru telefonu - wiadomość przyjdzie mailem.
 
-![](/wp-content/uploads/2020/08/11.png)</figure> 
+![](/wp-content/uploads/2020/08/11.png)
 
-Teraz należy aktywować urządzenie poprzez wysłanie maila z linkiem i kodem.<figure class="wp-block-image size-large">
+Teraz należy aktywować urządzenie poprzez wysłanie maila z linkiem i kodem.<
 
-![](/wp-content/uploads/2020/08/12aaa.png)</figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2020/08/13.png)</figure> 
+![](/wp-content/uploads/2020/08/12aaa.png)
+![](/wp-content/uploads/2020/08/13.png)
 
-Mail przychodzi od Duo - co jest wygodniejsze niż opisana za chwilę opcja z TOTP od Authelii. Instrukcje dla użytkownika są dość proste.<figure class="wp-block-image size-large">
+Mail przychodzi od Duo - co jest wygodniejsze niż opisana za chwilę opcja z TOTP od Authelii. Instrukcje dla użytkownika są dość proste.
 
-![](/wp-content/uploads/2020/08/14.png)</figure> 
+![](/wp-content/uploads/2020/08/14.png)
 
 #### Enrollowanie użytkownika do klasycznego TOTP
 
-Zawsze można używać klasycznego TOTP jako backupu - za pomocą dowolnej aplikacji typu Authy czy Google Authenticator. Tutaj procedura jest nieco bardziej zawiła i wymaga użycia wspomnianego pliku z powiadomieniami lub setupu SMTP. Pierwszym krokiem jest wybranie po zalogowaniu do Authelii _Methods -> One-Time Password -> Not registered yet._ Następnie należy przegrepować plik z powiadomieniami, wybrać z niego link do rejestracji, otworzyć go i zeskanować dowolną aplikacją do TOTP kod QR.<figure class="wp-block-image size-large is-resized">
+Zawsze można używać klasycznego TOTP jako backupu - za pomocą dowolnej aplikacji typu Authy czy Google Authenticator. Tutaj procedura jest nieco bardziej zawiła i wymaga użycia wspomnianego pliku z powiadomieniami lub setupu SMTP. Pierwszym krokiem jest wybranie po zalogowaniu do Authelii _Methods -> One-Time Password -> Not registered yet._ Następnie należy przegrepować plik z powiadomieniami, wybrać z niego link do rejestracji, otworzyć go i zeskanować dowolną aplikacją do TOTP kod QR.
 
-![](/wp-content/uploads/2020/08/6.png)</figure> <figure class="wp-block-image size-large">![](/wp-content/uploads/2020/08/7-300x163.png)</figure> <figure class="wp-block-image size-large is-resized">![](/wp-content/uploads/2020/08/8.png)</figure> 
+
+![](/wp-content/uploads/2020/08/6.png)
+![](/wp-content/uploads/2020/08/7.png)
+![](/wp-content/uploads/2020/08/8.png)
 
 #### Podsumowanie
 

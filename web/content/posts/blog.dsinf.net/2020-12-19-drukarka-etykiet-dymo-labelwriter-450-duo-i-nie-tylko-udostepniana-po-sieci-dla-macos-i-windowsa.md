@@ -21,26 +21,29 @@ Teoretycznie mDNS powinien działać zarówno na Windowsie (jako natywny protok�
 
 Najpierw należy zainstalować kilka pakietów: `cups avahi-daemon avahi-discover libnss-mdns samba`.
 
-Kolejny krok to instalacja sterowników (plików PPD) dla DYMO. To, co znajdziemy w paczce `printer-driver-dymo` to snapshot oficjalnych plików, który niestety nie do końca działa w nowej wersji CUPSa i Samby. Na szczęście znalazła się dobra dusza w community opensource, która trochę je podrasowała - można je znaleźć na Githubie - <https://github.com/matthiasbock/dymo-cups-drivers> 
+Kolejny krok to instalacja sterowników (plików PPD) dla DYMO. To, co znajdziemy w paczce `printer-driver-dymo` to snapshot oficjalnych plików, który niestety nie do końca działa w nowej wersji CUPSa i Samby. Na szczęście znalazła się dobra dusza w community opensource, która trochę je podrasowała - można je znaleźć na Githubie - [https://github.com/matthiasbock/dymo-cups-drivers](https://github.com/matthiasbock/dymo-cups-drivers)
 
 Trzeba przy nich nieco więcej zachodu niż proste `apt install...`, ale sprawa jest dość prosta:
 
-<pre class="wp-block-code"><code>apt install autoconf
+```bash
+apt install autoconf
 git clone https://github.com/matthiasbock/dymo-cups-drivers/
 cd dymo-cups-drivers
 bash build.sh
 make install
 cp src/lw/raster2dymolw /usr/lib/cups/filter/
 cp src/lm/raster2dymolm /usr/lib/cups/filter/
-systemctl restart cups</code></pre>
+systemctl restart cups
+```
+
 
 ## Dodawanie drukarki
 
 Kolejny krok to włączenie CUPSowi zdalnego panelu administracyjnego - tak, żebyśmy mogli dodawać drukarki spoza localhosta - `sudo cupsctl --remote-admin`. Teraz można użyć `http://RASPBERRY_PI_ADDRESS:631` w przeglądarce.
 
-Następny etap to dodanie drukarki lub dwóch - w przypadku urządzeń DUO (osobno do etykiet o stałym rozmiarze i etykiet na ciągłej taśmie). W webowym UI, do którego autoryzujemy się login i hasłem użytkownika root będziemy chcieli osiągnąć coś takiego:<figure class="wp-block-image size-large">
+Następny etap to dodanie drukarki lub dwóch - w przypadku urządzeń DUO (osobno do etykiet o stałym rozmiarze i etykiet na ciągłej taśmie). W webowym UI, do którego autoryzujemy się login i hasłem użytkownika root będziemy chcieli osiągnąć coś takiego:
 
-![](/wp-content/uploads/2020/12/dymo_in_cups.png)</figure> 
+![](/wp-content/uploads/2020/12/dymo_in_cups.png)
 
 ## Współdzielenie drukarki
 
@@ -48,7 +51,8 @@ Udostępnianie po mDNS jest automatyczne w CUPSie - wystarczy pilnować zaznacze
 
 Minimalny plik konfiguracyjny `/etc/samba/smb.conf`, który udostępni drukarki całej sieci lokalnej (grupie _WORKGROUP_) bez autoryzacji wygląda tak:
 
-<pre class="wp-block-code"><code>&#91;global] 
+```ini
+[global] 
   workgroup = WORKGROUP
   server string = RPi
   log file = /var/log/samba/log.%m
@@ -58,13 +62,15 @@ Minimalny plik konfiguracyjny `/etc/samba/smb.conf`, który udostępni drukarki 
   printing = cups
   use client driver = yes
 
-&#91;printers]
+[printers]
   path = /var/spool/samba
   printable = yes
   public = yes
   guest ok = yes
   read only=no
-  use client driver = yes</code></pre>
+  use client driver = yes</code>
+```
+
 
 Wskazany w konfigu folder `/var/spool/samba` może nie istnieć - wystarczy go stworzyć i zostawić defaultowe uprawnienia - zarówno Samba, jak i CUPS działają jako root.
 
@@ -72,13 +78,13 @@ Po restarcie `smdb` można konfigurować urządzenia klienckie.
 
 ## Ustawianie drukarki na Windowsie
 
-Na Windowsie sprawa wygląda następująco: należy podłączyć się pod udział sieciowy `\\RASPBERRY_PI_ADDRESS`, wybrać drukarkę i wskazać sterownik - ważne by wcześniej mieć już zainstalowany program _DYMO Connect_. <figure class="wp-block-image size-large">
+Na Windowsie sprawa wygląda następująco: należy podłączyć się pod udział sieciowy `\\RASPBERRY_PI_ADDRESS`, wybrać drukarkę i wskazać sterownik - ważne by wcześniej mieć już zainstalowany program _DYMO Connect_. 
 
-![](/wp-content/uploads/2020/12/03.png)</figure> 
+![](/wp-content/uploads/2020/12/03.png)
 
-Po dodaniu drukarki warto potwierdzić, że wybraliśmy odpowiedni sterownik - ja miałem sporo zamieszania, przez fakt, że model 450 DUO to tak naprawdę dwa urządzenia w jednym, a dodatkowo model DUO to nie to samo.<figure class="wp-block-image size-large">
+Po dodaniu drukarki warto potwierdzić, że wybraliśmy odpowiedni sterownik - ja miałem sporo zamieszania, przez fakt, że model 450 DUO to tak naprawdę dwa urządzenia w jednym, a dodatkowo model DUO to nie to samo.
 
-![](/wp-content/uploads/2020/12/04.png)</figure> 
+![](/wp-content/uploads/2020/12/04.png)
 
 Po zakończeniu instalacji drukarki musimy koniecznie zrestartować _DYMO Connect_. Po uruchomieniu będziemy widzieć drukarkę/drukarki nazwaną zgodnie ze ścieżką udziału sieciowego - nie mamy na to wpływu.<figure class="wp-block-image size-large">
 
@@ -86,28 +92,31 @@ Po zakończeniu instalacji drukarki musimy koniecznie zrestartować _DYMO Connec
 
 ## Ustawianie drukarki na macOS
 
-Na macOS sprawa wygląda równie prosto, jak nie prościej. W _Preferencjach systemowych_ należy wybrać _Drukarki i skanery_, a następnie kliknąć plusik w lewym dolnym rogu.<figure class="wp-block-image size-large">
+Na macOS sprawa wygląda równie prosto, jak nie prościej. W _Preferencjach systemowych_ należy wybrać _Drukarki i skanery_, a następnie kliknąć plusik w lewym dolnym rogu.
 
-![](/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27.png)</figure> 
 
-Odnalezione za pomocą Bonjour drukarki ujrzymy na liście - sterownik zostanie wybrany automatycznie, o ile wcześniej zainstalowaliśmy _DYMO Label_. Ciekawostka z nazwami programów od DYMO - jakiś czas temu na obu platformach program nazywał się _Label_, ale z pół roku temu windowsowa wersja została przebudowana i nazwana _Connect_, a mackintoshowa - nie. Chociaż ta druga dalej dostaje aktualizacje. `</dygresja>`<figure class="wp-block-image size-large">
+![](/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27.png)
 
-![](/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27-1.png)</figure> 
+Odnalezione za pomocą Bonjour drukarki ujrzymy na liście - sterownik zostanie wybrany automatycznie, o ile wcześniej zainstalowaliśmy _DYMO Label_. Ciekawostka z nazwami programów od DYMO - jakiś czas temu na obu platformach program nazywał się _Label_, ale z pół roku temu windowsowa wersja została przebudowana i nazwana _Connect_, a mackintoshowa - nie. Chociaż ta druga dalej dostaje aktualizacje. `</dygresja>`
 
-W programie _DYMO Label_ mamy teraz dostępne drukarki i wszystko działa:<figure class="wp-block-image size-large">
 
-![](/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.18.55.png)</figure> 
+![](/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.16.27-1.png)
+
+W programie _DYMO Label_ mamy teraz dostępne drukarki i wszystko działa:
+
+
+![](/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.18.55.png)
 
 ## Podsumowanie
 
 Kluczem do udostępniania drukarki DYMO w sieci lokalnej na kilka platform jest odpowiedni sterownik na serwerze wydruku i wybór protokołów. Obie sprawy nie są oczywiste, gdyż sterowniki dostępne w repozytoriach Debiana i na stronie samego DYMO nie działają z nowymi wydaniami innych pakietów, a ręcznie stawiany serwer druku nie zawsze jest zgodny z oczekiwaniami różnych systemów operacyjnych.
 
-Jako bonus ciekawostka: w macOS BigSur wydanym kilka miesięcy temu hosty Windowsowe dalej mają ikonkę antycznego monitora CRT z widocznym Blue Screenem.<figure class="wp-block-image size-large">
+Jako bonus ciekawostka: w macOS BigSur wydanym kilka miesięcy temu hosty Windowsowe dalej mają ikonkę antycznego monitora CRT z widocznym Blue Screenem.
 
-![](/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.30.14.png)</figure>
+![](/wp-content/uploads/2020/12/Screenshot-2020-12-18-at-21.30.14.png)
 
- [1]: https://blog.dsinf.net/2019/12/proba-reanimacji-akumulatora-w-dymo-labelmanager-pnp/
- [2]: https://blog.dsinf.net/2020/05/dymo-tape-labels-na-linuksie/
+ [1]: /2019/12/proba-reanimacji-akumulatora-w-dymo-labelmanager-pnp/
+ [2]: /2020/05/dymo-tape-labels-na-linuksie/
  [3]: https://wiki.archlinux.org/index.php/CUPS/Printer_sharing
  [4]: /wp-content/uploads/2020/12/dymo_in_cups.png
  [5]: /wp-content/uploads/2020/12/03.png

@@ -15,27 +15,18 @@ Szukając zupełnie innej rzeczy na iPhona - sposobu na dodanie skrótu łączen
 
 Wystarczyło teraz wystawić tylko proste API, które zwróci liczbę dni do końca ważności biletu i stworzyć automatyzację wyświetlającą ładne natywne powiadomienie. Zalążek projektu [krakow-tickets-api wrzuciłem na githuba][2] i zahostowałem w pokątnym miejscu na serwerze zabezpieczając się przez nieprzewidywalną ścieżkę. Docelowo API powinno obsługiwać hasło dostępu do samego siebie i parametry w postaci loginu i hasła do strony posiadającej właściwe dane - takie informacje także można przekazać przez _Shortcuts_.
 
-Czas na programowanie graficzne. Aplikacja jest odinstalowywalna więc pewnie większość użytkowników się jej pozbyła po aktualizacji. Dostępna jest oczywiście [w AppStore][3].<figure class="is-layout-flex wp-block-gallery-13 wp-block-gallery columns-2 is-cropped">
+Czas na programowanie graficzne. Aplikacja jest odinstalowywalna więc pewnie większość użytkowników się jej pozbyła po aktualizacji. Dostępna jest oczywiście [w AppStore][3].
 
-<ul class="blocks-gallery-grid">
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2020/03/2020-03-01-12.48.41.png">![](/wp-content/uploads/2020/03/2020-03-01-12.48.41.png)</a></figure>
-  </li>
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2020/03/2020-03-01-12.48.50.png">![](/wp-content/uploads/2020/03/2020-03-01-12.48.50.png)</a></figure>
-  </li>
-</ul></figure> 
+![](/wp-content/uploads/2020/03/2020-03-01-12.48.41.png)
 
-Kroki przedstawione powyżej raczej nie wymagają komentarza. Testować można klikając przycisk w prawym dolnym rogu. Teraz jeszcze tylko harmonogram - wschód słońca wydał mi się dobrym wyborem i można cieszyć się powiadomieniami.<figure class="is-layout-flex wp-block-gallery-15 wp-block-gallery columns-2 is-cropped">
+![](/wp-content/uploads/2020/03/2020-03-01-12.48.50.png)
 
-<ul class="blocks-gallery-grid">
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2020/03/2020-03-01-12.48.29.png">![](/wp-content/uploads/2020/03/2020-03-01-12.48.29.png)</a></figure>
-  </li>
-  <li class="blocks-gallery-item">
-    <figure><a href="/wp-content/uploads/2020/03/2020-03-01-13.17.20.png">![](/wp-content/uploads/2020/03/2020-03-01-13.17.20.png)</a></figure>
-  </li>
-</ul></figure> 
+Kroki przedstawione powyżej raczej nie wymagają komentarza. Testować można klikając przycisk w prawym dolnym rogu. Teraz jeszcze tylko harmonogram - wschód słońca wydał mi się dobrym wyborem i można cieszyć się powiadomieniami.
+
+![](/wp-content/uploads/2020/03/2020-03-01-12.48.29.png)
+
+![](/wp-content/uploads/2020/03/2020-03-01-13.17.20.png)
+
 
 Aplikacja działa całkowicie na telefonie więc możemy wyświetlać tyle natywnych powiadomień ile chcemy. A i zapytania do API mogą lecieć o ciekawsze i potencjalnie bardziej skomplikowane rzeczy niż liczba dni ważności biletu 🙂 _Happy hacking!_
 

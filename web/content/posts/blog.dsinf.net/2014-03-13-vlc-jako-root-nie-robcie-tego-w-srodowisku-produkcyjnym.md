@@ -18,14 +18,20 @@ Ale są też tak wredni deweloperzy, że zmuszają użytkownikó do rekompilacji
 
 Aby rozwiązać kretyński problem z tym komunikatem:
 
-<pre class="lang:default EnlighterJSRAW " >VLC is not supposed to be run as root. Sorry.
+```
+VLC is not supposed to be run as root. Sorry.
 If you need to use real-time priorities and/or privileged TCP ports
 you can use vlc-wrapper (make sure it is Set-UID root and
-cannot be run by non-trusted users first).</pre>
+cannot be run by non-trusted users first).
+```
+
 
 należy wykonać:
 
-<pre class="lang:default EnlighterJSRAW " title="VLC jako root - fix" >sed -i 's/geteuid//g' /usr/bin/vlc</pre>
+```bash
+sed -i 's/geteuid//g' /usr/bin/vlc
+```
+
 
 Rozwiązanie obrzydliwe, ale działa. A nie warto rezygnować z fajnego VLC na rzecz innych odtwarzaczy pozbawionych takich zabezpieczeń.  
 Tak, tak, tak... startowanie jako root nie jest do końca mądre, ale czasem wygodne. Ale serio, nie róbcie tego w śroodowisku produkcyjnym.

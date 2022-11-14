@@ -12,13 +12,13 @@ tags:
 ---
 Na Windowsach 7 i nowszych mamy ładny centralny przycisk "Firefox" oraz usunięty pasek tytułu w trybie maksymalizacji - bo po co on komu no i zajmuje tylko miejsce. Na Linuksach wygląda to tragicznie. Ani GTK, ani Qt czyli silniki utrzymujące Gnome /Unity oraz KDE nijak się z tym kompatowym wyglądem nie integrują. Powoduje to straszne efekty wizualne, tym gorsze na stacjach typu serwer z grafiką 1024x768, gdzie wszystkie paski są monstrualnie wielkie, a ty musisz pilnie pobrać aktualizację od producenta routera czy coś podobnego.
 
-<figure id="attachment_423" aria-describedby="caption-attachment-423" style="width: 405px" class="wp-caption alignnone">![Firefox - mały obszar roboczy](/wp-content/uploads/2014/04/firefox304_suse111x64.png)<figcaption id="caption-attachment-423" class="wp-caption-text">Firefox - mały obszar roboczy</figcaption></figure>
+![Firefox - mały obszar roboczy](/wp-content/uploads/2014/04/firefox304_suse111x64.png)
 
 #### Jednak istnieje łatwy i wygodny sposób, żeby FF wyglądał ładniej.
 
 Zanim dokonamy jakiejkolwiek zmiany to pod KDE należy zrobić to co opisano [na wiki Archa][2] - instalujemy oxygen-gtk2 i kde-gtk-config, a w ustawieniach wygląd aplikacji>GTK dajemu motyw oxygen-gtk.
 
-Sednem sprawy jest plugin [![](https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13505-64.png?modified=1398299229)Hide Caption Titlebar Plus][3]. Jak to w Mozilli bywa jest niekompatybilny z Linuksem. Ale da się to ominąć klikając wyszarzone _Add to Firefox_. Instalacja i restart. Teraz przechodzimy do ustawień. Są one na pierwszy rzut oka nieuporządkowane, dlatego zaprezentuję moją konfigurację wyjściową:
+Sednem sprawy jest plugin [Hide Caption Titlebar Plus](https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13505-64.png?modified=1398299229). Jak to w Mozilli bywa jest niekompatybilny z Linuksem. Ale da się to ominąć klikając wyszarzone _Add to Firefox_. Instalacja i restart. Teraz przechodzimy do ustawień. Są one na pierwszy rzut oka nieuporządkowane, dlatego zaprezentuję moją konfigurację wyjściową:
 
 ![Hide Caption Titlebar Plus - config - 1](/wp-content/uploads/2014/04/a1.png)
 
@@ -32,7 +32,7 @@ Sednem sprawy jest plugin [![](https://addons.cdn.mozilla.net/img/uploads/addon_
 
 &nbsp;
 
-Czasem podczas dużych zmian w ustawieniach przeglądarka nie trzyma w ryzach zmian i każde okno wygląda inaczej. Wtedy pozostaje nam <span class="lang:default EnlighterJSRAW  crayon-inline ">killall firefox</span> . Kilkanaście minut i nasza ulubiona przeglądarka wygląda jak powinna.
+Czasem podczas dużych zmian w ustawieniach przeglądarka nie trzyma w ryzach zmian i każde okno wygląda inaczej. Wtedy pozostaje nam `killall firefox` . Kilkanaście minut i nasza ulubiona przeglądarka wygląda jak powinna.
 
  [1]: /wp-content/uploads/2014/04/firefox304_suse111x64.png
  [2]: https://wiki.archlinux.org/index.php/firefox#KDE_integration

@@ -28,7 +28,8 @@ To wszystko podsuwa wątpliwości, że aplikacja została w jakiś brutalny spos
 Polem do analizy byłoby zapisanie strony WWW (stara funkcja Opery jeszcze z czasów JavaMobile, która zapisuje je w katalogu programu, nie zaś w przestrzeni użytkownika) i wyciągnięcie z karty SD zaszyfrowanego pliku zrzutu. Teoretycznie dałoby to możliwość złamania klucza urządzenia, co za tym idzie sprawdzenia kodu (C# .Net jest w pełni dekompilowalny - czasem nawet z komentarzami). Ale znowu - to tylko teoria.  
 Pewna jest tylko <emp>lista</em> plików:
 
-<pre class="lang:default EnlighterJSRAW " >\WPSYSTEM\APPS\{B3BF000A-E004-4ECB-A8FB-9FC817CDAB90} 
+```
+\WPSYSTEM\APPS\{B3BF000A-E004-4ECB-A8FB-9FC817CDAB90} 
 |
 ├───TempInstall
 │   ├───Installer
@@ -67,7 +68,9 @@ Pewna jest tylko <emp>lista</em> plików:
 │               
 └───NI
         OperaMiniRuntime.ni.dll
-        OperaMini.ni.dll</pre>
+        OperaMini.ni.dll
+```
+
 
 ![4d6fdd0f-578d-47c4-b9c2-cb66cc0c4c6c](/wp-content/uploads/2014/10/4d6fdd0f-578d-47c4-b9c2-cb66cc0c4c6c.png)
 

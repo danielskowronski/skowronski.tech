@@ -14,22 +14,29 @@ Jakiś czas temu zirytowany brakiem zegarka w moim Kindle 3 napisałem własny. 
 
 Pierwszym wyzwaniem było sprawdzenie czy aktualnie otwarta jest książka, czy też nie. Wykorzystałem zasoby procfs z katalogu fd wskazujące otwarte pliki. Długi czas się głowiłem dlaczego cały czas mam informacje o otwartej książce, aż połapałem się że launcher KUAL jest otwarty na stałe - stąd wystarczy wykluczyć pliki azw2 zawierające natywne binarki Kindle. Zrealizowane taką oto funkcją:
 
-<pre class="lang:default EnlighterJSRAW ">isBookOpened(){
+```bash
+isBookOpened(){
   ls -al /proc/`cat /var/run/cvm.pid`/fd | 
   grep documents | 
   grep -v azw2 | # invert search of kindle apps (e.g. KUAL)
   wc -l
-}</pre>
+}
+```
+
 
 Następnym krokiem było użycie mniejszego fontu. Problem polega na tym, że eips na Kindle 3 niezbyt dobrze radzi sobie z wstawianiem obrazków (a już miałem robić 10+1 bitmap kilka na kilka pikseli). Rysowanie prostokątów na mojej wersji urządzenia też zawodzi. Odnalazłem jednak binarkę fbprint (dostępną na [mobileread.com][2]), która pisze po ekranie w natywny dla interfejsu sposób. 
 
 Trochę kalibracji i efekty są takie:  
-<figure id="attachment_469" aria-describedby="caption-attachment-469" style="width: 665px" class="wp-caption alignnone">![ZEGAR 0.2 - w trybie książki](/wp-content/uploads/2014/06/WP_20140620_001-300x225.jpg)<figcaption id="caption-attachment-469" class="wp-caption-text">ZEGAR 0.2 - w trybie książki</figcaption></figure>  
-<figure id="attachment_470" aria-describedby="caption-attachment-470" style="width: 665px" class="wp-caption alignnone">![ZEGAR 0.2 - w reszcie UI](/wp-content/uploads/2014/06/WP_20140620_003-300x225.jpg)<figcaption id="caption-attachment-470" class="wp-caption-text">ZEGAR 0.2 - w reszcie UI</figcaption></figure>
 
-<pre class="lang:default EnlighterJSRAW " >#!/bin/sh
+![ZEGAR 0.2 - w trybie książki](/wp-content/uploads/2014/06/WP_20140620_001.jpg)
 
-read cvmPid &lt; /var/run/cvm.pid
+![ZEGAR 0.2 - w reszcie UI](/wp-content/uploads/2014/06/WP_20140620_003.jpg)
+
+
+```bash
+#!/bin/sh
+
+read cvmPid < /var/run/cvm.pid
 
 if [ -z "$cvmPid" ]; then
   eips 0 38 " ZEGAR ERROR: "
@@ -66,7 +73,9 @@ while :; do
   else
     showTimeBook     
   fi
-done</pre>
+done
+```
+
 
 Całość ładnie upakowaną można pobrać tutaj: [zegar_0.2][5]
 

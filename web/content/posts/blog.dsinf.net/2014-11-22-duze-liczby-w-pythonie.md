@@ -13,21 +13,22 @@ tags:
 ---
 Python jest językiem wyjątkowym. Jednym z reprezentantów tej wyjątkowości jest sposób przechowywania dużych liczb.
 
-Liczby zmiennopozycyjne Python przechowuje jak każdy inny język - cecha i mantysa. Dla liczb liczb całkowitych stosowany jest całkowicie inny sposób przechowywania. Jeżli liczba mieści się w zakresie <span class="lang:python EnlighterJSRAW  crayon-inline " >sys.maxint</span> (czyli 2\*\*63-1 lub 2\*\*31-1 w zależności od bitowości instalacji Pythona) to wszystko jest jak w "normalnych" środowiskach C-podobnych. Jednak po czymś w rodzaju "inta" nie ma "longa" tylko bardziej "BigInteger".
+Liczby zmiennopozycyjne Python przechowuje jak każdy inny język - cecha i mantysa. Dla liczb liczb całkowitych stosowany jest całkowicie inny sposób przechowywania. Jeżli liczba mieści się w zakresie <span class="lang:python EnlighterJSRAW  crayon-inline " >sys.maxint` (czyli 2\*\*63-1 lub 2\*\*31-1 w zależności od bitowości instalacji Pythona) to wszystko jest jak w "normalnych" środowiskach C-podobnych. Jednak po czymś w rodzaju "inta" nie ma "longa" tylko bardziej "BigInteger".
 
 Kiedy wykorzystujemy środowisko do obliczeń wypada poznać zakres i dokładność dostępnych struktu liczbowych.  
 Najprostszy pomiar dokładności polega na sprawdzaniu kolejnych potęg 10 na wrażliwość na dodanie jakiejś małej wartości, która nas interesuje - będzie to _miara dokładności_ - dla zmiennoprzecinkowych weźmiemy celem przykładu 0.1, a całkowitych najmniejszą możliwą - 1. (Można zapytać po co sprawdzać dokładność inta - chcemy zapobiec typowego dla środowisk skryptowych cichego zrzutowania na typ inny niż integer np. double)
 
 W pętli wystarczy teraz mnożyć liczbę razy 10 i porównać wartość zmiennej liczba i (liczba+encjaTestowa). Przykładowy kod w języku, który rozważamy wygląda następująco: 
 
-<pre class="lang:python EnlighterJSRAW " >def czyDokladneFloat(liczba):
+```python
+def czyDokladneFloat(liczba):
 	liczba1 = float(liczba)
 	liczba2 = float(liczba+0.1)
-	return ( float(liczba1) &lt; float(liczba2) )
+	return ( float(liczba1) < float(liczba2) )
 def czyDokladneInt(liczba):
 	liczba1 = int(liczba)
 	liczba2 = int(liczba+1)
-	return ( int(liczba1) &lt; int(liczba2) )
+	return ( int(liczba1) < int(liczba2) )
 
 licznik = 1
 dokladna = True
@@ -46,7 +47,9 @@ while dokladna:
 	dokladna = czyDokladneInt(liczba)
 	print ("10^"+str(licznik)+": "+("NIE" if not dokladna)+"dokładna")
 	licznik+=100 #+=100 bo inaczej idzie strasznie powoli
-</pre>
+
+```
+
 
 Castowanie w funkcjach wymusza użycie tego konkretnie typu bez "sprytnych" konwersji i ewentualnych operacji na łańcuchach znaków.
 

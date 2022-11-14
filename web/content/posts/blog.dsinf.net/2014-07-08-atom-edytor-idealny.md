@@ -22,6 +22,6 @@ Polecam najpierw przeczytać dlaczego do tej pory używałem Sublime Text [tutaj
   * nie wymaga dostrajania opcji żeby od razu był edytorem developera - no, może wystarczy załadować kilka polecanych pluginów - zupełne przeciwieństwo N++
   * robiony jest przez ekipę github'a - oni wiedzą czego chce developer ;]
 
- [1]: http://blog.dsinf.net/2014/01/edytor-uniwersalny
+ [1]: /2014/01/edytor-uniwersalny
  [2]: https://atom.io/
- [3]: http://blog.dsinf.net/2014/01/edytor-uniwersalny/
+ [3]: /2014/01/edytor-uniwersalny/

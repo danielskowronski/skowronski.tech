@@ -19,11 +19,13 @@ Skrypt, którego użyjemy to: <http://davidjbradshaw.github.io/iframe-resizer/>.
 &nbsp;  
 Strona "host":
 
-<pre class="lang:default EnlighterJSRAW " >&lt;script src="http://code.jquery.com/jquery-2.1.1.min.js"&gt;&lt;/script&gt;
-&lt;iframe id="nazwa" width="500px" scrolling="no" src="plik.html"&gt;&lt;/iframe&gt;
-&lt;script src="https://raw2.github.com/davidjbradshaw/iframe-resizer/master/js/iframeResizer.min.js"&gt;&lt;/script&gt;
-&lt;script&gt;$("#nazwa").iFrameResize({});&lt;/script&gt;
-</pre>
+<pre class="lang:default EnlighterJSRAW " ><script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<iframe id="nazwa" width="500px" scrolling="no" src="plik.html"></iframe>
+<script src="https://raw2.github.com/davidjbradshaw/iframe-resizer/master/js/iframeResizer.min.js"></script>
+<script>$("#nazwa").iFrameResize({});</script>
+
+```
+
 
 L1: jQuery [opcjonalny - można ładować iFrameResize({}) przez natywny kod JS]  
 L2: docelowy iframe; zdefiniowanie na sztywno któregoś z wymiarów zablokuje jego zmiany  
@@ -33,8 +35,10 @@ L4: podpięcie funkcji pod obiekt
 &nbsp;  
 Strona "gość":
 
-<pre class="lang:default EnlighterJSRAW " >&lt;script src="https://raw.githubusercontent.com/davidjbradshaw/iframe-resizer/master/js/iframeResizer.contentWindow.min.js"&gt;&lt;/script&gt;
-treść lalala-trolololo; lorem ipsum</pre>
+<pre class="lang:default EnlighterJSRAW " ><script src="https://raw.githubusercontent.com/davidjbradshaw/iframe-resizer/master/js/iframeResizer.contentWindow.min.js"></script>
+treść lalala-trolololo; lorem ipsum
+```
+
 
 L1: skrypt iframeResizer.contentWindow.min.js  
 L2+:treść

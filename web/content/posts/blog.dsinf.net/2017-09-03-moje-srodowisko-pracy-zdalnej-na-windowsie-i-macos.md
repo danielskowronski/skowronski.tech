@@ -18,11 +18,11 @@ tags:
 ---
 Jako że jednak potrzebuję windowsa jako głównego systemu na stacji roboczej od zawsze nasuwał się problemy - jak się podłączyć do serwerów linuksowych czy zbudować lokalnie jakąś paczkę. Po długich eksperymentach z cygwinem, mingw i innymi wynalazkami doszedłem do wniosku że jak potrzebuję mieć shella linuksowego żeby użyć grepa, seda i awka to wystarczy bash wbudowany w dowolnego klienta gita - na przykład cudowną aplikację [Github Desktop][1]. A jeśli chodzi o prawdziwe zainstalowanie prawdziwego pakietu to nie ma innej opcji jak maszyna wirtualna. Warto jednak dołożyć kilka kroków żeby było przyjemniej.
 
-<figure id="attachment_1077" aria-describedby="caption-attachment-1077" style="width: 665px" class="wp-caption alignnone">![](/wp-content/uploads/2017/09/7.png)<figcaption id="caption-attachment-1077" class="wp-caption-text">wspomniany Github Desktop</figcaption></figure>
+![wspomniany Github Desktop](/wp-content/uploads/2017/09/7.png)
 
 ## **Linuks na windowsie - maszyna wirtualna**
 
-Sercem mojego setupu jest maszyna wirtualna, którą nazwałem _devARCH_ bo służy mi głównie do budowania binarek i stoi na Archu. Gołym archu bez środowiska graficznego nawet. Osobiście używam VMware Workstation ale jakikolwiek hyperwizor się nada. Przez to że mam trochę mocy na zbyciu to dostała wszystkie rdzenie procesora, limit pamięci na 32GB i dysk 128GB. Do mojej pracy aż nadto. Póki co nie miałem potrzeby parsować dużych plików z hosta gospodarza ale wtedy wystarczy zainstalować dodatek typu _guest additions_ i zdefiniować folder współdzielony.
+Sercem mojego setupu jest maszyna wirtualna, którą nazwałem _devARCH_ bo służy mi głównie do budowania binarek i stoi na Archu. Gołym archu bez środowiska graficznego nawet. Osobiście używam VMware Workstation ale jakikolwiek hyperwizor się nada. Przez to że mam trochę mocy na zbyciu to dostała wszystkie rdzenie procesora, limit pamięci na 32GB i dysk 128GB. Do mojej pracy aż nadto. Póki co nie miałem potrzeby parsować dużych plików z hosta gospodarza ale wtedy wystarczy zainstalować dodatek typu _guest additions_ i zdefiniować folder współdzielony.
 
 Warto wspomnieć iż o słynnym [Linuksie w Windowsie wydanym przez Microsoft][3] nie warto wspominać. To cygwinowe ubuntu (lub SuSE) które nada się do basha, ale nawet emulatora terminala nie ma porządnego...
 
@@ -30,47 +30,58 @@ Warto wspomnieć iż o słynnym [Linuksie w Windowsie wydanym przez Microsoft][3
 
 Ale jak się wygodnie zasshować do tejże maszyny? PuTTY osobiście używam tylko do łączenia się do portu szeregowego - otwieranie każdej sesji w osobnym oknie, własny fikuśny agent ssh i dość ograniczone możliwości powodują że jest świetny jako coś na szybko co mieści się w jednej binarce ale na dłuższą metę - bez przesady.
 
-<figure id="attachment_1069" aria-describedby="caption-attachment-1069" style="width: 450px" class="wp-caption alignnone">![](/wp-content/uploads/2017/09/8.png)<figcaption id="caption-attachment-1069" class="wp-caption-text">Bugs, More bugs, PuTTY...</figcaption></figure>
+![Bugs, More bugs, PuTTY...](/wp-content/uploads/2017/09/8.png)
 
-Cygwinowe ssh ma swój urok, ale kiedy wpadnie nam do głowy support dziwnych terminali ($TERM) i kodowań przy ncurses - da się, ale można wygodniej. Ostatnio jest hype na emulator [Hyper][5] - cóż, użycie frameworka [Electron][6] czyli silnika chrome odpalającego aplikację w JS - tego samego co do [Atoma][7] kończy jego użyteczność na krótkiej sesji ssh.
+Cygwinowe ssh ma swój urok, ale kiedy wpadnie nam do głowy support dziwnych terminali ($TERM) i kodowań przy ncurses - da się, ale można wygodniej. Ostatnio jest hype na emulator [Hyper][5] - cóż, użycie frameworka [Electron][6] czyli silnika chrome odpalającego aplikację w JS - tego samego co do [Atoma][7] kończy jego użyteczność na krótkiej sesji ssh.
 
-Z ciekawej listy na <https://www.slant.co/topics/1552/~terminal-emulators-for-windows> przetestowałem większość. I jedyny bezpłatny który zdał egzamin to [MobaXterm][8]. Plusuje mnogością obsługiwanych protokołów i opcji ich konfiguracji. W tym opcją wysyłania heartbeatu po SSH żeby sesja się nie urwała. Działa także mini przeglądarka plików (która eksperymentalnie podąża za $PWD), tunelowanie Xów i własny, ale kompatybilny z normalnymi kluczami agent. Poza tym miliard innych opcji które mogą się przydać w przyszłości - kolorowanie składni, logowanie sesji do pliku tekstowego, narzędzia jak GUI nmapa czy wbudowane serwery.  Dla użytkowników domowych jest darmowy z pewnymi ograniczeniami (jak liczba sesji na raz ograniczona do 12 - da się wytrzymać oraz limitem życia usług takich jak _serwer NFS_ do 6 minut). $69/usera to nie tak drogo za wersję pro zważywszy na stertę funkcjonalności wspomagających.  Ma także wbudowanego cygwina więc i lokalny shell nadaje się do jakiegokolwiek użytku.
+Z ciekawej listy na <https://www.slant.co/topics/1552/~terminal-emulators-for-windows> przetestowałem większość. I jedyny bezpłatny który zdał egzamin to [MobaXterm][8]. Plusuje mnogością obsługiwanych protokołów i opcji ich konfiguracji. W tym opcją wysyłania heartbeatu po SSH żeby sesja się nie urwała. Działa także mini przeglądarka plików (która eksperymentalnie podąża za $PWD), tunelowanie Xów i własny, ale kompatybilny z normalnymi kluczami agent. Poza tym miliard innych opcji które mogą się przydać w przyszłości - kolorowanie składni, logowanie sesji do pliku tekstowego, narzędzia jak GUI nmapa czy wbudowane serwery.  Dla użytkowników domowych jest darmowy z pewnymi ograniczeniami (jak liczba sesji na raz ograniczona do 12 - da się wytrzymać oraz limitem życia usług takich jak _serwer NFS_ do 6 minut). $69/usera to nie tak drogo za wersję pro zważywszy na stertę funkcjonalności wspomagających.  Ma także wbudowanego cygwina więc i lokalny shell nadaje się do jakiegokolwiek użytku.
 
-<figure id="attachment_1070" aria-describedby="caption-attachment-1070" style="width: 730px" class="wp-caption alignnone">![](/wp-content/uploads/2017/09/9.png)<figcaption id="caption-attachment-1070" class="wp-caption-text">MobaXterm - protokoły</figcaption></figure>
+![MobaXterm - protokoły](/wp-content/uploads/2017/09/9.png)
 
-<figure id="attachment_1071" aria-describedby="caption-attachment-1071" style="width: 665px" class="wp-caption alignnone">![](/wp-content/uploads/2017/09/10.png)<figcaption id="caption-attachment-1071" class="wp-caption-text">MobaXterm - okno sesji</figcaption></figure>
+![MobaXterm - okno sesji](/wp-content/uploads/2017/09/10.png)
 
 ## Dostęp zdalny - GUI
 
 Może się okazać że z jakiegoś graficznego programu trzeba będzie jednak skorzystać. Albo podłączyć się do całej sesji (mam taki dziwny setup w jednym miejscu że najwygodniej mi łączyć się do laptopa ze stacji roboczej żeby nie marnować ekranu). Tu rozwiązaniem jest [x2go][11]. Opiera się na NX i działa znacznie efektywniej niż VNC i wygodniej niż czyste tunelowanie Xorga. Wymaga paczki na serwerze linuksowym, a programy klienckie dostępne są na wszystkie systemy. Warto dodać że poza zwykłym podłączaniem się do nowej sesji X i jej wznawianiem w czasie późniejszym można także podpiąć się do fizycznego TTY lub odpalić pojedynczą aplikację zamiast środowiska graficznego. Projekt jest bardzo dojrzały - obsługuje także MFA w SSH, włączając w to yubikeyowe OTP dzięki mojemu requestowi na kilka godzin przed releasem 😀
 
-<figure id="attachment_1083" aria-describedby="caption-attachment-1083" style="width: 610px" class="wp-caption alignnone">![](/wp-content/uploads/2017/09/12.png)<figcaption id="caption-attachment-1083" class="wp-caption-text">Klient x2go na windowsie</figcaption></figure>
+![Klient x2go na windowsie](/wp-content/uploads/2017/09/12.png)
 
 ## Pliki
 
 Zatem mamy jak się podłączyć do linuksa lokalnego bądź też do serwera zdalnego. Ale jak dobrać się do plików - można niby używać zdalnego emacsa czy vi ale czasem przydaje się coś większego. Na UNIXach naturalny jest SFTP. Najlepiej byłoby mieć foldery zamontowane jako dysk sieciowy bo używanie WinSCP przy całym jego uroku nie nadaje się do jakkolwiek poważnej pracy poza edycją skryptów PHP w locie. Tylko że Windows nie ma klienta SSHFS. Jest niby [Dokan][13] który implementuje FUSE przez co używa linuksowego sshfs ale rozwiązanie jest tragicznie niestabilne. MountainDuck wygląda i działa obiecująco, ale jest płatny.
 
-Istnieje na szczęście alternatywa - [SFTP Net Drive][14], który dla użytkowników domowych jest darmowy ma jednak pewne ograniczenie logiczne w GUI - nie da się użyć kilku połączeń na raz, a z jakiegoś powodu da się mieć tylko jedną instancję okienka na raz. Da się to jednak obejść wpierw tworząc w GUI profile a następnie używając trybu CLI i puszczania aplikacji w tle:
+Istnieje na szczęście alternatywa - [SFTP Net Drive][14], który dla użytkowników domowych jest darmowy ma jednak pewne ograniczenie logiczne w GUI - nie da się użyć kilku połączeń na raz, a z jakiegoś powodu da się mieć tylko jedną instancję okienka na raz. Da się to jednak obejść wpierw tworząc w GUI profile a następnie używając trybu CLI i puszczania aplikacji w tle:
 
-<pre class="lang:default EnlighterJSRAW ">[Daniel.YGGDRASIL] ➤ cd "/cygdrive/c/Program Files (x86)/SFTP Net Drive 2017"
+```
+[Daniel.YGGDRASIL] ➤ cd "/cygdrive/c/Program Files (x86)/SFTP Net Drive 2017"
 [Daniel.YGGDRASIL] ➤ ./SftpNetDrive.exe start /profile:"devarch-proj" &
 [2] 32
 [Daniel.YGGDRASIL] ➤ ./SftpNetDrive.exe start /profile:"####-home" &
-[1] 42980</pre>
+[1] 42980
+```
+
 
 Sama konfiguracja w GUI jest przyjemna i ma mnóstwo opcji:
 
-![](/wp-content/uploads/2017/09/3.png)![](/wp-content/uploads/2017/09/4.png)![](/wp-content/uploads/2017/09/5.png)![](/wp-content/uploads/2017/09/6.png)
+![](/wp-content/uploads/2017/09/3.png)
+
+![](/wp-content/uploads/2017/09/4.png)
+
+![](/wp-content/uploads/2017/09/5.png)
+
+![](/wp-content/uploads/2017/09/6.png)
 
 W windowsie pojawia nam się nowy dysk sieciowy i nie ma problemu z rozszerzonymi atrybutami (nie psują się po stronie serwera)
 
-![](/wp-content/uploads/2017/09/2.png)![](/wp-content/uploads/2017/09/1.png)
+![](/wp-content/uploads/2017/09/2.png)
+
+![](/wp-content/uploads/2017/09/1.png)
 
 ## Edytor plików
 
-Mój wybór zasadniczo nie zmienił się względem [tego sprzed trzech lat][21] (poza faktem że kupiłem licencję; info praktyczne - licencji można używać na dowolnej liczbie urządzeń, w tym w pracy) - dalej [Sublime Text][22] mimo głosów że edytor się skończył to [pluginów przybywa][23], a aktualizacje też się pojawiają.  Co do pluginów to nie używam wielu (większość pomocna jest przy HTMLu): A File Icon, Color Highlighter, ColorPick, Emmet, Git, MarkdownLivePreview, Perforce (głównie w pracy), SideBarEnhancements, SublimeLinter, SublimeREPL oraz motywu Material-Theme-Darker.tmTheme. Rozszerzanie możliwości jest także wygodne - napisałem już kilka podświetlaczy składni dla dziwnych formatów logów i konfiguracji.
+Mój wybór zasadniczo nie zmienił się względem [tego sprzed trzech lat][21] (poza faktem że kupiłem licencję; info praktyczne - licencji można używać na dowolnej liczbie urządzeń, w tym w pracy) - dalej [Sublime Text][22] mimo głosów że edytor się skończył to [pluginów przybywa][23], a aktualizacje też się pojawiają.  Co do pluginów to nie używam wielu (większość pomocna jest przy HTMLu): A File Icon, Color Highlighter, ColorPick, Emmet, Git, MarkdownLivePreview, Perforce (głównie w pracy), SideBarEnhancements, SublimeLinter, SublimeREPL oraz motywu Material-Theme-Darker.tmTheme. Rozszerzanie możliwości jest także wygodne - napisałem już kilka podświetlaczy składni dla dziwnych formatów logów i konfiguracji.
 
-<figure id="attachment_1081" aria-describedby="caption-attachment-1081" style="width: 665px" class="wp-caption alignnone">![](/wp-content/uploads/2017/09/11.png)<figcaption id="caption-attachment-1081" class="wp-caption-text">SublimeText w całej okazałości wraz z menu Ctrl+Shift+P</figcaption></figure>
+![SublimeText w całej okazałości wraz z menu Ctrl+Shift+P](/wp-content/uploads/2017/09/11.png)
 
 ## Łączność
 

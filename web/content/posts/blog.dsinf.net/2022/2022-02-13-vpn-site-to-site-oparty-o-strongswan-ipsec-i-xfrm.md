@@ -163,7 +163,7 @@ Moje pierwsze podejrzenie dotyczyło stabilności łącza prywatnego, jednak oka
 
 
 ![](/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-16-Sauron-Rlyeh-Grafana.png)
-![Jak widać - nic konkretnego nie widać poza pozorami regularności](/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana.png)
+![Jak widać - nic konkretnego nie widać poza pozorami regularności](/wp-content/uploads/2022/02/Screenshot-2022-02-13-at-11-51-50-Sauron-Rlyeh-Grafana.png "Jak widać - nic konkretnego nie widać poza pozorami regularności")
 
 Dopiero analiza logów z `journalctl` skorelowanych z kilkoma punktami gdzie pokazał się packet loss jedynie na sieci routowanej przez VPN pokazał, w czym tkwi problem - `172.16.0.2 is initiating an IKE_SA` występował zawsze przed utratą połączenia. 
 

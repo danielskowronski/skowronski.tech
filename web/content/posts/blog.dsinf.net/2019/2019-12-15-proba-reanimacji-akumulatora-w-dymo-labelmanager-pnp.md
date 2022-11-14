@@ -13,7 +13,7 @@ tags:
 ---
 Dymo LabelManager PnP to dość zgrabna i tania drukarka etykiet na taśmach o szerokości do pół cala, a więc znalazła się i na moim biurku do etykietowania pojemników z elektroniką, podpisywania kabli czy puszek z herbatą (stworzyłem nawet generator etykiet na puszki - [DymoTeaLabel][1]). Jest z nią jednak pewien problem - akumulator. W tym artykule opiszę diagnozę problemu, próbę naprawy, odkrycie powszechności problemu i jego hackerskie obejście.
 
-![Bohater artykułu wraz z lekkim spoilerem](/wp-content/uploads/2019/12/2019-11-22-18.49.26_2-1.jpg)
+![Bohater artykułu wraz z lekkim spoilerem](/wp-content/uploads/2019/12/2019-11-22-18.49.26_2-1.jpg "Bohater artykułu wraz z lekkim spoilerem")
 
 #### Diagnoza i plan reanimacji
 
@@ -41,7 +41,7 @@ Reanimacja zakładała naładowanie "ręczne" akumulatora które powinno spowodo
       * banany-aligatorki łączące zasilacz z akumulatorem
       * przydały się jeszcze tymczasowo dolutowane kable do samego akumulatora gdyż żadne aligatorki nie były w stanie stabilnie złapać jego złączy
 
-![](/wp-content/uploads/2019/12/2019-11-16-23.48.02.jpg)
+![Mój lab na potrzeby reanimacji](/wp-content/uploads/2019/12/2019-11-16-23.48.02.jpg "Mój lab na potrzeby reanimacji")
 
 #### Wstępne ładowanie
 
@@ -111,13 +111,13 @@ Po eweidentnym braku sukcesu postanowiłem sprawdzić czy tylko ja mam taki prob
 
 Może nieco w tonie teorii spiskowej o celowym postarzaniu sprzętu postanowiłem sprawdzić co znajduje się w akumulatorze - może jakiś podejrzanie wyglądający kondensator...
 
-![Całość trzeba było zacząć od rozładowania baterii żeby uniknąć przypadkowego wybuchu](/wp-content/uploads/2019/12/2019-11-18-22.04.06.jpg)
+![Całość trzeba było zacząć od rozładowania baterii żeby uniknąć przypadkowego wybuchu](/wp-content/uploads/2019/12/2019-11-18-22.04.06.jpg "Całość trzeba było zacząć od rozładowania baterii żeby uniknąć przypadkowego wybuchu")
 
-![Tuż po otwarciu plastikowej obudowy](/wp-content/uploads/2019/12/2019-11-18-21.54.25.jpg)
+![Tuż po otwarciu plastikowej obudowy](/wp-content/uploads/2019/12/2019-11-18-21.54.25.jpg "Tuż po otwarciu plastikowej obudowy")
 
-![Wewnątrz pakietu ogniw owiniętego limonkową taśmą znajduje się tylko ta płytka](/wp-content/uploads/2019/12/2019-11-18-21.56.25.jpg)
+![Wewnątrz pakietu ogniw owiniętego limonkową taśmą znajduje się tylko ta płytka](/wp-content/uploads/2019/12/2019-11-18-21.56.25.jpg "Wewnątrz pakietu ogniw owiniętego limonkową taśmą znajduje się tylko ta płytka")
 
-![Druga strona poprzedniej płytki z terminalami ogniw i całego pakietu](/wp-content/uploads/2019/12/2019-11-18-21.57.31.jpg)
+![Druga strona poprzedniej płytki z terminalami ogniw i całego pakietu](/wp-content/uploads/2019/12/2019-11-18-21.57.31.jpg "Druga strona poprzedniej płytki z terminalami ogniw i całego pakietu")
 
 Płytka podłączona do ogniw 3.7V jest opisana jako **SP-PCM-0025** to wedle tego co udało mi się znaleźć na [starej aukcji z allegro][13] - układ zabezpieczający i balansujący ładowanie/rozładowanie ogniw, czyli coś czego by się można było spodziewać.
 

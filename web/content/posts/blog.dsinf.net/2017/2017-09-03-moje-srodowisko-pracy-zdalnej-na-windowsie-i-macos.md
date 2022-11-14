@@ -18,7 +18,7 @@ tags:
 ---
 Jako że jednak potrzebuję windowsa jako głównego systemu na stacji roboczej od zawsze nasuwał się problemy - jak się podłączyć do serwerów linuksowych czy zbudować lokalnie jakąś paczkę. Po długich eksperymentach z cygwinem, mingw i innymi wynalazkami doszedłem do wniosku że jak potrzebuję mieć shella linuksowego żeby użyć grepa, seda i awka to wystarczy bash wbudowany w dowolnego klienta gita - na przykład cudowną aplikację [Github Desktop][1]. A jeśli chodzi o prawdziwe zainstalowanie prawdziwego pakietu to nie ma innej opcji jak maszyna wirtualna. Warto jednak dołożyć kilka kroków żeby było przyjemniej.
 
-![wspomniany Github Desktop](/wp-content/uploads/2017/09/7.png)
+![wspomniany Github Desktop](/wp-content/uploads/2017/09/7.png "wspomniany Github Desktop")
 
 ## **Linuks na windowsie - maszyna wirtualna**
 
@@ -30,21 +30,21 @@ Warto wspomnieć iż o słynnym [Linuksie w Windowsie wydanym przez Microsoft][3
 
 Ale jak się wygodnie zasshować do tejże maszyny? PuTTY osobiście używam tylko do łączenia się do portu szeregowego - otwieranie każdej sesji w osobnym oknie, własny fikuśny agent ssh i dość ograniczone możliwości powodują że jest świetny jako coś na szybko co mieści się w jednej binarce ale na dłuższą metę - bez przesady.
 
-![Bugs, More bugs, PuTTY...](/wp-content/uploads/2017/09/8.png)
+![Bugs, More bugs, PuTTY...](/wp-content/uploads/2017/09/8.png "Bugs, More bugs, PuTTY...")
 
 Cygwinowe ssh ma swój urok, ale kiedy wpadnie nam do głowy support dziwnych terminali ($TERM) i kodowań przy ncurses - da się, ale można wygodniej. Ostatnio jest hype na emulator [Hyper][5] - cóż, użycie frameworka [Electron][6] czyli silnika chrome odpalającego aplikację w JS - tego samego co do [Atoma][7] kończy jego użyteczność na krótkiej sesji ssh.
 
 Z ciekawej listy na <https://www.slant.co/topics/1552/~terminal-emulators-for-windows> przetestowałem większość. I jedyny bezpłatny który zdał egzamin to [MobaXterm][8]. Plusuje mnogością obsługiwanych protokołów i opcji ich konfiguracji. W tym opcją wysyłania heartbeatu po SSH żeby sesja się nie urwała. Działa także mini przeglądarka plików (która eksperymentalnie podąża za $PWD), tunelowanie Xów i własny, ale kompatybilny z normalnymi kluczami agent. Poza tym miliard innych opcji które mogą się przydać w przyszłości - kolorowanie składni, logowanie sesji do pliku tekstowego, narzędzia jak GUI nmapa czy wbudowane serwery.  Dla użytkowników domowych jest darmowy z pewnymi ograniczeniami (jak liczba sesji na raz ograniczona do 12 - da się wytrzymać oraz limitem życia usług takich jak _serwer NFS_ do 6 minut). $69/usera to nie tak drogo za wersję pro zważywszy na stertę funkcjonalności wspomagających.  Ma także wbudowanego cygwina więc i lokalny shell nadaje się do jakiegokolwiek użytku.
 
-![MobaXterm - protokoły](/wp-content/uploads/2017/09/9.png)
+![MobaXterm - protokoły](/wp-content/uploads/2017/09/9.png "MobaXterm - protokoły")
 
-![MobaXterm - okno sesji](/wp-content/uploads/2017/09/10.png)
+![MobaXterm - okno sesji](/wp-content/uploads/2017/09/10.png "MobaXterm - okno sesji")
 
 ## Dostęp zdalny - GUI
 
 Może się okazać że z jakiegoś graficznego programu trzeba będzie jednak skorzystać. Albo podłączyć się do całej sesji (mam taki dziwny setup w jednym miejscu że najwygodniej mi łączyć się do laptopa ze stacji roboczej żeby nie marnować ekranu). Tu rozwiązaniem jest [x2go][11]. Opiera się na NX i działa znacznie efektywniej niż VNC i wygodniej niż czyste tunelowanie Xorga. Wymaga paczki na serwerze linuksowym, a programy klienckie dostępne są na wszystkie systemy. Warto dodać że poza zwykłym podłączaniem się do nowej sesji X i jej wznawianiem w czasie późniejszym można także podpiąć się do fizycznego TTY lub odpalić pojedynczą aplikację zamiast środowiska graficznego. Projekt jest bardzo dojrzały - obsługuje także MFA w SSH, włączając w to yubikeyowe OTP dzięki mojemu requestowi na kilka godzin przed releasem 😀
 
-![Klient x2go na windowsie](/wp-content/uploads/2017/09/12.png)
+![Klient x2go na windowsie](/wp-content/uploads/2017/09/12.png "Klient x2go na windowsie")
 
 ## Pliki
 
@@ -81,7 +81,7 @@ W windowsie pojawia nam się nowy dysk sieciowy i nie ma problemu z rozszerzonym
 
 Mój wybór zasadniczo nie zmienił się względem [tego sprzed trzech lat][21] (poza faktem że kupiłem licencję; info praktyczne - licencji można używać na dowolnej liczbie urządzeń, w tym w pracy) - dalej [Sublime Text][22] mimo głosów że edytor się skończył to [pluginów przybywa][23], a aktualizacje też się pojawiają.  Co do pluginów to nie używam wielu (większość pomocna jest przy HTMLu): A File Icon, Color Highlighter, ColorPick, Emmet, Git, MarkdownLivePreview, Perforce (głównie w pracy), SideBarEnhancements, SublimeLinter, SublimeREPL oraz motywu Material-Theme-Darker.tmTheme. Rozszerzanie możliwości jest także wygodne - napisałem już kilka podświetlaczy składni dla dziwnych formatów logów i konfiguracji.
 
-![SublimeText w całej okazałości wraz z menu Ctrl+Shift+P](/wp-content/uploads/2017/09/11.png)
+![SublimeText w całej okazałości wraz z menu Ctrl+Shift+P](/wp-content/uploads/2017/09/11.png "SublimeText w całej okazałości wraz z menu Ctrl+Shift+P")
 
 ## Łączność
 

@@ -18,7 +18,7 @@ Na początku w lodówce - tu brak odchyłów, choć można było zauważyć że 
 
 Kolej na ułożenie w temperaturze lekko wyższej od pokojowej czyli na biurku. Tu znudzony czekaniem na wyrównanie temperatury schładzałem oba termometry sprężonym powietrzem odwróconym do góry nogami. Znowu BTD nagrzewał się dużo szybciej, ale tym razem różnica w pomiarze ustabilizowanym wynosiła 2-3 stopnie. Dużo.
 
-![Zdjęcie późniejsze, radiatory będą dołożone w dalszej fazie eksperymentowania; DS18B20 ukrywa się między nóżkami fotorezystora.](/wp-content/uploads/2019/05/1.jpg)
+![Zdjęcie późniejsze, radiatory będą dołożone w dalszej fazie eksperymentowania; DS18B20 ukrywa się między nóżkami fotorezystora.](/wp-content/uploads/2019/05/1.jpg "Zdjęcie późniejsze, radiatory będą dołożone w dalszej fazie eksperymentowania; DS18B20 ukrywa się między nóżkami fotorezystora.")
 
 Po zweryfikowaniu że jak każdy chip tak DS28B20 może mieć pewne odchyły spróbowałem go wymienić na zapasowy - dalej to samo. Wtedy dotarło do mnie że może któryś ze scalaków grzeje się nadmiernie i powoduje zwiększenie temperatury całego BTD. Pomiar "z palca" wydawał się potwierdzać teorię więc wyposażyłem się w pirometr - zakup kamery termowizyjnej do tego projektu byłby lekką przesadą 😉 
 

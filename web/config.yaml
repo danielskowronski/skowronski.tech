@@ -46,10 +46,15 @@ author:
   links:
     - github: "https://github.com/danielskowronski/"
     - linkedin: "https://linkedin.com/in/daniel-skowronski/"
-    - blogger: "https://blog.dsinf.net/"
-    - blogger: "https://foto.dsinf.net/"
+    - blogger: "https://skowronski.tech/"
     - keybase: "https://keybase.io/dskowronski"
     - email: "mailto:daniel@skowron.ski"
+
+outputs:
+  home:
+    - "HTML"
+    - "RSS"
+    - "JSON"
 
 # https://nunocoracao.github.io/blowfish/docs/configuration/
 

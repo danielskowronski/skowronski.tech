@@ -10,7 +10,7 @@ tags:
 
 ---
 Przetwarzając manualnie stertę katalogów doszedłem do potrzeby zwizualizowania postępu mojej pracy - głównie by się nie poddawać, ale przemyślenia nad tym problemem dawały mi chwile wytchnienia. I tak zrodził się **DS progress**, czyli jak go opisałem, **ulatwiacz kontroli postępu pracy**.  
-![DS Progress v0.2 main window](/wp-content/uploads/2012/08/dsprogressv0-02_screen.png)  
+![DS Progress v0.2 main window](/wp-content/uploads/2012/08/dsprogressv0-02_screen.png "DS Progress v0.2 main window")  
 Aplikacyjka trywailan i naturalnie napisana w C# w jakieś 20 minut razem z (mam nadzieję) ladnym designem i dpracowaniem fukcjonalności. Generalnie sprowadza się ona do progress bara i przycisków plus/minus. Istnieje jednak możliwość definiowania postępu "z palucha" oraz zmiany celu (domyślnie 100) i naturalnie zresetowania licznika. Tym co zajęło mi w kodzie najwięcej bo aż 3 linijki było ustrzymywanie label'ki z informacją tekstową o progresie w centrum paska postępu.  
 Nie wiem, czy kod jest godny męczyć SyntaxHighlightera, ale skoro ładnie to wygląda to wstawię:
 

@@ -41,7 +41,7 @@ Problem, z którym borykałem się najdłużej to usługa Google Fonts. Jest uza
 Ponieważ (prawdopodobnie za bardzo) lubię fonty Ubuntu i Ubuntu Mono to jakiś hosting tychże jest mi potrzebny. Dlaczego jednak nie trzymać po prostu dwóch plików `woff2` na swoim własnym serwerze i zamiast używania specjalizowanych plug-inów do WordPressa (np. WP Google Fonts), skorzystać z takiego, którego i tak wykorzystuję do wstawek HTML/CSS/JS (który pozwala dodawać treść z UI WordPressa, bez edycji kodu motywu) - <https://pl.wordpress.org/plugins/custom-css-js/> 
 
 
-![Rozwiązanie może i nieco mniej eleganckie (zwłaszcza, jeśli motyw nie daje możliwości wyboru własnego fonta), ale dające dużo więcej władzy nad ustawieniami.](/wp-content/uploads/2021/02/Screenshot-2021-02-07-at-15.01.21.png)
+![Rozwiązanie może i nieco mniej eleganckie (zwłaszcza, jeśli motyw nie daje możliwości wyboru własnego fonta), ale dające dużo więcej władzy nad ustawieniami.](/wp-content/uploads/2021/02/Screenshot-2021-02-07-at-15.01.21.png "Rozwiązanie może i nieco mniej eleganckie (zwłaszcza, jeśli motyw nie daje możliwości wyboru własnego fonta), ale dające dużo więcej władzy nad ustawieniami.")
 
 ## Standardowe logi na serwerze
 

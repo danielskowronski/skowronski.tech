@@ -19,9 +19,9 @@ Moja przygoda z drukiem 3D zaczęła się jeszcze na studiach, kiedy to w Kole S
 
 Pierwszym etapem projektowania była ogólna idea, którą od samego początku miałem w głowie - kształt schodkowy z przeznaczeniem do postawienia na biurku. Z mojego doświadczenia stojaki, czy bardziej etui, gdzie wszystkie bity są na tym samym poziomie, a ich końcówki widoczne jedynie z góry są mało praktyczne do wyjmowania. 
 
-![Dość popularny generyczny zestaw bitów, w niepraktycznym dla mnie etui](/wp-content/uploads/2021/05/bit_holder_flat.jpg)
+![Dość popularny generyczny zestaw bitów, w niepraktycznym dla mnie etui](/wp-content/uploads/2021/05/bit_holder_flat.jpg "Dość popularny generyczny zestaw bitów, w niepraktycznym dla mnie etui")
 
-![Inspiracja formy, jaką chciałem osiągnąć](/wp-content/uploads/2021/05/Screenshot-2021-05-19-at-22.40.09.png)
+![Inspiracja formy, jaką chciałem osiągnąć](/wp-content/uploads/2021/05/Screenshot-2021-05-19-at-22.40.09.png "Inspiracja formy, jaką chciałem osiągnąć")
 
 Kolejny etap to zbadanie potrzeb szczegółowych, czyli posortowanie bitów wedle typów, opisanie ich oraz zaprojektowanie ich przestrzennego ułożenia. Mało ambitnie użyłem w tym celu MS Excela, ale zadziałało.  
 Przy okazji spędziłem nieco za dużo czasu, wędrując po stronach Wikipedii o śrubokrętach...
@@ -140,11 +140,11 @@ Dzięki opracowanemu systemowi znakowania slotów na bity przy okazji udało mi 
 
 Prototypy na zdjęciach poniżej nie mają docelowej czytelności znakowania - nie zostały idealnie utwardzone ani oczyszczone, a kąpiel zaliczyły w izopropanolu wymagającym filtracji lub wręcz wymiany. Finalna wersja jest dużo ładniejsza.
 
-![testowanie średnicy slotu - `$hole_width`](/wp-content/uploads/2021/05/IMG_3418.jpeg)
-![testowanie głębokości slotu - `$hole_height`](/wp-content/uploads/2021/05/IMG_3413.jpeg)
+![testowanie średnicy slotu - `$hole_width`](/wp-content/uploads/2021/05/IMG_3418.jpeg "testowanie średnicy slotu - `$hole_width`")
+![testowanie głębokości slotu - `$hole_height`](/wp-content/uploads/2021/05/IMG_3413.jpeg "testowanie głębokości slotu - `$hole_height`")
 
-![różne warianty rozmiaru segmentu - `$segment_width`](/wp-content/uploads/2021/05/IMG_3420.jpeg)
-![jeden z ostatnich testów - orientacja na drukarce](/wp-content/uploads/2021/05/IMG_3426.jpeg)
+![różne warianty rozmiaru segmentu - `$segment_width`](/wp-content/uploads/2021/05/IMG_3420.jpeg "różne warianty rozmiaru segmentu - `$segment_width`")
+![jeden z ostatnich testów - orientacja na drukarce](/wp-content/uploads/2021/05/IMG_3426.jpeg "jeden z ostatnich testów - orientacja na drukarce")
 
 ## Zakończenie
 
@@ -157,6 +157,6 @@ Obiekt, wraz z kodem źródłowym opublikowałem na [Thingversie](https://www.th
 
 Obiekt został pozbawiony wnętrza _(hollow)_ z wypełnieniem w trybie _lattice 20%_, dodałem dwa kwadratowe otwory odpływowe na nieutwardzoną żywicę z wnętrza _(drain holes)_ z tyłu: kilka milimetrów od dołu i boków, po jednym z każdej strony. Żadne supporty nie były wymagane.
 
-![wypełnienie i jeden z _drain holes_ widoczne pod silnym światłem (całkiem porządnej latarki Nitecore Tup)](/wp-content/uploads/2021/05/IMG_3560.jpg)
+![wypełnienie i jeden z _drain holes_ widoczne pod silnym światłem (całkiem porządnej latarki Nitecore Tup)](/wp-content/uploads/2021/05/IMG_3560.jpg "wypełnienie i jeden z _drain holes_ widoczne pod silnym światłem (całkiem porządnej latarki Nitecore Tup)")
 
 Od rozpoczęcia prac do gotowego wydruku minęło kilka wieczorów kodowania, cięcia i testowania wydruków, a efekt bardzo mnie cieszy, bo stojak w 100% odpowiada moim oczekiwaniom i jeśli kiedyś będę potrzebował podobnego, ale dla innego zestawu bitów - wystarczy kilka zmian w parametrach kodu, render i obiekt będzie gotowy do wydruku. Zabawę polecam każdemu.

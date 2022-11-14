@@ -24,15 +24,15 @@ ZeroTier jest na tyle sprytny że potrafi omijać większość klasycznych NATó
 
 Twórcy postanowili być jednak hojni i postawić na wspieranych przez community serwerach. Do 100 hostów, nieskończona ilość sieci. Model płatny także występuje. Także można zainstalować tylko klienta i działać. Oczywiście całość jest opensource i można postawić swój kontroler. Klienty dostępne są na Linuksa, Windowsa, OS X, FreeBSD, OpenBSD, NetBSD (w trakcie wdrażania, wisi gdzieś mój pull request), iOS i Anroida.
 
-![Klient ZeroTier (tu: Windows)](/wp-content/uploads/2017/02/zerotier-client.png)
+![Klient ZeroTier (tu: Windows)](/wp-content/uploads/2017/02/zerotier-client.png "Klient ZeroTier (tu: Windows)")
 
-![zerotier-cli](/wp-content/uploads/2017/02/zerotier-cli.png)
+![zerotier-cli](/wp-content/uploads/2017/02/zerotier-cli.png "zerotier-cli")
 
-![Klient ZeroTier na iOS](/wp-content/uploads/2017/02/FullSizeRender.jpg)
+![Klient ZeroTier na iOS](/wp-content/uploads/2017/02/FullSizeRender.jpg "Klient ZeroTier na iOS")
 
 Od strony klienta wystarczy wpisać ID sieci i się połączyć. Tworzony jest interfejs TAP (a więc na 2 warstwie ISO/OSI) i dostaje adres sieciowy. Administrator przez web gui lub po API definiuje sieci, ich adresy oraz zezwala konkretnym klientom na dołączenie. W najprostszej wersji po prostu zaklikuje request. Administrator może także zdefiniować że dany host będzie działał jako "broadcast" czyli bridge'ował się do pozostałych interfejsów sieciowych. Czyli wystarczy jeden taki "injector" w sieci i mamy do niej zdalny dostęp.
 
-![WebGUI administracyjne](/wp-content/uploads/2017/02/zerotier_gui.png)
+![WebGUI administracyjne](/wp-content/uploads/2017/02/zerotier_gui.png "WebGUI administracyjne")
 
 SDN można sprytnie wykorzystać do łączenia sieci maszyn wirtualnych między serwerowniami, omijania NATów czy też po prostu VPNowania się po ręcznym zdefiniowaniu tras (`ip r`). Można także stosować to jako ACL ponieważ narzut jest znikomy. Tylko pierwsze połączenie zajmuje chwilę kiedy hosty próbują się znaleźć ale każde kolejne jest niemal tak szybkie jakby łączyły się po LANie. Dlatego używanie w domu adresacji z ZeroTiera nie stanowi problemu nawet do transferu plików.
 

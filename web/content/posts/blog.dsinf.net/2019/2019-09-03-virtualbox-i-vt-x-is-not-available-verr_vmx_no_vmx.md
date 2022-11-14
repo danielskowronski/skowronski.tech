@@ -14,7 +14,7 @@ tags:
 Używanie VirtualBoxa na Windowsie obok HyperV jest niemożliwe - tylko jeden hypervisor może na raz używać VT-x, czyli sprzętowego wsparcia wirtualizacji od Intela. Jednak poza brakiem włączenia wirtualizacji w BIOSie/UEFI czy aktywnym HyperV jest kilka innych czynników blokujących VirtualBoxa przed działaniem.
 
 
-![Lokalizacja ustawień funkcji systemu Windows](/wp-content/uploads/2019/09/image-1.png)
+![Lokalizacja ustawień funkcji systemu Windows](/wp-content/uploads/2019/09/image-1.png "Lokalizacja ustawień funkcji systemu Windows")
 
 Aby wyłączyć wszystko co związane z HyperV w ustawieniach funkcji systemu Windows (w "klasycznym" panelu sterowania) należy odznaczyć poniższe i zatwierdzić reboot:
 

@@ -18,7 +18,7 @@ tags:
 ---
 BIOS, czy właściwie UEFI wydany przez AMI - APTIO 4 jest zdradziecki nawet dla osób mających już trochę doświadczenia w grzebaniu po tego typu systemach - ma się w pamięci, że w razie czego da się otworzyć klapę i przestawić zworkę, która zresetuje ustawienia do fabrycznych. Tabletu się nie otworzy tak łatwo. A o omyłkowe wyłączenie USB OTG, które wyłącza też klawiaturę w BIOSie nietrudno. Jest jednak na to sposób. 
 
-![Aptio Setup Utility](/wp-content/uploads/2015/08/0.png)
+![Aptio Setup Utility](/wp-content/uploads/2015/08/0.png "Aptio Setup Utility")
 
 Na zdjęciu obok przykładowy widok na Aptio Setup Utility. Widoczne także ekstremalne lenistwo producenta - nie podmienił "To be filled by O.E.M." - i takiego producenta widzą Linuksy...  
 <br clear="all" /> 

@@ -16,7 +16,7 @@ tags:
 Podejść do U2F jest wiele i [jak pokazuje Krypton][1] - mogą być one ciekawsze od noszenia wielu Yubikeyów. Dziś krótka prezentacja klucza sprzętowego Bluink Key będącego w zasadzie najpełniejszą hybrydą sprzętowego klucza z aplikacją w zaufanym urządzeniu mobilnym.
 
 
-![Dwie instancje bohatera artykułu. Jeden z nich na skipassie z kartą dostępu.](/wp-content/uploads/2019/12/1-1.jpg)
+![Dwie instancje bohatera artykułu. Jeden z nich na skipassie z kartą dostępu.](/wp-content/uploads/2019/12/1-1.jpg "Dwie instancje bohatera artykułu. Jeden z nich na skipassie z kartą dostępu.")
 
 Rozwiązanie Bluink Key ([https://bluink.ca/key](https://bluink.ca/key)) składa się z dwóch składników: aplikacji w smartfonie (iOS/Android) i dongla USB (korzystającego z Bluetooch 4.0) kosztującego $30 i dostarczanego przez kandayjską firmę Bluink Inc.
 
@@ -26,11 +26,11 @@ Trochę przypomina to znane od jakiegoś czasu ["wpisywacze" exploitów][3] (don
 
 Zdecydowanie **ogromny jest zysk z minimalizacji ekspozycji sekretu na ekranie** (TOTP czy hasła) - zarówno komputera jak i smartfona. O [atakach na podsłuchiwanie klawiatury po dźwięku jaki wydają konkretne klawisze,][4] czy **o prostym zaglądaniu przez ramię na klawiaturę nie wspominając**.
 
-![parowanie używanego klucza](/wp-content/uploads/2019/12/4-1.jpg)
-![lista sekretów tekstowych z listą kluczy](/wp-content/uploads/2019/12/2.jpg)
+![parowanie używanego klucza](/wp-content/uploads/2019/12/4-1.jpg "parowanie używanego klucza")
+![lista sekretów tekstowych z listą kluczy](/wp-content/uploads/2019/12/2.jpg "lista sekretów tekstowych z listą kluczy")
 
-![Prompt U2F z listą tekstowych sekretów w tle oraz tryb zdalnego sterowania klawiatury](/wp-content/uploads/2019/12/5-1.jpg)
-![tryb zdalnego sterowania myszki](/wp-content/uploads/2019/12/3-1.jpg)
+![Prompt U2F z listą tekstowych sekretów w tle oraz tryb zdalnego sterowania klawiatury](/wp-content/uploads/2019/12/5-1.jpg "Prompt U2F z listą tekstowych sekretów w tle oraz tryb zdalnego sterowania klawiatury")
+![tryb zdalnego sterowania myszki](/wp-content/uploads/2019/12/3-1.jpg "tryb zdalnego sterowania myszki")
 
 Same sekrety zapisane są w aplikacji (na iPhonach wykorzystywany jest oczywiście moduł _Secure Enclave_ oraz FaceID/TouchID). Ponieważ smartfon ma jednak ogromną pojemność w kontekście przechowywania po kilkadziesiąt-kilkaset bajtów na sekret to możliwości przechowywania haseł deklasują tryb _static password_ dostępny w niektórych Yubikeyach - także w wygodzie ich wprowadzania. Zamiast wciskania przycisku na kluczu sprzętowym wybieramy hasło z listy w aplikacji, jeśli trzeba klikamy pomocniczo klawisz typu _Enter_ czy _Tab_ i wszystko zostaje wysłane do odbiornika. Producent przewidział też możliwość sterowania myszką 🙂 
 

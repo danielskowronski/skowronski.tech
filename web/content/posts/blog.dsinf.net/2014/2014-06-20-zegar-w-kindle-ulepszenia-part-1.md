@@ -28,9 +28,9 @@ Następnym krokiem było użycie mniejszego fontu. Problem polega na tym, że ei
 
 Trochę kalibracji i efekty są takie:  
 
-![ZEGAR 0.2 - w trybie książki](/wp-content/uploads/2014/06/WP_20140620_001.jpg)
+![ZEGAR 0.2 - w trybie książki](/wp-content/uploads/2014/06/WP_20140620_001.jpg "ZEGAR 0.2 - w trybie książki")
 
-![ZEGAR 0.2 - w reszcie UI](/wp-content/uploads/2014/06/WP_20140620_003.jpg)
+![ZEGAR 0.2 - w reszcie UI](/wp-content/uploads/2014/06/WP_20140620_003.jpg "ZEGAR 0.2 - w reszcie UI")
 
 
 ```bash

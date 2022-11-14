@@ -18,7 +18,7 @@ Od jakieś czasu jestem szczęśliwym posiadaczem drukarki etykiet Dymo - LabelW
 
 Na Windowsie i macOS sprawa wygląda prosto - dostarczone narzędzie _**DYMO** **Label**_, które niedawno zostało przebrandowane na _**DYMO Connect**_, bardzo sprawnie daje sobie radę. Ba, wystawia nawet webowe API dostępne na localhoście które pozwala na generowanie etykiet na przykład w przeglądarce. Ten ostatni fakt wykorzystuję w moim generatorze etykiet do puszek herbaty - _**DymoTeaLabel**_, który jest dostępny [na githubie][1].
 
-![Tak prezentuje się DYMO Connect](/wp-content/uploads/2020/05/dymo_connect.jpg)
+![Tak prezentuje się DYMO Connect](/wp-content/uploads/2020/05/dymo_connect.jpg "Tak prezentuje się DYMO Connect")
 
 Oczywiście artykułu by nie było, gdyby któreś z oficjalnych narzędzi odpalało się na Wine. Odpala się za to w VirtualBoxie, no ale bez przesady - na pewno da się pominąć Windowsa.
 
@@ -295,14 +295,14 @@ end sub
 Żeby móc łatwo wywołać świeżo stworzone makra można je dodać jako przyciski do interfejsu Writera. Jak się okazuje sam dokument ODT może zawierać customowe menu.
 
 
-![Aby dodać przycisk menu dostępny w konkretnym dokumencie (zapisany w pliku) wystarczy wybrać _Tools/Customize_, a następnie zmienić _Scope_ na dokument.](/wp-content/uploads/2020/05/libreoffice-customize.jpg) 
+![Aby dodać przycisk menu dostępny w konkretnym dokumencie (zapisany w pliku) wystarczy wybrać _Tools/Customize_, a następnie zmienić _Scope_ na dokument.](/wp-content/uploads/2020/05/libreoffice-customize.jpg "Aby dodać przycisk menu dostępny w konkretnym dokumencie (zapisany w pliku) wystarczy wybrać _Tools/Customize_, a następnie zmienić _Scope_ na dokument.") 
 
 Pozostaje jedynie podpisać cyfrowo dokument tak, żeby LibreOffice nie krzyczał na nas, że w dokumencie są makra, a makra to jak wiadomo w 99% wirusy.
 
   
 Aby to osiągnąć, skorzystałem z cert stora z Firefoxa gdzie mam załadowany certyfikat osobisty do podpisywania emaili.<
 
-![Aby wybrać skąd LibreOffice będzie brał certyfikaty, należy wybrać _Tools/Options_ a następnie otworzyć widok _Security_ a w nim _Certificate..._](/wp-content/uploads/2020/05/libreoffice-certpath.jpg)
+![Aby wybrać skąd LibreOffice będzie brał certyfikaty, należy wybrać _Tools/Options_ a następnie otworzyć widok _Security_ a w nim _Certificate..._](/wp-content/uploads/2020/05/libreoffice-certpath.jpg "Aby wybrać skąd LibreOffice będzie brał certyfikaty, należy wybrać _Tools/Options_ a następnie otworzyć widok _Security_ a w nim _Certificate..._")
 
 Ważna uwaga szczególnie dla ubuntowców - LibreOffice musi być zainstalowany z pakietu deb, a nie ze snapa - w przeciwnym wypadku wystąpi spory problem z uprawnieniami.
 

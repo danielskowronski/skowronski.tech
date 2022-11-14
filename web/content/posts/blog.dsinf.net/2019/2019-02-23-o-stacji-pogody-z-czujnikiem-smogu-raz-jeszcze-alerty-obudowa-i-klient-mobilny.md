@@ -12,7 +12,7 @@ Jakiś czas temu [zbudowałem stację pogody z czujnikiem smogu][1] w oparciu o 
 
 ## Obudowa stacji meteo
 
-![Tak wygląda właściwa stacja meteorologiczna; © Marek Argent CC BY-SA 4.0](/wp-content/uploads/2019/02/nam2.jpg)
+![Tak wygląda właściwa stacja meteorologiczna; © Marek Argent CC BY-SA 4.0](/wp-content/uploads/2019/02/nam2.jpg "Tak wygląda właściwa stacja meteorologiczna; © Marek Argent CC BY-SA 4.0")
 
 Jako że skrzynki z ażurowymi ściankami budować mi się nie chciało poszedłem w rozwiązanie prostsze ale dość skutecznie pozbywające się problemu słońca - pudełko po butach i folia aluminiowa. Pudełko nie zamknięte całkowicie zapewnia dostęp ciepła. Pomiary od kilku dni prowadzone także zwykłą sklepową stacją meteo i porównywane z prognozami wykazują brak odchyleń. 
 
@@ -43,7 +43,7 @@ Mój dashboard grafany aktualizuję na bieżąco jak pojawią się tylko drobne 
 
 [nettigo-air-monitor-grafana.json](/wp-content/uploads/2019/02/nettigo-air-monitor-grafana.json_.txt)
 
-![Przykładowy alert wysłany przez Grafanę](/wp-content/uploads/2019/02/nam6.jpg)
+![Przykładowy alert wysłany przez Grafanę](/wp-content/uploads/2019/02/nam6.jpg "Przykładowy alert wysłany przez Grafanę")
 
 
 ## Lekki klient mobilny

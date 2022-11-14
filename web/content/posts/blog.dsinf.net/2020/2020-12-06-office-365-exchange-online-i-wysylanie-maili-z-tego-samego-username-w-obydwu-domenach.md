@@ -46,11 +46,11 @@ Inne źródła od razu wskazywały konieczność założenia skrzynki współdzi
 
 Zatem do dzieła:
 
-[Najpierw należy zlokalizować formularz nowego Shared Mailbox,](/wp-content/uploads/2020/12/Selection_043.png)
+![Najpierw należy zlokalizować formularz nowego Shared Mailbox,](/wp-content/uploads/2020/12/Selection_043.png "Najpierw należy zlokalizować formularz nowego Shared Mailbox,")
 
-![potem wskazać adres skrzynki i jej nazwię wyświetlaną](/wp-content/uploads/2020/12/Selection_044.png)
+![potem wskazać adres skrzynki i jej nazwię wyświetlaną](/wp-content/uploads/2020/12/Selection_044.png "potem wskazać adres skrzynki i jej nazwię wyświetlaną")
 
-![i na koniec ustawić, kto będzie miał do niej uprawnienia.](/wp-content/uploads/2020/12/Selection_045.png)
+![i na koniec ustawić, kto będzie miał do niej uprawnienia.](/wp-content/uploads/2020/12/Selection_045.png "i na koniec ustawić, kto będzie miał do niej uprawnienia.")
 
 ## Problem drugi - automatyczne aliasy {.has-medium-font-size}
 
@@ -75,16 +75,16 @@ Obejście na szczęście jest dość proste - należy stworzyć _Shared Mailbox_
 
 Skoro mamy gotową skrzynkę współdzieloną użytkownik musi ją jeszcze podpiąć do swojej własnej. Jak to zrobić pokażę na przykładzie Outlook Web App (OWA).
 
-![Podpięcie skrzynki współdzielonej](/wp-content/uploads/2020/12/Selection_051.png)
-![Oraz dodanie na niej przekierowania na skrzynkę główną](/wp-content/uploads/2020/12/Selection_052.png)
+![Podpięcie skrzynki współdzielonej](/wp-content/uploads/2020/12/Selection_051.png "Podpięcie skrzynki współdzielonej")
+![Oraz dodanie na niej przekierowania na skrzynkę główną](/wp-content/uploads/2020/12/Selection_052.png "Oraz dodanie na niej przekierowania na skrzynkę główną")
 
 ## Testowanie
 
 Aby potwierdzić, że wszystko działa, jak należy, sprawdzimy, czy możemy wysłać maile z nowego aliasu poprawnie oraz, czy możemy je odebrać. Najłatwiej wykorzystać darmowe usługi online do testowania maili - ja użyłem [10minutemail.com](http://10minutemail.com) do testu poczty wychodzącej oraz [ismyemailworking.com][3] do testu maili przychodzących.
 
-![Mail wpada do spamu, ale przychodzi poprawnie](/wp-content/uploads/2020/12/Selection_053.png)
-![Żeby wysłać maila z aliasu - trzeba dodać sobie w widoku pole From](/wp-content/uploads/2020/12/Selection_055.png)
-![Mail wychodzi z poprawnego adresu email](/wp-content/uploads/2020/12/Selection_056.png)
+![Mail wpada do spamu, ale przychodzi poprawnie](/wp-content/uploads/2020/12/Selection_053.png "Mail wpada do spamu, ale przychodzi poprawnie")
+![Żeby wysłać maila z aliasu - trzeba dodać sobie w widoku pole From](/wp-content/uploads/2020/12/Selection_055.png "Żeby wysłać maila z aliasu - trzeba dodać sobie w widoku pole From")
+![Mail wychodzi z poprawnego adresu email](/wp-content/uploads/2020/12/Selection_056.png "Mail wychodzi z poprawnego adresu email")
 
 ## Podsumowanie {.has-medium-font-size}
 

@@ -12,7 +12,7 @@ tags:
 ---
 Na Windowsach 7 i nowszych mamy ładny centralny przycisk "Firefox" oraz usunięty pasek tytułu w trybie maksymalizacji - bo po co on komu no i zajmuje tylko miejsce. Na Linuksach wygląda to tragicznie. Ani GTK, ani Qt czyli silniki utrzymujące Gnome /Unity oraz KDE nijak się z tym kompatowym wyglądem nie integrują. Powoduje to straszne efekty wizualne, tym gorsze na stacjach typu serwer z grafiką 1024x768, gdzie wszystkie paski są monstrualnie wielkie, a ty musisz pilnie pobrać aktualizację od producenta routera czy coś podobnego.
 
-![Firefox - mały obszar roboczy](/wp-content/uploads/2014/04/firefox304_suse111x64.png)
+![Firefox - mały obszar roboczy](/wp-content/uploads/2014/04/firefox304_suse111x64.png "Firefox - mały obszar roboczy")
 
 #### Jednak istnieje łatwy i wygodny sposób, żeby FF wyglądał ładniej.
 
@@ -20,15 +20,15 @@ Zanim dokonamy jakiejkolwiek zmiany to pod KDE należy zrobić to co opisano [na
 
 Sednem sprawy jest plugin [Hide Caption Titlebar Plus](https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13505-64.png?modified=1398299229). Jak to w Mozilli bywa jest niekompatybilny z Linuksem. Ale da się to ominąć klikając wyszarzone _Add to Firefox_. Instalacja i restart. Teraz przechodzimy do ustawień. Są one na pierwszy rzut oka nieuporządkowane, dlatego zaprezentuję moją konfigurację wyjściową:
 
-![Hide Caption Titlebar Plus - config - 1](/wp-content/uploads/2014/04/a1.png)
+![Hide Caption Titlebar Plus - config - 1](/wp-content/uploads/2014/04/a1.png "Hide Caption Titlebar Plus - config - 1")
 
-![Hide Caption Titlebar Plus - config - 2](/wp-content/uploads/2014/04/a2.png)
+![Hide Caption Titlebar Plus - config - 2](/wp-content/uploads/2014/04/a2.png "Hide Caption Titlebar Plus - config - 2")
 
-![Hide Caption Titlebar Plus - config - 3](/wp-content/uploads/2014/04/a3.png)
+![Hide Caption Titlebar Plus - config - 3](/wp-content/uploads/2014/04/a3.png "Hide Caption Titlebar Plus - config - 3")
 
 #### Efekt:
 
-![Hide Caption Titlebar Plus - efekt - 1](/wp-content/uploads/2014/04/a5.png)
+![Hide Caption Titlebar Plus - efekt - 1](/wp-content/uploads/2014/04/a5.png "Hide Caption Titlebar Plus - efekt - 1")
 
 &nbsp;
 

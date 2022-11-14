@@ -20,7 +20,7 @@ Zanim przejdę do opisu mojej listy kontrolnej, to opiszę narzędzie, z któreg
 Mój wybór w czasach, kiedy infrastrukturą prywatnie nie zarządzałem centralnie (choć i dziś nie wszystkie maszyny restartuję automatycznie tuż po aktualizacji kernela) padł na Process Street - [process.st][1]. Jest to narzędzie darmowe, umożliwiające zespołową pracę nad listami kontrolnymi z dość zaawansowaną paletą elementów list (w tym approvali), a także możliwością edycji templatki listy w trakcie jej wypełniania - co jest dość częstą potrzebą w przypadku list wykonywanych rzadziej niż raz na miesiąc.
 
 
-![Ekran edycji kroku w checkliście na Process Street](/wp-content/uploads/2021/01/Screenshot-2021-01-26-at-23.40.40.png)
+![Ekran edycji kroku w checkliście na Process Street](/wp-content/uploads/2021/01/Screenshot-2021-01-26-at-23.40.40.png "Ekran edycji kroku w checkliście na Process Street")
 
 ## Lista kontrolna - bezpieczeństwo
 

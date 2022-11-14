@@ -54,7 +54,7 @@ W tym momencie uznałem że spróbuję w BIOSie wyłączyć wszystko co nie jest
 
 I wybudzanie z S3 zadziałało. Metodą prób i błędów włączając jedną opcję na raz doszedłem do zasadniczego problemu - **VT-d. Wystarczy go wyłączyć.**
 
-![W moim BIOSie VT-d wygląda tak](/wp-content/uploads/2018/12/bios.jpg)
+![W moim BIOSie VT-d wygląda tak](/wp-content/uploads/2018/12/bios.jpg "W moim BIOSie VT-d wygląda tak")
 
 [VT-d][3] w skrócie pozwala maszynom wirtualnym na bezpośredni (bez udziału OSu) dostęp do urządzeń PCI. Szansa że zechcemy skorzystać z jego mocy na starym sprzęcie jest niska więc nie zaszkodzi żyć z wyłączonym.
 

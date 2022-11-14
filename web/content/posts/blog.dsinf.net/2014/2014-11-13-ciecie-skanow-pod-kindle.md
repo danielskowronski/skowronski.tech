@@ -16,15 +16,15 @@ Typowy problem - mamy sporawy plik PDF ze skanem książki i chcemy wrzucić go 
 
 Jego niepodważalną zaletą jest _stacked view_, który nakłada na siebie wszystkie strony co pozwala zminimalizować liczbę ręcznych ustawień linii cięcia - przecież nie musim być równo co do piksela.
 
-![Stacked view](/wp-content/uploads/2014/11/pdf_scissors_stacked_view.png)
+![Stacked view](/wp-content/uploads/2014/11/pdf_scissors_stacked_view.png "Stacked view")
 
-![Stacked view w akcji](/wp-content/uploads/2014/11/pdf_scissors_stacked_view21.png)  
+![Stacked view w akcji](/wp-content/uploads/2014/11/pdf_scissors_stacked_view21.png "Stacked view w akcji")  
 Poza ręcznym rysowanie obszarów można też ustawić linie pionowe i poziome także "równo" w połowie. Dostępne są też różne opcje importu.  
-![Opcje importu](/wp-content/uploads/2014/11/pdf_scissors_import_options.png)  
+![Opcje importu](/wp-content/uploads/2014/11/pdf_scissors_import_options.png "Opcje importu")  
 Dużym zaskoczeniem jest fakt, że pliki PDF o rozmiarze rzędu 20-30MB cięte są błyskawicznie, tym bardziej, że w końcu to aplet Javy.
 
 Następna sprawa to ustawienie metadanych w PDFach - Kindle będzie wyświetlał tytuł i autora. W tych polach dość często pozostaje nazwa programu skanującego lub tworzącego PDFa. Można to zmienić. Co ciekawe - znowu aplet Javy. Mały i szybki, ale z dość banalną nazwą **PDF Metadata Editor** dostępny na <http://zaro.github.io/pdf-metadata-editor/>.  
-![PDF Metadata Editor](/wp-content/uploads/2014/11/pdf_metadata_editor.png)
+![PDF Metadata Editor](/wp-content/uploads/2014/11/pdf_metadata_editor.png "PDF Metadata Editor")
 
 Ważna uwaga - te aplety Javy są podpisane cyfrowo jedynie przez autorów - nowa Java będzie się drzeć, że uruchamianie ich może być niebezpieczne. Owszem - może, jak każdego innego pliku binarnego. W razie paranoi kod źródłowy jest dostępny 😉  
 W pewnych wypadkach aplety w ogóle się nie uruchomią. Wówczas szukamy "Java settings" - w Windowsie ścieżka do exe to `c:\Program Files (x86)\Java\jre7\bin\javacpl.exe` (ale jest też w menu Start) i w zakładce _Security_ obniżamy poziom do _Medium_.  

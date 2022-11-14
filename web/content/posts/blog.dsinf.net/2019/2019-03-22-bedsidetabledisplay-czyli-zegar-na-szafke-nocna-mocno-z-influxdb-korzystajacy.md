@@ -12,11 +12,11 @@ Zegar to mój powracający od dawna projekt konstruktorsko-elektroniczny. Bież�
 
 Poprzednie iteracje zegara to [zegar-beta][2] - bazujący na arduino nano służący głównie jako budzik (alfa to niezrealizowany projekt olbrzymiego wyświetlacza), [zegar-delta][3] - zasadniczo RaspberryPi z wyświetlaczem oraz webgui do konfiguracji budzika i prymitywnym zbieraniem danych oraz [zegar-gamma][4] czyli powrót do korzeni w formie arduino, ale ze sterowaniem na pilota.
 
-![zegar-beta - pierwszy z serii](/wp-content/uploads/2019/03/zegarbeta.jpg)
+![zegar-beta - pierwszy z serii](/wp-content/uploads/2019/03/zegarbeta.jpg "zegar-beta - pierwszy z serii")
 
 **BedsideTableDisplay** to przede wszystkim przedłużenie [Nettigo Air Monitor][1]a oraz zegar. Niby dane można odczytać z telefonu ale wyświetlacz zawsze bardziej zachęca do spojrzenia na odczyty i docelowo ładniej się prezentuje.
 
-![BedsideTableDisplay (czyli teoretycznie zegar-epsilon)](/wp-content/uploads/2019/03/btd-1.png)
+![BedsideTableDisplay (czyli teoretycznie zegar-epsilon)](/wp-content/uploads/2019/03/btd-1.png "BedsideTableDisplay (czyli teoretycznie zegar-epsilon)")
 
 Ponieważ postanowiłem że nie będę dodawał dodatkowych bridgy do łączności mikrokontroler-internet (np. bluetootha aktywnego w RaspberryPi) tylko wejdę w "IoT".
 
@@ -31,18 +31,18 @@ Poza czujnikiem podczerwieni (VS1838B - taki był pod ręką) są jeszcze 2 sens
 
 Ważna uwaga o OneWire w ESP8266, a przynajmniej w Wemosie D1 mini pro - na pewno nie działa port D0 (brak obsługi przerwań) ale jedyny port na którym chciał ruszyć to D4 - kupiłem nawet trzeci czujnik myśląc że 2 poprzednie spaliłem złą polaryzacją napięcia...  
 
-![Pinout dla Arduino, bowiem numery i możliwości portów to mała pułapka; źródło: https://escapequotes.net/wp-content/uploads/2016/02/d1-mini-esp8266-board-sh_fixled.jpg](/wp-content/uploads/2019/03/d1-mini-esp8266-board-sh_fixled.jpg)
+![Pinout dla Arduino, bowiem numery i możliwości portów to mała pułapka; źródło: https://escapequotes.net/wp-content/uploads/2016/02/d1-mini-esp8266-board-sh_fixled.jpg](/wp-content/uploads/2019/03/d1-mini-esp8266-board-sh_fixled.jpg "Pinout dla Arduino, bowiem numery i możliwości portów to mała pułapka; źródło: https://escapequotes.net/wp-content/uploads/2016/02/d1-mini-esp8266-board-sh_fixled.jpg")
 
 Szkieletem konstrukcji są 2 płytki prototypowe 3x7cm, śruby łączące wspomniane płytki oraz nóżki. W kanapce między płytkami mamy przestrzeń na kable z górnej płytki łączące peryferia z mikrokontrolerem, dolna płytka nie ma żadnych elementów poza nóżkami. Zasilanie to port microUSB samej płytki Wemos. 
 
 Kod w C++ oczywiście trafił [na Githuba][8]. Ale co ze schematem? Szukałem długo narzędzia niezbyt dziecinnego (czyli bez klasycznych arduinowych kabelków i breadboarda) ale i takiego żebym je obsłużył. Ostateczny wybór to CircuitMaker od Altium. Jest co prawda tylko pod Windows, ale jako że nie ma za bardzo standardu pliku do schematów elektronicznych to uznałem że export do PDF/obrazka wystarczy na potrzeby projektu. Poza tym środowisko całkiem fajne gdyż mamy wbudowaną bazę elementów elektronicznych (w sumie jedyne środowisko które miało pinout ESP8266!), obsługę projektowania płytek drukowanych (export plików gerber) i system hostowania projektów - podobny do Thingverse (gdzie można trzymać projekty do druku 3D). Projekt części fizycznej BTD trafił zatem [na CircuitMakera][9].
 
-![Schemat stworzony w CircuitMakerze](https://raw.githubusercontent.com/danielskowronski/btd/master/hw/schematics.png)
+![Schemat stworzony w CircuitMakerze](https://raw.githubusercontent.com/danielskowronski/btd/master/hw/schematics.png "Schemat stworzony w CircuitMakerze")
 
 Co z tytułowym [InfluxDB][10]? Otóż dane z NettigoAirMonitor pobierane są właśnie z tej bazy danych. Otrzymuje ona też aktualne wartości temperatury i natężenia światła. Stąd tylko krok do wrzucenia pomiarów w Grafanę. Tu jeszcze jedna uwaga - Grafana wymaga zrobienia jednego _Data Source_ na każdą bazę danych Influxa.
 
 
-![Jak InfluxDB to i Grafana](/wp-content/uploads/2019/03/Screenshot_2.png)
+![Jak InfluxDB to i Grafana](/wp-content/uploads/2019/03/Screenshot_2.png "Jak InfluxDB to i Grafana")
 
  [1]: /2019/01/budowa-stacji-pogody-z-czujnikiem-smogu-i-prezentacja-danych/
  [2]: https://github.com/danielskowronski/zegar-beta

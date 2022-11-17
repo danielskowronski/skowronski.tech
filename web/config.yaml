@@ -1,5 +1,5 @@
 ---
-title: "[skowronski.tech - tech blog]"
+title: "[skowronski.tech] tech&nbsp;blog"
 
 baseURL: "https://skowronski.tech/"
 
@@ -42,7 +42,7 @@ deployment:
 author:
   name: "Daniel Skowroński"
   image: "img/memoji.jpg"
-  headline: "[skowronski.tech - tech blog]"
+  headline: "[skowronski.tech] tech&nbsp;blog"
   links:
     - github: "https://github.com/danielskowronski/"
     - linkedin: "https://linkedin.com/in/daniel-skowronski/"
@@ -87,6 +87,7 @@ params:
     showHero: true
     showTableOfContents: true
     showTaxonomies: true
+    heroStyle: "big"
 
   taxonomy:
     showTermCount: true

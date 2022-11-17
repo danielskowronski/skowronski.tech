@@ -11,7 +11,7 @@ tags:
   - security
   - squashfs
   - ssh
-
+url: '/2021/02/hacking-into-tp-link-archer-c6-shell-access-without-physical-disassembly/'
 ---
 This story begins with simple need - ability to programmatically obtain all devices connected to my Wi-Fi router - TP-Link Archer C6. None of the existing libraries support this version of Web UI. The issue with the simplest solution (just flashing OpenWRT) - I rely on proprietary OneMesh technology, which enables better home mesh-networking. So, some hacking needed to be done.
 

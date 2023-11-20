@@ -2,6 +2,12 @@
 
 ## hugo
 
+### take care of theme updates
+
+```bash
+git submodule update --remote --merge
+```
+
 ### server for development
 
 ```bash

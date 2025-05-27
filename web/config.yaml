@@ -39,18 +39,6 @@ deployment:
     name: s3
     URL: s3://skowronski.tech?region=eu-central-1
 
-author:
-  name: "Daniel Skowroński"
-  image: "img/memoji.jpg"
-  headline: "[skowronski.tech] tech&nbsp;blog"
-  links:
-    - github: "https://github.com/danielskowronski/"
-    - linkedin: "https://linkedin.com/in/daniel-skowronski/"
-    - blogger: "https://skowronski.tech/"
-    - discord: "https://discordapp.com/users/dskowronski"
-    - keybase: "https://keybase.io/dskowronski"
-    - email: "mailto:daniel@skowron.ski"
-
 outputs:
   home:
     - "HTML"
@@ -60,6 +48,18 @@ outputs:
 # https://nunocoracao.github.io/blowfish/docs/configuration/
 
 params:
+  Author:
+    name: "Daniel Skowroński"
+    image: "img/memoji.jpg"
+    headline: "[skowronski.tech] tech&nbsp;blog"
+    links:
+      - github: "https://github.com/danielskowronski/"
+      - linkedin: "https://linkedin.com/in/daniel-skowronski/"
+      - blogger: "https://skowronski.tech/"
+      - discord: "https://discordapp.com/users/dskowronski"
+      - keybase: "https://keybase.io/dskowronski"
+      - email: "mailto:daniel@skowron.ski"
+
   colorScheme: "blue"
   defaultAppearance: "dark"
 
@@ -92,3 +92,18 @@ params:
 
   taxonomy:
     showTermCount: true
+  
+  disableImageZoom: true # FIXME: SWAPPED_ZOOM_LIBRARY_WEBKIT
+
+
+cascade:
+  params:
+    lang: pl-pl
+    categories:
+      - blog.dsinf.net
+  target:
+    path: "{/posts/blog.dsinf.net,/posts/blog.dsinf.net/**}"
+
+imaging:
+  quality: 95
+  

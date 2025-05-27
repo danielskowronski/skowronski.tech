@@ -2,7 +2,7 @@
 	<article class="max-w-full">
 		<header>
 			<h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-				Contact - {{ .Site.Author.name | default .Site.Title }}
+				Contact - {{ .Site.Params.Author.name | default .Site.Title }}
 			</h1>
 			<div class="mt-1 text-2xl">
 				{{ partialCached "author-links.html" . }}

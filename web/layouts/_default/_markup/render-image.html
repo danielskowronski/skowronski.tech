@@ -22,6 +22,7 @@
         loading="lazy"
         src="{{ .RelPermalink }}"
         alt="{{ $altText }}"
+        data-action="zoom"
       />
       {{- else }}
       <img
@@ -34,7 +35,7 @@
         {{ (.Resize "1320x").RelPermalink }} 2x"
         data-zoom-src="{{ (.Resize "1320x").RelPermalink }}"
         src="{{ (.Resize "660x").RelPermalink }}"
-        alt="{{ $altText }}"
+        alt="{{ $altText }}" data-action="zoom"
       />
       {{- end }}
       {{ with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
